@@ -1,0 +1,104 @@
+/*----START OF BASE DESIGNS----*/
+body {
+    display: flex;
+    background-color: rgb(235, 231, 231);
+}
+
+/*SIDEBAR*/
+
+.sidebar {
+    position:sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    background-color: rgb(14, 14, 95); 
+    height: 100vh;
+    padding: 2em;
+    transition: all 0.1s linear;
+    overflow: hidden;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+.sidebar a {
+    text-decoration: none;
+    color:yellow;
+
+}
+
+.sidebar a:hover {
+    color:white;
+}
+
+/*HEADER*/
+.main-content {
+    position: relative;
+    background-color:antiquewhite;
+    width: 100%;
+}
+
+.header-title {
+    flex-grow: 1;
+    padding-left: 1em;
+}
+.header-wrapper {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+}
+
+/*----END OF THE BASE DESIGNS----*/
+
+
+
+/*----START OF MAIN CONTENT----*/
+
+.content {
+    margin: 2em;
+    border: 1px solid rgb(240, 239, 239);
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.content-title {
+    font-size: 1.24em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 1em;
+}
+
+
+.textbox {}
+
+.checkbox {}
+
+.radio {}
+
+.dfont {}
+
+.previous-school {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    border: black 1px solid;
+    justify-content: space-around;
+}
+
+.previous-school-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; /* Adjust as needed */
+}
+
+
+.learner-radio {
+    flex-grow: 1;
+    border: black 1px solid;
+}
+
+
+
+/*----END OF MAIN CONTENT----*/
