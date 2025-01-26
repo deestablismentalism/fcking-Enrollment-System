@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../CSS/Enrollment_Form.css">
+    <link rel="stylesheet" href="../css/Enrollment_Form.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/form-validation.js"></script>
 </head>
 <body>
     <div class="sidebar">
@@ -35,7 +37,7 @@
                 <p class="title">Learner's Enrollment Form</p>
             </div>
             <div class="content-wrapper">
-                <form action="">
+                <form action="" id="enrollment-form">
 
                     <!--ANTAS AT IMPORMASYON NG PAARALAN-->
                     <div class="previous-school border-75">
@@ -45,27 +47,31 @@
 
                         <div class="school-year">
                             <p class="dfont">Taong Panuruan</p>
-                            <input type="text" name="schoolYear" id="schoolYear" class="textbox">
+                            <div class="academic-year-input">
+                                <input type="number" name="start-year" id="start-year" class="textbox">
+                                <p> - </p>
+                                <input type="number" name="end-year" id="end-year" class="textbox">
+                            </div>
                         </div>
                         <div class="learner-radio">
                             <p class="dfont">I-check lamang naaangkop</p>
-                            <input type="radio" id="No-LRN" name="learner" value="No-LRN" class="radio">
-                            <label for="No-LRN">Walang LRN</label>
-                            <input type="radio" id="With-LRN" name="learner" value="With-LRN" class="radio">
-                            <label for="With-LRN">Mayroong LRN</label>
-                            <input type="radio" id="Returning" name="learner" value="Returning" class="radio">
-                            <label for="Returning">Returning (Balik Aral)</label>
+                            <input type="radio" id="No-LRN" name="no-lrn" value="No-LRN" class="radio">
+                            <label for="no-lrn">Walang LRN</label>
+                            <input type="radio" id="With-LRN" name="with-lrn" value="With-LRN" class="radio">
+                            <label for="with-lrn">Mayroong LRN</label>
+                            <input type="radio" id="Returning" name="returning" value="Returning" class="radio">
+                            <label for="returning">Returning (Balik Aral)</label>
                         </div>
 
                         <div class="grade">
                             <p class="dfont">Baitang na nais ipatala</p>
-                            <input type="text" name="grades-tbe" class="textbox" id="grades-tbe"> 
+                            <input type="number" name="grades-tbe" id="grades-tbe" class="textbox" > 
                             <p class="dfont">Huling baitang na natapos</p>
-                            <input type="text" name="textbox" id="lgrade" class="textbox">
+                            <input type="number" name="textbox" id="last-grade" class="textbox">
                             <p class="dfont">Huling natapos na taon</p>
-                            <input type="text" name="lyear" id="lyear" class="textbox">
+                            <input type="number" name="lyear" id="last-year" class="textbox">
                         </div>
-
+                    
                         <div class="heducation">
                             <div class="lschool-wrapper">
                                 <div class="last-school">
@@ -332,7 +338,7 @@
                         <div class="image-confirm">
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
                             <input type="button" value="Insert Image (Di pa nagana)">
-                            <input type="submit" value="submit">
+                            <button type="submit"> Submit </button>
                         </div>
                     </div>
                 </form>
@@ -340,4 +346,5 @@
         </div>                    
     </div>
 </body>
+</script>
 </html>

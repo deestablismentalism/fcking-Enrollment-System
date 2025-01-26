@@ -48,7 +48,26 @@ body {
     flex-wrap: wrap;
     background-color: whitesmoke;
 }
-
+input[type="radio"]::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    border: 2px solid rgba(17, 17, 139, 0.975);
+    border-radius: 10px;
+    width: 15px;
+    height: 15px;
+}
+.learner-radio input[type="radio"]:checked::before {
+    background-color: #ffffff;
+}
+.learner-radio input[type="radio"]:checked::after{
+    content: '';
+    position: absolute;
+    background-color: blue;
+    border-radius: 10px;
+    width: 10px;
+    height: 10px;
+}
 /*----END OF THE BASE DESIGNS----*/
 
 
@@ -70,9 +89,24 @@ body {
 
 .textbox {
     border-radius: 5px;
-    border: #616161 .5px solid;
+    border: 1px solid #616161 ;
+    width: 150px;
+    height: 20px;     
+    padding: 5px;
 }
-
+/* taong panuruan part*/
+.school-year {
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+.school-year input {
+    width: 70px;
+    height: 15px;
+}
+.academic-year-input {
+    display: flex;
+}
+/* taong panuruan part end*/
 .checkbox {
 
 }
