@@ -193,30 +193,49 @@ body {
 .user-homepage {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px; /* Adds space between the grid items */
+    gap: 8px;
     padding: 10px;
+    color: #003366;
 }
 
 .user-homepage > .student-dashboard {
     padding: 10px;
+    border: 1px solid black;
 }
-  
+
 .sched td {
     text-align: left;
-  }
+    border-top: 1px solid transparent; 
+    border-left: 1px solid transparent; 
+    border-right: 1px solid transparent; 
+    border-bottom: 2px solid rgba(241, 189, 34, 0.5); 
+    padding: 10px;
+}
 
 .sched th {
     text-align: center;
-  }
+
+}
 
 .sched {
     width: 100%;
-  }
-
-.class-sched, .announcements-title {
-    font-size: 25px;
+    font-family: Barlow, sans-serif;
+    font-size: 17px;
+    border-collapse: collapse;
 }
 
+.student-dashboard {
+    margin: 10px;
+}
 
+.announcement {
+    margin: 5px;
+    padding: 3px;
+    text-align: justify;
+}
+
+.class-sched, .announcements-title {
+    font-size: 30px;
+}
 
 /*----END OF MAIN CONTENT----*/
