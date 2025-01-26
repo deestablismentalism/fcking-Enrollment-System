@@ -188,18 +188,6 @@ label, .dfont{
     padding-top: 1em;
 }
 
-.school-year {
-    display: grid;
-    grid-template-rows: 50% 50%;
-}
-.school-year input {
-    width: 70px;
-    height: 15px;
-}
-.academic-year-input {
-    display: flex;
-}
-
 
 .learner-radio {
     grid-column: 2/4;

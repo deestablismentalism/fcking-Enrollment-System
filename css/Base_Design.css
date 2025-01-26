@@ -75,6 +75,7 @@ body {
 .border-100sb {
     position: relative;
 }
+
 .border-100sb::after {
     content: '';
     position: absolute;
