@@ -74,7 +74,6 @@ body {
 }
 
 
-
 /*----END OF THE BASE DESIGNS----*/
 
 
@@ -113,6 +112,7 @@ body {
 
 }
 
+/*START NG CODE NI KENNETH*/
 .radio {
     background-color: initial;
     cursor: default;
@@ -121,6 +121,32 @@ body {
     margin: 3px 3px 0px 5px;
     padding: initial;
 }
+/*END NG CODE NI KENNETH*/
+
+/* START NG CODE NI DABID
+.radio
+    display: inline-flex;
+    border: 2px solid rgba(17, 17, 139, 0.975);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+}
+
+.radio::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    background-color: #295077;
+    transform: scale(0);
+}
+.radio:checked::after {
+    transform: scale(1);
+}
+
+*/
 
 input[type="button"], input[type="submit"] {
     background-color: #f7f4f4;
