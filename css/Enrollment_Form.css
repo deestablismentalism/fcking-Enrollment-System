@@ -73,27 +73,6 @@ body {
     border-bottom: 1px solid #295077;
 }
 
-input[type="radio"]::before {
-    content: '';
-    display: inline-block;
-    position: relative;
-    border: 2px solid rgba(17, 17, 139, 0.975);
-    border-radius: 10px;
-    width: 15px;
-    height: 15px;
-}
-.learner-radio input[type="radio"]:checked::before {
-    background-color: #ffffff;
-}
-.learner-radio input[type="radio"]:checked::after{
-    content: '';
-    position: absolute;
-    background-color: blue;
-    border-radius: 10px;
-    width: 10px;
-    height: 10px;
-}
-
 
 /*----END OF THE BASE DESIGNS----*/
 
@@ -138,7 +117,27 @@ input[type="radio"]::before {
 
 }
 
-.radio {}
+.radio {
+    display: inline-flex;
+    border: 2px solid rgba(17, 17, 139, 0.975);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+}
+
+.radio::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    background-color: #295077;
+    transform: scale(0);
+}
+.radio:checked::after {
+    transform: scale(1);
+}
 
 .dfont {
     font-family: Arial, Helvetica, sans-serif;
