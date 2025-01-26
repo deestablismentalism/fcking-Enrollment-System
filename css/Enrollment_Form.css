@@ -62,18 +62,17 @@ body {
     border-bottom: 1px solid rgba(0, 51, 102, 0.7);
 }
 
-.border-100sb {
+.border-100 {
     position: relative;
 }
-.border-100sb::after {
+.border-100::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0%;
     width: 100%;
-    border-bottom: 1px solid #295077;
+    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
 }
-
 /*----END OF THE BASE DESIGNS----*/
 
 
