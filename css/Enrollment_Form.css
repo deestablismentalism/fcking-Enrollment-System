@@ -48,7 +48,6 @@ body {
     flex-wrap: wrap;
     background-color: whitesmoke;
 }
-
 .border-75 {
     position: relative;
 }
@@ -62,10 +61,10 @@ body {
     border-bottom: 1px solid rgba(0, 51, 102, 0.7);
 }
 
-.border-100sb {
+.border-100 {
     position: relative;
 }
-.border-100sb::after {
+.border-100::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -74,6 +73,7 @@ body {
     border-bottom: 1px solid #295077;
 }
 
+
 /*----END OF THE BASE DESIGNS----*/
 
 
@@ -81,6 +81,8 @@ body {
 /*----START OF MAIN CONTENT----*/
 .content {
     margin: 2em;
+    font-family: "Barlow";
+    font-weight: 450;
 }
 .content-title {
     font-size: 1.24em;
@@ -94,38 +96,110 @@ body {
 
 
 .textbox {
-    border-radius: 5px;
-    border: #616161 .5px solid;
+    border-radius: 8px;
+    border: 1px solid #616161 ; 
+    background-color: #f7f4f4;
+    width: 200px;
+    height: 28px;     
+    padding: 5px;
+    margin-top: 2%;   
 }
 
-.checkbox {
+.textbox:focus {
+    border: 2px solid #295077;
+}
+.checkbox {    
 
 }
 
-.radio {}
+/*START NG CODE NI KENNETH*/
+.radio {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 0px 5px;
+    padding: initial;
+}
+/*END NG CODE NI KENNETH*/
 
-.dfont {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+/* START NG CODE NI DABID
+.radio
+    display: inline-flex;
+    border: 2px solid rgba(17, 17, 139, 0.975);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
 }
 
+.radio::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    background-color: #295077;
+    transform: scale(0);
+}
+.radio:checked::after {
+    transform: scale(1);
+}
+
+*/
+
+input[type="button"], input[type="submit"] {
+    background-color: #f7f4f4;
+    color: #616161;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;  
+    margin-top: 2%;
+}
+.title {
+    font-weight:500;
+    font-size: 24px;
+    padding-left: 3em;
+}
+
+label, .dfont{
+    padding-bottom: .3em;
+    padding-top: 1em;
+}
 
 
 
 /*ANTAS NG IMPORMASYON NG PAARALAN*/
 .previous-school {
-    background-color: #ffffff;
     margin-top: 2vh;
+}
+
+.previous-school-wrapper {
+    background-color: #ffffff;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    padding :2em;
+    padding:1em 0em 1em 2em;    
     gap: 1em;
 }
 
 .previous-school-title {
-  grid-column: 1 / 4;
-  padding-left: 2em;
+    background-color: #ffffff;
+    padding-top: 1em;
 }
+
+.school-year {
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+.school-year input {
+    width: 70px;
+    height: 15px;
+}
+.academic-year-input {
+    display: flex;
+}
+
 
 .learner-radio {
     grid-column: 2/4;
@@ -150,20 +224,23 @@ body {
     gap: 1em;
 }
 
+#lschoolAddress, #fschoolAddress {
+    width: 400px;
+}
+
 /*IMPORMASYON NG ESTUDYANTE*/
 
-
-.student-information {
+.student-information-wrapper {
     display: grid;
     grid-template-columns: 21% 21% 33% 25%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;
     gap: 1em;
 }
 
 .student-information-title {
-    grid-column: 1 / 5;
-    padding-left: 2em;
+    background-color: #ffffff;
+    padding: 1em;
 }
 
 .PSA-number {
@@ -189,43 +266,67 @@ body {
 
 /*PARA SA MGA MAGAARAL NA MAY KAPANSANAN*/
 .student-disability {
+}
+
+.student-disability-wrapper {
     display: grid;
     grid-template-columns: 40% 40%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;    
     gap: 1em;
 }
 
 .student-disability-title {
-    grid-column: 1 / 3;
-    padding-left: 2em;
+    background-color: #ffffff;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }   
 
 /*TIRAHAN*/
-.address {
+.address-wrapper {
     display: grid;
     grid-template-columns: 25% 25% 25%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;
     gap: 1em;
 }
 
 .address-title {
-    grid-column: 1 / 4;
-    padding-left: 2em;
+    background-color: #ffffff;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 /*IMPORMASYON NG MAGULANG/TAGAPAGALAGA*/
-.parents-guardian-information {
+.parents-guardian-information-wrapper {
     display: grid;
     grid-template-columns:  30% 30% 30%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;
     gap: 1em;
 }
 
 .parents-guardian-information-title {
-    grid-column: 1/4;
+    background-color: #ffffff;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.parents-guardian-information-wrapper select {
+    max-width: 300px;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    border-radius: 2px;
+    align-items: center;
+    background-color: #f7f4f4;
+    cursor: default;
+    margin: 0em;
+    white-space: pre;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
 
 .father {
@@ -241,12 +342,14 @@ body {
     display: grid;
     grid-template-columns:  30% 65%;
     background-color: #ffffff;
-    padding :2em;
+    padding:2em;
+    padding-left:6em;
     gap: 1em;
 }     
 
 .fourPS {
     border-right :rgba(0, 51, 102, 0.7) 1px solid;
 }
+
 
 /*----END OF MAIN CONTENT----*/
