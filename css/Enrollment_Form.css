@@ -12,9 +12,9 @@ body {
     bottom: 0;
     width: 240px;
     background-color: rgb(14, 14, 95); 
-    height: 93vh;
+    height: 100vh;
     padding: 2em;
-    transition: all 0.1s linear;
+    transition: all 0.6s linear;
     overflow: hidden;
 }
 
@@ -48,6 +48,31 @@ body {
     flex-wrap: wrap;
     background-color: whitesmoke;
 }
+.border-75 {
+    position: relative;
+}
+
+.border-75::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 7.5%; 
+    width: 85%;
+    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
+}
+
+.border-100sb {
+    position: relative;
+}
+.border-100sb::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    border-bottom: 1px solid #295077;
+}
+
 input[type="radio"]::before {
     content: '';
     display: inline-block;
@@ -68,6 +93,8 @@ input[type="radio"]::before {
     width: 10px;
     height: 10px;
 }
+
+
 /*----END OF THE BASE DESIGNS----*/
 
 
@@ -118,30 +145,7 @@ input[type="radio"]::before {
     font-size: 14px;
 }
 
-.border-75 {
-    position: relative;
-}
 
-.border-75::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 7.5%; 
-    width: 85%;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
-}
-
-.border-100 {
-    position: relative;
-}
-.border-100::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0%;
-    width: 100%;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
-}
 
 
 /*ANTAS NG IMPORMASYON NG PAARALAN*/
