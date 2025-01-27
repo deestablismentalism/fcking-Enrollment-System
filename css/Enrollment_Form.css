@@ -232,8 +232,8 @@ body {
     border-radius: 8px;
     border: 1px solid #616161 ; 
     background-color: #f7f4f4;
-    width: 200px;
-    height: 28px;     
+    width: 12rem;
+    height: 1.6rem;     
     padding: 5px;
     margin-top: 2%;   
 }
@@ -324,7 +324,7 @@ label, .dfont{
 }
 
 #lschoolAddress, #fschoolAddress {
-    width: 400px;
+    width: 24rem;
 }
 
 /*IMPORMASYON NG ESTUDYANTE*/
