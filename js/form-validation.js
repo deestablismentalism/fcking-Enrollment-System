@@ -5,19 +5,18 @@ document.addEventListener('DOMContentLoaded',function(){
     const gradesTbe = document.getElementById("grades-tbe");
     const lastGrade = document.getElementById("last-grade");
     const lastYear = document.getElementById("last-year");
+    const errorMsg = document.getElementById("error-messages");
 
-    
+   //set default academic year
     const year = new Date().getFullYear();
     startYear.value = year;
     endYear.value = year + 1;
    
-    form.addEventListener('submit', function(e){
-            e.preventDefault();
-             //ensure that the end year is always greater than the start year 
-    endYear.addEventListener('change', function(){
+    //ensure that the end year is always greater than the start year 
+    function validateAcademicYear(){
         const startYearVal = parseInt(startYear.value);
         const endYearVal = parseInt(endYear.value);
-
+        
         if (endYearVal < startYearVal) {
             endYear.style.border = "1px solid red";
         }
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded',function(){
         else {
             endYear.style.border = "1px solid #616161";
         }
-    });
+    }
       //check if the last school  year finished is not greater than the current year
             lastYear.addEventListener('change', function(){
       
@@ -40,8 +39,12 @@ document.addEventListener('DOMContentLoaded',function(){
                     lastYear.style.border = "1px solid #616161";
                 }
             });
-        
-    });
+
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                
+                validateAcademicYear();
+            });
 
     const lastGradeVal = parseInt(lastGrade.value);
 });    
