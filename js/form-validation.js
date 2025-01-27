@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded',function(){
         if (endYearVal < startYearVal) {
             endYear.style.border = "1px solid red";
         }
+        else if (startYearVal < year) {
+            startYear.style.border = "1px solid red";
+        }
         else {
             endYear.style.border = "1px solid #616161";
         }
