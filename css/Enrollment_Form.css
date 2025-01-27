@@ -1,36 +1,188 @@
 /*----START OF BASE DESIGNS----*/
 body {
     display: flex;
+    background-color: rgb(235, 231, 231);
 }
-
-/*SIDEBAR*/
-
+/*----SIDEBAR DESIGNS----*/
 .sidebar {
     position: sticky;
     top: 0;
     left: 0;
     bottom: 0;
-    width: 240px;
+    width: 130px;
     background-color: rgb(14, 14, 95); 
-    height: 100vh;
-    padding: 2em;
-    transition: all 0.6s linear;
+    height: 5.5vh;
+    transition: height .3s linear, width .5s linear; 
     overflow: hidden;
+    font-family: sans-serif, Arial, Helvetica;
+}
+
+.sidebar.active {
+    height: 100vh;
+    width: 300px;
+}
+
+.sidebar-title {
+    display: flex;
+    color:white;
+    background-color: #F1BD22;
+    padding : 1em;
+}
+
+.sidebar-title button {
+    position: absolute;
+    right: 0; 
+}
+
+.SSIS {
+    margin-top: .1em;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.sidebar a {
+    display: block; 
+    color: #CC8B20;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .sidebar ul {
     list-style: none;
 }
-.sidebar a {
-    text-decoration: none;
-    color:yellow;
+
+.sidebar button {
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
-.sidebar a:hover {
-    color:white;
+.menu {
+    padding: 2em 1em 1em 1em; 
 }
 
-/*HEADER*/
+.menu-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+}
+
+.menu-title {
+    color: #FFF8F8; 
+    overflow: hidden;
+}
+
+.border-75 {
+    position: relative;
+}
+
+.border-75::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 7.5%; 
+    width: 85%;
+    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
+}
+
+.border-100sb {
+    position: relative;
+}
+
+.border-100sb::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    border-bottom: 1px solid #295077;
+}
+
+/*----MENU DESIGNS AND TRANSITIONS----*/
+
+.bi-chevron-down {
+    color: white;
+    font-size: 20px;
+}
+
+.bi {
+    padding-right: .5em;
+    font-size: 25px;
+    vertical-align: -.2em;
+}
+
+/*DASHBOARD*/
+.dashboard-ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out, opacity .5s ease-out;
+}
+
+.dashboard-ul.active {
+    height: 4em;
+    max-height: 500px;
+    opacity: 1;
+    background-color: #051F3E;
+    margin: 0;
+    padding: 1em 2em 0em 2em;
+    
+}
+
+.dashboard-ul a:hover {
+    color: white;
+}
+
+
+/*SUBJECTS*/
+
+.subjects-ul a:hover {
+    color: white;
+}
+
+.subjects-ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.15s ease-out;
+}
+
+.subjects-ul.active {
+    height: 4em;
+    max-height: 500px;
+    opacity: 1;
+    background-color: #051F3E;
+    margin: 0;
+    padding: 1em 2em 0em 2em;
+}
+
+/*TEACHERS*/
+
+.teachers-ul a:hover {
+    color: white;
+}
+
+.teachers-ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.15s ease-out;
+}
+
+.teachers-ul.active {
+    height: 4em;
+    max-height: 500px;
+    opacity: 1;
+    background-color: #051F3E;
+    margin: 0;
+    padding: 1em 2em 0em 2em;
+}
+
+
+
+/*----END OF SIDEBAR DESIGNS----*/
+
 .main-content {
     position: relative;
     background-color:antiquewhite;
@@ -48,34 +200,15 @@ body {
     flex-wrap: wrap;
     background-color: whitesmoke;
 }
-.border-75 {
-    position: relative;
+
+.searchbox {
+    padding-right: 5em;
 }
 
-.border-75::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 7.5%; 
-    width: 85%;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
+.account {
+    padding-right: 2em;
 }
-
-.border-100 {
-    position: relative;
-}
-.border-100::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0%;
-    width: 100%;
-    border-bottom: 1px solid #295077;
-}
-
-
 /*----END OF THE BASE DESIGNS----*/
-
 
 
 /*----START OF MAIN CONTENT----*/
@@ -112,7 +245,7 @@ body {
 
 }
 
-/*START NG CODE NI KENNETH*/
+
 .radio {
     background-color: initial;
     cursor: default;
@@ -121,32 +254,6 @@ body {
     margin: 3px 3px 0px 5px;
     padding: initial;
 }
-/*END NG CODE NI KENNETH*/
-
-/* START NG CODE NI DABID
-.radio
-    display: inline-flex;
-    border: 2px solid rgba(17, 17, 139, 0.975);
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    padding: 3px;
-}
-
-.radio::after{
-    content: '';
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 50%;
-    background-color: #295077;
-    transform: scale(0);
-}
-.radio:checked::after {
-    transform: scale(1);
-}
-
-*/
 
 input[type="button"], input[type="submit"] {
     background-color: #f7f4f4;
@@ -195,6 +302,10 @@ label, .dfont{
 
 .school-year {
     justify-items: center;
+}
+
+#end-year, #start-year {
+    width: 100px;
 }
 
 .heducation {
