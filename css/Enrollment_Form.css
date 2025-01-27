@@ -269,12 +269,15 @@ input[type="button"], input[type="submit"] {
     font-size: 24px;
     padding-left: 3em;
 }
-
 label, .dfont{
     padding-bottom: .3em;
     padding-top: 1em;
 }
-
+/* SPACE FOR ERROR MESSAGES -DAVID*/
+.error-messages { 
+    width: 50px;
+    height: 25px;
+}
 
 
 /*ANTAS NG IMPORMASYON NG PAARALAN*/
@@ -293,6 +296,20 @@ label, .dfont{
 .previous-school-title {
     background-color: #ffffff;
     padding-top: 1em;
+}
+
+.school-year {
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+.school-year input {
+    width: 70px;
+    height: 15px;
+}
+/* dinagdagan ko ng margin because sikip -dabid*/
+.academic-year-input {
+    display: flex;
+    margin: 5px;
 }
 
 
