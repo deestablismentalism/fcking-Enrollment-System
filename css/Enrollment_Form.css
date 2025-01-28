@@ -1,52 +1,76 @@
 /*----START OF BASE DESIGNS----*/
 body {
     display: flex;
+    background-color: rgb(235, 231, 231);
 }
-
-/*SIDEBAR*/
-
+/*----SIDEBAR DESIGNS----*/
 .sidebar {
     position: sticky;
     top: 0;
     left: 0;
     bottom: 0;
-    width: 240px;
+    width: 130px;
     background-color: rgb(14, 14, 95); 
-    height: 100vh;
-    padding: 2em;
-    transition: all 0.6s linear;
+    height: 5.5vh;
+    transition: height .3s linear, width .5s linear; 
     overflow: hidden;
+    font-family: sans-serif, Arial, Helvetica;
+}
+
+.sidebar.active {
+    height: 100vh;
+    width: 300px;
+}
+
+.sidebar-title {
+    display: flex;
+    color:white;
+    background-color: #F1BD22;
+    padding : 1em;
+}
+
+.sidebar-title button {
+    position: absolute;
+    right: 0; 
+}
+
+.SSIS {
+    margin-top: .1em;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.sidebar a {
+    display: block; 
+    color: #CC8B20;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .sidebar ul {
     list-style: none;
 }
-.sidebar a {
-    text-decoration: none;
-    color:yellow;
+
+.sidebar button {
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
-.sidebar a:hover {
-    color:white;
+.menu {
+    padding: 2em 1em 1em 1em; 
 }
 
-/*HEADER*/
-.main-content {
-    position: relative;
-    background-color:antiquewhite;
-    width: 100%;
+.menu-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
 }
 
-.header-title {
-    flex-grow: 1;
-    padding-left: 1em;
-}
-.header-wrapper {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: whitesmoke;
+.menu-title {
+    color: #FFF8F8; 
+    overflow: hidden;
 }
 
 .border-75 {
@@ -65,7 +89,7 @@ body {
 .border-100 {
     position: relative;
 }
-.border-100::after {
+.border-100sb::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -73,13 +97,124 @@ body {
     width: 100%;
     border-bottom: 1px solid rgba(0, 51, 102, 0.7);
 }
-/*----END OF THE BASE DESIGNS----*/
 
+/*----MENU DESIGNS AND TRANSITIONS----*/
+
+.bi-chevron-down {
+    color: white;
+    font-size: 20px;
+}
+
+.bi {
+    padding-right: .5em;
+    font-size: 25px;
+    vertical-align: -.2em;
+}
+
+/*DASHBOARD*/
+.dashboard-ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out, opacity .5s ease-out;
+}
+
+.dashboard-ul.active {
+    height: 4em;
+    max-height: 500px;
+    opacity: 1;
+    background-color: #051F3E;
+    margin: 0;
+    padding: 1em 2em 0em 2em;
+    
+}
+
+.dashboard-ul a:hover {
+    color: white;
+}
+
+
+/*SUBJECTS*/
+
+.subjects-ul a:hover {
+    color: white;
+}
+
+.subjects-ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.15s ease-out;
+}
+
+.subjects-ul.active {
+    height: 4em;
+    max-height: 500px;
+    opacity: 1;
+    background-color: #051F3E;
+    margin: 0;
+    padding: 1em 2em 0em 2em;
+}
+
+/*TEACHERS*/
+
+.teachers-ul a:hover {
+    color: white;
+}
+
+.teachers-ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.15s ease-out;
+}
+
+.teachers-ul.active {
+    height: 4em;
+    max-height: 500px;
+    opacity: 1;
+    background-color: #051F3E;
+    margin: 0;
+    padding: 1em 2em 0em 2em;
+}
+
+
+
+/*----END OF SIDEBAR DESIGNS----*/
+
+.main-content {
+    position: relative;
+    background-color:antiquewhite;
+    width: 100%;
+}
+
+.header-title {
+    flex-grow: 1;
+    padding-left: 1em;
+}
+.header-wrapper {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+}
+
+.searchbox {
+    padding-right: 5em;
+}
+
+.account {
+    padding-right: 2em;
+}
+/*----END OF THE BASE DESIGNS----*/
 
 
 /*----START OF MAIN CONTENT----*/
 .content {
     margin: 2em;
+    font-family: "Barlow";
+    font-weight: 450;
 }
 .content-title {
     font-size: 1.24em;
@@ -93,38 +228,72 @@ body {
 
 
 .textbox {
-    border-radius: 5px;
-    border: #616161 .5px solid;
+    border-radius: 8px;
+    border: 1px solid #616161 ; 
+    background-color: #f7f4f4;
+    width: 12rem;
+    height: 1.6rem;     
+    padding: 5px;
+    margin-top: 2%;   
 }
 
-.checkbox {
+.textbox:focus {
+    border: 2px solid #295077;
+}
+.checkbox {    
 
 }
 
-.radio {}
 
-.dfont {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
+.radio {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 0px 5px;
+    padding: initial;
 }
 
+input[type="button"], input[type="submit"] {
+    background-color: #f7f4f4;
+    color: #616161;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;  
+    margin-top: 2%;
+}
+.title {
+    font-weight:500;
+    font-size: 24px;
+    padding-left: 3em;
+}
+
+label, .dfont{
+    padding-bottom: .3em;
+    padding-top: 1em;
+}
 
 
 
 /*ANTAS NG IMPORMASYON NG PAARALAN*/
 .previous-school {
-    background-color: #ffffff;
     margin-top: 2vh;
+}
+
+.previous-school-wrapper {
+    background-color: #ffffff;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    padding :2em;
+    padding:1em 0em 1em 2em;    
     gap: 1em;
 }
 
 .previous-school-title {
-  grid-column: 1 / 4;
-  padding-left: 2em;
+    background-color: #ffffff;
+    padding-top: 1em;
 }
+
 
 .learner-radio {
     grid-column: 2/4;
@@ -132,6 +301,10 @@ body {
 
 .school-year {
     justify-items: center;
+}
+
+#end-year, #start-year {
+    width: 100px;
 }
 
 .heducation {
@@ -149,20 +322,23 @@ body {
     gap: 1em;
 }
 
+#lschoolAddress, #fschoolAddress {
+    width: 24rem;
+}
+
 /*IMPORMASYON NG ESTUDYANTE*/
 
-
-.student-information {
+.student-information-wrapper {
     display: grid;
     grid-template-columns: 21% 21% 33% 25%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;
     gap: 1em;
 }
 
 .student-information-title {
-    grid-column: 1 / 5;
-    padding-left: 2em;
+    background-color: #ffffff;
+    padding: 1em;
 }
 
 .PSA-number {
@@ -188,43 +364,67 @@ body {
 
 /*PARA SA MGA MAGAARAL NA MAY KAPANSANAN*/
 .student-disability {
+}
+
+.student-disability-wrapper {
     display: grid;
     grid-template-columns: 40% 40%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;    
     gap: 1em;
 }
 
 .student-disability-title {
-    grid-column: 1 / 3;
-    padding-left: 2em;
+    background-color: #ffffff;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }   
 
 /*TIRAHAN*/
-.address {
+.address-wrapper {
     display: grid;
     grid-template-columns: 25% 25% 25%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;
     gap: 1em;
 }
 
 .address-title {
-    grid-column: 1 / 4;
-    padding-left: 2em;
+    background-color: #ffffff;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 /*IMPORMASYON NG MAGULANG/TAGAPAGALAGA*/
-.parents-guardian-information {
+.parents-guardian-information-wrapper {
     display: grid;
     grid-template-columns:  30% 30% 30%;
     background-color: #ffffff;
-    padding :2em;
+    padding:1em 0em 1em 7em;
     gap: 1em;
 }
 
 .parents-guardian-information-title {
-    grid-column: 1/4;
+    background-color: #ffffff;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.parents-guardian-information-wrapper select {
+    max-width: 300px;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    border-radius: 2px;
+    align-items: center;
+    background-color: #f7f4f4;
+    cursor: default;
+    margin: 0em;
+    white-space: pre;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
 
 .father {
@@ -240,12 +440,14 @@ body {
     display: grid;
     grid-template-columns:  30% 65%;
     background-color: #ffffff;
-    padding :2em;
+    padding:2em;
+    padding-left:6em;
     gap: 1em;
 }     
 
 .fourPS {
     border-right :rgba(0, 51, 102, 0.7) 1px solid;
 }
+
 
 /*----END OF MAIN CONTENT----*/

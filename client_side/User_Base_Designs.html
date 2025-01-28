@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../CSS/User_Base_Design.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/User_Base_Design.css">
+    <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="../js/form-validation.js"></script>
     <script>
         function menu()
         {
@@ -37,8 +42,8 @@
     <div class="sidebar">
         <div class="sidebar-wrapper">
             <div class="sidebar-title">
-                <span class="SSIS">SSIS</span>
-                <button class="menu-btn" onclick="menu()"> =</button>
+                <h1 class="SSIS">SSIS</h1>
+                <button class="menu-btn" onclick="menu()"><i class="bi bi-justify"></i></button>
             </div>
 
             <div class="menu-wrappper">
@@ -83,7 +88,7 @@
                 <div class="menu border-100sb" id="mv">
                     <a href=""><span class="menu-title"><i class="bi bi-check2-circle"></i>Mission and Vision</span></a>
                 </div>  
-  
+                
                 <!--ANNOUNCEMENTS-->
                 <div class="menu border-100sb" id="announcements">
                     <a href="" id="announcements"><span class="menu-title"><i class="bi bi-megaphone"></i>Announcements</span></a>
@@ -112,7 +117,6 @@
             </div>
         </div>
         <!--END OF HEADER-->
-        
     </div>
 </body>
 </html>
