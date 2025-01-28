@@ -6,22 +6,95 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/Enrollment_Form.css">
     <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="../js/form-validation.js"></script>
+
+    <script>
+        function menu()
+        {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        function dashboarddrop()
+        {
+            var dashboard = document.querySelector('.dashboard-ul');
+            dashboard.classList.toggle('active');
+        }
+        
+        function subjectsdrop()
+        {
+            var subjects = document.querySelector('.subjects-ul');
+            subjects.classList.toggle('active');
+        }
+
+        function teachersdrop()
+        {
+            var teachers = document.querySelector('.teachers-ul');
+            teachers.classList.toggle('active');
+        }
+    </script>
 </head>
 <body>
     <div class="sidebar">
-        <div class="logo"></div>
-        <ul class="menu">
-            <li> 
-                <a href="" class="Enrollment_Form">Enrollment Form</a>
-            </li>
-            <li> 
-                <a href="" class="Enrollment_Status">Enrollment Status</a>
-            </li>
-        </ul>
+        <div class="sidebar-wrapper">
+            <div class="sidebar-title">
+                <h1 class="SSIS">SSIS</h1>
+                <button class="menu-btn" onclick="menu()"><i class="bi bi-justify"></i></button>
+            </div>
+
+            <div class="menu-wrappper">
+                <!--DASHBOARD-->
+                <div class="menu border-100sb" id="dashboard">
+                    <span id="dashboard-spn" class="menu-title"><i class="bi bi-easel"></i>Dashboard</span>
+                    <button class="dashboard-btn" onclick="dashboarddrop()"> <i class="bi bi-chevron-down"></i></button>
+                    <ul class="dashboard-ul">
+                        <li>
+                            <a href="" class="Eform">Enrollment Form</a>
+                        </li>
+                        <li>
+                            <a href="" class="eStat">Enrollment Status</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--SUBJECTS-->
+                <div class="menu border-100sb" id="subjects">
+                    <span class="menu-title"><i class="bi bi-book"></i>Subjects</span>
+                    <button class="subjects-btn" onclick="subjectsdrop()"><i class="bi bi-chevron-down"></i></button>
+                    <ul class="subjects-ul">
+                        <li>
+                        <a href="" class="allSubj">All subjects</a>
+                        </li>
+                        <li>
+                            <a href="" class="viewGrades">View Grades</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!--TEACHERS-->
+                <div class="menu border-100sb" id="teachers">
+                    <span class="menu-title"><i class="bi bi-people-fill"></i>Teachers</span>
+                    <button class="teachers-btn" onclick="teachersdrop()"><i class="bi bi-chevron-down"></i></button>
+                    <ul class="teachers-ul">
+                        <li>
+                            <a href="" class="">Prof. Dr. Eng. Jearard David</a>
+                        </li>
+                </div>
+                <!--MISSION AND VISION-->
+                <div class="menu border-100sb" id="mv">
+                    <a href=""><span class="menu-title"><i class="bi bi-check2-circle"></i>Mission and Vision</span></a>
+                </div>  
+  
+                <!--ANNOUNCEMENTS-->
+                <div class="menu border-100sb" id="announcements">
+                    <a href="" id="announcements"><span class="menu-title"><i class="bi bi-megaphone"></i>Announcements</span></a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="main-content">
@@ -51,8 +124,14 @@
                             <div class="school-year">
                                 <p class="dfont">Taong Panuruan</p>
                                 <div class="academic-year-input">
+                                    <div class="error-msg">
+                                        <span id="em-start-year"></span>
+                                    </div>
                                     <input type="number" name="start-year" id="start-year" class="textbox">
                                     <p> - </p>
+                                    <div class="error-msg">
+                                        <span id="em-end-year"></span>
+                                    </div>
                                     <input type="number" name="end-year" id="end-year" class="textbox">
                                 </div>
                             </div>
@@ -66,27 +145,22 @@
                                 <label for="returning">Returning (Balik Aral)</label>
                             </div>
 
-                        </div>
-                          <!-- CODE ULET NI DABID 
-                        <div class="learner-radio">
-                            <p class="dfont">I-check lamang naaangkop</p>
-                            <input type="radio" name="lrn-btn" value="No-LRN" class="radio">
-                            <label for="no-lrn"> Walang LRN</label>
-                            
-                            <input type="radio" name="lrn-btn" value="With-LRN" class="radio"> 
-                            <label for="with-lrn">Mayroong LRN</label>
-                            
-                            <input type="radio" name="lrn-btn" value="Returning" class="radio">
-                            <label for="returning">Returning (Balik Aral)</label>
-                        </div>
-                          -->
 
                             <div class="grade">
                                 <p class="dfont">Baitang na nais ipatala</p>
+                                <div class="error-msg">
+                                    <span id="em-grades-tbe"></span>
+                                </div>
                                 <input type="number" name="grades-tbe" id="grades-tbe" class="textbox" > 
                                 <p class="dfont">Huling baitang na natapos</p>
+                                <div class="error-msg">
+                                    <span id="em-last-grade"></span>
+                                </div>
                                 <input type="number" name="textbox" id="last-grade" class="textbox">
                                 <p class="dfont">Huling natapos na taon</p>
+                                <div class="error-msg">
+                                    <span id="em-last-year"></span>
+                                </div>
                                 <input type="number" name="lyear" id="last-year" class="textbox">
                             </div>
                         
@@ -94,35 +168,52 @@
                                 <div class="lschool-wrapper">
                                     <div class="last-school">
                                         <p class="dfont">Huling paaralang pinasukan</p>
+                                        <div class="error-msg">
+                                            <span id="em-lschol"></span>
+                                        </div>
                                         <input type="text" name="lschool" id="lschool" class="textbox">
                                     </div>
                                         <div class="lschoolID">
                                         <p class="dfont">ID ng paaralan</p>
+                                        <div class="error-msg">
+                                            <span id="em-lschoolID"></span>
+                                        </div>
                                         <input type="text" name="lschoolID" id="lschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
+                                <div class="error-msg">
+                                    <span id="em-lschoolAddress"></span>
+                                </div>
                                 <input type="text" name="lschoolAddress" id="lschoolAddress" class="textbox">  
                                 <p class="dfont">Huling natapos na taon sa paaralan</p>
                                 <input type="radio" name="educational-choice" id="" class="radio" value="private">
                                 <label for="private">Pribado</label>
                                 <input type="radio" name="educational-choice" id="" class="radio" value="public">
                                 <label for="public">Pampubliko</label>
-
                             </div>
 
                             <div class="nais-paaralan">
                                 <div class="fschool-wrapper">
                                     <div class="fschool">
                                         <p class="dfont">Nais na paaralan</p>
+                                        <div class="error-msg">
+                                            <span id="em-fschool"></span>
+                                        </div>
                                         <input type="text" name="fschool" id="fschool" class="textbox">
                                     </div>
                                     <div class="fschoolID">
                                         <p class="dfont">ID ng paaralan</p>
+                                        <div class="error-msg">
+                                            <span id="em-fschoolID"></span>
+                                        </div>
                                         <input type="text" name="fschoolID" id="fschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
+                                <div class="error-msg">
+                                    <span id="em-fschoolAddress"></span>
+                                </div>
                                 <input type="text" name="fschoolAddress" id="fschoolAddress" class="textbox">
                             </div>
                         </div>
@@ -137,36 +228,60 @@
                         <div class="student-information-wrapper">
                             <div class="PSA-number">
                                 <p class="dfont">Numero na nakalagay sa Sertipiko ng Kapanganakan (Birth Certificate) mula sa PSA (kung may dala na kopya)</p>
+                                <div class="error-msg">
+                                    <span id="em-PSA-number"></span>
+                                </div>
                                 <input type="text" name="" id="PSA-number" class="textbox">
                             </div>
                             <div class="LRN">
                                 <p class="dfont">Learner's Reference Number (LRN) kung mayroon</p>
+                                <div class="error-msg">
+                                    <span id="em-LRN"></span>
+                                </div>
                                 <input type="text" name="" id="LRN" class="textbox">
                             </div>
                             <!--ROW 2-->
                             <div class="lname">
                                 <p class="dfont">Apelyido</p>
+                                <div class="error-msg">
+                                    <span id="em-lname"></span>
+                                </div>
                                 <input type="text" name="lname" id="lname" class="textbox">
                             </div>
                             <div class="fname">
                                 <p class="dfont">Pangalan</p>
+                                <div class="error-msg">
+                                    <span id="em-fname"></span>
+                                </div>
                                 <input type="text" name="fname" id="fname" class="textbox">
                             </div>
                             <div class="mname">
                                 <p class="dfont">Gitnang Pangalan</p>
+                                <div class="error-msg">
+                                    <span id="em-mname"></span>
+                                </div>
                                 <input type="text" name="mname" id="mname" class="textbox">
                             </div>
                             <div class="extension">
                                 <p class="dfont">Extensyon (Jr., Sr.)</p>
+                                <div class="error-msg">
+                                    <span id="em-extension"></span>
+                                </div>
                                 <input type="text" name="extension" id="extension" class="textbox">
                             </div>
                             <!--ROW 3-->
                             <div class="bday">
                                 <p class="dfont">Petsa ng Kapanganakan</p>
+                                <div class="error-msg">
+                                    <span id="em-bday"></span>
+                                </div>
                                 <input type="date" name="bday" id="bday" class="textbox">
                             </div>
                             <div class="age">
                                 <p class="dfont">Edad</p>
+                                <div class="error-msg">
+                                    <span id="em-age"></span>
+                                </div>
                                 <input type="text" name="age" id="age" class="textbox">
                             </div>
                             <div class="gender-group-wrapper">
@@ -188,21 +303,33 @@
                             </div>
                             <div class="truecommunity">
                                 <p class="dfont">Kung oo, saang grupo nabilang</p>
+                                <div class="error-msg">
+                                    <span id="em-community"></span>
+                                </div>
                                 <input type="text" name="community" id="community" class="textbox">
                             </div>
                             <!--ROW 4-->
                             <div class="native-language">
                                 <div class="language">
                                     <p class="dfont">Kinagisnang wika</p>
+                                    <div class="error-msg">
+                                        <span id="em-language"></span>
+                                    </div>
                                     <input type="text" name="language" id="language" class="textbox">
                                 </div>
                             </div>
                             <div class="religion">
                                 <p class="dfont">Relihiyon</p>
+                                <div class="error-msg">
+                                    <span id="em-religion"></span>
+                                </div>
                                 <input type="text" name="religion" id="religion" class="textbox">
                             </div>
                             <div class="email">
                                 <p class="dfont">Email Address</p>
+                                <div class="error-msg">
+                                    <span id="em-email"></span>
+                                </div>
                                 <input type="email" name="email" id="email" class="textbox">
                             </div>
                         </div>
@@ -224,6 +351,9 @@
 
                             <div class="truespecialneeds">
                                 <p class="dfont">Kung MAYROON, isulat kung ano ang natatanging kalagayan ng bata:</p>
+                                <div class="error-msg">
+                                    <span id="em-boolsn"></span>
+                                </div>
                                 <input type="text" name="boolsn" id="boolsn" class="textbox">
                             </div>
                             <div class="assisttech">
@@ -235,6 +365,9 @@
                             </div>
                             <div class="trueassisttech">
                                 <p class="dfont">Kung MAYROON, isulat kung ano ito</p>
+                                <div class="error-msg">
+                                    <span id="em-atdevice"></span>
+                                </div>
                                 <input type="text" name="atdevice" id="atdevice" class="textbox">
                             </div>
                         </div>
@@ -248,26 +381,44 @@
                         <div class="address-wrapper">
                             <div class="house-number">
                                 <p class="dfont">Numero ng Bahay at kalye</p>
+                                <div class="error-msg">
+                                    <span id="em-house-number"></span>
+                                </div>
                                 <input type="text" name="house-number" id="house-number" class="textbox">
                             </div>
                             <div class="division">
-                                <p class="dfont">Barangay</p>
-                                <input type="text" name="barangay" id="barangay" class="textbox">
+                                <p class="dfont">Subdivision/ baryo/ purok/ sitio</p>
+                                <div class="error-msg">
+                                    <span id="em-division"></span>
+                                </div>
+                                <input type="text" name="division" id="division" class="textbox">
                             </div>
                             <div class="barangay">
-                                <p class="dfont">Lungsod/Bayan</p>
-                                <input type="text" name="city" id="city" class="textbox">
+                                <p class="dfont">Barangay</p>
+                                <div class="error-msg">
+                                    <span id="em-barangay"></span>
+                                </div>
+                                <input type="text" name="barangay" id="barangay" class="textbox">
                             </div>
                             <div class="city">
                                 <p class="dfont">Lungosd/Munisipalidad</p>
-                                <input type="text" name="City" id="City" class="textbox">
+                                <div class="error-msg">
+                                    <span id="em-city"></span>
+                                </div>
+                                <input type="text" name="city" id="city" class="textbox">
                             </div>
                             <div class="province">
                                 <p class="dfont">Probinsya/lalawigan</p>
+                                <div class="error-msg">
+                                    <span id="em-province"></span>
+                                </div>
                                 <input type="text" name="province" id="province" class="textbox">
                             </div>
                             <div class="region">
                                 <p class="dfont">Rehiyon</p>
+                                <div class="error-msg">
+                                    <span id="em-region"></span>
+                                </div>
                                 <input type="text" name="region" id="region" class="textbox">
                             </div>
                         </div>
@@ -283,6 +434,9 @@
                                 <div class="F-fullname">
                                     <h3>AMA</h3>
                                     <p class="dfont">Buong pangalan (Apelyido, Pangalan, Gitnang Pangalan)</p>
+                                    <div class="error-msg">
+                                        <span id="em-F-fullname"></span>
+                                    </div>
                                     <input type="text" class="textbox" name="F-fullname" id="F-fullname">
                                 </div><br>
                                 <div class="F-highest-education">
@@ -299,6 +453,9 @@
                                 </div>
                                 <div class="F-number">
                                     <p class="dfont">Numero sa telepono (cellphone/ telephone / email add)</p>
+                                    <div class="error-msg">
+                                        <span id="em-F-number"></span>
+                                    </div>
                                     <input type="text" name="F-number" id="F-number" class="textbox">
                                 </div>
                             </div>
@@ -307,6 +464,9 @@
                                 <div class="M-fullname">
                                     <h3>INA</h3>
                                     <p class="dfont">Buong pangalan (Apelyido, Pangalan, Gitnang Pangalan)</p>
+                                    <div class="error-msg">
+                                        <span id="em-M-fullname"></span>
+                                    </div>
                                     <input type="text" class="textbox" name="M-fullname" id="M-fullname">
                                 </div><br>
                                 <div class="M-highest-education">
@@ -323,6 +483,9 @@
                                 </div>
                                 <div class="M-number">
                                     <p class="dfont">Numero sa telepono (cellphone/ telephone / email add)</p>
+                                    <div class="error-msg">
+                                        <span id="em-M-number"></span>
+                                    </div>
                                     <input type="text" name="M-number" id="M-number" class="textbox">
                                 </div>
                             </div>
@@ -331,6 +494,9 @@
                                 <div class="G-fullname">
                                     <h3>TAGAPAGALAGA</h3>
                                     <p class="dfont">Buong pangalan (Apelyido, Pangalan, Gitnang Pangalan)</p>
+                                    <div class="error-msg">
+                                        <span id="em-G-fullname"></span>
+                                    </div>
                                     <input type="text" class="textbox" name="F-fullname" id="G-fullname">
                                 </div><br>
                                 <div class="G-highest-education">
@@ -347,6 +513,9 @@
                                 </div>
                                 <div class="G-number">
                                     <p class="dfont">Numero sa telepono (cellphone/ telephone / email add)</p>
+                                    <div class="error-msg">
+                                        <span id="em-G-number"></span>
+                                    </div>
                                     <input type="text" name="G-number" id="G-number" class="textbox">
                                 </div>
                             </div>
