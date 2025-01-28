@@ -300,7 +300,7 @@ label, .dfont{
 
 .school-year {
     display: grid;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: 25% 25% 50%;
 }
 .school-year input {
     width: 70px;
@@ -428,7 +428,7 @@ label, .dfont{
     padding-bottom: 1em;
 }
 
-.parents-guardian-information-wrapper select {
+.select {
     max-width: 300px;
     display: inline-block;
     text-align: start;
