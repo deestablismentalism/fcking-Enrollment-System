@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded',function(){
             lastYear.style.border = "1px solid #616161";
         }
     }
+    function errorMessages(input, message) {
+        const formControl = input.parentElement;
+    }
         startYear.addEventListener('change', validateStartYear);
         endYear.addEventListener('change',validateAcademicYear);
         lastYear.addEventListener('change', validateYearFinished);
