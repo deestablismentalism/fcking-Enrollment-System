@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/Enrollment_Form.css">
+    <script src="../js/form-validation.js"></script>
 <?php
     include '../client_side/User_Base_Designs.php';
 ?>
@@ -25,10 +26,9 @@
                             <div class="school-year">
                                 <p class="dfont">Taong Panuruan</p>
                                 <!--ERROR MESSAGES DIVS FOR WRONG INPUTS -DAVID -->
-                                <div class="error-messages"><span id="err-msg"></span></div>
                                 <div class="academic-year-input">
                                     <div class="error-msg">
-                                        <span id="em-start-year"></span>
+                                        <span class="em-start-year"> Error Message here.</span>
                                     </div>
                                     <input type="number" name="start-year" id="start-year" class="textbox">
                                     <p> - </p>
