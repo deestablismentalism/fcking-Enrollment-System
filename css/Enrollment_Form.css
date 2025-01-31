@@ -1,6 +1,6 @@
 /*----START OF MAIN CONTENT----*/
 .content {
-    margin: 2em;
+    margin: 1em 3em;
     font-family: "Barlow";
     font-weight: 450;
 }
@@ -75,7 +75,6 @@ label, .dfont{
 .previous-school-wrapper {
     background-color: #ffffff;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
     padding:1em 0em 1em 2em;    
     gap: 1em;
 }
