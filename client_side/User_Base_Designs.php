@@ -8,7 +8,7 @@
         <div class="sidebar-wrapper">
             <div class="sidebar-title">
                 <span class="SSIS">SSIS</span>
-                <button class="menu-btn" onclick="menu()"><img src="../imgs/justify.svg" class="menu-btn"></button>
+                <button class="menu-btn" onclick="menu()"><img src="../imgs/bar.svg" class="menu-btn"></button>
             </div>
 
             <div class="menu-wrappper">
@@ -34,7 +34,7 @@
                     <button class="subjects-btn" onclick="subjectsdrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="subjects-ul">
                             <li>
-                            <a href="" class="allSubj">All subjects</a>
+                            <a href="All_Subjects.html" class="allSubj">All subjects</a>
                             </li>
                             <li>
                                 <a href="" class="viewGrades">View Grades</a>
@@ -79,6 +79,16 @@
 
     <div class="main-content">
 
+        <!--MOBILE VERSION HEADER KUPAL KA KASI EH-->
+        <div class="mobile-header-wrapper">
+            <div class="bar-btn-mob"></div>
+            <div class="title-search-mob">
+                <h6 class="title-mob"> Welcome to South II Student Information System </h6>
+                <input type="text" name="search" placeholder="Search here...">
+            </div>
+            <div class="user-btn-mob"></div>
+        </div>
+
         <!--HEADER-->
         <div class="header-wrapper">
             <div class="header-title">
@@ -115,3 +125,22 @@
             </div>
         </div>
         <!--END OF HEADER-->
+        <!-- MOBILE VERISON SIDEBAR-->
+        <div class="mobile-sidebar-wrapper">
+            <!-- DASHBOARD MOBILE -->
+             <div class="dashboard-mob">
+                <p class="dashboard-title"> Dashboard </p>
+            </div>
+            <!-- SUBJECTS MOBILE -->
+             <div class="subjects-mob">
+                <p class="subjects-title"> Subjects </p>
+             </div>
+            <!-- TEACHERS MOBILE -->
+             <div class="teachers-mob">
+                <p class="teachers-title"> Teachers </p>
+             </div>
+            <!-- MISSION VISSION MOBILE -->
+             <div class="mission-vision-mob">
+                <p class="mission-vision-title"> Mission & Vision </p>
+             </div>
+         </div>

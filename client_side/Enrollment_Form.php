@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SSIS-Enrollment Form</title>
     <link rel="stylesheet" href="../css/Enrollment_Form.css">
     <script src="../js/form-validation.js"></script>
 <?php
-    include '../client_side/User_Base_Designs.php';
+    include './User_Base_Designs.php';
 ?>
         <div class="content">
             <div class="content-title">
@@ -459,5 +459,6 @@
             </div>
         </div>
     </div>
+    <script src="../js/div finder.js"></script>
 </body>
 </html>
