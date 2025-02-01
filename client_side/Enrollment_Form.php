@@ -205,10 +205,14 @@
                             <div class="gender-group-wrapper">
                                 <div class="gender">
                                     <p class="dfont">Kasarian</p>
-                                    <input type="radio" name="gender" id="male" class="radio" value="male">
-                                    <label for="male">Lalake</label>
-                                    <input type="radio" name="gender" id="female" class="radio" value="female">
-                                    <label for="female">Babae</label>
+                                    <div class="">
+                                        <input type="radio" name="gender" id="male" class="radio" value="male">
+                                        <label for="male">Lalake</label>
+                                    </div>
+                                    <div class="">
+                                        <input type="radio" name="gender" id="female" class="radio" value="female">
+                                        <label for="female">Babae</label>
+                                    </div>
                                 </div>
                                 <div class="community">
                                     <p class="dfont">Nabibilang sa katutubong grupo/ Komunidad ng Katutubong Kultural</p>
