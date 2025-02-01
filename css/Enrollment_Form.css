@@ -1,9 +1,21 @@
+/*BASE DESIGNS ADJUSTMENTS (IF ANY)*/
+#subjects, #teachers, #mv, .searchbox-wrapper{
+    display: none;
+}
+
+.account {
+    visibility: hidden;
+}
 /*----START OF MAIN CONTENT----*/
+
 .content {
-    margin: 1em 3em;
+    padding-left:5vw;
     font-family: "Barlow";
     font-weight: 450;
+    font-size: 1em;
+    width: 95%;
 }
+
 .content-title {
     font-size: 1.24em;
     font-family: Arial, Helvetica, sans-serif;
@@ -17,9 +29,9 @@
 
 .textbox {
     border-radius: 8px;
-    border: 1px solid #616161 ; 
+    border: 1px solid #616161 ;     
     background-color: #f7f4f4;
-    width: 12rem;
+    width: 13em;
     height: 1.6rem;     
     padding: 5px;
     margin-top: 2%;   
@@ -51,15 +63,35 @@ input[type="button"], input[type="submit"] {
     cursor: pointer;  
     margin-top: 2%;
 }
+
 .title {
     font-weight:500;
-    font-size: 24px;
+    font-size: 2em;
     padding-left: 3em;
 }
+
 label, .dfont{
     padding-bottom: .3em;
     padding-top: 1em;
 }
+
+.select {
+    max-width: 300px;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    border-radius: 2px;
+    align-items: center;
+    background-color: #f7f4f4;
+    cursor: default;
+    margin: 0em;
+    white-space: pre;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+}
+
 /* SPACE FOR ERROR MESSAGES -DAVID*/
 .error-messages { 
     width: 50px;
@@ -215,23 +247,6 @@ label, .dfont{
     padding-bottom: 1em;
 }
 
-.select {
-    max-width: 300px;
-    display: inline-block;
-    text-align: start;
-    appearance: auto;
-    box-sizing: border-box;
-    border-radius: 2px;
-    align-items: center;
-    background-color: #f7f4f4;
-    cursor: default;
-    margin: 0em;
-    white-space: pre;
-    border-width: 1px;
-    border-style: solid;
-    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-}
-
 .father {
     border-right :rgba(0, 51, 102, 0.7) 1px solid;
 }
@@ -254,5 +269,107 @@ label, .dfont{
     border-right :rgba(0, 51, 102, 0.7) 1px solid;
 }
 
-
 /*----END OF MAIN CONTENT----*/
+
+/*--MEDIA QUERIES--*/
+
+/*For 1600px width*/
+@media (max-width: 1600px) {
+    .content {
+        padding-top: 1em;
+        padding-left: 4em;
+        font-size: .85em;
+    }
+  
+    #lschoolAddress, #fschoolAddress {
+        width: 18em;
+    }
+
+    .select {
+        max-width: 12em;
+    }
+
+    .title {
+        font-size: 1.5em;
+        padding-left: 1.5em;
+    }
+
+    .textbox {
+        width: 10em;
+        height: 1.5em;
+    }
+    
+    
+    .student-information-wrapper {
+        grid-template-columns: 21% 21% 33% 25%;
+        padding:1em 1em 1em 4em;
+        gap: 1em;
+    }
+
+    .student-disability-wrapper {
+        grid-template-columns: auto auto;
+        padding:1em 1em 1em 4em;    
+    }
+
+    .address-wrapper {
+        grid-template-columns: 25% 25% 25%;
+        padding:1em 1em 1em 4em;
+    }
+
+    .parents-guardian-information-wrapper {
+        grid-template-columns:  auto auto auto;
+        padding:1em 1em 1em 4em;
+    }
+}
+
+/*For 1200px Width*/
+
+
+@media (max-width: 1200px) {
+    .content {
+        padding-top: 1em;
+        padding-left: 4em;
+        font-size: .7em;
+    }
+  
+    #lschoolAddress, #fschoolAddress {
+        width: 18em;
+    }
+
+    .select {
+        max-width: 15em;
+    }
+
+    .title {
+        font-size: 1.5em;
+        padding-left: 1.7em;
+    }
+
+    .textbox {
+        width: 10em;
+        height: 1.5em;
+    }
+    
+    
+    .student-information-wrapper {
+        grid-template-columns: 21% 21% 33% 25%;
+        background-color: #ffffff;
+        padding:1em 1em 1em 4em;
+        gap: 1em;
+    }
+
+    .student-disability-wrapper {
+        grid-template-columns: auto auto;
+        padding:1em 1em 1em 4em;    
+    }
+
+    .address-wrapper {
+        grid-template-columns: 25% 25% 25%;
+        padding:1em 1em 1em 4em;
+    }
+
+    .parents-guardian-information-wrapper {
+        grid-template-columns:  auto auto auto;
+        padding:1em 1em 1em 4em;
+    }
+}

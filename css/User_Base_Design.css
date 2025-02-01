@@ -17,7 +17,7 @@ body {
     width: 3.5vw;
     background-color: #003366;
     height: 100vh;
-    transition: width 0.2s linear, opacity 0.15s ease-out;
+    transition: width 0.2s ease-in, opacity 0.15s ease-out;
     overflow: hidden;
     font-family: 'Barlow', Arial;
 }
@@ -173,7 +173,8 @@ body {
 
 /*----TRANSITIONS----*/
 .sidebar.active {
-    width: 20vw;
+    width: 20vw; 
+    transition: width 0.2s ease-in, opacity 0.15s ease-out;
 }
 
 /*SIDEBAR TITLE*/
@@ -196,9 +197,6 @@ body {
     transition: max-height .5s ease-out, opacity .5s ease-out;
 }
 
-.sidebar.active {
-    width: 300px;
-}
 
 .sidebar.active #mv span{
     display: flex;
@@ -335,6 +333,41 @@ body {
     display: block;
 }
 /*--END OF HEADER DESIGNS--*/
+/*MEDIA QUERIES*/
+@media (max-width: 1440px) {
+    .sidebar {
+        font-size: .85em;
+    }
+}
+    .header-title {
+        font-size: 1.2em;
+    }
+
+@media (max-width: 1200px) {
+    .sidebar {
+        min-width: 3.5vw;
+    }
+
+    .sidebar.active {
+        min-width: 12vw;
+        font-size: .7em;
+        transition: height .2s ease-out;
+    }
+}
+    .header-title {
+        font-size: 1.2em;
+    }
+
+
+@media (max-width: 1024px) {
+    .sidebar {
+        font-size: .8em;
+    }
+
+    .header-title {
+        font-size: 1.1em;
+    }
+}
 /*----END OF THE BASE DESIGNS----*/
 
 
