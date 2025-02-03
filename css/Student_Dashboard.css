@@ -1,194 +1,8 @@
-/*----START OF BASE DESIGNS----*/
-body {
-    display: flex;
-    background-color: rgb(235, 231, 231);
-}
-/*----SIDEBAR DESIGNS----*/
-.sidebar {
-    position: sticky;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100px;
-    background-color: rgb(14, 14, 95); 
-    height: 100vh;
-    transition: width 0.2s linear, opacity 0.15s ease-out;
-    overflow: hidden;
-    font-family: sans-serif, Arial, Helvetica;
-}
-
-.sidebar.active {
-    width: 300px;
-}
-
-.sidebar-title {
-    color:white;
-    background-color: #F1BD22;
-    display: flex;
-}
-
-.sidebar a {
-    display: block; 
-    color: #CC8B20;
-    text-decoration: none;
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar button {
-    border: none;
-    background: none;
-    cursor: pointer;
-}
-
-.menu {
-    padding: 2em 1em 1em 1em; 
-}
-
-.menu-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: white;
-    
-}
-
-.menu-title {
-    color: #FFF8F8; 
-}
-
-.border-75 {
-    position: relative;
-}
-
-.border-75::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 7.5%; 
-    width: 85%;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
-}
-
-.border-100sb {
-    position: relative;
-}
-.border-100sb::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0%;
-    width: 100%;
-    border-bottom: 1px solid #295077;
-}
-
-/*----MENU DESIGNS AND TRANSITIONS----*/
-
-.bi-chevron-down {
-    color: white;
-}
-
-/*DASHBOARD*/
-.dashboard-ul {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 1s ease-out, opacity .5s ease-out;
-}
-
-.dashboard-ul.active {
-    height: 4em;
-    max-height: 500px;
-    opacity: 1;
-    background-color: #051F3E;
-    margin: 0;
-    padding: 1em 2em 0em 2em;
-    
-}
-
-.dashboard-ul a:hover {
-    color: white;
-}
-
-
-/*SUBJECTS*/
-
-.subjects-ul a:hover {
-    color: white;
-}
-
-.subjects-ul {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.15s ease-out;
-}
-
-.subjects-ul.active {
-    height: 4em;
-    max-height: 500px;
-    opacity: 1;
-    background-color: #051F3E;
-    margin: 0;
-    padding: 1em 2em 0em 2em;
-}
-
-/*TEACHERS*/
-
-.teachers-ul a:hover {
-    color: white;
-}
-
-.teachers-ul {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.15s ease-out;
-}
-
-.teachers-ul.active {
-    height: 4em;
-    max-height: 500px;
-    opacity: 1;
-    background-color: #051F3E;
-    margin: 0;
-    padding: 1em 2em 0em 2em;
-}
-
-
-
-/*----END OF SIDEBAR DESIGNS----*/
-
-.main-content {
-    position: relative;
-    background-color:antiquewhite;
-    width: 100%;
-}
-
-.header-title {
-    flex-grow: 1;
-    padding-left: 1em;
-}
-.header-wrapper {
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: whitesmoke;
-}
-
-.searchbox {
-    padding-right: 5em;
-}
-
-.account {
-    padding-right: 2em;
-}
-/*----END OF THE BASE DESIGNS----*/
-
 /*----START OF MAIN CONTENT----*/
+@font-face {
+    font-family: 'Baloo-Thambi-2';
+    src: url('../fonts/BalooThambi2-Medium.ttf') format('truetype');
+}
 
 .user-homepage {
     display: grid;
@@ -231,6 +45,7 @@ body {
 
 .student-dashboard {
     margin: 10px;
+    font-family: "Baloo-Thambi-2";
 }
 
 .announcement {
@@ -242,6 +57,23 @@ body {
 .class-sched, .announcements-title {
     font-size: 30px;
     font-family: Baloo Thambi 2, sans-serif;
+}
+
+.border-75-announcement {
+    position: relative;
+}
+
+.border-75-announcement::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 7.5%; 
+    width: 85%;
+    border-bottom: 2px solid rgba(241, 189, 34, 0.5);
+}
+
+.announcement-image {
+    padding-bottom: 1em;
 }
 
 /*----END OF MAIN CONTENT----*/
