@@ -196,11 +196,12 @@ body {
     gap: 8px;
     padding: 10px;
     color: #003366;
+    margin-top: 50px;
 }
 
 .user-homepage > .student-dashboard {
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid #8c8a8a;
 }
 
 .sched td {
@@ -224,6 +225,10 @@ body {
     border-collapse: collapse;
 }
 
+.sched tr {
+    background-color: #FFFFFF;
+}
+
 .student-dashboard {
     margin: 10px;
 }
@@ -236,6 +241,7 @@ body {
 
 .class-sched, .announcements-title {
     font-size: 30px;
+    font-family: Baloo Thambi 2, sans-serif;
 }
 
 /*----END OF MAIN CONTENT----*/
