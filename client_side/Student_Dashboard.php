@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>SSIS-Student Dashboard</title> 
     <?php
         include '../client_side/User_Base_Designs.php';
     ?>
@@ -16,7 +16,7 @@
             <div class="user-homepage">
                 <div class="student-dashboard">
                     <h2 class="class-sched"> Class Schedule </h2> <br>
-                    <table class="sched">
+                    <table class="sched border-75-sched">
                         <tr>
                             <th> Subject </th>
                             <th> Time </th>
@@ -57,7 +57,7 @@
                 <div class="student-dashboard">
                     <h2 class="announcements-title"> Announcements </h2> <br>
                     <div class="announcement-image border-75-announcement"> 
-                        <img src="imgs/temp-announcement.png" alt="announcement"> 
+                        <img src="../imgs/temp-announcement.png" alt="announcement"> 
                     </div>
                     <div class="annoucentment-content">
                         <div class="announcement-box">
