@@ -26,8 +26,6 @@
     align-content: center;
     background-color: #ffffff;
 }
-
-
 .textbox {
     border-radius: 8px;
     border: 1px solid #616161 ;     
@@ -41,11 +39,6 @@
 .textbox:focus {
     border: 2px solid #295077;
 }
-.checkbox {    
-
-}
-
-
 .radio {
     background-color: initial;
     cursor: pointer;
@@ -121,18 +114,11 @@ label, .dfont{
     display: grid;
     grid-template-rows: 25% 25% 50%;
 }
-.school-year input {
-    width: 70px;
-    height: 15px;
-}
-
 /* dinagdagan ko ng margin because sikip -dabid*/
 .academic-year-input {
     display: flex;
     margin: 5px;
 }
-
-
 .learner-radio {
     grid-column: 2/4;
 }
@@ -159,7 +145,12 @@ label, .dfont{
 #lschoolAddress, #fschoolAddress {
     width: 24rem;
 }
-
+.em-start-year {
+    display: none;
+}
+.em-start-year.show {
+    display: block;
+}
 /*IMPORMASYON NG ESTUDYANTE*/
 
 .student-information-wrapper {
@@ -242,6 +233,25 @@ label, .dfont{
     background-color: #ffffff;
     padding-top: 1em;
     padding-bottom: 1em;
+}
+
+
+.select {
+    max-width: 300px;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    box-sizing: border-box;
+    border-radius: 2px;
+    align-items: center;
+    background-color: #f7f4f4;
+    cursor: default;
+    width: 12rem;
+    height: 1.6rem;
+    white-space: pre;
+    border: 1px solid #616161;
+    border-radius: 8px;
+    text-align: center;
 }
 
 .father {
