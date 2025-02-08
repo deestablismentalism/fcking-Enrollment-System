@@ -60,9 +60,19 @@
                         <img src="imgs/temp-announcement.png" alt="announcement"> 
                     </div>
                     <div class="annoucentment-content">
+                        <div class="announcement-box">
                         <p class="announcement"> Lorem ipsum dolor - Tamet, consectetur adipiscing elit, 
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....</p>
+                        </div>
+                            <div class="announcement-more">
+                            <button class="button" onclick="handleButtonClick()">See More</button>
+                                <script>
+                                function handleButtonClick() {
+                                    alert('Read More!');
+                                }
+                                </script>
+                            </div>
                     </div>
                 </div>
             </div>

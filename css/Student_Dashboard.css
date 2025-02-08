@@ -15,7 +15,6 @@
 
 .user-homepage > .student-dashboard {
     padding: 10px;
-    border: 1px solid #8c8a8a;
 }
 
 .sched td {
@@ -25,11 +24,13 @@
     border-right: 1px solid transparent; 
     border-bottom: 2px solid rgba(241, 189, 34, 0.5); 
     padding: 10px;
+    background-color: #FFFFFF;
 }
 
 .sched th {
     text-align: center;
-
+    background-color: rgba(255, 233, 169, 0.45);
+    padding: 10px;
 }
 
 .sched {
@@ -39,24 +40,25 @@
     border-collapse: collapse;
 }
 
-.sched tr {
-    background-color: #FFFFFF;
-}
-
 .student-dashboard {
     margin: 10px;
     font-family: "Baloo-Thambi-2";
+    background-color: #FFFFFF;
+
+}
+
+.class-sched, .announcements-title {
+    background-color: rgba(255, 233, 169, 0.5);
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 30px;
+    font-family: Baloo Thambi 2, sans-serif;
 }
 
 .announcement {
     margin: 5px;
     padding: 3px;
     text-align: justify;
-}
-
-.class-sched, .announcements-title {
-    font-size: 30px;
-    font-family: Baloo Thambi 2, sans-serif;
 }
 
 .border-75-announcement {
@@ -76,4 +78,86 @@
     padding-bottom: 1em;
 }
 
+.button {
+    background-color: rgba(0, 51, 102, 0.9);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Baloo Thambi 2, sans-serif;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 1em;
+} /*----not yet functional----*/
+
+.announcement-more {
+    padding: 10px;
+    margin: 5px;;
+}
+
+.announcement-box {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgba(140, 138, 138, 0.5);
+    background-color: #F4F4F4;
+    color: #003366;
+    border-radius: 1em;
+}
+
+.main-content {
+    background-color: #F4F4F4;
+}
+
 /*----END OF MAIN CONTENT----*/
+
+/*----MEDIA QUERIES----*/
+@media (max-width: 1200px) {
+    .user-homepage {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 800px) {
+    .user-homepage {
+        grid-template-columns: 1fr;
+        padding: 8px;
+    }
+    .class-sched, .announcements-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sched {
+        font-size: 14px;
+    }
+    .class-sched, .announcements-title {
+        font-size: 20px;
+    }
+    .button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    .announcement-box {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .user-homepage {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+    }
+    .student-dashboard {
+        font-size: 14px;
+    }
+    .sched td {
+        padding: 8px;
+    }
+    .sched th {
+        padding: 8px;
+    }
+}
