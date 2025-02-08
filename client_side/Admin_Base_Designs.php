@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="../css/Admin_Base_Designs.css">
     <link rel="stylesheet" href="../css/reset.css">
-    <script src="../js/User_Base_Designs.js"></script>
+    <script src="../js/Admin_Base_Designs.js"></script>
 </head>
 <body>
     <div class="sidebar">
@@ -16,56 +16,54 @@
                 <div class="menu border-100sb" id="dashboard">
                     <img src="../imgs/easel.svg" class="bi">
                     <span id="dashboard-spn" class="menu-title">
-                        <a href="">Dashboard</a>
+                        <a href="../client_side/Admin_Dashboard.php">Dashboard</a>
                     </span>
                 </div>
 
+                <!--STUDENTS-->
                 <div class="menu border-100sb" id="students">
-                    <img src>
+                    <img src="../imgs/student.svg" class="bi">
                     <span id="students-spn" class="menu-title">Students</span>
-                    <button class="students-btn" onclick=""><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
+                    <button class="students-btn" onclick="studentsDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="students-ul">
                         <li>
-                            <a href="" class="MasterList"></a>
+                            <a href="../client_side/Admin_All_Students.php" class="allStudents">All Students</a>
                         </li>
                         <li>
-                            <a href="" class="studentInfo"></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="menu border-100sb" id="teachers">
-                    <img src>
-                    <span id="teachers-spn" class="menu-title">Teachers</span>
-                    <button class="teachers-btn" onclick=""><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
-                    <ul class="teachers-ul">
-                        <li>
-                            <a href="" class="allTeachers"></a>
-                        </li>
-                        <li>
-                            <a href="" class="teachers"></a>
+                            <a href="../client_side/Admin_Students.php" class="studentInfo">Student</a>
                         </li>
                     </ul>
                 </div>
 
-                <div class="menu border-100sb" id="enrolls">
-                    <img src="" alt="">
-                    <span id="enrolls-spn" class="menu-title">Enrolls</span>
-                    <button class="enrolls-btn" onclick=""><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
-                    <ul class="enrolls-ul">
+                <!--TEACHERS-->
+                <div class="menu border-100sb" id="teachers">
+                    <img src="../imgs/teachers.svg" class="bi">
+                    <span id="teachers-spn" class="menu-title">Teachers</span>
+                    <button class="teachers-btn" onclick="teachersDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
+                    <ul class="teachers-ul">
                         <li>
-                            <a href="" class="pending"></a>
+                            <a href="../client_side/Admin_All_Teachers.php" class="allTeachers">All Teachers</a>
                         </li>
                         <li>
-                            <a href="" class="toFollow"></a>
+                            <a href="../client_side/Admin_Teachers.php" class="teachers">Teachers</a>
                         </li>
                     </ul>
                 </div>
-                <!--COMMENT MUNA TO
-                <div class="menu" id="subjects">
-                    <img src="" alt="">
-                    <span id="subjects-spn" class="menu-title">Subjects</span>
+
+                <!--ENROLLS-->
+                <div class="menu border-100sb" id="enrolls">
+                    <img src="../imgs/enrolls.svg" class="bi">
+                    <span id="enrolls-spn" class="menu-title">Enrolls</span>
+                    <button class="enrolls-btn" onclick="enrollsDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
+                    <ul class="enrolls-ul">
+                        <li>
+                            <a href="" class="pending">Pending</a>
+                        </li>
+                        <li>
+                            <a href="" class="toFollow">To Follow-up</a>
+                        </li>
+                    </ul>
                 </div>
-                -->
             </div>
         </div>
     </div>

@@ -35,6 +35,7 @@ body {
     display: block; 
     color: #CC8B20;
     text-decoration: none;
+    cursor: pointer !important;
 }
 
 .sidebar ul {
@@ -152,7 +153,6 @@ body {
 }
 
 /*TEACHERS*/
-
 .teachers-ul a:hover {
     color: white;
 }
@@ -197,11 +197,9 @@ body {
     transition: max-height .5s ease-out, opacity .5s ease-out;
 }
 
-
 .sidebar.active #mv span{
     display: flex;
 }
-
 
 .sidebar.active .menu-btn {
     grid-column: 2/2;
@@ -209,29 +207,7 @@ body {
     margin-right: 1em;
 }
 
-.dashboard-ul.active {
-    max-height: 100vh;
-    opacity: 1;
-    background-color: #051F3E;
-    margin: 0;
-    padding: 1em 2em .5em 2em;
-    grid-column: 1 / 3;
-    transition: max-height .5s ease-in, opacity .3s ease-in;
-
-}
-
-
-.subjects-ul.active {
-    max-height: 100vh;
-    opacity: 1;
-    background-color: #051F3E;
-    margin: 0;
-    padding: 1em 2em .5em 2em;
-    grid-column: 1 / 3;
-    transition: max-height .5s ease-in, opacity .3s ease-in;
-}
-
-.teachers-ul.active {
+.dashboard-ul.active, .subjects-ul.active, .teachers-ul.active {
     max-height: 100vh;
     opacity: 1;
     background-color: #051F3E;
