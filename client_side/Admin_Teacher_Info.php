@@ -12,7 +12,6 @@
 <body>
     <div class="main-content">
         <div class="teacher-info-start">
-            
         </div>
     </div>
 </body>

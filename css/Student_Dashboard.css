@@ -18,7 +18,7 @@
 }
 
 .sched td {
-    text-align: left;
+    text-align: center;
     border-top: 1px solid transparent; 
     border-left: 1px solid transparent; 
     border-right: 1px solid transparent; 
@@ -31,6 +31,7 @@
     text-align: center;
     background-color: rgba(255, 233, 169, 0.45);
     padding: 10px;
+    font-weight: bold;
 }
 
 .sched {
@@ -98,9 +99,10 @@
     margin: 2px 1px;
     cursor: pointer;
     border-radius: 1em;
+    float: right;
 } /*----not yet functional----*/
 
-.announcement-more {
+.announcement-more, .class-sched-more {
     padding: 10px;
     margin: 5px;;
 }

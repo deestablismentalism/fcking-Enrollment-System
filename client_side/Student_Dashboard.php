@@ -53,6 +53,14 @@
                             <td> </td>
                         </tr>
                     </table>
+                    <div class="class-sched-more">
+                        <button class="button" onclick="handleButtonClick()">See More</button>
+                        <script>
+                        function handleButtonClick() {
+                            alert('Read More!');
+                        }
+                        </script>
+                        </div>
                 </div>
                 <div class="student-dashboard">
                     <h2 class="announcements-title"> Announcements </h2> <br>
