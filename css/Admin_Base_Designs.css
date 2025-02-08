@@ -271,7 +271,7 @@ body {
     padding-right: 5em;
     border-radius: 20px;
     background-color: #EBEBEB;
-    margin-right: 4em;
+    margin-right: 3em;
     width: 25em;
     height: 2em;
     justify-self: center;
@@ -334,16 +334,28 @@ body {
 }
 /*--END OF HEADER DESIGNS--*/
 /*MEDIA QUERIES*/
-@media (max-width: 1440px) {
+@media (max-width: 1510px) {
     .sidebar {
         font-size: .85em;
     }
-}
+
     .header-title {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
 
-@media (max-width: 1200px) {
+    .account {
+        padding-right: 0em;
+        font-size: .8em;
+    }
+
+    .searchbox {
+        width: 20em;
+        font-size: .8em;
+    }
+}
+
+
+@media (max-width: 1205px) {
     .sidebar {
         min-width: 3.5vw;
     }
@@ -351,23 +363,22 @@ body {
     .sidebar.active {
         min-width: 12vw;
         font-size: .7em;
-        transition: height .2s ease-out;
+        transition: all .2s ease-out;
     }
+
 }
-    .header-title {
-        font-size: 1.2em;
-    }
 
-
-@media (max-width: 1024px) {
+@media (max-width: 1045px) {
     .sidebar {
         font-size: .8em;
     }
 
     .header-title {
-        font-size: 1.1em;
+        font-size: 1em;
     }
+
 }
+
 /*----END OF THE BASE DESIGNS----*/
 
 

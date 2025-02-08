@@ -31,7 +31,7 @@ function subjectsdrop()
         subjects.classList.remove('active');
     }
 }
-
+  
 function teachersdrop()
 {
     var teachers = document.querySelector('.teachers-ul');
