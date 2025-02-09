@@ -5,42 +5,42 @@ function menu()
 
     if(!sidebar.classList.contains('active'))
     {
-        document.querySelector('.dashboard-ul').classList.remove('active');
-        document.querySelector('.subjects-ul').classList.remove('active');
+        document.querySelector('.students-ul').classList.remove('active');
         document.querySelector('.teachers-ul').classList.remove('active');
+        document.querySelector('.enrolls-ul').classList.remove('active');
     }
 }
 
-function dashboarddrop()
+function studentsDrop()
 {
-    var dashboard = document.querySelector('.dashboard-ul');
-    dashboard.classList.toggle('active');
+    var students = document.querySelector('.students-ul');
+    students.classList.toggle('active');
 
     if (!document.querySelector('.sidebar').classList.contains('active'))
     {
-        dashboard.classList.remove('active');
+        students.classList.remove('active');
     }
 }
 
-function subjectsdrop()
-{
-    var subjects = document.querySelector('.subjects-ul');
-    subjects.classList.toggle('active');
-
-    if (!document.querySelector('.sidebar').classList.contains('active'))
-    {
-        subjects.classList.remove('active');
-    }
-}
-  
-function teachersdrop()
+function teachersDrop()
 {
     var teachers = document.querySelector('.teachers-ul');
     teachers.classList.toggle('active');
-    
+
     if (!document.querySelector('.sidebar').classList.contains('active'))
     {
         teachers.classList.remove('active');
+    }
+}
+
+function enrollsDrop()
+{
+    var enrolls = document.querySelector('.enrolls-ul');
+    enrolls.classList.toggle('active');
+
+    if (!document.querySelector('.sidebar').classList.contains('active'))
+    {
+        enrolls.classList.remove('active');
     }
 }
 
