@@ -80,15 +80,15 @@
     <div class="main-content">
 
         <!--MOBILE VERSION HEADER KUPAL KA KASI EH-->
+       
         <div class="mobile-header-wrapper">
-            <div class="bar-btn-mob"></div>
+            <button class="bar-btn-mob" onclick="sideBarMobileOpen()"></button>
             <div class="title-search-mob">
                 <h6 class="title-mob"> Welcome to South II Student Information System </h6>
                 <input type="text" name="search" placeholder="Search here...">
             </div>
             <div class="user-btn-mob"></div>
         </div>
-
         <!--HEADER-->
         <div class="header-wrapper">
             <div class="header-title">
@@ -127,20 +127,12 @@
         <!--END OF HEADER-->
         <!-- MOBILE VERISON SIDEBAR-->
         <div class="mobile-sidebar-wrapper">
+            <div class="sidebar-show-mob">
+                    <p class="ssis-title">SSIS</p>
+                    <button class="bar-btn-show-mob" onclick="sideBarMobileClose()"></button>
+                </div>
             <!-- DASHBOARD MOBILE -->
              <div class="dashboard-mob">
                 <p class="dashboard-title"> Dashboard </p>
             </div>
-            <!-- SUBJECTS MOBILE -->
-             <div class="subjects-mob">
-                <p class="subjects-title"> Subjects </p>
-             </div>
-            <!-- TEACHERS MOBILE -->
-             <div class="teachers-mob">
-                <p class="teachers-title"> Teachers </p>
-             </div>
-            <!-- MISSION VISSION MOBILE -->
-             <div class="mission-vision-mob">
-                <p class="mission-vision-title"> Mission & Vision </p>
-             </div>
          </div>

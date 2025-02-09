@@ -43,7 +43,18 @@ function teachersdrop()
         teachers.classList.remove('active');
     }
 }
-
+//open sidebar sa mobile
+function sideBarMobileOpen() 
+{
+    var sidebar = document.querySelector('.mobile-sidebar-wrapper');
+    sidebar.classList.toggle('active');
+}
+//close sidebar sa mobile
+function sideBarMobileClose() 
+{
+    var sidebar = document.querySelector('.mobile-sidebar-wrapper');
+    sidebar.classList.remove('active');
+}
 function accountDrop() {
     var account = document.querySelector('.account-settings-btn-content-wrapper');
     account.classList.toggle('show');
@@ -63,3 +74,7 @@ function accountDrop() {
         }
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    var sidebar = document.querySelector('.mobile-sidebar-wrapper');
+    sidebar.classList.remove('active');
+});

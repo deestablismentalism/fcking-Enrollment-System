@@ -388,3 +388,9 @@ label, .dfont{
         width: 8em;
     }
 }
+@media (max-width: 768px) {
+    /*ayusin mo nalang pag nag media query ka na */
+    .content {
+        overflow-x:hidden;  /*intended to always fit the content to the designated width of view area*/
+    }
+}
