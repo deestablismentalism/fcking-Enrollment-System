@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/User_Base_Design.css">
     <link rel="stylesheet" href="../css/reset.css">
@@ -132,7 +133,63 @@
                     <button class="bar-btn-show-mob" onclick="sideBarMobileClose()"></button>
                 </div>
             <!-- DASHBOARD MOBILE -->
-             <div class="dashboard-mob">
-                <p class="dashboard-title"> Dashboard </p>
+            <div class="menu-mob-wrapper">
+                <div class="menu-mob border-100sb">
+                    <div class="menu-button-wrapper">
+                        <div class="dashboard-icon-mob icon-title-mob"></div>
+                        <p class="dashboard-title menu-title-mob"> Dashboard </p>
+                        <button class="dashboard-arrow-mob arrow-mob" onclick="dashboardDropMobile()"></button>
+                    </div>
+                    <ul class="dashboard-mob-ul"> 
+                        <li> <a href="#"> Enrollment Form </a> </li>
+                        <li> <a href="#"> Enrollment Status </a> </li>
+                    </ul>
+                </div>
             </div>
-         </div>
+            <!-- SUBJECTS MOBILE -->
+            <div class="menu-mob-wrapper">
+                <div class="menu-mob border-100sb">
+                    <div class="menu-button-wrapper">
+                        <div class="subjects-icon-mob icon-title-mob"></div>
+                        <p class="subjects-title menu-title-mob"> Subjects </p>
+                        <button class="subjects-arrow-mob arrow-mob" onclick="subjectsDropMobile()"></button>
+                    </div>
+                    <ul class="subjects-mob-ul">
+                        <li>
+                            <a href="All_Subjects.php" class="">All subjects</a>
+                        </li>
+                        <li>
+                            <a href="#" class="">View Grades</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- TEACHERS MOBILE -->
+            <div class="menu-mob-wrapper">
+                <div class="menu-mob border-100sb">
+                    <div class="menu-button-wrapper">
+                        <div class="teachers-icon-mob icon-title-mob"></div>
+                        <p class="teachers-title menu-title-mob"> Teachers </p>
+                        <button class="teachers-arrow-mob arrow-mob" onclick="teachersDropMobile()"></button>
+                    </div>
+                    <ul class="teachers-mob-ul">
+                        <li>
+                            <a href="#" class="">Prof Hi</a>
+                        </li>
+                        <li>
+                            <a href="#" class="">Prof Hi</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--MISSION AND VISION-->
+            <div class="menu-mob-wrapper">
+                <div class="menu-mob border-100sb">
+                    <div class="menu-button-wrapper">
+                        <div class="mv-icon-mob icon-title-mob"></div>
+                        <p class="mv-title menu-title-mob">Mission and Vision</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+

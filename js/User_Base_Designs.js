@@ -43,18 +43,6 @@ function teachersdrop()
         teachers.classList.remove('active');
     }
 }
-//open sidebar sa mobile
-function sideBarMobileOpen() 
-{
-    var sidebar = document.querySelector('.mobile-sidebar-wrapper');
-    sidebar.classList.toggle('active');
-}
-//close sidebar sa mobile
-function sideBarMobileClose() 
-{
-    var sidebar = document.querySelector('.mobile-sidebar-wrapper');
-    sidebar.classList.remove('active');
-}
 function accountDrop() {
     var account = document.querySelector('.account-settings-btn-content-wrapper');
     account.classList.toggle('show');
@@ -62,6 +50,7 @@ function accountDrop() {
 
     // Close the dropdown if the user clicks outside of it
     //di pa nagana
+    /*
     window.onclick = function(event) {
     if (!event.target.matches('.')) {
         var dropdowns = document.querySelector('.account-settings-btn-content-wrapper');
@@ -73,8 +62,44 @@ function accountDrop() {
             }
         }
     }
-}
+}*/
+/*MOBILE SIDEBAR ANIMATIONS*/
 document.addEventListener('DOMContentLoaded', function() {
     var sidebar = document.querySelector('.mobile-sidebar-wrapper');
     sidebar.classList.remove('active');
 });
+
+//open sidebar sa mobile
+function sideBarMobileOpen() 
+{
+    var sidebar = document.querySelector('.mobile-sidebar-wrapper');
+    sidebar.classList.toggle('active');
+}
+//close sidebar sa mobile
+function sideBarMobileClose() 
+{
+    var sidebar = document.querySelector('.mobile-sidebar-wrapper');
+    sidebar.classList.remove('active');
+
+    if(!sidebar.classList.contains('active'))
+        {
+            document.querySelector('.dashboard-mob-ul').classList.remove('active');
+            document.querySelector('.subjects-mob-ul').classList.remove('active');
+            document.querySelector('.teachers-mob-ul').classList.remove('active');
+        }
+}
+
+function dashboardDropMobile() {
+    var dashboardMob = document.querySelector('.dashboard-mob-ul');
+    dashboardMob.classList.toggle('active')
+}
+
+function subjectsDropMobile() {
+   var subjectsMob = document.querySelector('.subjects-mob-ul');
+   subjectsMob.classList.toggle('active')
+}   
+
+function teachersDropMobile() {
+    var teachersMob = document.querySelector('.teachers-mob-ul');
+    teachersMob.classList.toggle('active')
+ }   
