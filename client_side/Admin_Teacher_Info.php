@@ -7,7 +7,6 @@
     <?php
         include '../client_side/Admin_Base_Designs.php';
     ?>
-    <link rel="stylesheet" href="../css/Admin_Teacher_Info.css">
 </head>
 <body>
     <div class="main-content">

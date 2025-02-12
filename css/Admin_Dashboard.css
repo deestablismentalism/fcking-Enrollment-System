@@ -26,10 +26,11 @@
     margin: 5vh;
     display: grid;
     grid-template-columns: 50% 50%;
-    width: 22em;
-    justify-content: space-evenly;
+    width: 20em;
+    justify-content: space-between;
     gap: 2em;
     padding: 2em;
+    border-radius: 3px;
 }
 
 .card-4 {
@@ -49,10 +50,63 @@
 .card-text {
     padding-top: 1em;
     text-align: center;
+    font-weight: 700;
 }
 
 .number {
     font-weight: 900;
     font-size: 1.5em;
 }
+
+.big-card-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.big-card-title {
+    font-weight: 900;
+    font-size: 1.5em;
+    font-family: 'Baloo-Thambi-2';
+    padding: .5em;
+    color: rgb(0,51,102);
+    border-bottom:1px rgba(241, 189, 34, 0.3) solid ;
+}
+
+.post-announcements-title {
+    border: none;
+}
+
+.pending-enrollments-wrapper, .post-announcement-wrapper {
+    background-color: white;
+    margin: 5vh;
+    width: 40em;
+}
+
+.pending-enrollments-table {
+    width: 100%;
+    border-spacing: 3em;
+    gap: 2em;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(169, 191, 211, 0.5);
+}
+
+.pending-enrollments-table, th, tr, td {
+    border-top: 3px rgba(241, 189, 34, 0.3) solid;
+    font-size: 1.05em;
+    padding: .5em;
+}
+
+.big-card-header {
+    display: flex;
+    border-bottom:3px rgba(241, 189, 34, 0.3) solid ;
+}
+
+.edit-btn {
+    position: relative;
+    left: 50%;
+}
+
+
 
