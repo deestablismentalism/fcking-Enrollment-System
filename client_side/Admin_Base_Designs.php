@@ -1,5 +1,5 @@
-
-<link rel="stylesheet" href="../css/Admin_Base_Designs.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/Admin_Base_Designs.css">
     <link rel="stylesheet" href="../css/reset.css">
     <script src="../js/Admin_Base_Designs.js"></script>
 </head>
@@ -8,7 +8,7 @@
         <div class="sidebar-wrapper">
             <div class="sidebar-title">
                 <span class="SSIS">SSIS</span>
-                <button class="menu-btn" onclick="menu()"><img src="../imgs/justify.svg" class="menu-btn"></button>
+                <button class="menu-btn" onclick="menu()"><img src="../imgs/bar.svg" class="menu-btn"></button>
             </div>
 
             <div class="menu-wrappper">
@@ -69,7 +69,6 @@
     </div>
 
     <div class="main-content">
-
         <!--HEADER-->
         <div class="header-wrapper">
             <div class="header-title">
