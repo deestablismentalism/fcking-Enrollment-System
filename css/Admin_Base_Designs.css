@@ -4,11 +4,6 @@ body {
     background-color: rgb(235, 231, 231);
 }
 
-@font-face {
-    font-family: 'Barlow';
-    src: url('../fonts/Barlow-Light.ttf') format('truetype');
-}
-
 /*----SIDEBAR DESIGNS----*/
 .sidebar {
     position: sticky;
