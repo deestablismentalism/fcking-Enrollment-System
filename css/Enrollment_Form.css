@@ -63,8 +63,10 @@ input[type="button"], input[type="submit"] {
     font-size: 2em;
     padding-left: 3em;
 }
-
-label, .dfont{
+.dfont-acad-year {
+    text-align: center;
+}
+label{
     padding-bottom: .3em;
     padding-top: 1em;
 }
@@ -87,13 +89,16 @@ label, .dfont{
 }
 
 /* SPACE FOR ERROR MESSAGES -DAVID*/
-.error-messages { 
-    width: 50px;
-    height: 25px;
+.error-msg{ 
+   font-size: 0.8em;
 }
 
 
 /*ANTAS NG IMPORMASYON NG PAARALAN*/
+.acad-year-tbox {
+    display: flex;
+    justify-content: center;
+}
 .previous-school {
     margin-top: 2vh;
 }
@@ -111,22 +116,21 @@ label, .dfont{
 }
 
 .school-year {
-    display: grid;
-    grid-template-rows: 25% 25% 50%;
+   display: flex;
+   flex-direction: column;
 }
 /* dinagdagan ko ng margin because sikip -dabid*/
 .academic-year-input {
     display: flex;
+    flex-direction: column;
     margin: 5px;
 }
 .learner-radio {
+    display: flex;
+    width: 500px;
+    flex-direction: column;
     grid-column: 2/4;
 }
-
-.school-year {
-    justify-items: center;
-}
-
 .heducation {
     border-right :rgba(0, 51, 102, 0.7) 1px solid;
     padding-left: 1em;
@@ -149,7 +153,8 @@ label, .dfont{
     display: none;
 }
 .em-start-year.show {
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 /*IMPORMASYON NG ESTUDYANTE*/
 

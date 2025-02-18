@@ -24,28 +24,29 @@
                         </div>
                         <div class="previous-school-wrapper">
                             <div class="school-year">
-                                <p class="dfont">Taong Panuruan</p>
+                                <p class="dfont-acad-year">Taong Panuruan</p>
                                 <!--ERROR MESSAGES DIVS FOR WRONG INPUTS -DAVID -->
                                 <div class="academic-year-input">
                                     <div class="error-msg">
                                         <span class="em-start-year"> Error Message here.</span>
                                     </div>
-                                    <input type="number" name="start-year" id="start-year" class="textbox">
-                                    <p> - </p>
-                                    <div class="error-msg">
-                                        <span id="em-end-year"></span>
+                                    <div class="acad-year-tbox">
+                                        <input type="number" name="start-year" id="start-year" class="textbox">
+                                        <p> - </p>
+                                        <input type="number" name="end-year" id="end-year" class="textbox">
                                     </div>
-                                    <input type="number" name="end-year" id="end-year" class="textbox">
                                 </div>
                             </div>
                             <div class="learner-radio">
                                 <p class="dfont">I-check lamang naaangkop</p>
-                                <input type="radio" id="No-LRN" name="LRN" value="No-LRN" class="radio">
-                                <label for="no-lrn">Walang LRN</label>
-                                <input type="radio" id="With-LRN" name="LRN" value="With-LRN" class="radio">
-                                <label for="with-lrn">Mayroong LRN</label>
-                                <input type="radio" id="Returning" name="LRN" value="Returning" class="radio">
-                                <label for="returning">Returning (Balik Aral)</label>
+                                <div>
+                                    <input type="radio" id="No-LRN" name="LRN" value="No-LRN" class="radio">
+                                    <label for="no-lrn">Walang LRN</label>
+                                    <input type="radio" id="With-LRN" name="LRN" value="With-LRN" class="radio">
+                                    <label for="with-lrn">Mayroong LRN</label>
+                                    <input type="radio" id="Returning" name="LRN" value="Returning" class="radio">
+                                    <label for="returning">Returning (Balik Aral)</label>
+                                </div>
                             </div>
 
 
