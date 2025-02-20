@@ -228,6 +228,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     background-color: white;
+    height: 2.4em;
 }
 
 .searchbox {
@@ -326,7 +327,7 @@ body {
 
 @media (max-width: 1205px) {
     .sidebar {
-        min-width: 3.5vw;
+        min-width: 4.5vw;
     }
 
     .sidebar.active {
@@ -346,6 +347,11 @@ body {
         font-size: 1em;
     }
 
+}
+@media (max-width: 940px) {
+    .sidebar {
+        min-width: 5vw;
+    }
 }
 
 /*----END OF THE BASE DESIGNS----*/

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Enrollment Form</title>
     <link rel="stylesheet" href="../css/Enrollment_Form.css">
+    <link rel="stylesheet" href="../css/Enrollment_Form_Errors.css">
+    <link rel="stylesheet" href="../css/Enrollment_Form_MQ.css">
     <script src="../js/form-validation.js"></script>
 <?php
     include './User_Base_Designs.php';
@@ -15,7 +17,7 @@
             </div>
 
             <div class="content-wrapper">
-                <form action="" id="enrollment-form">
+                <form action="" id="enrollment-form" class="form-main" method="POST">
 
                     <!--ANTAS AT IMPORMASYON NG PAARALAN-->
                     <div class="previous-school border-75">
@@ -39,7 +41,7 @@
                             </div>
                             <div class="learner-radio">
                                 <p class="dfont">I-check lamang naaangkop</p>
-                                <div>
+                                <div class="lrn-radio-buttons-selections">
                                     <input type="radio" id="No-LRN" name="LRN" value="No-LRN" class="radio">
                                     <label for="no-lrn">Walang LRN</label>
                                     <input type="radio" id="With-LRN" name="LRN" value="With-LRN" class="radio">
@@ -76,11 +78,13 @@
                                     <option value="Grade6">Grade 6</option>
                                 </select>
 
-                                <p class="dfont">Huling natapos na taon</p>
-                                <div class="error-msg">
-                                    <span id="em-last-year"></span>
+                                <div class="last-year-finished">
+                                    <p class="dfont">Huling natapos na taon</p>
+                                    <div class="error-msg">
+                                        <span class="em-last-year-finished"> Error Message Here. </span>
+                                    </div>
+                                    <input type="number" name="lyear" id="last-year" class="textbox">
                                 </div>
-                                <input type="number" name="lyear" id="last-year" class="textbox">
                             </div>
                         
                             <div class="heducation">
@@ -144,21 +148,24 @@
                             <span class="title">IMPORMASYON NG ESTUDYANTE</span>
                         </div>
                         <!--ROW 1-->
-                        <div class="student-information-wrapper">
+                        <div class="row-1-wrapper">
                             <div class="PSA-number">
-                                <p class="dfont">Numero na nakalagay sa Sertipiko ng Kapanganakan (Birth Certificate) mula sa PSA (kung may dala na kopya)</p>
-                                <div class="error-msg">
-                                    <span id="em-PSA-number"></span>
+                                    <p class="dfont">Numero na nakalagay sa Sertipiko ng Kapanganakan (Birth Certificate) mula sa PSA (kung may dala na kopya)</p>
+                                    <div class="error-msg">
+                                        <span id="em-PSA-number"></span>
+                                    </div>
+                                    <input type="text" name="" id="PSA-number" class="textbox">
                                 </div>
-                                <input type="text" name="" id="PSA-number" class="textbox">
-                            </div>
-                            <div class="LRN">
-                                <p class="dfont">Learner's Reference Number (LRN) kung mayroon</p>
-                                <div class="error-msg">
-                                    <span id="em-LRN"></span>
+                                <div class="LRN">
+                                    <p class="dfont">Learner's Reference Number (LRN) kung mayroon</p>
+                                    <div class="error-msg">
+                                        <span id="em-LRN"></span>
+                                    </div>
+                                    <input type="text" name="" id="LRN" class="textbox">
                                 </div>
-                                <input type="text" name="" id="LRN" class="textbox">
-                            </div>
+                           </div>
+                        <div class="student-information-wrapper">
+                        
                             <!--ROW 2-->
                             <div class="lname">
                                 <p class="dfont">Apelyido</p>
@@ -463,6 +470,6 @@
             </div>
         </div>
     </div>
-    <script src="../js/div finder.js"></script>
+    <script src="../js/api_test.js"></script>
 </body>
 </html>

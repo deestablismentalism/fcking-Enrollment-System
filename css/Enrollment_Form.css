@@ -57,15 +57,6 @@ input[type="button"], input[type="submit"] {
     cursor: pointer;  
     margin-top: 2%;
 }
-
-.title {
-    font-weight:500;
-    font-size: 2em;
-    padding-left: 3em;
-}
-.dfont-acad-year {
-    text-align: center;
-}
 label{
     padding-bottom: .3em;
     padding-top: 1em;
@@ -88,11 +79,6 @@ label{
     border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
 
-/* SPACE FOR ERROR MESSAGES -DAVID*/
-.error-msg{ 
-   font-size: 0.8em;
-}
-
 
 /*ANTAS NG IMPORMASYON NG PAARALAN*/
 .acad-year-tbox {
@@ -106,7 +92,8 @@ label{
 .previous-school-wrapper {
     background-color: #ffffff;
     display: grid;
-    padding:1em 0em 1em 2em;    
+    grid-template-columns: 15% 40% 35%;
+    padding:1em 0em 1em 7em;    
     gap: 1em;
 }
 
@@ -114,10 +101,15 @@ label{
     background-color: #ffffff;
     padding-top: 1em;
 }
-
-.school-year {
+.nais-paaralan {
+    padding-left: 1em;
+}
+.school-year,
+.last-year-finished {
    display: flex;
    flex-direction: column;
+   flex-wrap: wrap;
+   align-content: flex-start;
 }
 /* dinagdagan ko ng margin because sikip -dabid*/
 .academic-year-input {
@@ -137,7 +129,6 @@ label{
 }
 
 .grade {
-    justify-items: center;
     border-right :rgba(0, 51, 102, 0.7) 1px solid;
 }
 
@@ -149,12 +140,8 @@ label{
 #lschoolAddress, #fschoolAddress {
     width: 24rem;
 }
-.em-start-year {
-    display: none;
-}
-.em-start-year.show {
-    display: flex;
-    justify-content: center;
+.lrn-radio-buttons-selections {
+    padding-top: 10px;
 }
 /*IMPORMASYON NG ESTUDYANTE*/
 
@@ -165,26 +152,26 @@ label{
     padding:1em 0em 1em 7em;
     gap: 1em;
 }
-
 .student-information-title {
+    width: 100%;
     background-color: #ffffff;
-    padding: 1em;
+    padding: 1em 0em 1em 0em;
 }
-
-.PSA-number {
-    width: 34em;
-    padding-left: 5em;
-    grid-column: 1/3;    
-}
-
-.LRN {
-    grid-column: 3/5;
-}
-
+.title {
+    font-size: clamp(1em, 8vw, 2em);
+    background-color: #ffffff;
+    padding-left: 2em;
+}                                     
 .gender-group-wrapper {
     display: flex;
 }
-
+.row-1-wrapper {
+    background-color: #fff;
+    padding: 0.8em;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
 
 .community {
     width: 60%;
@@ -193,9 +180,6 @@ label{
 
 
 /*PARA SA MGA MAGAARAL NA MAY KAPANSANAN*/
-.student-disability {
-}
-
 .student-disability-wrapper {
     display: grid;
     grid-template-columns: 40% 40%;
@@ -283,119 +267,3 @@ label{
 
 /*----END OF MAIN CONTENT----*/
 
-/*--MEDIA QUERIES--*/
-
-/*For 1600px width*/
-@media (max-width: 1600px) {
-    .content {
-        padding-top: 1em;
-        padding-left: 4em;
-        font-size: .85em;
-    }
-  
-    #lschoolAddress, #fschoolAddress {
-        width: 18em;
-    }
-
-    .select {
-        max-width: 12em;
-    }
-
-    .title {
-        font-size: 1.5em;
-        padding-left: 1.5em;
-    }
-
-    .textbox {
-        width: 10em;
-        height: 1.5em;
-    }
-    
-    
-    .student-information-wrapper {
-        grid-template-columns: 21% 21% 33% 25%;
-        padding:1em 1em 1em 4em;
-        gap: 1em;
-    }
-
-    .student-disability-wrapper {
-        grid-template-columns: auto auto;
-        padding:1em 1em 1em 4em;    
-    }
-
-    .address-wrapper {
-        grid-template-columns: 25% 25% 25%;
-        padding:1em 1em 1em 4em;
-    }
-
-    .parents-guardian-information-wrapper {
-        grid-template-columns:  auto auto auto;
-        padding:1em 1em 1em 4em;
-    }
-}
-
-/*For 1360px Width*/
-
-
-@media (max-width: 1190px) {
-    .content {
-        padding-top: 1em;
-        padding-left: 4em;
-        font-size: .7em;
-    }
-
-    .label {
-        font-size: .7em;
-    }
-
-    .LRN {
-        padding-left: 4em;
-    }
-
-    .PSA-number {
-        padding-left: 1em;
-        margin-right: 2em;
-    }
-
-    .radio {
-        cursor: pointer;
-        appearance: auto;
-        box-sizing: border-box;
-        margin: 3px 3px 0px 5px;
-        padding: initial;
-        width: .7em;
-        height: .7em;
-    }
-}
-
-/*For 1024px width*/
-
-@media (max-width: 1024px) {
-    .content {
-        padding-top: 1em;
-        padding-left: 4em;
-        font-size: .6em;
-    }
-
-    .textbox {
-        width: 8em;
-    }
-}
-
-@media (max-width: 940px) {
-    .content {
-        padding-top: 1em;
-        padding-left: 4em;
-        font-size: .55em;
-    }
-
-    .textbox {
-        width: 8em;
-    }
-}
-@media (max-width: 768px) {
-    /*ayusin mo nalang pag nag media query ka na */
-    .content {
-        overflow-x:hidden;  /*intended to always fit the content to the designated width of view area*/
-    }
-}
