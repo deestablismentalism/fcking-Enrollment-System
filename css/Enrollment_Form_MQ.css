@@ -7,7 +7,6 @@
         padding-left: 4em;
         font-size: .85em;
     }
-  
     #lschoolAddress, #fschoolAddress {
         width: 18em;
     }
@@ -16,25 +15,26 @@
         height: 1.5em;
     }
     .select {
-        max-width: 12em;
         height: 1.5em;
     }
     .textbox {
-        max-width: 12em;
         height: 1.5em;
     }
     .title {
         font-size: 1.5em;
         padding: 0 0 0 2.5em;
     }
+    .previous-school-row-1 {
+        padding: 1em 1em 1em 4em;
+    }
     .previous-school-wrapper {
         grid-template-columns: 20% 40% 35%;
         padding:1em 1em 1em 4em;
     }
     .student-information-wrapper {
-        grid-template-columns: 21% 21% 33% 25%;
+        grid-template-columns: 20% 20% 30% 25%;
         padding:1em 1em 1em 4em;
-        gap: 1em;
+        gap: 0.5em;
     }
 
     .student-disability-wrapper {
@@ -79,8 +79,7 @@
     }
 }
 
-/*For 1024px width*/
-
+/*For laptop standard*/
 @media (max-width: 1024px) {
     .content {
         padding-top: 1em;
@@ -88,17 +87,15 @@
         font-size: .6em;
     }
 }
-
-@media (max-width: 940px) {
-    .previous-school-wrapper {
-        padding:1em 0em 1em 4em;
-        display: grid;
-        grid-template-columns: 20% 35% auto;
-    }
-    .heducation {
-        width: 200px;
-        border-right :rgba(0, 51, 102, 0.7) 1px solid;
-        padding: 1em;
+/*for tablet*/
+@media (max-width: 768px) {
+    /*GENERAL*/
+    .student-information-wrapper,
+    .student-disability-wrapper,
+    .address-wrapper,
+    .parents-guardian-information-wrapper {
+        padding: 0.5em 1em 0.5em 1em;
+        font-size: 1.3em;
     }
     .content-title {
         margin-top: 40px;
@@ -108,40 +105,105 @@
         padding-left: 4em;
         font-size: .55em;
     }
+    .previous-school-row-1,
+    .student-info-row-1 {
+        padding: 0.5em 1em 0.5em 1em;
+        font-size: 1.3em;
+    }
+    .textbox,
     .select {
-        width: 8em;
+        width: 10em;
     }
-    .textbox {
-        width: 8em;
+    .title {
+        padding: 0 0 0 1em;
     }
-    .school-year input {
-        width: 6em;
+    /* ANTAS NG IMPORMASYON*/
+    .previous-school-row-1 {
+        font-size: 1.5em;
     }
-}
-@media (max-width: 768px) {
+    .previous-school-row-1 .textbox {
+        width: 7.5em;
+    }
+    .previous-school-wrapper {
+        padding: 0.5em 1em 0.5em 1em;
+        display: grid;
+        font-size: 1.5em;
+        grid-template-columns: 33% 33% 33%;
+        gap: 0;
+    }
+    .previous-school-wrapper .textbox,
+    .previous-school-wrapper .select,
+    #lschoolAddress,
+    #fschoolAddress
+    {
+        width: 15em;
+
+    }
+    .lschool-wrapper,
+    .fschool-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    .grade,
+    .heducation,
+    .nais-paaralan {
+        display: flex;
+        flex-direction: column;
+    }
+    /*IMPORMASYON*/
+    .gender-group-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .gender,
+    .community {
+        padding: 0.5em;
+    }
+    /*ADDRESS*/
+    .address-wrapper .textbox {
+        width: 15em;
+    }
+    .address-wrapper {
+        font-size: 1.5em;
+        grid-template-columns: 33% 33% 33%;
+    }
+    /*IMPORMASYON NG TAGAPAG ALAGA*/
+    .parents-guardian-information-wrapper .textbox {
+        width: 15em;
+    }
     /*ayusin mo nalang pag nag media query ka na */
     .content {
         overflow-x:hidden;  /*intended to always fit the content to the designated width of view area*/
     }
+    .fourPS {
+        font-size: 1.5em;
+    }
 }
 @media (max-width: 688px) {
-    .previous-school-wrapper {
-        grid-template-columns: 20% 40% 40%;
+    /*GENERAL*/
+    .border-75::after {
+        display: none;
+    }
+    .grade,
+    .heducation,
+    .nais-paaralan {
+        padding: 0 0.5em 0.5em 0.5em;
+        border-right: none;
+        border-bottom: 1px solid #295077;
     }
     .content-wrapper
      {
-        font-size: 0.5em;
         width: 100%;
     }
     .select {
-        width: 10em;
-        height: 2em;
+        width: 18em;
     }
-    .textbox {
-        width: 10em;
-    }
-    .heducation{
-        width: 195px;
+    .previous-school-wrapper .textbox,
+    .previous-school-wrapper .select,
+    #lschoolAddress,
+    #fschoolAddress{
+        width: 23em;
     }
     .content {
         width: 100%;
@@ -166,13 +228,40 @@
         padding: 1em;
         padding-left: 1.5em;
     }
+    /* ANTAS NG SHIT */
+    .lrn-radio-buttons-selections .radio {
+        margin: 0 0.1em 0 0;
+    }
+    .lrn-radio-buttons-selections label {
+        font-size:  0.7em;
+        padding-bottom: 0.4em;
+    }
+    .previous-school-row-1 {
+        grid-template-columns: 1fr 2fr;
+        padding: 0.5em 0.5em 0 1em;
+    }
+    .previous-school-row-1 .textbox {
+        width: 3.5em;
+    }
+    .previous-school-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .heducation label {
+        font-size: 0.8em;
+    }
+    .heducation .radio {
+        margin: 0 0.1em 0 0;
+    }
+    /* IMPORMASYON NG STUDYANTENG SHIT*/
+    .student-info-row-1 {
+        display: flex;
+        flex-direction: column;
+    }
 }
-@media (max-width: 600px) {
+@media (max-width: 425px) {
     .content {
         font-size: 0.5em;
-    }
-    .heducation{
-        width: 130px;
     }
     .textbox {
         width: 10em;
@@ -185,11 +274,12 @@
     }
 }
 @media (max-width: 360px) {
-    
-    .content-wrapper
-     {
-        font-size: 0.5em;
-        width: 100%;
+    /*GENERAL*/
+    .previous-school-wrapper .textbox,
+    .previous-school-wrapper .select,
+    #lschoolAddress,
+    #fschoolAddress{
+        width: 20em;
     }
     .content {
         width: 100%;
@@ -197,7 +287,6 @@
     }
     .select {
         width: 12em;
-        height: 3em;
     }
     .textbox {
         width: 12em;

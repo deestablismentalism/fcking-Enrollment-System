@@ -60,19 +60,6 @@ body {
     max-width: 2em;
 }
 
-.border-75 {
-    position: relative;
-}
-
-.border-75::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 7.5%; 
-    width: 85%;
-    border-bottom: 1px solid rgba(0, 51, 102, 0.7);
-}
-
 .border-100sb {
     position: relative;
 }
@@ -83,6 +70,18 @@ body {
     bottom: 0;
     left: 0%;
     width: 100%;
+    border-bottom: 1px solid #295077;
+}
+.border-75 {
+    position: relative;
+}
+
+.border-75::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    margin: 0em 2em 0em 2em;
     border-bottom: 1px solid #295077;
 }
 

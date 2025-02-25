@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Enrollment Form</title>
-    <link rel="stylesheet" href="../css/Enrollment_Form.css">
-    <link rel="stylesheet" href="../css/Enrollment_Form_Errors.css">
-    <link rel="stylesheet" href="../css/Enrollment_Form_MQ.css">
-    <script src="../js/form-validation.js"></script>
+    <link rel="stylesheet" href="../css/Enrollment_Form.css" media="all">
+    <link rel="stylesheet" href="../css/Enrollment_Form_Errors.css" media="all">
+    <link rel="stylesheet" href="../css/Enrollment_Form_MQ.css" media="all">
 <?php
     include './User_Base_Designs.php';
 ?>
@@ -24,8 +23,8 @@
                         <div class="previous-school-title">
                           <span class="title">ANTAS NG IMPORMASYON NG PAARALAN</span>
                         </div>
-                        <div class="previous-school-wrapper">
-                            <div class="school-year">
+                        <div class="previous-school-row-1">
+                        <div class="school-year">
                                 <p class="dfont-acad-year">Taong Panuruan</p>
                                 <!--ERROR MESSAGES DIVS FOR WRONG INPUTS -DAVID -->
                                 <div class="academic-year-input">
@@ -50,8 +49,9 @@
                                     <label for="returning">Returning (Balik Aral)</label>
                                 </div>
                             </div>
-
-
+                        </div>
+                        <div class="previous-school-wrapper">
+                            
                             <div class="grade">
 
                                 <p class="dfont">Baitang na nais ipatala</p>
@@ -110,10 +110,12 @@
                                 </div>
                                 <input type="text" name="lschoolAddress" id="lschoolAddress" class="textbox">  
                                 <p class="dfont">Huling natapos na taon sa paaralan</p>
-                                <input type="radio" name="educational-choice" id="" class="radio" value="private">
-                                <label for="private">Pribado</label>
-                                <input type="radio" name="educational-choice" id="" class="radio" value="public">
-                                <label for="public">Pampubliko</label>
+                                <div> 
+                                    <input type="radio" name="educational-choice" id="" class="radio" value="private">
+                                    <label for="private">Pribado</label>
+                                    <input type="radio" name="educational-choice" id="" class="radio" value="public">
+                                    <label for="public">Pampubliko</label>
+                                </div>
                             </div>
 
                             <div class="nais-paaralan">
@@ -148,7 +150,7 @@
                             <span class="title">IMPORMASYON NG ESTUDYANTE</span>
                         </div>
                         <!--ROW 1-->
-                        <div class="row-1-wrapper">
+                        <div class="student-info-row-1">
                             <div class="PSA-number">
                                     <p class="dfont">Numero na nakalagay sa Sertipiko ng Kapanganakan (Birth Certificate) mula sa PSA (kung may dala na kopya)</p>
                                     <div class="error-msg">
@@ -213,21 +215,21 @@
                             <div class="gender-group-wrapper">
                                 <div class="gender">
                                     <p class="dfont">Kasarian</p>
-                                    <div class="">
+                                    <div> 
                                         <input type="radio" name="gender" id="male" class="radio" value="male">
-                                        <label for="male">Lalake</label>
-                                    </div>
-                                    <div class="">
+                                        <label for="male">Lalake</label>                                
                                         <input type="radio" name="gender" id="female" class="radio" value="female">
                                         <label for="female">Babae</label>
                                     </div>
                                 </div>
                                 <div class="community">
                                     <p class="dfont">Nabibilang sa katutubong grupo/ Komunidad ng Katutubong Kultural</p>
-                                    <input type="radio" name="group" id="yes" class="radio" value="yes">
-                                    <label for="yes">Oo</label>
-                                    <input type="radio" name="group" id="no" class="radio" value="no">
-                                    <label for="no">Hindi</label>
+                                    <div>
+                                        <input type="radio" name="group" id="yes" class="radio" value="yes">
+                                        <label for="yes">Oo</label>
+                                        <input type="radio" name="group" id="no" class="radio" value="no">
+                                        <label for="no">Hindi</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="truecommunity">
@@ -471,5 +473,6 @@
         </div>
     </div>
     <script src="../js/api_test.js"></script>
+    <script src="../js/form-validation.js" defer></script>
 </body>
 </html>
