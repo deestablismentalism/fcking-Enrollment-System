@@ -152,7 +152,7 @@
                         <!--ROW 1-->
                         <div class="student-info-row-1">
                             <div class="PSA-number">
-                                    <p class="dfont">Numero na nakalagay sa Sertipiko ng Kapanganakan (Birth Certificate) mula sa PSA (kung may dala na kopya)</p>
+                                    <p class="dfont">Numero na nakalagay sa Sertipiko ng Kapanganakan <br class="responsive-text-break">(Birth Certificate) mula sa PSA (kung may dala na kopya)</p>
                                     <div class="error-msg">
                                         <span id="em-PSA-number"></span>
                                     </div>
@@ -169,99 +169,106 @@
                         <div class="student-information-wrapper">
                         
                             <!--ROW 2-->
-                            <div class="lname">
-                                <p class="dfont">Apelyido</p>
-                                <div class="error-msg">
-                                    <span id="em-lname"></span>
+                            <div class="student-info-row-2">
+                                <div class="lname">
+                                    <p class="dfont">Apelyido</p>
+                                    <div class="error-msg">
+                                        <span id="em-lname"></span>
+                                    </div>
+                                    <input type="text" name="lname" id="lname" class="textbox" placeholder="Dela Cruz">
                                 </div>
-                                <input type="text" name="lname" id="lname" class="textbox" placeholder="Dela Cruz">
-                            </div>
-                            <div class="fname">
-                                <p class="dfont">Pangalan</p>
-                                <div class="error-msg">
-                                    <span id="em-fname"></span>
+                                <div class="fname">
+                                    <p class="dfont">Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-fname"></span>
+                                    </div>
+                                    <input type="text" name="fname" id="fname" class="textbox" placeholder="John Mark">
                                 </div>
-                                <input type="text" name="fname" id="fname" class="textbox" placeholder="John Mark">
-                            </div>
-                            <div class="mname">
-                                <p class="dfont">Gitnang Pangalan</p>
-                                <div class="error-msg">
-                                    <span id="em-mname"></span>
+                                <div class="mname">
+                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-mname"></span>
+                                    </div>
+                                    <input type="text" name="mname" id="mname" class="textbox" placeholder="Jimenez">
                                 </div>
-                                <input type="text" name="mname" id="mname" class="textbox" placeholder="Jimenez">
-                            </div>
-                            <div class="extension">
-                                <p class="dfont">Extensyon (Jr., Sr.)</p>
-                                <div class="error-msg">
-                                    <span id="em-extension"></span>
+                                <div class="extension">
+                                    <p class="dfont">Extensyon (Jr., Sr.)</p>
+                                    <div class="error-msg">
+                                        <span id="em-extension"></span>
+                                    </div>
+                                    <input type="text" name="extension" id="extension" class="textbox" placeholder="III">
                                 </div>
-                                <input type="text" name="extension" id="extension" class="textbox" placeholder="III">
                             </div>
                             <!--ROW 3-->
-                            <div class="bday">
-                                <p class="dfont">Petsa ng Kapanganakan</p>
-                                <div class="error-msg">
-                                    <span id="em-bday"></span>
+                            <div class="student-info-row-3">
+                                <div class="bday">
+                                    <p class="dfont">Petsa ng Kapanganakan</p>
+                                    <div class="error-msg">
+                                        <span id="em-bday"></span>
+                                    </div>
+                                    <input type="date" name="bday" id="bday" class="textbox">
                                 </div>
-                                <input type="date" name="bday" id="bday" class="textbox">
-                            </div>
-                            <div class="age">
-                                <p class="dfont">Edad</p>
-                                <div class="error-msg">
-                                    <span id="em-age"></span>
+                                <div class="age">
+                                    <p class="dfont">Edad</p><br class="responsive-text-break">
+                                    <div class="error-msg">
+                                        <span id="em-age"></span>
+                                    </div>
+                                    <input type="text" name="age" id="age" class="textbox" placeholder="10">
                                 </div>
-                                <input type="text" name="age" id="age" class="textbox" placeholder="10">
-                            </div>
-                            <div class="gender-group-wrapper">
-                                <div class="gender">
-                                    <p class="dfont">Kasarian</p>
-                                    <div> 
-                                        <input type="radio" name="gender" id="male" class="radio" value="male">
-                                        <label for="male">Lalake</label>                                
-                                        <input type="radio" name="gender" id="female" class="radio" value="female">
-                                        <label for="female">Babae</label>
+                                <div class="gender-group-wrapper">
+                                    <div class="gender">
+                                        <p class="dfont">Kasarian</p>
+                                        <div> 
+                                            <input type="radio" name="gender" id="male" class="radio" value="male">
+                                            <label for="male">Lalake</label>                                
+                                            <input type="radio" name="gender" id="female" class="radio" value="female">
+                                            <label for="female">Babae</label>
+                                        </div>
+                                    </div>
+                                    <div class="community">
+                                        <p class="dfont">Nabibilang sa katutubong grupo/ <br class="responsive-text-break">
+                                                        Komunidad ng Katutubong Kultural</p>
+                                        <div>
+                                            <input type="radio" name="group" id="yes" class="radio" value="yes">
+                                            <label for="yes">Oo</label>
+                                            <input type="radio" name="group" id="no" class="radio" value="no">
+                                            <label for="no">Hindi</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="community">
-                                    <p class="dfont">Nabibilang sa katutubong grupo/ Komunidad ng Katutubong Kultural</p>
-                                    <div>
-                                        <input type="radio" name="group" id="yes" class="radio" value="yes">
-                                        <label for="yes">Oo</label>
-                                        <input type="radio" name="group" id="no" class="radio" value="no">
-                                        <label for="no">Hindi</label>
+                                <div class="true-community">
+                                    <p class="dfont">Kung oo, saang grupo nabilang</p>
+                                    <div class="error-msg">
+                                        <span id="em-community"></span>
                                     </div>
+                                    <input type="text" name="community" id="community" class="textbox" placeholder="sama-badjau">
                                 </div>
-                            </div>
-                            <div class="truecommunity">
-                                <p class="dfont">Kung oo, saang grupo nabilang</p>
-                                <div class="error-msg">
-                                    <span id="em-community"></span>
-                                </div>
-                                <input type="text" name="community" id="community" class="textbox" placeholder="sama-badjau">
                             </div>
                             <!--ROW 4-->
-                            <div class="native-language">
-                                <div class="language">
-                                    <p class="dfont">Kinagisnang wika</p>
-                                    <div class="error-msg">
-                                        <span id="em-language"></span>
+                            <div class="student-info-row-4">
+                                <div class="native-language">
+                                    <div class="language">
+                                        <p class="dfont">Kinagisnang wika</p>
+                                        <div class="error-msg">
+                                            <span id="em-language"></span>
+                                        </div>
+                                        <input type="text" name="language" id="language" class="textbox" placeholder="Tagalog">
                                     </div>
-                                    <input type="text" name="language" id="language" class="textbox" placeholder="Tagalog">
                                 </div>
-                            </div>
-                            <div class="religion">
-                                <p class="dfont">Relihiyon</p>
-                                <div class="error-msg">
-                                    <span id="em-religion"></span>
+                                <div class="religion">
+                                    <p class="dfont">Relihiyon</p>
+                                    <div class="error-msg">
+                                        <span id="em-religion"></span>
+                                    </div>
+                                    <input type="text" name="religion" id="religion" class="textbox" placeholder="Catholic">
                                 </div>
-                                <input type="text" name="religion" id="religion" class="textbox" placeholder="Catholic">
-                            </div>
-                            <div class="email">
-                                <p class="dfont">Email Address</p>
-                                <div class="error-msg">
-                                    <span id="em-email"></span>
+                                <div class="email">
+                                    <p class="dfont">Email Address</p>
+                                    <div class="error-msg">
+                                        <span id="em-email"></span>
+                                    </div>
+                                    <input type="email" name="email" id="email" class="textbox" placeholder="sampleemail@gmail.com">
                                 </div>
-                                <input type="email" name="email" id="email" class="textbox" placeholder="sampleemail@gmail.com">
                             </div>
                         </div>
                     </div>

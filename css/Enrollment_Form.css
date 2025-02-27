@@ -7,7 +7,9 @@
     visibility: hidden;
 }
 /*----START OF MAIN CONTENT----*/
-
+.responsive-text-break {
+    display: none;
+}
 .content {
     margin-top: 1em;
     padding-left:5vw;
@@ -142,7 +144,7 @@ label{
 
 .student-information-wrapper {
     display: grid;
-    grid-template-columns: 21% 21% 33% 25%;
+    grid-template-rows: 25% 35% 35%;
     background-color: #ffffff;
     padding:1em 0em 1em 7em;
     gap: 1em;
@@ -160,7 +162,19 @@ label{
 .gender-group-wrapper {
     display: grid;
     grid-template-columns: 1fr 2fr;
-}                              
+    padding: 0.5em;
+}       
+.student-info-row-2,
+.student-info-row-3,
+.student-info-row-4 {
+    display: flex;
+    width: 100%;
+}
+.lname,.fname,.mname,.extension,
+.bday, .age, .true-community,
+.native-language, .religion, .email {
+    padding: 0.5em;
+}                       
 .previous-school-row-1,
 .student-info-row-1 {
     background-color: #fff;
@@ -212,7 +226,6 @@ label{
     padding: 1em 0em 1em 0em;
 }
 
-
 .select {
     display: inline-block;
     text-align: start;
@@ -222,7 +235,7 @@ label{
     align-items: center;
     background-color: #f7f4f4;
     cursor: default;
-    width: 13rem;
+    width: 13em;
     height: 1.5rem;
     white-space: pre;
     border: 1px solid #616161;
@@ -243,8 +256,7 @@ label{
     display: grid;
     grid-template-columns:  30% 65%;
     background-color: #ffffff;
-    padding:2em;
-    padding-left:6em;
+    padding: 0.5em 2em 0.5em 4em;
     gap: 1em;
 }     
 

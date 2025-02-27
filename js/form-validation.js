@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded',function(){
     const startYear = document.getElementById("start-year"); //taong panuruan start textbox
     const endYear = document.getElementById("end-year"); //taong panuruan end textbox
     const lastYear = document.getElementById("last-year"); //huling natapos na taon textbox
+    const emBr = document.querySelectorAll(".em-break"); //error messages
 
 
    //set default academic year
