@@ -227,7 +227,7 @@
                                     </div>
                                     <div class="community">
                                         <p class="dfont">Nabibilang sa katutubong grupo/ <br class="responsive-text-break">
-                                                        Komunidad ng Katutubong Kultural</p>
+                                                    Komunidad ng Katutubong Kultural</p>
                                         <div>
                                             <input type="radio" name="group" id="yes" class="radio" value="yes">
                                             <label for="yes">Oo</label>
@@ -324,7 +324,7 @@
                                 </div>
                                 <input type="text" name="house-number" id="house-number" class="textbox" placeholder="32">
                             </div>
-                            <div class="division">
+                            <div class="subdivision">
                                 <p class="dfont">Subdivision/ baryo/ purok/ sitio</p>
                                 <div class="error-msg">
                                     <span id="em-division"></span>
@@ -336,28 +336,36 @@
                                 <div class="error-msg">
                                     <span id="em-barangay"></span>
                                 </div>
-                                <input type="text" name="barangay" id="barangay" class="textbox" placeholder="Brgy. 4">
+                                <select name="barangay" id="barangay" class="textbox">
+                                    <option value="" disable selected>Select a Province </option>
+                                </select>
                             </div>
                             <div class="city">
                                 <p class="dfont">Lungosd/Munisipalidad</p>
                                 <div class="error-msg">
                                     <span id="em-city"></span>
                                 </div>
-                                <input type="text" name="city" id="city" class="textbox" placeholder="Lucena City">
+                                <select name="city-municipality" id="city-municipality" class="textbox">
+                                    <option value="" disable selected>Select a Province </option>
+                                </select>
                             </div>
                             <div class="province">
                                 <p class="dfont">Probinsya/lalawigan</p>
                                 <div class="error-msg">
                                     <span id="em-province"></span>
                                 </div>
-                                <input type="text" name="province" id="province" class="textbox" placeholder="Quezon Province">
+                                <select name="province" id="province" class="textbox">
+                                    <option value="" disable selected>Select a Province </option>
+                                </select>
                             </div>
                             <div class="region">
                                 <p class="dfont">Rehiyon</p>
                                 <div class="error-msg">
                                     <span id="em-region"></span>
                                 </div>
-                                <input type="text" name="region" id="region" class="textbox" placeholder="Region IV-A">
+                                <select name="region" id="region" class="textbox" >
+                                    <option value="" disable selected>Select a Region </option>
+                                </select>
                             </div>
                         </div>
                     </div>
