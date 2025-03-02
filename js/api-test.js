@@ -89,10 +89,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   async function changeAddressValues() {
     try {
+
+      if(regions.value) {
       let selectedRegion = regions.options[regions.selectedIndex];
       selectedRegion.value = selectedRegion.text;
       console.log(selectedRegion.value);
-
+      }  
       let selectedProvince = provinces.options[provinces.selectedIndex];
       selectedProvince.value = selectedProvince.text;
       console.log(selectedProvince.value);
@@ -110,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   form.addEventListener("submit", changeAddressValues);
-  getBarangay();
-  getCity();
-  getProvinces();
-  getRegions();
+  getBarangay;
+  getCity;
+  getProvinces;
+  getRegions;
 });

@@ -92,21 +92,21 @@
                                     <div class="last-school">
                                         <p class="dfont">Huling paaralang pinasukan</p>
                                         <div class="error-msg">
-                                            <span id="em-lschol"></span>
+                                            <span class="em-lschool"> Error Message Here. </span>
                                         </div>
                                         <input type="text" name="lschool" id="lschool" class="textbox" placeholder="South II Elementary School">
                                     </div>
                                         <div class="lschoolID">
                                         <p class="dfont">ID ng paaralan</p>
                                         <div class="error-msg">
-                                            <span id="em-lschoolID"></span>
+                                            <span class="em-lschoolID"> Error Message Here. </span>
                                         </div>
                                         <input type="text" name="lschoolID" id="lschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
                                 <div class="error-msg">
-                                    <span id="em-lschoolAddress"></span>
+                                    <span class="em-lschoolAddress"> Error Message Here.</span>
                                 </div>
                                 <input type="text" name="lschoolAddress" id="lschoolAddress" class="textbox">  
                                 <p class="dfont">Huling natapos na taon sa paaralan</p>
@@ -123,21 +123,21 @@
                                     <div class="fschool">
                                         <p class="dfont">Nais na paaralan</p>
                                         <div class="error-msg">
-                                            <span id="em-fschool"></span>
+                                            <span class="em-fschool"> Error Message Here. </span>
                                         </div>
                                         <input type="text" name="fschool" id="fschool" class="textbox" placeholder="South II Elementary School">
                                     </div>
                                     <div class="fschoolID">
                                         <p class="dfont">ID ng paaralan</p>
                                         <div class="error-msg">
-                                            <span id="em-fschoolID"></span>
+                                            <span class="em-fschoolID"> Error Message Here. </span>
                                         </div>
                                         <input type="text" name="fschoolID" id="fschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
                                 <div class="error-msg">
-                                    <span id="em-fschoolAddress"></span>
+                                    <span class="em-fschoolAddress"> Error Message Here. </span>
                                 </div>
                                 <input type="text" name="fschoolAddress" id="fschoolAddress" class="textbox">
                             </div>
