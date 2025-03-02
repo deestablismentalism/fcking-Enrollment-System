@@ -14,9 +14,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
    //ensure that the start year is always higher or equal to the current year
    function validateStartYear() {
-    let startYearVal = parseInt(startYear.value);
-    let endYearVal = parseInt(endYear.value);
-        if (yearRegex.test(startYearVal) == true) {
+        let startYearVal = parseInt(startYear.value);
+        let endYearVal = parseInt(endYear.value);
+         if(isEmpty(startYear)) {
+            startYear.style.border = "1px solid red";
+            errorMessages("em-start-year", "This field is required");
+         }
+         else if (yearRegex.test(startYearVal) == true) {
             if(startYearVal < year) {
                 startYear.style.border = "1px solid red";
                 errorMessages("em-start-year", "Year is lower than the current year");
@@ -38,7 +42,11 @@ document.addEventListener('DOMContentLoaded',function(){
     function validateAcademicYear(){
         const endYearVal = parseInt(endYear.value);
         const startYearVal = parseInt(startYear.value);
-        if (yearRegex.test(endYearVal) == true) {
+        if (isEmpty(endYear)) {
+            endYear.style.border = "1px solid red";
+            errorMessages("em-start-year", "This field is required");
+        }
+        else if (yearRegex.test(endYearVal) == true) {
             //ensure that the end year is not equal to the start year
             if (endYearVal == startYearVal) {
                 endYear.style.border = "1px solid red";
@@ -66,26 +74,36 @@ document.addEventListener('DOMContentLoaded',function(){
     }
       //check if huling natapos na taon is not greater than the current year
     function validateYearFinished(){
-      
         const lastYearVal = parseInt(lastYear.value);
-        
-       if (yearRegex.test(lastYearVal)==true){
-        if (lastYearVal > year) {
+        if (isEmpty(lastYear)) {
             lastYear.style.border = "1px solid red";
-            errorMessages("em-last-year-finished", "Value cannot be greater than the current year");
+            errorMessages("em-last-year-finished", "This field is required");
         }
-        else {
-            lastYear.style.border = "1px solid #616161";
-            document.querySelector(".em-last-year-finished").innerHTML="";
-        }
-       }
+        else if (yearRegex.test(lastYearVal)==true){
+            if (lastYearVal > year) {
+                lastYear.style.border = "1px solid red";
+                errorMessages("em-last-year-finished", "Value cannot be greater than the current year");
+            }
+            else {
+                lastYear.style.border = "1px solid #616161";
+                document.querySelector(".em-last-year-finished").innerHTML="";
+            }
+         }
        else {
             lastYear.style.border = "1px solid red";
             errorMessages("em-last-year-finished", "Enter a valid year");
        }
     }
-   
-
+    //check empty fields
+    function isEmpty(element) {
+        const elementValue = document.getElementById("."+element);
+        if (elementValue == null) {
+            return true;
+        } 
+        else {
+            return false
+        }
+    }
     //Function for displaying error messages
     function errorMessages(errorElement, message) {
         document.querySelector("."+errorElement).classList.add("show");
@@ -98,6 +116,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     form.addEventListener('submit', function(e){
         e.preventDefault();
+        validateStartYear();
         validateYearFinished();
         validateAcademicYear();
     });

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("enrollment-form");
   const regions = document.getElementById("region");
   const provinces = document.getElementById("province");
   const cityOrMunicipality = document.getElementById("city-municipality");
@@ -10,9 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
   let provinceCode = "";
   let cityCode = "";
   let barangayCode = "";
-  let subdivisionCode = "";
-  async function getRegions( ) {
-    
+
+  async function getRegions() {
     try {
         let response = await fetch("https://psgc.gitlab.io/api/regions");
         let data = await response.json();                     
@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
       try {
         regions.addEventListener("change", async function() {
             regionCode = this.value;
-            console.log(regionCode);
             let response = await fetch(`https://psgc.gitlab.io/api/regions/${regionCode}/provinces`);
+            console.log(regionCode);        
             let data = await response.json();
 
             data.forEach(province=>{
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     try {
       provinces.addEventListener("change", async function(){
           provinceCode = this.value;
-          let response = await fetch(`https:/psgc.gitlab.io/api/provinces/${provinceCode}/cities-municipalities`);
+          let response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/cities-municipalities`);
           let data = await response.json();
           console.log(data);
 
@@ -87,6 +87,29 @@ document.addEventListener("DOMContentLoaded", function() {
       console.error(error);
     }
   }
+  async function changeAddressValues() {
+    try {
+      let selectedRegion = regions.options[regions.selectedIndex];
+      selectedRegion.value = selectedRegion.text;
+      console.log(selectedRegion.value);
+
+      let selectedProvince = provinces.options[provinces.selectedIndex];
+      selectedProvince.value = selectedProvince.text;
+      console.log(selectedProvince.value);
+
+      let selectedCity = cityOrMunicipality.option[cityOrMunicipality.selectedIndex];
+      selectedCity.value = selectedCity.text;
+      console.log(selectedCity.value);
+
+      let selectedBarangay = barangay.option[barangay.selectedIndex];
+      selectedBarangay.value = selectedBarangay.text;
+      console.log(selectedBarangay.value);
+    }
+    catch(error) {
+      console.error(error);
+    }
+  }
+  form.addEventListener("submit", changeAddressValues);
   getBarangay();
   getCity();
   getProvinces();

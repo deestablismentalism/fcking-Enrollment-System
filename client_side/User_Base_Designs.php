@@ -1,8 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/User_Base_Design.css">
+    <link rel="stylesheet" href="../css/user_base_design.css">
     <link rel="stylesheet" href="../css/reset.css">
-    <script src="../js/User_Base_Designs.js"></script>
 </head>
 <body>
     <div class="sidebar">
@@ -192,4 +191,5 @@
                 </div>
             </div>
         </div>
-
+</body>
+</html>

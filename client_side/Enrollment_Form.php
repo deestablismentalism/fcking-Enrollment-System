@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Enrollment Form</title>
-    <link rel="stylesheet" href="../css/Enrollment_Form.css" media="all">
-    <link rel="stylesheet" href="../css/Enrollment_Form_Errors.css" media="all">
-    <link rel="stylesheet" href="../css/Enrollment_Form_MQ.css" media="all">
+    <link rel="stylesheet" href="../css/enrollment_form.css" media="all">
+    <link rel="stylesheet" href="../css/enrollment_form_errors.css" media="all">
+    <link rel="stylesheet" href="../css/enrollment_form_mq.css" media="all">
 <?php
-    include './User_Base_Designs.php';
+    include './user_base_designs.php';
 ?>
         <div class="content">
             <div class="content-title">
@@ -480,14 +480,14 @@
                         <div class="image-confirm">
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
                             <input type="button" value="Insert Image (Di pa nagana)">
-                            <input type="submit">
+                            <button type="submit">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="../js/api_test.js"></script>
-    <script src="../js/form-validation.js" defer></script>
+    <script src="../js/api-test.js"></script>
+    <script src="../js/previous-school-validation.js" defer></script>
 </body>
 </html>
