@@ -9,25 +9,28 @@ document.addEventListener('DOMContentLoaded',function(){
     const fschool = document.getElementById("fschool"); //nais paaralan
     const fschoolAddr = document.getElementById("fschoolAddress"); //nais paaralan address
     const fschoolId = document.getElementById("fschoolID"); //nais paaralan ID
-
+    // boolean
+    let ifCalled = false;
    //set default academic year
     const year = new Date().getFullYear();
     startYear.value = year;
     endYear.value = year + 1;
     //regex
+    const idRegex = /^([0-9]){6}$/;
     const yearRegex = /^(1[0-9]{3}|2[0-9]{3}|3[0-9]{3})$/;//checker if number input is a valid year
     const charRegex = /^[A-Za-z0-9\s.,'-]{3,100}$/;
     //error messages
     const emptyError = "This field is required";
     const invalidYear = "Enter a valid year";
+    const invalidSchoolId = "Not a valid school Id";
     const invalidChar = "Enter 3 or more characters";
    //ensure that the start year is always higher or equal to the current year
    function validateStartYear() {
         let startYearVal = parseInt(startYear.value);
         let endYearVal = parseInt(endYear.value);
         if(isEmpty(startYear)) {
-            console.log(startYear);
             errorMessages("em-start-year", emptyError, startYear);
+            checkEmptyFocus(startYear, "em-start-year");
         }
         else if (!yearRegex.test(startYear.value)) {
             errorMessages("em-start-year", invalidYear, startYear);
@@ -47,8 +50,8 @@ document.addEventListener('DOMContentLoaded',function(){
         const endYearVal = parseInt(endYear.value);
         const startYearVal = parseInt(startYear.value);
         if (isEmpty(endYear)) {
-            endYear.style.border = "1px solid red";
             errorMessages("em-start-year", emptyError, endYear);
+            checkEmptyFocus(endYear, "em-start-year");
         }
         else if (!yearRegex.test(endYear.value) ) {
             errorMessages("em-start-year", invalidYear, endYear);
@@ -73,6 +76,7 @@ document.addEventListener('DOMContentLoaded',function(){
         const lastYearVal = parseInt(lastYear.value);
         if (isEmpty(lastYear)) {
             errorMessages("em-last-year-finished", emptyError, lastYear);
+            checkEmptyFocus(lastYear, "em-last-year-finished");
         }
         else if (!yearRegex.test(lastYear.value)){
             errorMessages("em-last-year-finished", invalidYear, lastYear);
@@ -82,8 +86,13 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         else {
             clearError("em-last-year-finished", lastYear);
-        }
+        }   
     }
+    //validate school Id
+    const fields2 = [
+        {element: lschoolId, error: "em-lschoolID"},
+        {element: fschoolId, error: "em-fschoolID"}
+    ];
     //validate empty character fields and school name validity
     const fields = [
         {element: lschool, error: "em-lschool"},
@@ -91,9 +100,22 @@ document.addEventListener('DOMContentLoaded',function(){
         {element: fschool, error: "em-fschool"},
         {element: fschoolAddr, error: "em-fschoolAddress"},
     ];
+    function validateSchoolId(element, errorElement) {
+        if (isEmpty(element)) {
+            errorMessages(errorElement, emptyError, element);
+            checkEmptyFocus(element, errorElement);
+        }
+        else if(!idRegex.test(element.value)) {
+            errorMessages(errorElement, invalidSchoolId, element);
+        }
+        else {
+            clearError(errorElement, element);
+        }
+    }
     function validateSchool(element, errorElement){
         if (isEmpty(element)) { 
             errorMessages(errorElement, emptyError, element);
+            checkEmptyFocus(element, errorElement);
         }
         else if (!charRegex.test(element.value)) {
             errorMessages(errorElement, invalidChar, element);
@@ -102,12 +124,16 @@ document.addEventListener('DOMContentLoaded',function(){
             clearError(errorElement, element);
         }
     }
+    function checkEmptyFocus(element, errorElement) {
+        element.addEventListener('blur', ()=> clearError(errorElement, element));
+    } 
     //function to check empty fields
     function isEmpty(element) {
         return !element.value.trim();
     }
     //Function for displaying error messages
     function errorMessages(errorElement, message, childElement) {
+        ifCalled = true;
         document.querySelector("."+errorElement).classList.add("show");
         childElement.style.border = "1px solid red";
         document.querySelector("."+errorElement).innerHTML = message;
@@ -122,6 +148,9 @@ document.addEventListener('DOMContentLoaded',function(){
     //Event triggers
     fields.forEach(({element, error}) => {
         element.addEventListener('keyup', ()=> validateSchool(element, error));
+    });
+    fields2.forEach(({element, error})=>{
+        element.addEventListener('keyup', ()=> validateSchoolId(element, error));
     });
     startYear.addEventListener('keyup',validateStartYear);
     endYear.addEventListener('keyup',validateAcademicYear);

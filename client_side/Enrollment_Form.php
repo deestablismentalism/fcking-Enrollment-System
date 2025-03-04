@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/enrollment_form.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_errors.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_mq.css" media="all">
+    <script src="../js/user-base-designs.js"></script>
 <?php
     include './user_base_designs.php';
 ?>
@@ -86,7 +87,6 @@
                                     <input type="number" name="lyear" id="last-year" class="textbox">
                                 </div>
                             </div>
-                        
                             <div class="heducation">
                                 <div class="lschool-wrapper">
                                     <div class="last-school">
@@ -101,7 +101,7 @@
                                         <div class="error-msg">
                                             <span class="em-lschoolID"> Error Message Here. </span>
                                         </div>
-                                        <input type="text" name="lschoolID" id="lschoolID" class="textbox">
+                                        <input type="number" name="lschoolID" id="lschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
@@ -132,7 +132,7 @@
                                         <div class="error-msg">
                                             <span class="em-fschoolID"> Error Message Here. </span>
                                         </div>
-                                        <input type="text" name="fschoolID" id="fschoolID" class="textbox">
+                                        <input type="number" name="fschoolID" id="fschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
@@ -337,7 +337,7 @@
                                     <span id="em-barangay"></span>
                                 </div>
                                 <select name="barangay" id="barangay" class="textbox">
-                                    <option value="" disable selected>Select a Province </option>
+                                   
                                 </select>
                             </div>
                             <div class="city">
@@ -346,7 +346,7 @@
                                     <span id="em-city"></span>
                                 </div>
                                 <select name="city-municipality" id="city-municipality" class="textbox">
-                                    <option value="" disable selected>Select a Province </option>
+                                    
                                 </select>
                             </div>
                             <div class="province">
@@ -355,7 +355,7 @@
                                     <span id="em-province"></span>
                                 </div>
                                 <select name="province" id="province" class="textbox">
-                                    <option value="" disable selected>Select a Province </option>
+                                   
                                 </select>
                             </div>
                             <div class="region">
@@ -364,7 +364,7 @@
                                     <span id="em-region"></span>
                                 </div>
                                 <select name="region" id="region" class="textbox" >
-                                    <option value="" disable selected>Select a Region </option>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -487,7 +487,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/api-test.js"></script>
+    <script src="../js/api-test.js" defer></script>
     <script src="../js/previous-school-validation.js" defer></script>
 </body>
 </html>
