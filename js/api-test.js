@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let response = await fetch("https://psgc.gitlab.io/api/regions");
         let data = await response.json();                     
         
-        regions.innerHtml = `<option value=""> Select a Region</option`;
+        regions.innerHtml = `<option value=""> Select a Region</option>`;
         data.forEach(region=>{
             let option = document.createElement("option");
             option.value = region.code;
@@ -37,11 +37,12 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(regionCode);        
             let data = await response.json();
             
-            provinces.innerHtml = `<option value=""> Select a Province</option`;
+            provinces.innerHtml = `<option value=""> Select a Province</option>`;
             data.forEach(province=>{
                 let option = document.createElement("option");
                 option.value = province.code;
                 option.textContent = province.name;
+                option.style.fontSize = "0.88em";
                 provinces.appendChild(option);
             });
         });
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
           let data = await response.json();
           console.log(data);
 
-          cityOrMunicipality.innerHtml = `<option value=""> Select a Region</option`;
+          cityOrMunicipality.innerHtml = `<option value=""> Select a Region</option>`;
           data.forEach(city=> {
               let option = document.createElement("option");
               option.value = city.code;
@@ -78,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
           let response = await fetch(`https://psgc.gitlab.io/api/cities-municipalities/${cityCode}/barangays`);
           let data = await response.json();
           
-          barangay.innerHtml = `<option value=""> Select a Region</option`;
+          barangay.innerHtml = `<option value=""> Select a Region</option>`;
           data.forEach(barangays=> {
               let option = document.createElement("option");
               option.value = barangays.code;
