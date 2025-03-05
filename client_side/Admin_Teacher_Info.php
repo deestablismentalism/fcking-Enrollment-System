@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Admin Teacher Info</title> 
     <?php
-        include '../client_side/Admin_Base_Designs.php';
+        include '../client_side/admin_base_designs.php';
     ?>
 </head>
 <body>

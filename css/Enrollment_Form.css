@@ -2,10 +2,6 @@
 #subjects, #teachers, #mv, .searchbox-wrapper{
     display: none;
 }
-
-.account {
-    visibility: hidden;
-}
 /*----START OF MAIN CONTENT----*/
 .responsive-text-break {
     display: none;

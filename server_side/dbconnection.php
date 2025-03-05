@@ -1,5 +1,4 @@
 <?php
-
 class Connect {
     protected $conn = null;
     protected $servername;
