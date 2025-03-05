@@ -54,7 +54,7 @@ class EnrollmentForm {
             if ($insert_educational_background->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to insert educational information.";
+                return "Error: Failed to insert educational background.";
             }
         } 
         catch (PDOException $e) {
@@ -76,7 +76,7 @@ class EnrollmentForm {
             if ($insert_disabled_student->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to insert educational information.";
+                return "Error: Failed to insert disability information.";
             }
         } 
         catch (PDOException $e) {
@@ -85,8 +85,27 @@ class EnrollmentForm {
     }
 
     // Insert enrollee address function
-    public function enrollee_address() {
+    public function enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region) {
+        try {
+            $sql_enrollee_address = "INSERT INTO enrollee_address (House_Number, Subd_Name, Brgy_Name, Municipality_Name, Province_Name, Region)
+                                    VALUES (:House_Number, :Subd_Name, :Brgy_Name, :Municipality_Name, :Province_Name, :Region)";
+            $insert_enrollee_address = $this->conn->prepare($sql_enrollee_address);
+            $insert_enrollee_address->bindParam(':House_Number', $House_Number);
+            $insert_enrollee_address->bindParam(':Subd_Name', $Subd_Name);
+            $insert_enrollee_address->bindParam(':Brgy_Name', $Brgy_Name);
+            $insert_enrollee_address->bindParam(':Municipality_Name', $Municipality_Name);
+            $insert_enrollee_address->bindParam(':Province_Name', $Province_Name);
+            $insert_enrollee_address->bindParam(':Region', $Region);
 
+            if ($insert_enrollee_address->execute()) {
+                return $this->conn->lastInsertId();
+            } else {
+                return "Error: Failed to enrollee address.";
+            }
+        }
+        catch (PDOException $e) {
+            return "Submission Failed: " . $e->getMessage();
+        }
     }
     
     // Insert parent information function

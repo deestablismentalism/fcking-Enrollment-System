@@ -72,5 +72,20 @@ require_once 'enrollment_form.php';
 //     echo $response;
 // }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $enrollment_form = new EnrollmentForm();
+
+    // Collect form data
+    $House_Number = $_POST['House_Number'];
+    $Subd_Name = $_POST['Subdivision_Name'];
+    $Brgy_Name = $_POST['Barangay_Name'];
+    $Municipality_Name = $_POST['Municipality_Name'];
+    $Province_Name = $_POST['Province_Name'];
+    $Region = $_POST['Region'];
+    // Call function to insert data
+    $response = $enrollment_form->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
+
+    echo $response;
+}
 
 ?>
