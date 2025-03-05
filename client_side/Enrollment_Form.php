@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Enrollment Form</title>
-    <link rel="stylesheet" href="../css/Enrollment_Form.css" media="all">
-    <link rel="stylesheet" href="../css/Enrollment_Form_Errors.css" media="all">
-    <link rel="stylesheet" href="../css/Enrollment_Form_MQ.css" media="all">
+    <link rel="stylesheet" href="../css/enrollment_form.css" media="all">
+    <link rel="stylesheet" href="../css/enrollment_form_errors.css" media="all">
+    <link rel="stylesheet" href="../css/enrollment_form_mq.css" media="all">
+    <script src="../js/user-base-designs.js"></script>
 <?php
-    include './User_Base_Designs.php';
+    include './user_base_designs.php';
 ?>
         <div class="content">
             <div class="content-title">
@@ -86,27 +87,26 @@
                                     <input type="number" name="lyear" id="last-year" class="textbox">
                                 </div>
                             </div>
-                        
                             <div class="heducation">
                                 <div class="lschool-wrapper">
                                     <div class="last-school">
                                         <p class="dfont">Huling paaralang pinasukan</p>
                                         <div class="error-msg">
-                                            <span id="em-lschol"></span>
+                                            <span class="em-lschool"> Error Message Here. </span>
                                         </div>
                                         <input type="text" name="lschool" id="lschool" class="textbox" placeholder="South II Elementary School">
                                     </div>
                                         <div class="lschoolID">
                                         <p class="dfont">ID ng paaralan</p>
                                         <div class="error-msg">
-                                            <span id="em-lschoolID"></span>
+                                            <span class="em-lschoolID"> Error Message Here. </span>
                                         </div>
-                                        <input type="text" name="lschoolID" id="lschoolID" class="textbox">
+                                        <input type="number" name="lschoolID" id="lschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
                                 <div class="error-msg">
-                                    <span id="em-lschoolAddress"></span>
+                                    <span class="em-lschoolAddress"> Error Message Here.</span>
                                 </div>
                                 <input type="text" name="lschoolAddress" id="lschoolAddress" class="textbox">  
                                 <p class="dfont">Huling natapos na taon sa paaralan</p>
@@ -123,21 +123,21 @@
                                     <div class="fschool">
                                         <p class="dfont">Nais na paaralan</p>
                                         <div class="error-msg">
-                                            <span id="em-fschool"></span>
+                                            <span class="em-fschool"> Error Message Here. </span>
                                         </div>
                                         <input type="text" name="fschool" id="fschool" class="textbox" placeholder="South II Elementary School">
                                     </div>
                                     <div class="fschoolID">
                                         <p class="dfont">ID ng paaralan</p>
                                         <div class="error-msg">
-                                            <span id="em-fschoolID"></span>
+                                            <span class="em-fschoolID"> Error Message Here. </span>
                                         </div>
-                                        <input type="text" name="fschoolID" id="fschoolID" class="textbox">
+                                        <input type="number" name="fschoolID" id="fschoolID" class="textbox">
                                     </div>
                                 </div>
                                 <p class="dfont">Address ng paaralan</p>
                                 <div class="error-msg">
-                                    <span id="em-fschoolAddress"></span>
+                                    <span class="em-fschoolAddress"> Error Message Here. </span>
                                 </div>
                                 <input type="text" name="fschoolAddress" id="fschoolAddress" class="textbox">
                             </div>
@@ -227,7 +227,7 @@
                                     </div>
                                     <div class="community">
                                         <p class="dfont">Nabibilang sa katutubong grupo/ <br class="responsive-text-break">
-                                                        Komunidad ng Katutubong Kultural</p>
+                                                    Komunidad ng Katutubong Kultural</p>
                                         <div>
                                             <input type="radio" name="group" id="yes" class="radio" value="yes">
                                             <label for="yes">Oo</label>
@@ -324,7 +324,7 @@
                                 </div>
                                 <input type="text" name="house-number" id="house-number" class="textbox" placeholder="32">
                             </div>
-                            <div class="division">
+                            <div class="subdivision">
                                 <p class="dfont">Subdivision/ baryo/ purok/ sitio</p>
                                 <div class="error-msg">
                                     <span id="em-division"></span>
@@ -336,28 +336,36 @@
                                 <div class="error-msg">
                                     <span id="em-barangay"></span>
                                 </div>
-                                <input type="text" name="barangay" id="barangay" class="textbox" placeholder="Brgy. 4">
+                                <select name="barangay" id="barangay" class="textbox">
+                                   
+                                </select>
                             </div>
                             <div class="city">
                                 <p class="dfont">Lungosd/Munisipalidad</p>
                                 <div class="error-msg">
                                     <span id="em-city"></span>
                                 </div>
-                                <input type="text" name="city" id="city" class="textbox" placeholder="Lucena City">
+                                <select name="city-municipality" id="city-municipality" class="textbox">
+                                    
+                                </select>
                             </div>
                             <div class="province">
                                 <p class="dfont">Probinsya/lalawigan</p>
                                 <div class="error-msg">
                                     <span id="em-province"></span>
                                 </div>
-                                <input type="text" name="province" id="province" class="textbox" placeholder="Quezon Province">
+                                <select name="province" id="province" class="textbox">
+                                   
+                                </select>
                             </div>
                             <div class="region">
                                 <p class="dfont">Rehiyon</p>
                                 <div class="error-msg">
                                     <span id="em-region"></span>
                                 </div>
-                                <input type="text" name="region" id="region" class="textbox" placeholder="Region IV-A">
+                                <select name="region" id="region" class="textbox" >
+                                    
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -472,14 +480,14 @@
                         <div class="image-confirm">
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
                             <input type="button" value="Insert Image (Di pa nagana)">
-                            <input type="submit">
+                            <button type="submit">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script src="../js/api_test.js"></script>
-    <script src="../js/form-validation.js" defer></script>
+    <script src="../js/api-test.js" defer></script>
+    <script src="../js/previous-school-validation.js" defer></script>
 </body>
 </html>

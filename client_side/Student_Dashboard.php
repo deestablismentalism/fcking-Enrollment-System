@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Student Dashboard</title> 
     <?php
-        include '../client_side/User_Base_Designs.php';
+        include '../client_side/user_base_designs.php';
     ?>
-    <link rel="stylesheet" href="../css/Student_Dashboard.css">
+    <link rel="stylesheet" href="../css/student_dashboard.css">
+    <link rel="stylesheet" href="../css/reset.css">
 </head>
 <body>
     <div class="main-content">
