@@ -7,11 +7,13 @@ class Connect {
     protected $password;
     protected $dbname;
 
+    //automatically run and connect database when object is created
     public function __construct() {
         $this->initialize();
         $this->connect();
     }
 
+    //initialze variables about database
     protected function initialize() {
         $this->servername = "localhost";
         $this->username = "root";
@@ -19,6 +21,7 @@ class Connect {
         $this->dbname = "enrollment system"; 
     }
 
+    //connect to database
     protected function connect() {
         try {
             $this->conn = new PDO("mysql:host={$this->servername};dbname={$this->dbname};charset=utf8mb4", $this->username, $this->password);
@@ -30,19 +33,7 @@ class Connect {
         }
     }
 
-    public function SelectAllEnrollee() {
-        try {
-            $sql = "SELECT * FROM enrollee";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } 
-        
-        catch (PDOException $e) {
-            die("Query failed: " . $e->getMessage());
-        }
-    }
-
+    //function to call connection if needed
     public function getConnection() {
         if ($this->conn === null) {
             $this->connect();

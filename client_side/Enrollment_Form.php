@@ -16,7 +16,7 @@
             </div>
 
             <div class="content-wrapper">
-                <form action="" id="enrollment-form" class="form-main" method="POST">
+                <form action="" id="enrollment-form" class="form-main" method="POST" action="test.php">
 
                     <!--ANTAS AT IMPORMASYON NG PAARALAN-->
                     <div class="previous-school border-75">
