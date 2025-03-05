@@ -154,16 +154,16 @@
                             <div class="PSA-number">
                                     <p class="dfont">Numero na nakalagay sa Sertipiko ng Kapanganakan <br class="responsive-text-break">(Birth Certificate) mula sa PSA (kung may dala na kopya)</p>
                                     <div class="error-msg">
-                                        <span id="em-PSA-number"></span>
+                                        <span class="em-PSA-number"></span>
                                     </div>
-                                    <input type="text" name="" id="PSA-number" class="textbox">
+                                    <input type="number" name="" id="PSA-number" class="textbox">
                                 </div>
                                 <div class="LRN">
                                     <p class="dfont">Learner's Reference Number (LRN) kung mayroon</p>
                                     <div class="error-msg">
-                                        <span id="em-LRN"></span>
+                                        <span class="em-LRN"></span>
                                     </div>
-                                    <input type="text" name="" id="LRN" class="textbox">
+                                    <input type="number" name="" id="LRN" class="textbox">
                                 </div>
                            </div>
                         <div class="student-information-wrapper">
@@ -173,28 +173,28 @@
                                 <div class="lname">
                                     <p class="dfont">Apelyido</p>
                                     <div class="error-msg">
-                                        <span id="em-lname"></span>
+                                        <span class="em-lname"></span>
                                     </div>
                                     <input type="text" name="lname" id="lname" class="textbox" placeholder="Dela Cruz">
                                 </div>
                                 <div class="fname">
                                     <p class="dfont">Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-fname"></span>
+                                        <span class="em-fname"></span>
                                     </div>
                                     <input type="text" name="fname" id="fname" class="textbox" placeholder="John Mark">
                                 </div>
                                 <div class="mname">
                                     <p class="dfont">Gitnang Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-mname"></span>
+                                        <span class="em-mname"></span>
                                     </div>
                                     <input type="text" name="mname" id="mname" class="textbox" placeholder="Jimenez">
                                 </div>
                                 <div class="extension">
                                     <p class="dfont">Extensyon (Jr., Sr.)</p>
                                     <div class="error-msg">
-                                        <span id="em-extension"></span>
+                                        <span class="em-extension"></span>
                                     </div>
                                     <input type="text" name="extension" id="extension" class="textbox" placeholder="III">
                                 </div>
@@ -204,14 +204,14 @@
                                 <div class="bday">
                                     <p class="dfont">Petsa ng Kapanganakan</p>
                                     <div class="error-msg">
-                                        <span id="em-bday"></span>
+                                        <span class="em-bday"></span>
                                     </div>
                                     <input type="date" name="bday" id="bday" class="textbox">
                                 </div>
                                 <div class="age">
                                     <p class="dfont">Edad</p><br class="responsive-text-break">
                                     <div class="error-msg">
-                                        <span id="em-age"></span>
+                                        <span class="em-age"></span>
                                     </div>
                                     <input type="text" name="age" id="age" class="textbox" placeholder="10">
                                 </div>
@@ -239,7 +239,7 @@
                                 <div class="true-community">
                                     <p class="dfont">Kung oo, saang grupo nabilang</p>
                                     <div class="error-msg">
-                                        <span id="em-community"></span>
+                                        <span class="em-community"></span>
                                     </div>
                                     <input type="text" name="community" id="community" class="textbox" placeholder="sama-badjau">
                                 </div>
@@ -250,7 +250,7 @@
                                     <div class="language">
                                         <p class="dfont">Kinagisnang wika</p>
                                         <div class="error-msg">
-                                            <span id="em-language"></span>
+                                            <span class="em-language"></span>
                                         </div>
                                         <input type="text" name="language" id="language" class="textbox" placeholder="Tagalog">
                                     </div>
@@ -489,5 +489,6 @@
     </div>
     <script src="../js/api-test.js" defer></script>
     <script src="../js/previous-school-validation.js" defer></script>
+    <script src="../js/student-info-validation.js" defer></script>
 </body>
 </html>
