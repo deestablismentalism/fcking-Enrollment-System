@@ -258,14 +258,14 @@
                                 <div class="religion">
                                     <p class="dfont">Relihiyon</p>
                                     <div class="error-msg">
-                                        <span id="em-religion"></span>
+                                        <span class="em-religion"></span>
                                     </div>
                                     <input type="text" name="religion" id="religion" class="textbox" placeholder="Catholic">
                                 </div>
                                 <div class="email">
                                     <p class="dfont">Email Address</p>
                                     <div class="error-msg">
-                                        <span id="em-email"></span>
+                                        <span class="em-email"></span>
                                     </div>
                                     <input type="email" name="email" id="email" class="textbox" placeholder="sampleemail@gmail.com">
                                 </div>
@@ -487,7 +487,7 @@
             </div>
         </div>
     </div>
-    <script src="../js/api-test.js" defer></script>
+    <script src="../js/address-validation.js" defer></script>
     <script src="../js/previous-school-validation.js" defer></script>
     <script src="../js/student-info-validation.js" defer></script>
 </body>

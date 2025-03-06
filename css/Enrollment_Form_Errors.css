@@ -10,7 +10,10 @@
 .em-fschool,
 .em-fschoolAddress,
 .em-fschoolID,
-.em-PSA-number {display: none;}
+.em-PSA-number,
+.em-language,
+.em-religion,
+.em-email {display: none;}
 
 .em-start-year.show,
 .em-last-year-finished.show
@@ -20,4 +23,7 @@
 .em-fschool.show,
 .em-fschoolAddress.show,
 .em-fschoolId.show,
-.em-PSA-number.show {display: flex;}
+.em-PSA-number.show 
+.em-language.show,
+.em-religion.show,
+.em-email.show {display: flex;}

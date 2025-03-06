@@ -7,11 +7,20 @@ document.addEventListener('DOMContentLoaded', function(){
     const suffix = document.getElementById("extension");
     const birthDate = document.getElementById("bday");
     const age = document.getElementById("age");
-    const nameSection = [
+    const language = document.getElementById("language");
+    const religion = document.getElementById("religion");
+    const allInfo = [
         {element: lname, error: "em-lname"},
         {element: fname, error: "em-fname"},
         {element: mname, error: "em-mname"},
-        {element: suffix, error: "em-extension"}
+        {element: suffix, error: "em-extension"},
+        {element: language, error: "em-language"},
+        {element: religion, error: "em-religion"}
+    ];
+    const radioGroups = [
+        {textBoxElement: "community", nameValue: "group"},
+        {textBoxElement: "boolsn", nameValue: "sn"},
+        {textBoxElement: "atdevice", nameValue: "at"}
     ];
     const today = new Date();
     //regex
@@ -21,6 +30,17 @@ document.addEventListener('DOMContentLoaded', function(){
     const emptyError = "This field is required";
     
     //functions
+    function checkIndigenous(textBoxElement, nameValue ) {
+        const radioInput = document.querySelector(`input[name="${nameValue}"]:checked`);
+        const textbox = document.getElementById(textBoxElement);
+        if (radioInput.value === "no") {
+            textbox.disabled = true;
+            textbox.style.opacity = "0.2";
+        } else {
+            textbox.disabled = false;
+            textbox.style.opacity = "1";
+        }
+    }
     function setBirthYear() {
         let ageValue = parseInt(age.value, 10);
         let currentYear = today.getFullYear();
@@ -48,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function(){
         console.log(ageValue);
          
     }
-    function validateName(element, errorElement) {
+    function validateEmpty(element, errorElement) {
         if(isEmpty(element)) {
             errorMessages(errorElement, emptyError, element);
             checkEmptyFocus(element, errorElement);
@@ -105,7 +125,12 @@ document.addEventListener('DOMContentLoaded', function(){
     birthDate.addEventListener('change', getAge);
     psaNumber.addEventListener('keyup', validatePSA);
     lrn.addEventListener('keyup', validateLRN);
-    nameSection.forEach(({element, error}) => {
-        element.addEventListener('keyup', ()=>validateName(element, error));
+    radioGroups.forEach(({textBoxElement, nameValue})=>{
+        document.querySelectorAll(`input[name="${nameValue}"]`).forEach(radio=>{
+            radio.addEventListener('change',()=>checkIndigenous(textBoxElement, nameValue));
+        });
+    });
+    allInfo.forEach(({element, error}) => {
+        element.addEventListener('keyup', ()=>validateEmpty(element, error));
     });
 });
