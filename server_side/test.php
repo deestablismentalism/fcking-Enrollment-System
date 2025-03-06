@@ -72,20 +72,80 @@ require_once 'enrollment_form.php';
 //     echo $response;
 // }
 
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $enrollment_form = new EnrollmentForm();
+
+//     // Collect form data
+//     $House_Number = $_POST['House_Number'];
+//     $Subd_Name = $_POST['Subdivision_Name'];
+//     $Brgy_Name = $_POST['Barangay_Name'];
+//     $Municipality_Name = $_POST['Municipality_Name'];
+//     $Province_Name = $_POST['Province_Name'];
+//     $Region = $_POST['Region'];
+//     // Call function to insert data
+//     $response = $enrollment_form->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
+
+//     echo $response;
+// }
+
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $enrollment_form = new EnrollmentForm();
+
+//     // Collect form data
+//     $Father_First_Name = $_POST['Father_First_Name'];
+//     $Father_Last_Name = $_POST['Father_Last_Name'];
+//     $Father_Middle_Name = $_POST['Father_Middle_Name'];
+//     $Parent_Type = "Father";
+//     $Father_Educational_Attainment = $_POST['Father_Educational_Attainment'];
+//     $Father_Contact_Number = $_POST['Father_Contact_Number'];
+//     $Father_Email = $_POST['Father_Email'];
+//     $If_4Ps = $_POST['If_4Ps'];
+
+//     // Call function to insert data
+//     $response = $enrollment_form->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, 
+//     $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps);
+
+//     echo $response;
+// }
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $enrollment_form = new EnrollmentForm();
+
+//     // Collect form data
+//     $Mother_First_Name = $_POST['Mother_First_Name'];
+//     $Mother_Last_Name = $_POST['Mother_Last_Name'];
+//     $Mother_Middle_Name = $_POST['Mother_Middle_Name'];
+//     $Parent_Type = "Mother";
+//     $Mother_Educational_Attainment = $_POST['Mother_Educational_Attainment'];
+//     $Mother_Contact_Number = $_POST['Mother_Contact_Number'];
+//     $Mother_Email = $_POST['Mother_Email'];
+//     $If_4Ps = $_POST['If_4Ps'];
+
+//     // Call function to insert data
+//     $response = $enrollment_form->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Parent_Type, 
+//     $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email, $If_4Ps);
+
+//     echo $response;
+// }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $enrollment_form = new EnrollmentForm();
 
     // Collect form data
-    $House_Number = $_POST['House_Number'];
-    $Subd_Name = $_POST['Subdivision_Name'];
-    $Brgy_Name = $_POST['Barangay_Name'];
-    $Municipality_Name = $_POST['Municipality_Name'];
-    $Province_Name = $_POST['Province_Name'];
-    $Region = $_POST['Region'];
+    $Guardian_First_Name = $_POST['Guardian_First_Name'];
+    $Guardian_Last_Name = $_POST['Guardian_Last_Name'];
+    $Guardian_Middle_Name = $_POST['Guardian_Middle_Name'];
+    $Parent_Type = "Guardian";
+    $Guardian_Educational_Attainment = $_POST['Guardian_Educational_Attainment'];
+    $Guardian_Contact_Number = $_POST['Guardian_Contact_Number'];
+    $Guardian_Email = $_POST['Guardian_Email'];
+    $If_4Ps = $_POST['If_4Ps'];
+
     // Call function to insert data
-    $response = $enrollment_form->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
+    $response = $enrollment_form->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Parent_Type, 
+    $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email, $If_4Ps);
 
     echo $response;
 }
-
 ?>

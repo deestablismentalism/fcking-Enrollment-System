@@ -109,14 +109,91 @@ class EnrollmentForm {
     }
     
     // Insert parent information function
-    public function parent_information() {
+    public function father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, 
+    $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps) {
+        try {
+            $sql_father_information  = "INSERT INTO parent_information (First_Name, Last_Name, Middle_Name, Parent_Type, 
+                                        Educational_Attainment, Contact_Number, Parent_Email, If_4Ps)
+                                        VALUES (:First_Name, :Last_Name, :Middle_Name, :Parent_Type, :Educational_Attainment,
+                                        :Contact_Number, :Parent_Email, :If_4Ps)";
+            $insert_father_information = $this->conn->prepare($sql_father_information);
+            $insert_father_information->bindParam(':First_Name', $Father_First_Name);
+            $insert_father_information->bindParam(':Last_Name', $Father_Last_Name);
+            $insert_father_information->bindParam(':Middle_Name', $Father_Middle_Name);
+            $insert_father_information->bindParam(':Parent_Type', $Parent_Type);
+            $insert_father_information->bindParam(':Educational_Attainment', $Father_Educational_Attainment);
+            $insert_father_information->bindParam(':Contact_Number', $Father_Contact_Number);
+            $insert_father_information->bindParam(':Parent_Email', $Father_Email);
+            $insert_father_information->bindParam(':If_4Ps', $If_4Ps);
+            if ($insert_father_information->execute()) {
+                return $this->conn->lastInsertId();
+            } else {
+                return "Error: Failed to insert father information.";
+            }                                        
+        }
+        catch (PDOException $e) {
+            return "Submission Failed: " . $e->getMessage();
+        }
+    }
 
+    public function mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Parent_Type, 
+    $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email, $If_4Ps) {
+        try {
+            $sql_mother_information  = "INSERT INTO parent_information (First_Name, Last_Name, Middle_Name, Parent_Type, 
+                                        Educational_Attainment, Contact_Number, Parent_Email, If_4Ps)
+                                        VALUES (:First_Name, :Last_Name, :Middle_Name, :Parent_Type, :Educational_Attainment,
+                                        :Contact_Number, :Parent_Email, :If_4Ps)";
+            $insert_mother_information = $this->conn->prepare($sql_mother_information);
+            $insert_mother_information->bindParam(':First_Name', $Mother_First_Name);
+            $insert_mother_information->bindParam(':Last_Name', $Mother_Last_Name);
+            $insert_mother_information->bindParam(':Middle_Name', $Mother_Middle_Name);
+            $insert_mother_information->bindParam(':Parent_Type', $Parent_Type);
+            $insert_mother_information->bindParam(':Educational_Attainment', $Mother_Educational_Attainment);
+            $insert_mother_information->bindParam(':Contact_Number', $Mother_Contact_Number);
+            $insert_mother_information->bindParam(':Parent_Email', $Mother_Email);
+            $insert_mother_information->bindParam(':If_4Ps', $If_4Ps);
+            if ($insert_mother_information->execute()) {
+                return $this->conn->lastInsertId();
+            } else {
+                return "Error: Failed to insert mother information.";
+            }                                        
+        }
+        catch (PDOException $e) {
+            return "Submission Failed: " . $e->getMessage();
+        }
+    }
+
+    public function guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Parent_Type, 
+    $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email, $If_4Ps) {
+        try {
+            $sql_guardian_information  = "INSERT INTO parent_information (First_Name, Last_Name, Middle_Name, Parent_Type, 
+                                        Educational_Attainment, Contact_Number, Parent_Email, If_4Ps)
+                                        VALUES (:First_Name, :Last_Name, :Middle_Name, :Parent_Type, :Educational_Attainment,
+                                        :Contact_Number, :Parent_Email, :If_4Ps)";
+            $insert_guardian_information = $this->conn->prepare($sql_guardian_information);
+            $insert_guardian_information->bindParam(':First_Name', $Guardian_First_Name);
+            $insert_guardian_information->bindParam(':Last_Name', $Guardian_Last_Name);
+            $insert_guardian_information->bindParam(':Middle_Name', $Guardian_Middle_Name);
+            $insert_guardian_information->bindParam(':Parent_Type', $Parent_Type);
+            $insert_guardian_information->bindParam(':Educational_Attainment', $Guardian_Educational_Attainment);
+            $insert_guardian_information->bindParam(':Contact_Number', $Guardian_Contact_Number);
+            $insert_guardian_information->bindParam(':Parent_Email', $Guardian_Email);
+            $insert_guardian_information->bindParam(':If_4Ps', $If_4Ps);
+            if ($insert_guardian_information->execute()) {
+                return $this->conn->lastInsertId();
+            } else {
+                return "Error: Failed to insert guardian information.";
+            }                                        
+        }
+        catch (PDOException $e) {
+            return "Submission Failed: " . $e->getMessage();
+        }
     }
 
     // Insert images function
     public function images() {
 
-    }
+    }   
 
     // Insert enrollee function MAIN FUNCTION!!!!
     public function Insert_Enrollee() {
