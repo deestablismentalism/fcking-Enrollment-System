@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded',function(){
     const fschool = document.getElementById("fschool"); //nais paaralan
     const fschoolAddr = document.getElementById("fschoolAddress"); //nais paaralan address
     const fschoolId = document.getElementById("fschoolID"); //nais paaralan ID
-    // boolean
-    let ifCalled = false;
    //set default academic year
     const year = new Date().getFullYear();
     startYear.value = year;
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         else if(startYearVal > endYearVal) {
             console.log(startYear);
-            errorMessages("em-start-year", "Starting year cannot be lower than the end year", startYear);
+            errorMessages("em-start-year", "Starting year cannot be greater than the end year", startYear);
         }
         else {
             clearError("em-start-year", startYear);
@@ -56,7 +54,7 @@ document.addEventListener('DOMContentLoaded',function(){
         else if (!yearRegex.test(endYear.value) ) {
             errorMessages("em-start-year", invalidYear, endYear);
         }
-            //ensure that the end year is not equal to the start year
+        //ensure that the end year is not equal to the start year
         else if (endYearVal == startYearVal) {
             errorMessages("em-start-year", "End year cannot be equal to the starting year", endYear);
         }     
@@ -133,7 +131,6 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     //Function for displaying error messages
     function errorMessages(errorElement, message, childElement) {
-        ifCalled = true;
         document.querySelector("."+errorElement).classList.add("show");
         childElement.style.border = "1px solid red";
         document.querySelector("."+errorElement).innerHTML = message;

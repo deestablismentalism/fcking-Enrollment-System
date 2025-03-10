@@ -10,14 +10,16 @@ document.addEventListener("DOMContentLoaded", function() {
   let regionCode = "";
   let provinceCode = "";
   let cityCode = "";
-  let barangayCode = "";
 
   async function getRegions() {
     try {
         let response = await fetch("https://psgc.gitlab.io/api/regions");
         let data = await response.json();                     
         
-        regions.innerHtml = `<option value=""> Select a Region</option`;
+        if (!response.ok) {
+          throw new Error(`HTTP error! ${response.status}`);
+        }
+        regions.innerHTML = `<option value=""> Select a Region</option>`;
         data.forEach(region=>{
             let option = document.createElement("option");
             option.value = region.code;
@@ -26,7 +28,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     catch (error) {
-      console.error(error);
+      console.error("error fetching regions", error);
+      if (regions.tagName === "SELECT") {
+        let createTBox = document.createElement("input");
+        createTBox.type = "text";
+        createTBox.placeholder = "Enter region manually";
+        createTBox.id = "region";
+        createTBox.className = "textbox";
+        regions.replaceWith(createTBox);
+      }
     }
   }
   function getProvinces() {
@@ -36,8 +46,10 @@ document.addEventListener("DOMContentLoaded", function() {
             let response = await fetch(`https://psgc.gitlab.io/api/regions/${regionCode}/provinces`);
             console.log(regionCode);        
             let data = await response.json();
-            
-            provinces.innerHtml = `<option value=""> Select a Province</option`;
+            if (!response.ok) {
+              throw new Error(`HTTP error! ${response.status}`);
+            }
+            provinces.innerHTML = `<option value=""> Select a Province</option>`;
             data.forEach(province=>{
                 let option = document.createElement("option");
                 option.value = province.code;
@@ -48,6 +60,15 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       catch (error) {
         console.error(error);
+        console.error("error fetching provinces", error);
+        if (provinces.tagName === "SELECT") {
+          let createTBox = document.createElement("input");
+          createTBox.type = "text";
+          createTBox.placeholder = "Enter province manually";
+          createTBox.id = "province";
+          createTBox.className = "textbox";
+          provinces.replaceWith(createTBox);
+        }
       }
   }
   function getCity() {
@@ -58,7 +79,10 @@ document.addEventListener("DOMContentLoaded", function() {
           let data = await response.json();
           console.log(data);
 
-          cityOrMunicipality.innerHtml = `<option value=""> Select a Region</option`;
+          if (!response.ok) {
+            throw new Error(`HTTP error! ${response.status}`);
+          }
+          cityOrMunicipality.innerHTML = `<option value=""> Select a Region</option>`;
           data.forEach(city=> {
               let option = document.createElement("option");
               option.value = city.code;
@@ -69,8 +93,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     catch (error) {
       console.error(error);
+      console.error("error fetching regions", error);
+      if (cityOrMunicipality.tagName === "SELECT") {
+        let createTBox = document.createElement("input");
+        createTBox.type = "text";
+        createTBox.placeholder = "Enter city/municipality manually";
+        createTBox.id = "city";
+        createTBox.className = "textbox";
+        cityOrMunicipality.replaceWith(createTBox);
     }
   }
+}  
   function getBarangay() {
     try {
         cityOrMunicipality.addEventListener("change", async function() {
@@ -78,7 +111,10 @@ document.addEventListener("DOMContentLoaded", function() {
           let response = await fetch(`https://psgc.gitlab.io/api/cities-municipalities/${cityCode}/barangays`);
           let data = await response.json();
           
-          barangay.innerHtml = `<option value=""> Select a Region</option`;
+          if (!response.ok) {
+            throw new Error(`HTTP error! ${response.status}`);
+          }
+          barangay.innerHTML = `<option value=""> Select a Region</option>`;
           data.forEach(barangays=> {
               let option = document.createElement("option");
               option.value = barangays.code;
@@ -89,6 +125,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     catch(error) {
       console.error(error);
+      console.error("error fetching barangays", error);
+      if (barangay.tagName === "SELECT") {
+        let createTBox = document.createElement("input");
+        createTBox.type = "text";
+        createTBox.placeholder = "Enter barangay manually";
+        createTBox.id = "barangay";
+        createTBox.className = "textbox";
+        barangay.replaceWith(createTBox);
+      
+      }
     }
   }
   async function changeAddressValues() {

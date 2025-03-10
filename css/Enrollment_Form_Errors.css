@@ -9,7 +9,11 @@
 .em-lschoolID,
 .em-fschool,
 .em-fschoolAddress,
-.em-fschoolID {display: none;}
+.em-fschoolID,
+.em-PSA-number,
+.em-language,
+.em-religion,
+.em-email {display: none;}
 
 .em-start-year.show,
 .em-last-year-finished.show
@@ -18,4 +22,8 @@
 .em-lschoolID.show,
 .em-fschool.show,
 .em-fschoolAddress.show,
-.em-fschoolId.show {display: flex;}
+.em-fschoolId.show,
+.em-PSA-number.show 
+.em-language.show,
+.em-religion.show,
+.em-email.show {display: flex;}
