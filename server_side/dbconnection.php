@@ -14,10 +14,10 @@ class Connect {
 
     //initialze variables about database
     protected function initialize() {
-        $this->servername = "localhost";
-        $this->username = "root";
-        $this->password = "";
-        $this->dbname = "enrollment system"; 
+        $this->servername = "mysql-ssis-test.alwaysdata.net";
+        $this->username = "ssis-test";
+        $this->password = "SSISdatabasetest123";
+        $this->dbname = "ssis-test_database"; 
     }
 
     //connect to database

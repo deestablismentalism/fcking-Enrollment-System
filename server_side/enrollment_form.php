@@ -194,12 +194,31 @@ class EnrollmentForm {
 
     // Insert images function
     public function images() {
-        
+
     }   
 
     // Insert enrollee function MAIN FUNCTION!!!!
-    public function Insert_Enrollee() {
-        
+    public function Insert_Enrollee($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
+    $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
+    $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
+    $House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region,
+    $Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps,
+    $Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email,
+    $Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email) {
+        try{
+            $this->conn->beginTransaction();
+
+            $educational_information_ID = $this->educational_information($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended);
+            $educational_background_ID = $this->educational_background($Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address);
+            $disabled_student_ID = $this->disabled_student($Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech);
+            $enrollee_address_ID = $this->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
+            $father_information_ID = $this->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps);
+            $mother_information_ID = $this->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email);
+            $guardian_information_ID = $this->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email);
+        }
+        catch(PDOException $e) {
+            return "Submission Failed: " . $e->getMessage();
+        }
     }
 
 }
