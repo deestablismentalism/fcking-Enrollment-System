@@ -108,7 +108,7 @@ class EnrollmentForm {
         }
     }
     
-    // Insert parent information function
+    // Insert father information function
     public function father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, 
     $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps) {
         try {
@@ -136,6 +136,7 @@ class EnrollmentForm {
         }
     }
 
+    // Insert mother information function
     public function mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Parent_Type, 
     $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email, $If_4Ps) {
         try {
@@ -163,6 +164,7 @@ class EnrollmentForm {
         }
     }
 
+    // Insert guardian information function
     public function guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Parent_Type, 
     $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email, $If_4Ps) {
         try {
@@ -192,7 +194,7 @@ class EnrollmentForm {
 
     // Insert images function
     public function images() {
-
+        
     }   
 
     // Insert enrollee function MAIN FUNCTION!!!!
