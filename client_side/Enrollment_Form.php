@@ -84,7 +84,7 @@
                                     <div class="error-msg">
                                         <span class="em-last-year-finished"> Error Message Here. </span>
                                     </div>
-                                    <input type="number" name="lyear" id="last-year" class="textbox">
+                                    <input type="number" name="last-year" id="last-year" class="textbox">
                                 </div>
                             </div>
                             <div class="heducation">
@@ -156,14 +156,14 @@
                                     <div class="error-msg">
                                         <span class="em-PSA-number"></span>
                                     </div>
-                                    <input type="number" name="" id="PSA-number" class="textbox">
+                                    <input type="number" name="PSA-number" id="PSA-number" class="textbox">
                                 </div>
                                 <div class="LRN">
                                     <p class="dfont">Learner's Reference Number (LRN) kung mayroon</p>
                                     <div class="error-msg">
                                         <span class="em-LRN"></span>
                                     </div>
-                                    <input type="number" name="" id="LRN" class="textbox">
+                                    <input type="number" name="boolLRN" id="LRN" class="textbox">
                                 </div>
                            </div>
                         <div class="student-information-wrapper">

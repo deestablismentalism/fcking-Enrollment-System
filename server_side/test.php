@@ -143,9 +143,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $If_4Ps = $_POST['If_4Ps'];
 
     // Call function to insert data
-    $response = $enrollment_form->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Parent_Type, 
+    $enrollment_form->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Parent_Type, 
     $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email, $If_4Ps);
 
-    echo $response;
+    echo ("All data successfully inserted!");
 }
 ?>
