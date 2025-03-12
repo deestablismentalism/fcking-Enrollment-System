@@ -3,10 +3,27 @@
     font-size: 0.8em;
  }
 .em-start-year,
-.em-last-year-finished {
-    display: none;
-}
+.em-last-year-finished,
+.em-lschool,
+.em-lschoolAddress,
+.em-lschoolID,
+.em-fschool,
+.em-fschoolAddress,
+.em-fschoolID,
+.em-PSA-number,
+.em-language,
+.em-religion,
+.em-email {display: none;}
+
 .em-start-year.show,
-.em-last-year-finished.show {
-    display: flex;
-}
+.em-last-year-finished.show
+.em-lschool.show,
+.em-lschoolAddress.show,
+.em-lschoolID.show,
+.em-fschool.show,
+.em-fschoolAddress.show,
+.em-fschoolId.show,
+.em-PSA-number.show 
+.em-language.show,
+.em-religion.show,
+.em-email.show {display: flex;}

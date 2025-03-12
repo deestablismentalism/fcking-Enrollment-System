@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/Admin_Dashboard.css"> 
+    <link rel="stylesheet" href="../css/admin_dashboard.css"> 
     <?php
-        include '../client_side/User_Base_Designs.php'; 
+        include '../client_side/user_base_designs.php'; 
     ?>
 
         <!--START OF THE MAIN CONTENT-->
@@ -123,3 +123,4 @@
     </div>
 </body>
 </html>
+    

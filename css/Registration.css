@@ -1,0 +1,157 @@
+
+/*Head, main, logo container, page title*/
+.header { 
+    color: White;
+    font-size: 23.4px;  
+    font-family: "Balthazar";
+    padding: .1em;
+    margin-bottom: 2em;
+    height: 1em;
+    margin-top: 1.7em;
+}
+
+#img-container{
+    margin: 0 auto;  
+    height: 100vh;
+    width: 60em;
+    align-items: center;
+    display: flex;
+}
+
+#student{
+    height: 100vh;
+}
+
+#logo-container {
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    background-color: #E1A23C;
+    margin: 0 auto;  
+    margin-bottom: 2.5em;
+}
+
+#school-logo {
+    border-radius: 21%;
+    height: 4em;
+    width: 4em;
+}
+
+.page-title { 
+    color:#f3f3f3;
+    font-size: 100%;
+    padding-bottom: 1.5em;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #E1A23C, #ccc, #E1A23C);
+    width: 8em;
+    margin: 0 auto;
+    margin-bottom: 1em;
+
+}
+
+
+/*body, main, container, user details, form-label, input, details*/
+body {
+    max-height: 100vh;
+    background: #f3f3f3;
+    margin: 0;
+    display: flex;
+}
+
+.main {
+    background-color: #003366;  
+    width: 40em;
+    text-align: center;
+    min-height: 0%;
+    height: 100vh;
+}
+
+.user-details{
+    display: flex;
+    flex-wrap:  wrap;
+    align-content: flex-end;
+    flex: 1;
+}
+
+
+.input-box {
+    margin: 0em 2em 0em 2em;
+    justify-content: center;
+    display: inline-block;
+}
+
+.input-box  ::placeholder {
+    color: #FFF8F8;
+    opacity: .64;
+    font-size: .8em;
+    font-family: Baloo-Thambi-2;    
+}
+
+
+input {
+    margin-bottom: 1em;
+    display: inline-block;
+    width: 15em;
+    height: 2.1em;
+    font-size: .9em;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: 'Baloo Thambi';
+    background-color: #70859c;
+}
+
+
+.details {
+    color: rgb(255, 248, 248);
+    margin-bottom: .8em;
+    text-align: start;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    display: flex;
+    font-size: .8em;
+    font-family: Baloo-Thambi-2;
+    font-weight: 400;
+}
+
+.cn {
+    margin-bottom: 1.2em;
+}
+
+/*button, Create, Two Lines*/
+.button {
+    margin: 1em 13em 1.3em 13em;
+    padding: 1em 2em 2em 2em;
+    border-radius: 78px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    background-color: #E1A23C;
+    width: 12em;
+    height: 2.7em;
+    font-size: 1em;
+}
+
+p{
+    color: white;
+}
+
+.register {
+    color: #E1A23C;
+}
+
+.vlorange{
+    background-color:  #E1A23C;
+    width: 2em;
+    height: 100vh;
+}
+
+.vlyellow{
+    background-color:  #CC8B20;
+    height: 100vh;
+    width: 2em;
+}
+

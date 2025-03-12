@@ -2,12 +2,10 @@
 #subjects, #teachers, #mv, .searchbox-wrapper{
     display: none;
 }
-
-.account {
-    visibility: hidden;
-}
 /*----START OF MAIN CONTENT----*/
-
+.responsive-text-break {
+    display: none;
+}
 .content {
     margin-top: 1em;
     padding-left:5vw;
@@ -31,7 +29,7 @@
     border: 1px solid #616161 ;     
     background-color: #f7f4f4;
     width: 13em;
-    height: 1.6rem;     
+    height: 1.5rem;     
     padding: 5px;
     margin-top: 2%;   
 }
@@ -63,7 +61,6 @@ label{
 }
 
 .select {
-    max-width: 19em;
     display: inline-block;
     text-align: start;
     appearance: auto;
@@ -78,8 +75,6 @@ label{
     border-style: solid;
     border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 }
-
-
 /*ANTAS NG IMPORMASYON NG PAARALAN*/
 .acad-year-tbox {
     display: flex;
@@ -99,10 +94,19 @@ label{
 
 .previous-school-title {
     background-color: #ffffff;
-    padding-top: 1em;
+    padding: 1em 0em 1em 0em;
 }
 .nais-paaralan {
-    padding-left: 1em;
+    padding: 1em;
+}
+.heducation {
+    border-right :1px solid #295077;
+    padding: 1em;
+}
+
+.grade {
+    border-right :1px solid #295077;
+    padding: 1em;
 }
 .school-year,
 .last-year-finished {
@@ -119,19 +123,8 @@ label{
 }
 .learner-radio {
     display: flex;
-    width: 500px;
     flex-direction: column;
-    grid-column: 2/4;
 }
-.heducation {
-    border-right :rgba(0, 51, 102, 0.7) 1px solid;
-    padding-left: 1em;
-}
-
-.grade {
-    border-right :rgba(0, 51, 102, 0.7) 1px solid;
-}
-
 .lschool-wrapper, .fschool-wrapper {
     display: flex;
     gap: 1em;
@@ -147,7 +140,7 @@ label{
 
 .student-information-wrapper {
     display: grid;
-    grid-template-columns: 21% 21% 33% 25%;
+    grid-template-rows: 25% 35% 35%;
     background-color: #ffffff;
     padding:1em 0em 1em 7em;
     gap: 1em;
@@ -161,23 +154,31 @@ label{
     font-size: clamp(1em, 8vw, 2em);
     background-color: #ffffff;
     padding-left: 2em;
-}                                     
+}       
 .gender-group-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 0.5em;
+}       
+.student-info-row-2,
+.student-info-row-3,
+.student-info-row-4 {
     display: flex;
+    width: 100%;
 }
-.row-1-wrapper {
+.lname,.fname,.mname,.extension,
+.bday, .age, .true-community,
+.native-language, .religion, .email {
+    padding: 0.5em;
+}                       
+.previous-school-row-1,
+.student-info-row-1 {
     background-color: #fff;
-    padding: 0.8em;
+    padding: 1em 1em 1em 4em;
     width: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
 }
-
-.community {
-    width: 60%;
-    padding-left: 2em;
-}
-
 
 /*PARA SA MGA MAGAARAL NA MAY KAPANSANAN*/
 .student-disability-wrapper {
@@ -190,8 +191,7 @@ label{
 
 .student-disability-title {
     background-color: #ffffff;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: 1em 0em 1em 0em;
 }   
 
 /*TIRAHAN*/
@@ -205,8 +205,7 @@ label{
 
 .address-title {
     background-color: #ffffff;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: 1em 0em 1em 0em;
 }
 
 /*IMPORMASYON NG MAGULANG/TAGAPAGALAGA*/
@@ -220,13 +219,10 @@ label{
 
 .parents-guardian-information-title {
     background-color: #ffffff;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: 1em 0em 1em 0em;
 }
 
-
 .select {
-    max-width: 300px;
     display: inline-block;
     text-align: start;
     appearance: auto;
@@ -235,8 +231,8 @@ label{
     align-items: center;
     background-color: #f7f4f4;
     cursor: default;
-    width: 12rem;
-    height: 1.6rem;
+    width: 13em;
+    height: 2em;
     white-space: pre;
     border: 1px solid #616161;
     border-radius: 8px;
@@ -256,8 +252,7 @@ label{
     display: grid;
     grid-template-columns:  30% 65%;
     background-color: #ffffff;
-    padding:2em;
-    padding-left:6em;
+    padding: 0.5em 2em 0.5em 4em;
     gap: 1em;
 }     
 

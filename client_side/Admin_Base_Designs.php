@@ -1,7 +1,7 @@
     <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/Admin_Base_Designs.css">
+    <link rel="stylesheet" href="../css/admin_base_designs.css">
     <link rel="stylesheet" href="../css/reset.css">
-    <script src="../js/Admin_Base_Designs.js"></script>
+    <script src="../js/admin_base_designs.js"></script>
 </head>
 <body>
     <div class="sidebar">
@@ -105,3 +105,5 @@
             </div>
         </div>
         <!--END OF HEADER-->
+</body>
+</html>
