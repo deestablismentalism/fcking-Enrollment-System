@@ -17,8 +17,7 @@
             </div>
 
             <div class="content-wrapper">
-                <form action="" id="enrollment-form" class="form-main" method="POST" action="test.php">
-
+                <form id="enrollment-form" class="form-main" method="POST" action="../server_side/post_enrollment_form_data.php">
                     <!--ANTAS AT IMPORMASYON NG PAARALAN-->
                     <div class="previous-school border-75">
                         <div class="previous-school-title">
@@ -263,7 +262,7 @@
                                     <input type="text" name="religion" id="religion" class="textbox" placeholder="Catholic">
                                 </div>
                                 <div class="email">
-                                    <p class="dfont">Email Address</p>
+                                    <p class="dfont">Email Address (Iwanang Blanko kung wala)</p>
                                     <div class="error-msg">
                                         <span class="em-email"></span>
                                     </div>
@@ -375,15 +374,30 @@
                         <div class="parents-guardian-information-title">
                             <span class="title">IMPORMASYON NG MAGULANG/TAGAPAGALAGA</span>
                         </div>
+                        <!-- Nagdagdag ako ng seperate names dito dabid (Kinit)-->
                         <div class="parents-guardian-information-wrapper">
                             <div class="father">
-                                <div class="F-fullname">
+                                <div class="Father-Last-Name">
                                     <h3>AMA</h3>
-                                    <p class="dfont">Buong pangalan (Apelyido, Pangalan, Gitnang Pangalan)</p>
+                                    <p class="dfont">Apilyedo</p>
                                     <div class="error-msg">
-                                        <span id="em-F-fullname"></span>
+                                        <span id="em-Father-Last-Name"></span>
                                     </div>
-                                    <input type="text" class="textbox" name="F-fullname" id="F-fullname" placeholder="Dela Cruz, Rey De Vera">
+                                    <input type="text" class="textbox" name="Father-Last-Name" id="Father-Last-Name" placeholder="Dela Cruz">
+                                </div><br>
+                                <div class="Father-Middle-Name">
+                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-Father-Middle-Name"></span>
+                                    </div>
+                                    <input type="text" class="textbox" name="Father-Middle-Name" id="Father-Middle-Name" placeholder="De Vera">
+                                </div><br>
+                                <div class="Father-First-Name">
+                                    <p class="dfont">Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-Father-First-Name"></span>
+                                    </div>
+                                    <input type="text" class="textbox" name="Father-First-Name" id="Father-First-Name" placeholder="Rey">
                                 </div><br>
                                 <div class="F-highest-education">
                                     <label for="F-highest-education">Pinakamataas na antas na natapos sa pag-aaral: </label><br>
@@ -398,7 +412,7 @@
                                     </select>
                                 </div>
                                 <div class="F-number">
-                                    <p class="dfont">Numero sa telepono (cellphone/ telephone / email add)</p>
+                                    <p class="dfont">Numero sa telepono (cellphone/ telephone / )</p>
                                     <div class="error-msg">
                                         <span id="em-F-number"></span>
                                     </div>
@@ -406,14 +420,29 @@
                                 </div>
                             </div>
 
+                            <!-- Nagdagdag ako ng seperate names dito dabid (Kinit)-->
                             <div class="mother">
                                 <div class="M-fullname">
                                     <h3>INA</h3>
-                                    <p class="dfont">Buong pangalan (Apelyido, Pangalan, Gitnang Pangalan)</p>
+                                    <p class="dfont">Apilyedo</p>
                                     <div class="error-msg">
-                                        <span id="em-M-fullname"></span>
+                                        <span id="em-Mother-Last-Name"></span>
                                     </div>
-                                    <input type="text" class="textbox" name="M-fullname" id="M-fullname" placeholder="Dela Cruz, Maria Jimenez">
+                                    <input type="text" class="textbox" name="Mother-Last-Name" id="Mother-Last-Name" placeholder="Dela Cruz">
+                                </div><br>
+                                <div class="Mother-Middle-Name">
+                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-Mother-Middle-Name"></span>
+                                    </div>
+                                    <input type="text" class="textbox" name="Mother-Middle-Name" id="Mother-Middle-Name" placeholder="Jimenez">
+                                </div><br>
+                                <div class="Mother-First-Name">
+                                    <p class="dfont">Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-Mother-First-Name"></span>
+                                    </div>
+                                    <input type="text" class="textbox" name="Mother-First-Name" id="Mother-First-Name" placeholder="Maria">
                                 </div><br>
                                 <div class="M-highest-education">
                                     <label for="M-highest-education">Pinakamataas na antas na natapos sa pag-aaral: </label><br>
@@ -428,7 +457,7 @@
                                     </select>
                                 </div>
                                 <div class="M-number">
-                                    <p class="dfont">Numero sa telepono (cellphone/ telephone / email add)</p>
+                                    <p class="dfont">Numero sa telepono (cellphone/ telephone / )</p>
                                     <div class="error-msg">
                                         <span id="em-M-number"></span>
                                     </div>
@@ -436,14 +465,29 @@
                                 </div>
                             </div>
 
+                            <!-- Nagdagdag ako ng seperate names dito dabid (Kinit)-->
                             <div class="guardian">
                                 <div class="G-fullname">
                                     <h3>TAGAPAGALAGA</h3>
-                                    <p class="dfont">Buong pangalan (Apelyido, Pangalan, Gitnang Pangalan)</p>
+                                    <p class="dfont">Apilyedo</p>
                                     <div class="error-msg">
-                                        <span id="em-G-fullname"></span>
+                                        <span id="em-Guardian-Last-Name"></span>
                                     </div>
-                                    <input type="text" class="textbox" name="F-fullname" id="G-fullname" placeholder="Dela Cruz, Maria Jimenez">
+                                    <input type="text" class="textbox" name="Guardian-Last-Name" id="Guardian-Last-Name" placeholder="Dela Cruz">
+                                </div><br>
+                                <div class="Guardian-Middle-Name">
+                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-Guardian-Middle-Name"></span>
+                                    </div>
+                                    <input type="text" class="textbox" name="Guardian-Middle-Name" id="Guardian-Middle-Name" placeholder="Jimenez">
+                                </div><br>
+                                <div class="Guardian-First-Name">
+                                    <p class="dfont">Pangalan</p>
+                                    <div class="error-msg">
+                                        <span id="em-Guardian-First-Name"></span>
+                                    </div>
+                                    <input type="text" class="textbox" name="Guardian-First-Name" id="Guardian-First-Name" placeholder="Maria">
                                 </div><br>
                                 <div class="G-highest-education">
                                     <label for="G-highest-education">Pinakamataas na antas na natapos sa pag-aaral: </label><br>
@@ -458,7 +502,7 @@
                                     </select>
                                 </div>
                                 <div class="G-number">
-                                    <p class="dfont">Numero sa telepono (cellphone/ telephone / email add)</p>
+                                    <p class="dfont">Numero sa telepono (cellphone/ telephone / )</p>
                                     <div class="error-msg">
                                         <span id="em-G-number"></span>
                                     </div>
@@ -479,8 +523,8 @@
                         </div>
                         <div class="image-confirm">
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
-                            <input type="button" value="Insert Image (Di pa nagana)">
-                            <button type="submit">Submit</button>
+                            <!-- <input type="file" value="Insert Image (Di pa nagana)"> -->
+                            <button type="submit" style="border: 1px black solid; cursor: pointer;">Submit</button>
                         </div>
                     </div>
                 </form>
