@@ -108,22 +108,21 @@ class EnrollmentForm {
     }
     
     // Insert father information function
-    public function father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, 
-    $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps) {
+    public function father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type,
+    $Father_Educational_Attainment, $Father_Contact_Number,  $FIf_4Ps) {
         try {
             $sql_father_information  = "INSERT INTO parent_information (First_Name, Last_Name, Middle_Name, Parent_Type, 
-                                        Educational_Attainment, Contact_Number, Parent_Email, If_4Ps)
+                                        Educational_Attainment, Contact_Number, If_4Ps)
                                         VALUES (:First_Name, :Last_Name, :Middle_Name, :Parent_Type, :Educational_Attainment,
-                                        :Contact_Number, :Parent_Email, :If_4Ps)";
+                                        :Contact_Number, :If_4Ps)";
             $insert_father_information = $this->conn->prepare($sql_father_information);
             $insert_father_information->bindParam(':First_Name', $Father_First_Name);
             $insert_father_information->bindParam(':Last_Name', $Father_Last_Name);
             $insert_father_information->bindParam(':Middle_Name', $Father_Middle_Name);
-            $insert_father_information->bindParam(':Parent_Type', $Parent_Type);
+            $insert_father_information->bindParam(':Parent_Type', $Father_Parent_Type);
             $insert_father_information->bindParam(':Educational_Attainment', $Father_Educational_Attainment);
             $insert_father_information->bindParam(':Contact_Number', $Father_Contact_Number);
-            $insert_father_information->bindParam(':Parent_Email', $Father_Email);
-            $insert_father_information->bindParam(':If_4Ps', $If_4Ps);
+            $insert_father_information->bindParam(':If_4Ps', $FIf_4Ps);
             if ($insert_father_information->execute()) {
                 return $this->conn->lastInsertId();
             } else {
@@ -137,12 +136,12 @@ class EnrollmentForm {
 
     // Insert mother information function
     public function mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Parent_Type, 
-    $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email, $If_4Ps) {
+    $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps) {
         try {
             $sql_mother_information  = "INSERT INTO parent_information (First_Name, Last_Name, Middle_Name, Parent_Type, 
-                                        Educational_Attainment, Contact_Number, Parent_Email, If_4Ps)
+                                        Educational_Attainment, Contact_Number, If_4Ps)
                                         VALUES (:First_Name, :Last_Name, :Middle_Name, :Parent_Type, :Educational_Attainment,
-                                        :Contact_Number, :Parent_Email, :If_4Ps)";
+                                        :Contact_Number, :If_4Ps)";
             $insert_mother_information = $this->conn->prepare($sql_mother_information);
             $insert_mother_information->bindParam(':First_Name', $Mother_First_Name);
             $insert_mother_information->bindParam(':Last_Name', $Mother_Last_Name);
@@ -150,8 +149,7 @@ class EnrollmentForm {
             $insert_mother_information->bindParam(':Parent_Type', $Parent_Type);
             $insert_mother_information->bindParam(':Educational_Attainment', $Mother_Educational_Attainment);
             $insert_mother_information->bindParam(':Contact_Number', $Mother_Contact_Number);
-            $insert_mother_information->bindParam(':Parent_Email', $Mother_Email);
-            $insert_mother_information->bindParam(':If_4Ps', $If_4Ps);
+            $insert_mother_information->bindParam(':If_4Ps', $MIf_4Ps);
             if ($insert_mother_information->execute()) {
                 return $this->conn->lastInsertId();
             } else {
@@ -165,12 +163,12 @@ class EnrollmentForm {
 
     // Insert guardian information function
     public function guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Parent_Type, 
-    $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email, $If_4Ps) {
+    $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps) {
         try {
             $sql_guardian_information  = "INSERT INTO parent_information (First_Name, Last_Name, Middle_Name, Parent_Type, 
-                                        Educational_Attainment, Contact_Number, Parent_Email, If_4Ps)
+                                        Educational_Attainment, Contact_Number, If_4Ps)
                                         VALUES (:First_Name, :Last_Name, :Middle_Name, :Parent_Type, :Educational_Attainment,
-                                        :Contact_Number, :Parent_Email, :If_4Ps)";
+                                        :Contact_Number, :If_4Ps)";
             $insert_guardian_information = $this->conn->prepare($sql_guardian_information);
             $insert_guardian_information->bindParam(':First_Name', $Guardian_First_Name);
             $insert_guardian_information->bindParam(':Last_Name', $Guardian_Last_Name);
@@ -178,8 +176,7 @@ class EnrollmentForm {
             $insert_guardian_information->bindParam(':Parent_Type', $Parent_Type);
             $insert_guardian_information->bindParam(':Educational_Attainment', $Guardian_Educational_Attainment);
             $insert_guardian_information->bindParam(':Contact_Number', $Guardian_Contact_Number);
-            $insert_guardian_information->bindParam(':Parent_Email', $Guardian_Email);
-            $insert_guardian_information->bindParam(':If_4Ps', $If_4Ps);
+            $insert_guardian_information->bindParam(':If_4Ps', $GIf_4Ps);
             if ($insert_guardian_information->execute()) {
                 return $this->conn->lastInsertId();
             } else {
@@ -201,11 +198,11 @@ class EnrollmentForm {
     $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
     $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
     $House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region,
-    $Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps,
-    $Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email,
-    $Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email,
-    $Learner_Reference_Number, $Psa_Number, $Birth_Date, $Sex, $Religion, 
-    $Native_Language, $If_Cultural, $Cultural_Group, $Enrollment_Status) {
+    $Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps,
+    $Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps,
+    $Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps,
+    $Student_First_Name, $Student_Middle_Name, $Student_Last_Name, $Student_Extension, $Learner_Reference_Number, $Psa_Number, $Birth_Date, $Age, $Sex, $Religion, 
+    $Native_Language, $If_Cultural, $Cultural_Group, $Student_Email, $Enrollment_Status) {
         try{
             // If even one of the queries fail, none of the queries will be executed
             $this->conn->beginTransaction();
@@ -215,9 +212,9 @@ class EnrollmentForm {
             $Educational_Background_Id = $this->educational_background($Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address);
             $Disabled_Student_Id = $this->disabled_student($Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech);
             $Enrollee_Address_Id = $this->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
-            $Father_Information_Id = $this->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps);
-            $Mother_Information_Id = $this->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email);
-            $Guardian_Information_Id = $this->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email);
+            $Father_Information_Id = $this->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps);
+            $Mother_Information_Id = $this->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps);
+            $Guardian_Information_Id = $this->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps);
             $Enrollee_Id;
 
             
@@ -226,23 +223,29 @@ class EnrollmentForm {
             }
 
             // Insert enrollee
-            $sql_enrollee = "INSERT INTO enrollee (Learner_Reference_Number, Psa_Number, Birth_Date, Sex, Religion, 
-                            Native_Language, If_Cultural, Cultural_Group, Enrollment_Status, Enrollee_Address_Id,
+            $sql_enrollee = "INSERT INTO enrollee (Student_First_Name, Student_Middle_Name, Student_Last_Name, Student_Extension, Learner_Reference_Number, Psa_Number, Birth_Date, Age, Sex, Religion, 
+                            Native_Language, If_Cultural, Cultural_Group, Student_Email, Enrollment_Status, Enrollee_Address_Id,
                             Educational_Information_Id, Educational_Background_Id, Disabled_Student_Id)
-                            VALUES (:Learner_Reference_Number, :Psa_Number, :Birth_Date, :Sex, :Religion, :Native_Language, 
-                            :If_Cultural, :Cultural_Group, :Enrollment_Status, :Enrollee_Address_Id, :Educational_Information_Id, 
+                            VALUES (:Student_First_Name, :Student_Middle_Name, :Student_Last_Name, :Student_Extension, :Learner_Reference_Number, :Psa_Number, :Birth_Date, :Age, :Sex, :Religion, :Native_Language, 
+                            :If_Cultural, :Cultural_Group, :Student_Email, :Enrollment_Status, :Enrollee_Address_Id, :Educational_Information_Id, 
                             :Educational_Background_Id, :Disabled_Student_Id);";
 
             // just binding parameters
             $insert_enrollee = $this->conn->prepare($sql_enrollee);
+            $insert_enrollee->bindParam(':Student_First_Name', $Student_First_Name);
+            $insert_enrollee->bindParam(':Student_Middle_Name', $Student_Middle_Name);
+            $insert_enrollee->bindParam(':Student_Last_Name', $Student_Last_Name);
+            $insert_enrollee->bindParam(':Student_Extension', $Student_Extension);
             $insert_enrollee->bindParam(':Learner_Reference_Number', $Learner_Reference_Number);
             $insert_enrollee->bindParam(':Psa_Number', $Psa_Number);
             $insert_enrollee->bindParam(':Birth_Date', $Birth_Date);
+            $insert_enrollee->bindParam(':Age', $Age);
             $insert_enrollee->bindParam(':Sex', $Sex);
             $insert_enrollee->bindParam(':Religion', $Religion);
             $insert_enrollee->bindParam(':Native_Language', $Native_Language);
             $insert_enrollee->bindParam(':If_Cultural', $If_Cultural);
             $insert_enrollee->bindParam(':Cultural_Group', $Cultural_Group);
+            $insert_enrollee->bindParam(':Student_Email', $Student_Email);
             $insert_enrollee->bindParam(':Enrollment_Status', $Enrollment_Status);
             $insert_enrollee->bindParam(':Enrollee_Address_Id', $Enrollee_Address_Id);
             $insert_enrollee->bindParam(':Educational_Information_Id', $Educational_Information_Id);
@@ -311,6 +314,5 @@ class EnrollmentForm {
             return "Submission Failed: " . $e->getMessage();
         }
     }
-
 }
 ?>

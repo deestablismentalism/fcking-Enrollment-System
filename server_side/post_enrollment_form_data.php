@@ -31,61 +31,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $enrollment_form->disabled_student($Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech);
 
     //  EROLLEE ADDRESS
-    $House_Number = $_POST['House_Number'];
-    $Subd_Name = $_POST['Subdivision_Name'];
-    $Brgy_Name = $_POST['Barangay_Name'];
-    $Municipality_Name = $_POST['Municipality_Name'];
-    $Province_Name = $_POST['Province_Name'];
-    $Region = $_POST['Region'];
+    $House_Number = $_POST['house-number'];
+    $Subd_Name = $_POST['division'];
+    $Brgy_Name = $_POST['barangay'];
+    $Municipality_Name = $_POST['city-municipality'];
+    $Province_Name = $_POST['province'];
+    $Region = $_POST['region'];
     $enrollment_form->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
 
     // ENROLLEE PARENTS INFORMATION
-    $Father_First_Name = $_POST['Father_First_Name'];
-    $Father_Last_Name = $_POST['Father_Last_Name'];
-    $Father_Middle_Name = $_POST['Father_Middle_Name'];
-    $Parent_Type = "Father";
-    $Father_Educational_Attainment = $_POST['Father_Educational_Attainment'];
-    $Father_Contact_Number = $_POST['Father_Contact_Number'];
-    $Father_Email = $_POST['Father_Email'];
-    $If_4Ps = $_POST['If_4Ps'];
-    $enrollment_form->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Parent_Type, 
-    $Father_Educational_Attainment, $Father_Contact_Number, $Father_Email, $If_4Ps);
+    $Father_First_Name = $_POST['Father-First-Name'];
+    $Father_Last_Name = $_POST['Father-Last-Name'];
+    $Father_Middle_Name = $_POST['Father-Middle-Name'];
+    $Father_Parent_Type = "Father";
+    $Father_Educational_Attainment = $_POST['F-highest-education'];
+    $Father_Contact_Number = $_POST['F-Number'];
+    $FIf_4Ps = $_POST['fourPS'];
+    $enrollment_form->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, 
+    $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps);
 
 
     $Mother_First_Name = $_POST['Mother_First_Name'];
     $Mother_Last_Name = $_POST['Mother_Last_Name'];
     $Mother_Middle_Name = $_POST['Mother_Middle_Name'];
-    $Parent_Type = "Mother";
-    $Mother_Educational_Attainment = $_POST['Mother_Educational_Attainment'];
-    $Mother_Contact_Number = $_POST['Mother_Contact_Number'];
-    $Mother_Email = $_POST['Mother_Email'];
-    $If_4Ps = $_POST['If_4Ps'];
-    $enrollment_form->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Parent_Type, 
-    $Mother_Educational_Attainment, $Mother_Contact_Number, $Mother_Email, $If_4Ps);
+    $Mother_Parent_Type = "Mother";
+    $Mother_Educational_Attainment = $_POST['M-highest-education'];
+    $Mother_Contact_Number = $_POST['M-Number'];
+    $MIf_4Ps = $_POST['fourPS'];
+    $enrollment_form->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, 
+    $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps);
 
 
     $Guardian_First_Name = $_POST['Guardian_First_Name'];
     $Guardian_Last_Name = $_POST['Guardian_Last_Name'];
     $Guardian_Middle_Name = $_POST['Guardian_Middle_Name'];
-    $Parent_Type = "Guardian";
-    $Guardian_Educational_Attainment = $_POST['Guardian_Educational_Attainment'];
-    $Guardian_Contact_Number = $_POST['Guardian_Contact_Number'];
-    $Guardian_Email = $_POST['Guardian_Email'];
-    $If_4Ps = $_POST['If_4Ps'];
-    $enrollment_form->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Parent_Type, 
-    $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email, $If_4Ps);
+    $Guardian_Parent_Type = "Guardian";
+    $Guardian_Educational_Attainment = $_POST['G-highest-education'];
+    $Guardian_Contact_Number = $_POST['G-Number'];
+    $GIf_4Ps = $_POST['fourPS'];
+    $enrollment_form->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, 
+    $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps);
 
     // ENROLLEE INFORMATION
+    $Student_First_Name = $_POST['fname']
+    $Student_Middle_Name = $_POST['mname'];
+    $Student_Last_Name = $_POST['lname'];
+    $Student_Extension = $_POST['extension'];
     $Learner_Reference_Number = $_POST['boolLRN'];
     $Psa_Number = $_POST['PSA-number'];
-    $Birth_Date = $_POST['boolLRN'];
-    $Sex = $_POST['boolLRN'];
-    $Religion = $_POST['boolLRN'];
-    $Native_Language = $_POST['boolLRN'];
-    $If_Cultural = $_POST['boolLRN'];
-    $Cultural_Group = $_POST['boolLRN'];
-    $Enrollment_Status = $_POST['boolLRN'];
-
+    $Birth_Date = $_POST['bday'];
+    $Age = $_POST['age'];
+    $Sex = $_POST['gender'];
+    $Religion = $_POST['religion'];
+    $Native_Language = $_POST['language'];
+    $If_Cultural = $_POST['group'];
+    $Cultural_Group = $_POST['community'];
+    $Student_Email = $_POST['email'];
+    $Enrollment_Status = "3";
 }
 
 ?>
