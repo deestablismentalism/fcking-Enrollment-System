@@ -67,12 +67,6 @@
                     <img src="../imgs/check2-circle.svg" class="bi">
                     <a href=""><span class="menu-title">Mission & Vision</span></a>
                 </div>  
-                <!--Comment muna to-->
-                <!--ANNOUNCEMENTS
-                <div class="menu border-100sb" id="announcements">
-                    <i class="bi bi-megaphone"></i>
-                    <a href="" id="announcements"><span class="menu-title">Announcements</span></a>
-                </div>-->
             </div>
         </div>
     </div>

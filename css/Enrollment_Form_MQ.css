@@ -48,6 +48,9 @@
         grid-template-columns: auto auto;
         padding:1em 1em 1em 4em;    
     }
+    .address select option {
+        font-size: 1em;
+    }
 
     .address-wrapper {
         grid-template-columns: 25% 25% 25%;
@@ -64,7 +67,6 @@
 }
 
 /*For 1360px Width*/
-
 
 @media (max-width: 1190px) {
     .content {
