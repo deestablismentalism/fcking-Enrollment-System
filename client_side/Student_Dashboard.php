@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Student Dashboard</title> 
     <?php
-        include '../client_side/user_base_designs.php';
+        include '../client_side/User_Base_Designs.php';
     ?>
-    <link rel="stylesheet" href="../css/student_dashboard.css">
-    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/Student_Dashboard.css">
 </head>
 <body>
     <div class="main-content">
@@ -16,6 +15,7 @@
         <!--START OF MAIN CONTENT-->
             <div class="user-homepage">
                 <div class="student-dashboard">
+                    <!--START OF CLASS SCHED-->
                     <h2 class="class-sched"> Class Schedule </h2> <br>
                     <table class="sched border-75-sched">
                         <tr>
@@ -62,8 +62,10 @@
                         }
                         </script>
                         </div>
+                        <!--END OF CLASS SCHED-->
                 </div>
                 <div class="student-dashboard">
+                    <!--START OF ANNOUNCEMENTS-->
                     <h2 class="announcements-title"> Announcements </h2> <br>
                     <div class="announcement-image border-75-announcement"> 
                         <img src="../imgs/temp-announcement.png" alt="announcement"> 
@@ -82,7 +84,8 @@
                                 }
                                 </script>
                             </div>
-                    </div>
+                        </div>
+                    <!--END OF ANNOUNCEMENTS-->
                 </div>
             </div>
         </div> 
