@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const age = document.getElementById("age");
     const language = document.getElementById("language");
     const religion = document.getElementById("religion");
+    const form = document.getElementById("enrollment-form");
     const allInfo = [
         {element: lname, error: "em-lname"},
         {element: fname, error: "em-fname"},
@@ -28,7 +29,8 @@ document.addEventListener('DOMContentLoaded', function(){
     const bCertRegex = /^([0-9]){13}$/;
     //emptyError
     const emptyError = "This field is required";
-    
+    const notNumber = "This field must be a number";
+    const isNumber = false;
     //functions
     function checkIndigenous(textBoxElement, nameValue ) {
         const radioInput = document.querySelector(`input[name="${nameValue}"]:checked`);
@@ -92,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function(){
     function validateLRN() {
         if(isEmpty(lrn)) {
             errorMessages("em-LRN", emptyError, lrn);
-            checkEmptyFocus(psaNumber, "em-PSA-number");
+            checkEmptyFocus(lrn, "em-LRN");
         }
         else if(!lrnRegex.test(lrn.value)) {
             errorMessages("em-LRN", "Enter a valid LRN", lrn);
@@ -123,8 +125,6 @@ document.addEventListener('DOMContentLoaded', function(){
     //event trigger
     age.addEventListener('change', setBirthYear);
     birthDate.addEventListener('change', getAge);
-    psaNumber.addEventListener('keyup', validatePSA);
-    lrn.addEventListener('keyup', validateLRN);
     radioGroups.forEach(({textBoxElement, nameValue})=>{
         document.querySelectorAll(`input[name="${nameValue}"]`).forEach(radio=>{
             radio.addEventListener('change',()=>checkIndigenous(textBoxElement, nameValue));
@@ -132,5 +132,39 @@ document.addEventListener('DOMContentLoaded', function(){
     });
     allInfo.forEach(({element, error}) => {
         element.addEventListener('keyup', ()=>validateEmpty(element, error));
+    });
+    form.addEventListener('submit', function(e) 
+    {
+        e.preventDefault();
+    });
+    psaNumber.addEventListener('keydown', function(e) {
+        if(isNaN(e.key) && e.key !== "Backspace"){
+            errorMessages("em-PSA-number", notNumber, psaNumber);
+            checkEmptyFocus(psaNumber, "em-PSA-number");
+            e.preventDefault();
+        }
+        else if(psaNumber.value.length >= 13 && e.key !== "Backspace"){ 
+            errorMessages("em-PSA-number", "Only 13 digits are allowed", psaNumber);
+            checkEmptyFocus(psaNumber, "em-PSA-number");
+            e.preventDefault();
+        }
+        else {
+            validatePSA();
+        }
+    });
+    lrn.addEventListener('keydown', function(e) {
+        if(isNaN(e.key) && e.key !== "Backspace"){
+            errorMessages("em-LRN", notNumber, lrn);
+            checkEmptyFocus(lrn, "em-LRN");
+            e.preventDefault();
+        }
+        else if(lrn.value.length >= 12 && e.key !== "Backspace"){ 
+            errorMessages("em-LRN", "Only 12 digits are allowed", lrn);
+            checkEmptyFocus(lrn, "em-LRN");
+            e.preventDefault();
+        }
+        else {
+            validateLRN();
+        }
     });
 });

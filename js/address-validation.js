@@ -10,14 +10,47 @@ document.addEventListener("DOMContentLoaded", function() {
   let regionCode = "";
   let provinceCode = "";
   let cityCode = "";
+  let isRegionFalse = false;
+  const emptyError = "This field is required";
 
+  function isEmpty(element) {
+    return !element.value.trim();
+  }
+  function clearError(errorElement, childElement) {
+    const errorField = document.querySelector("." + errorElement);
+    errorField.classList.remove("show");
+    errorField.innerHTML = "";
+    childElement.style.border = "1px solid #616161";
+}
+  function checkEmptyFocus(element, errorElement) {
+    element.addEventListener('blur', ()=> clearError(errorElement, element));
+  } 
+  function errorMessages(errorElement, message, childElement) {
+    document.querySelector("."+errorElement).classList.add("show");
+    childElement.style.border = "1px solid red";
+    document.querySelector("."+errorElement).innerHTML = message;
+  }
+  function validateEmpty(element, errorElement) {
+    if(isEmpty(element)) {
+        errorMessages(errorElement, emptyError, element);
+        checkEmptyFocus(element, errorElement);
+    }
+    else {
+        clearError(errorElement, element);
+    }
+  } 
+  function initialSelectValue(selectElement, parentElement) {
+      selectElement.innerHTML = `<option value=""> Select a ${parentElement} first </option>`;
+  }
   function replaceTextBox(replaceElement, addressType) {
     let createTBox = document.createElement("input");
         createTBox.type = "text";
-        createTBox.id = `"${addressType}"`;
+        createTBox.id = addressType;
         createTBox.placeholder = `Enter ${addressType} manually`;
         createTBox.className = "textbox";
         replaceElement.replaceWith(createTBox);
+
+        createTBox.addEventListener('keyup', ()=> validateEmpty(createTBox, `em-${addressType}`));
   }
   async function getRegions() {
     try {
@@ -26,9 +59,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const timeOut = setTimeout(() => {
           controller.abort();
           console.error("Request timed out");
+          isRegionFalse = true;
           replaceTextBox(regions, "region");
+          replaceTextBox(provinces, "province");
+          replaceTextBox(cityOrMunicipality, "city");
+          replaceTextBox(barangay, "barangay");
         }, 3000);
-        
         const response = await fetch("https://psgc.gitlab.io/api/regions", {signal});
                         
         if (!response.ok) {
@@ -51,12 +87,10 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
   }
-  regions.addEventListener("change", async function() {
-    await getProvinces();
-  });
   async function getProvinces() {
         try {
         regionCode = regions.value;
+        console.log(regionCode);
         const response = await fetch(`https://psgc.gitlab.io/api/regions/${regionCode}/provinces`);     
         if (!response.ok) {
           throw new Error(`HTTP error! ${response.status}`);
@@ -74,17 +108,16 @@ document.addEventListener("DOMContentLoaded", function() {
         catch (error) {
           console.error(error);
           console.error("error fetching provinces", error);
-          if (regions.tagName === "INPUT" && provinces.tagName === "SELECT") {
+          if (provinces.tagName === "SELECT" && regions.value !== "") {
               replaceTextBox(provinces, "province");
           }
         }
       }  
-      provinces.addEventListener("change", async function(){
-        await getCity();
-      });
+      
 async function getCity() {
     try {
           provinceCode = provinces.value;
+          console.log(provinceCode);
           const response = await fetch(`https://psgc.gitlab.io/api/provinces/${provinceCode}/cities-municipalities`);
           if (!response.ok) {
             throw new Error(`HTTP error! ${response.status}`);
@@ -102,15 +135,16 @@ async function getCity() {
     catch (error) {
       console.error(error);
       console.error("error fetching regions", error);
+      if (cityOrMunicipality.tagName === "SELECT" && provinces.value !== "") {
         replaceTextBox(cityOrMunicipality, "city");
+      } 
   }
 }  
-cityOrMunicipality.addEventListener("change", async function() {
-  await getBarangay();
-});
+
 async  function getBarangay() {
     try {
           cityCode = cityOrMunicipality.value;
+          console.log(cityCode);
           const response = await fetch(`https://psgc.gitlab.io/api/cities-municipalities/${cityCode}/barangays`);
           if (!response.ok) {
             throw new Error(`HTTP error! ${response.status}`);
@@ -127,9 +161,21 @@ async  function getBarangay() {
     catch(error) {
       console.error(error);
       console.error("error fetching barangays", error);
+      if (barangay.tagName === "SELECT" && cityOrMunicipality.value !== "") {
         replaceTextBox(barangay, "barangay");
+      }
     }
   }
+  provinces.addEventListener("change", async function(){
+    await getCity();
+  });
+  cityOrMunicipality.addEventListener("change", async function() {
+    await getBarangay();
+  });
+  regions.addEventListener("change", async function() {
+    await getProvinces();
+  });
+
   async function changeAddressValues() {
     try {
 
@@ -158,15 +204,31 @@ async  function getBarangay() {
       console.error(error);
     }
   }
-  //set the address values
-  getBarangay();
-  getCity();
-  getProvinces();
-  getRegions();
-
-  form.addEventListener("submit", changeAddressValues);
-  getBarangay;
-  getCity;
-  getProvinces;
-  getRegions;
+    getRegions(); 
+    if (regions.value) {
+      getProvinces();
+    }
+    else{
+      initialSelectValue(provinces, "Region");
+    }
+    if (provinces.value) {
+      getCity();
+    }
+    else {
+      initialSelectValue(cityOrMunicipality, "Province");
+    }
+    if (cityOrMunicipality.value) {
+      getBarangay();
+    }
+    else {
+      initialSelectValue(barangay, "City/Municipality");
+    }
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    changeAddressValues();
+    getBarangay;
+    getCity;
+    getProvinces;
+    getRegions;
+  });
 });
