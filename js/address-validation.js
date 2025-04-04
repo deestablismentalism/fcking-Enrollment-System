@@ -89,21 +89,21 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   async function getProvinces() {
         try {
-        regionCode = regions.value;
-        console.log(regionCode);
-        const response = await fetch(`https://psgc.gitlab.io/api/regions/${regionCode}/provinces`);     
-        if (!response.ok) {
-          throw new Error(`HTTP error! ${response.status}`);
-        }
-        const data = await response.json();
-        
-        provinces.innerHTML = `<option value=""> Select a Province</option>`;
-        data.forEach(province=>{
-            let option = document.createElement("option");
-            option.value = province.code;
-            option.textContent = province.name;
-            provinces.appendChild(option);
-        });
+          regionCode = regions.value;
+          console.log(regionCode);
+          const response = await fetch(`https://psgc.gitlab.io/api/regions/${regionCode}/provinces`);     
+          if (!response.ok) {
+            throw new Error(`HTTP error! ${response.status}`);
+          }
+          const data = await response.json();
+          
+          provinces.innerHTML = `<option value=""> Select a Province</option>`;
+          data.forEach(province=>{
+              let option = document.createElement("option");
+              option.value = province.code;
+              option.textContent = province.name;
+              provinces.appendChild(option);
+          });
         }
         catch (error) {
           console.error(error);
@@ -168,12 +168,21 @@ async  function getBarangay() {
   }
   provinces.addEventListener("change", async function(){
     await getCity();
+    if (provinceCode == "") {
+      initialSelectValue(cityOrMunicipality, "Province");
+    }
   });
   cityOrMunicipality.addEventListener("change", async function() {
     await getBarangay();
+    if (cityCode == "") {
+      initialSelectValue(barangay, "City/Municipality");
+    }
   });
   regions.addEventListener("change", async function() {
     await getProvinces();
+    if (regionCode == "") {
+      initialSelectValue(provinces, "Region");
+    }
   });
 
   async function changeAddressValues() {
