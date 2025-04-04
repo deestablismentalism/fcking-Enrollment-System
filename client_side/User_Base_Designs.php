@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/user_base_design.css">
     <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/user-base-designs.js"></script>
 </head>
 <body>
     <div class="sidebar">

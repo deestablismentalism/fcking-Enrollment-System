@@ -33,6 +33,9 @@ document.addEventListener('DOMContentLoaded',function(){
         else if (!yearRegex.test(startYear.value)) {
             errorMessages("em-start-year", invalidYear, startYear);
         }
+        else if ( startYearVal == endYearVal) {
+            errorMessages("em-start-year", "Academic year cannot be equal", startYear);
+        }
         else if(startYearVal < year) {
             errorMessages("em-start-year", "Year is lower than the current year", startYear);
         }
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         //ensure that the end year is not equal to the start year
         else if (endYearVal == startYearVal) {
-            errorMessages("em-start-year", "End year cannot be equal to the starting year", endYear);
+            errorMessages("em-start-year", "Academic year cannot be equal", endYear);
         }     
        //ensure that the end year is always greater than the start year 
         else if(endYearVal < startYearVal) {

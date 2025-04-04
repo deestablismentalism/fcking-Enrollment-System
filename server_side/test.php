@@ -128,7 +128,20 @@ require_once 'enrollment_form.php';
 
 //     echo $response;
 // }
+//class User {
+//    private $fName;
+//    private $lName;
+//    private $mName;
+ //   private $parentType;
+   // private $educationalAttainment;
+    //private $contactNumber;
+ //   private $email;
+  //  private $if4Ps;
 
+   // public function _construct(){
+
+   // }
+//}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $enrollment_form = new EnrollmentForm();
 

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="../css/enrollment_form.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_errors.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_mq.css" media="all">
-    <script src="../js/user-base-designs.js"></script>
 <?php
     include './user_base_designs.php';
 ?>
@@ -319,21 +318,21 @@
                             <div class="house-number">
                                 <p class="dfont">Numero ng Bahay at kalye</p>
                                 <div class="error-msg">
-                                    <span id="em-house-number"></span>
+                                    <span class="em-house-number"></span>
                                 </div>
                                 <input type="text" name="house-number" id="house-number" class="textbox" placeholder="32">
                             </div>
                             <div class="subdivision">
                                 <p class="dfont">Subdivision/ baryo/ purok/ sitio</p>
                                 <div class="error-msg">
-                                    <span id="em-division"></span>
+                                    <span class="em-division"></span>
                                 </div>
                                 <input type="text" name="division" id="division" class="textbox" placeholder="Talipan">
                             </div>
                             <div class="barangay">
                                 <p class="dfont">Barangay</p>
                                 <div class="error-msg">
-                                    <span id="em-barangay"></span>
+                                    <span class="em-barangay"></span>
                                 </div>
                                 <select name="barangay" id="barangay" class="textbox">
                                    
@@ -342,7 +341,7 @@
                             <div class="city">
                                 <p class="dfont">Lungosd/Munisipalidad</p>
                                 <div class="error-msg">
-                                    <span id="em-city"></span>
+                                    <span class="em-city"></span>
                                 </div>
                                 <select name="city-municipality" id="city-municipality" class="textbox">
                                     
@@ -351,7 +350,7 @@
                             <div class="province">
                                 <p class="dfont">Probinsya/lalawigan</p>
                                 <div class="error-msg">
-                                    <span id="em-province"></span>
+                                    <span class="em-province"></span>
                                 </div>
                                 <select name="province" id="province" class="textbox">
                                    
@@ -360,7 +359,7 @@
                             <div class="region">
                                 <p class="dfont">Rehiyon</p>
                                 <div class="error-msg">
-                                    <span id="em-region"></span>
+                                    <span class="em-region"></span>
                                 </div>
                                 <select name="region" id="region" class="textbox" >
                                     
