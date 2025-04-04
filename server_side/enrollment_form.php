@@ -261,6 +261,8 @@ class EnrollmentForm {
                 $select_enrollee_father_type->bindParam(':Father_Information_Id', $Father_Information_Id);
                 $select_enrollee_father_type->execute();
                 $Father_Parent_Type = $select_enrollee_father_type->fetch(PDO::FETCH_ASSOC);
+                $Father_Parent_Type = $Father_Parent_Type['Parent_Type'];
+
             }
 
             if ($Mother_Information_Id) {
@@ -269,6 +271,7 @@ class EnrollmentForm {
                 $select_enrollee_mother_type->bindParam(':Mother_Information_Id', $Mother_Information_Id);
                 $select_enrollee_mother_type->execute();
                 $Mother_Parent_Type = $select_enrollee_mother_type->fetch(PDO::FETCH_ASSOC);
+                $Mother_Parent_Type = $Mother_Parent_Type['Parent_Type'];
             }
             if ($Guardian_Information_Id) {
                 $sql_enrollee_guardian = "SELECT Parent_Type FROM parent_information WHERE Parent_Id = :Guardian_Information_Id";
@@ -276,6 +279,7 @@ class EnrollmentForm {
                 $select_enrollee_guardian_type->bindParam(':Guardian_Information_Id', $Guardian_Information_Id);
                 $select_enrollee_guardian_type->execute();
                 $Guardian_Parent_Type = $select_enrollee_guardian_type->fetch(PDO::FETCH_ASSOC);
+                $Guardian_Parent_Type = $Guardian_Parent_Type['Parent_Type'];
             }
             // Insert parent-student relationship in junction
             //father
@@ -285,7 +289,11 @@ class EnrollmentForm {
             $insert_father_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_father_student_relationship->bindParam(':Parent_Id', $Father_Information_Id);
             $insert_father_student_relationship->bindParam(':Relationship', $Father_Parent_Type);
-            $insert_father_student_relationship->execute();
+            if($insert_father_student_relationship->execute()) {
+                echo 'Successfully inserted father';
+            } else {
+                throw new PDOException("Error: Failed to insert father-student relationship.");
+            }
 
             //mother
             $sql_mother_student_relationship = "INSERT INTO enrollee_parents (Enrollee_Id, Parent_Id, Relationship)
@@ -294,7 +302,11 @@ class EnrollmentForm {
             $insert_mother_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_mother_student_relationship->bindParam(':Parent_Id', $Mother_Information_Id);
             $insert_mother_student_relationship->bindParam(':Relationship', $Mother_Parent_Type);
-            $insert_mother_student_relationship->execute();
+            if($insert_mother_student_relationship->execute()) {
+                echo 'Successfully inserted';
+            } else {
+                throw new PDOException("Error: Failed to insert mother-student relationship.");
+            }
 
             //guardian
             $sql_guardian_student_relationship = "INSERT INTO enrollee_parents (Enrollee_Id, Parent_Id, Relationship)
@@ -303,8 +315,11 @@ class EnrollmentForm {
             $insert_guardian_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_guardian_student_relationship->bindParam(':Parent_Id', $Guardian_Information_Id);
             $insert_guardian_student_relationship->bindParam(':Relationship', $Guardian_Parent_Type);
-            $insert_guardian_student_relationship->execute();
-
+            if($insert_guardian_student_relationship->execute()) {
+                echo 'Successfully inserted';
+            } else {
+                throw new PDOException("Error: Failed to insert guardian-student relationship.");
+            }
             $this->conn->commit();
             return "Submission Successful Your Enrollee ID is: " . $Enrollee_Id;
         }
