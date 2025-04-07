@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
   let regionCode = "";
   let provinceCode = "";
   let cityCode = "";
-  let isRegionFalse = false;
   const emptyError = "This field is required";
+  const notNumber = "This field must be a number";
 
+  
   function isEmpty(element) {
     return !element.value.trim();
   }
@@ -39,6 +40,29 @@ document.addEventListener("DOMContentLoaded", function() {
         clearError(errorElement, element);
     }
   } 
+  function validateSubdivision() {
+    if(isEmpty(subdivsion)) {
+        errorMessages("em-subdivision", emptyError, subdivsion);
+        checkEmptyFocus(subdivsion, "em-subdivision");
+    }
+    else {
+        clearError("em-subdivision", subdivsion);
+    }
+  }
+  function validateHouseNumber(e) {
+    if(isNaN(e.key) && e.key !== "Backspace") {
+      errorMessages("em-house-number", notNumber, houseNumber);
+      checkEmptyFocus(houseNumber, "em-house-number");
+      e.preventDefault();
+    }
+    else if(isEmpty(houseNumber)) {
+      errorMessages("em-house-number", emptyError, houseNumber);
+      checkEmptyFocus(houseNumber, "em-house-number");
+  }
+    else {
+        clearError("em-house-number", houseNumber);
+    }
+  }
   function initialSelectValue(selectElement, parentElement) {
       selectElement.innerHTML = `<option value=""> Select a ${parentElement} first </option>`;
   }
@@ -184,7 +208,8 @@ async  function getBarangay() {
       initialSelectValue(provinces, "Region");
     }
   });
-
+  subdivsion.addEventListener('keyup', validateSubdivision);
+  houseNumber.addEventListener('keydown', (e)=> validateHouseNumber(e));
   async function changeAddressValues() {
     try {
 

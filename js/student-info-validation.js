@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
     //emptyError
     const emptyError = "This field is required";
     const notNumber = "This field must be a number";
-    const isNumber = false;
     //functions
     function checkIndigenous(textBoxElement, nameValue ) {
         const radioInput = document.querySelector(`input[name="${nameValue}"]:checked`);

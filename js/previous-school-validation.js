@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded',function(){
     //check if huling natapos na taon is not greater than the current year
     function validateYearFinished(){
         const lastYearVal = parseInt(lastYear.value);
+        console.log(lastYearVal);
         if (isEmpty(lastYear)) {
             errorMessages("em-last-year-finished", emptyError, lastYear);
             checkEmptyFocus(lastYear, "em-last-year-finished");

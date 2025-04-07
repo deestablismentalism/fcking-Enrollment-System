@@ -18,7 +18,19 @@
 .em-region,
 .em-province,
 .em-city,
-.em-barangay {display: none;}
+.em-barangay,
+.em-father-last-name,
+.em-father-middle-name,
+.em-father-first-name,
+.em-mother-last-name,
+.em-mother-middle-name,
+.em-mother-first-name,
+.em-guardian-last-name,
+.em-guardian-middle-name,
+.em-guardian-first-name,
+.em-f-number,
+.em-m-number,
+.em-g-number {display: none;}
 
 .em-start-year.show,
 .em-last-year-finished.show
@@ -36,4 +48,16 @@
 .em-province.show,
 .em-city.show,
 .em-barangay.show
+.em-father-last-name.show,
+.em-father-middle-name.show,
+.em-father-first-name.show,
+.em-mother-last-name.show,
+.em-mother-middle-name.show,
+.em-mother-first-name.show,
+.em-guardian-last-name.show,
+.em-guardian-middle-name.show,
+.em-guardian-first-name.show,
+.em-f-number.show,
+.em-m-number.show,
+.em-g-number.show
  {display: flex;}
