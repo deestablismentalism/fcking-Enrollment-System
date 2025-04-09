@@ -7,6 +7,7 @@
     <title>Registration</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/Registration.css">
+    <link rel="stylesheet" href="../css/registration_form_errors.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <script src="../js/registration.js"></script>
 
@@ -42,22 +43,34 @@
                     <!-- Input for users last name -->
                     <div class="input-box">
                         <span class="details">Enrollee's Guardian First Name</span>
-                        <input type="text" name="Guardian-First-Name" id="Guardian-First-Name" placeholder="Ex: Dela Cruz" required>
+                        <div class="error-message">
+                            <span class="em-guardian-first-name"></span>
+                        </div>
+                        <input type="text" name="Guardian-First-Name" id="guardian-first-name" placeholder="Ex: Dela Cruz" required>
                     </div>
                     <!-- Input for guardian's first name -->
                     <div class="input-box">
                         <span class="details">Enrollee's Guardian Middle Name</span>
-                        <input type="text" name="Guardian-Middle-Name" id="Guardian-Middle-Name"   placeholder="Ex: Juan Felipe" required>
+                        <div class="error-message">
+                            <span class="em-guardian-middle-name"></span>
+                        </div>
+                        <input type="text" name="Guardian-Middle-Name" id="guardian-middle-name"   placeholder="Ex: Juan Felipe" required>
                     </div>
                     <!-- Input for guardian's last name -->
                     <div class="input-box">
                         <span class="details">Enrollee's Guardian Last Name</span>
-                        <input type="text" name="Guardian-Last-Name" id="Guardian-Last-Name" placeholder="Ex: Dela Cruz" required>
+                        <div class="error-message">
+                            <span class="em-guardian-last-name"></span>
+                        </div>
+                        <input type="text" name="Guardian-Last-Name" id="guardian-last-name" placeholder="Ex: Dela Cruz" required>
                     </div>
                     <!-- Input for guardians contact number -->
                     <div class="input-box cn">
                         <span class="details">Contact Number</span>
-                        <input type="text" name="Contact-Number" id="Contact-Number" placeholder="Ex: 09xx xxx xxxx" required>
+                        <div class="error-message">
+                            <span class="em-contact-number"></span>
+                        </div>
+                        <input type="text" name="Contact-Number" id="contact-number" placeholder="Ex: 09xx xxx xxxx" required>
                     </div>  
                     <!-- Submit button -->                      
                     <div class="button">
@@ -84,6 +97,6 @@
         <img src="../imgs/student.jpg" 
         alt="student" id="student">
     </div>
-
+    <script src="../js/registration-validation.js"></script>
 </body>
 </html>

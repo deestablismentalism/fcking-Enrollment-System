@@ -325,9 +325,9 @@
                             <div class="subdivision">
                                 <p class="dfont">Subdivision/ baryo/ purok/ sitio</p>
                                 <div class="error-msg">
-                                    <span class="em-division"></span>
+                                    <span class="em-subdivision"></span>
                                 </div>
-                                <input type="text" name="division" id="division" class="textbox" placeholder="Talipan">
+                                <input type="text" name="subdivision" id="subdivision" class="textbox" placeholder="Talipan">
                             </div>
                             <div class="barangay">
                                 <p class="dfont">Barangay</p>
@@ -380,21 +380,21 @@
                                     <h3>AMA</h3>
                                     <p class="dfont">Apilyedo</p>
                                     <div class="error-msg">
-                                        <span id="em-Father-Last-Name"></span>
+                                        <span class="em-father-last-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Father-Last-Name" id="Father-Last-Name" placeholder="Dela Cruz">
                                 </div><br>
                                 <div class="Father-Middle-Name">
                                     <p class="dfont">Gitnang Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-Father-Middle-Name"></span>
+                                        <span class="em-father-middle-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Father-Middle-Name" id="Father-Middle-Name" placeholder="De Vera">
                                 </div><br>
                                 <div class="Father-First-Name">
                                     <p class="dfont">Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-Father-First-Name"></span>
+                                        <span class="em-father-first-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Father-First-Name" id="Father-First-Name" placeholder="Rey">
                                 </div><br>
@@ -413,7 +413,7 @@
                                 <div class="F-number">
                                     <p class="dfont">Numero sa telepono (cellphone/ telephone / )</p>
                                     <div class="error-msg">
-                                        <span id="em-F-number"></span>
+                                        <span class="em-f-number"></span>
                                     </div>
                                     <input type="text" name="F-number" id="F-number" class="textbox" placeholder="09123456789">
                                 </div>
@@ -425,21 +425,21 @@
                                     <h3>INA</h3>
                                     <p class="dfont">Apilyedo</p>
                                     <div class="error-msg">
-                                        <span id="em-Mother-Last-Name"></span>
+                                        <span class="em-mother-last-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Mother-Last-Name" id="Mother-Last-Name" placeholder="Dela Cruz">
                                 </div><br>
                                 <div class="Mother-Middle-Name">
                                     <p class="dfont">Gitnang Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-Mother-Middle-Name"></span>
+                                        <span class="em-mother-middle-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Mother-Middle-Name" id="Mother-Middle-Name" placeholder="Jimenez">
                                 </div><br>
                                 <div class="Mother-First-Name">
                                     <p class="dfont">Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-Mother-First-Name"></span>
+                                        <span class="em-mother-first-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Mother-First-Name" id="Mother-First-Name" placeholder="Maria">
                                 </div><br>
@@ -458,7 +458,7 @@
                                 <div class="M-number">
                                     <p class="dfont">Numero sa telepono (cellphone/ telephone / )</p>
                                     <div class="error-msg">
-                                        <span id="em-M-number"></span>
+                                        <span class="em-m-number"></span>
                                     </div>
                                     <input type="text" name="M-number" id="M-number" class="textbox" placeholder="09123456789">
                                 </div>
@@ -470,21 +470,21 @@
                                     <h3>TAGAPAGALAGA</h3>
                                     <p class="dfont">Apilyedo</p>
                                     <div class="error-msg">
-                                        <span id="em-Guardian-Last-Name"></span>
+                                        <span class="em-guardian-last-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Guardian-Last-Name" id="Guardian-Last-Name" placeholder="Dela Cruz">
                                 </div><br>
                                 <div class="Guardian-Middle-Name">
                                     <p class="dfont">Gitnang Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-Guardian-Middle-Name"></span>
+                                        <span class="em-guardian-middle-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Guardian-Middle-Name" id="Guardian-Middle-Name" placeholder="Jimenez">
                                 </div><br>
                                 <div class="Guardian-First-Name">
                                     <p class="dfont">Pangalan</p>
                                     <div class="error-msg">
-                                        <span id="em-Guardian-First-Name"></span>
+                                        <span class="em-guardian-first-name"></span>
                                     </div>
                                     <input type="text" class="textbox" name="Guardian-First-Name" id="Guardian-First-Name" placeholder="Maria">
                                 </div><br>
@@ -503,7 +503,7 @@
                                 <div class="G-number">
                                     <p class="dfont">Numero sa telepono (cellphone/ telephone / )</p>
                                     <div class="error-msg">
-                                        <span id="em-G-number"></span>
+                                        <span class="em-g-number"></span>
                                     </div>
                                     <input type="text" name="G-number" id="G-number" class="textbox" placeholder="09123456789">
                                 </div>
@@ -530,6 +530,7 @@
             </div>
         </div>
     </div>
+    <script src="../js/parent-info-validation.js" defer></script>
     <script src="../js/address-validation.js" defer></script>
     <script src="../js/previous-school-validation.js" defer></script>
     <script src="../js/student-info-validation.js" defer></script>
