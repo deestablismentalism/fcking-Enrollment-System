@@ -14,49 +14,20 @@ class Registration {
     }
     
     public function register($First_Name, $Last_Name, $Middle_Name, $Contact_Number) {
-        $this->conn->beginTransaction();
-        try {
-            // Validate and format phone number
-            $formatted_number = $this->phone_verification->validatePhoneNumber($Contact_Number);
-            
-            if (!$formatted_number) {
-                return [
-                    'success' => false,
-                    'message' => 'Invalid phone number format. Please enter a valid Philippine mobile number.'
-                ];
-            }
-            
-            // Generate a random password
-            $password = $this->generatePassword();
-            
-            // Send password via SMS
-            $sms_result = $this->phone_verification->sendPassword($formatted_number, $password, $First_Name);
-            
-            if (!$sms_result['success']) {
-                return [
-                    'success' => false,
-                    'message' => 'Failed to send password: ' . $sms_result['error']
-                ];
-            }
-            
-            // Hash the password before storing
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            
-            // Insert into registrations table
-            $sql_insert_registers = "INSERT INTO registrations(First_Name, Last_Name, Middle_Name, Contact_Number)
-                                    VALUES (:First_Name, :Last_Name, :Middle_Name, :Contact_Number)";
-            $insert_register = $this->conn->prepare($sql_insert_registers);
-            $insert_register->bindParam(':First_Name', $First_Name);
-            $insert_register->bindParam(':Last_Name', $Last_Name);
-            $insert_register->bindParam(':Middle_Name', $Middle_Name);
-            $insert_register->bindParam(':Contact_Number', $formatted_number);
-            
-            if (!$insert_register->execute()) {
-                throw new Exception("Failed to insert registration data");
-            }
-            
-            // Get the registration ID
-            $Registration_Id = $this->conn->lastInsertId();
+        $sql_insert_registers = "INSERT INTO registrations(First_Name, Last_Name, Middle_Name, Contact_Number)
+                                VALUES (:First_Name, :Last_Name, :Middle_Name, :Contact_Number)";
+        $sql_insert_register = $this->conn->prepare($sql_insert_registers);
+        $sql_insert_register->bindParam(':First_Name', $First_Name);
+        $sql_insert_register->bindParam(':Last_Name', $Last_Name);
+        $sql_insert_register->bindParam(':Middle_Name', $Middle_Name);
+        $sql_insert_register->bindParam(':Contact_Number', $Contact_Number);
+        
+        if ($sql_insert_register->execute()) {
+            echo "Registration successful!";
+        } else {
+            echo "Error: " . $insert_register->errorInfo()[2];
+        }
+        $Registration_Id = $this->conn->lastInsertId();
             
             // Insert into users table
             $sql_insert_password = "INSERT INTO users(Registration_Id, Password)
@@ -91,6 +62,7 @@ class Registration {
             $password .= $chars[rand(0, strlen($chars) - 1)];
         }
         return $password;
+    
     }
-}
+
 ?>
