@@ -1,23 +1,23 @@
 <?php
     require_once 'dbconnection.php';
-    require_once 'phone_verification.php';
+    require_once 'semaphore_sms.php';
 
 class Registration {
     protected $conn;
-    protected $phone_verification;
+    protected $sms_service;
     
     //automatically run and connect database
     public function __construct() {
         $db = new Connect();
         $this->conn = $db->getConnection();
-        $this->phone_verification = new PhoneVerification();
+        $this->sms_service = new SemaphoreSMS();
     }
     
     public function register($First_Name, $Last_Name, $Middle_Name, $Contact_Number) {
         $this->conn->beginTransaction();
         try {
             // Validate and format phone number
-            $formatted_number = $this->phone_verification->validatePhoneNumber($Contact_Number);
+            $formatted_number = $this->sms_service->validatePhoneNumber($Contact_Number);
             
             if (!$formatted_number) {
                 return [
@@ -30,7 +30,7 @@ class Registration {
             $password = $this->generatePassword();
             
             // Send password via SMS
-            $sms_result = $this->phone_verification->sendPassword($formatted_number, $password, $First_Name);
+            $sms_result = $this->sms_service->sendPassword($formatted_number, $password, $First_Name);
             
             if (!$sms_result['success']) {
                 return [
@@ -68,6 +68,7 @@ class Registration {
             if (!$insert_password->execute()) {
                 throw new Exception("Failed to insert user data");
             }
+            
             $this->conn->commit();
             return [
                 'success' => true,
