@@ -2,6 +2,8 @@
     require_once 'backend_registration.php';
     header("Content-Type: application/json");
 
+    header("Content-Type: application/json");
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $registration = new Registration();
         
@@ -11,8 +13,8 @@
         $Middle_Name = $_POST['Guardian-Middle-Name'] ?? "";
         $Contact_Number = $_POST['Contact-Number'];
         
-        // Register the user
-        $registration->register($First_Name, $Last_Name, $Middle_Name, $Contact_Number);
+        $result = $registration->register($First_Name,$Last_Name,$Middle_Name,$Contact_Number);
+        echo json_encode($result);
     }
 ?>
 

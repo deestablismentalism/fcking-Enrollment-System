@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded',function(){
     //check if huling natapos na taon is not greater than the current year
     function validateYearFinished(){
         const lastYearVal = parseInt(lastYear.value);
+        console.log(lastYearVal);
         if (isEmpty(lastYear)) {
             errorMessages("em-last-year-finished", emptyError, lastYear);
             checkEmptyFocus(lastYear, "em-last-year-finished");
@@ -156,8 +157,7 @@ document.addEventListener('DOMContentLoaded',function(){
     endYear.addEventListener('keyup',validateAcademicYear);
     lastYear.addEventListener('keyup',validateYearFinished);
 
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
+    form.addEventListener('submit', function() {
         //validate again upon submission
        fields.forEach(({element, error}) =>{
         validateSchool(element, error);
@@ -166,6 +166,5 @@ document.addEventListener('DOMContentLoaded',function(){
         validateYearFinished();
         validateAcademicYear();
     });
-
 });    
  
