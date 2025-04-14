@@ -14,7 +14,6 @@ class Registration {
         //initialize phone verification
         $this->phone_verification = new PhoneVerification();
     }
-    
     public function register($First_Name, $Last_Name, $Middle_Name, $Contact_Number) {
         $this->conn->beginTransaction();
         try {
@@ -34,6 +33,7 @@ class Registration {
             // Generate and hash password
             $password = $this->generatePassword();
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
             
             // Insert into users table
             $sql_insert_password = "INSERT INTO users(Registration_Id, Password)

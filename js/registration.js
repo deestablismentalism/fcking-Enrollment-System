@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     default:
                         alert(data.message);
                 }
+
             }
         })
         .catch(error => {
