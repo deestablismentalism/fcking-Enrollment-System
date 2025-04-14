@@ -11,21 +11,35 @@ document.addEventListener("DOMContentLoaded", function() {
             body: formData,
         })
         .then(response => {
-            console.log(response);
-            return response.json();
+            return response.text().then(text => {
+                console.log('Raw response:', text);
+                try {
+                    return JSON.parse(text);
+                } catch (e) {
+                    throw new Error('Invalid JSON response: ' + text);
+                }
+            });
         })
         .then(data => {
-            try {
-                const jsonData = json.parse(data);
-                if (jsonData.status === "success") {
-                    alert(jsonData.message); 
-                } else if (jsonData.status === "failed") {
-                    alert(jsonData.message);
+            if (data.success) {
+                alert(data.message);
+                form.reset();
+            } else {
+                switch(data.error) {
+                    case 'duplicate_entry':
+                        alert('This contact number is already registered. Please use a different number.');
+                        break;
+                    case 'database':
+                        alert('Database Error: ' + data.message);
+                        break;
+                    default:
+                        alert(data.message);
                 }
-            }   catch (error) {
-                console.error("Error parsing JSON:", error);
             }
         })
-        .catch(error => console.error("Fetch Error:", error));
+        .catch(error => {
+            console.error("Fetch Error:", error);
+            alert("Registration failed. Please check the console for details.");
+        });
     });
 });
