@@ -322,5 +322,13 @@ class EnrollmentForm {
             return "Submission Failed: " . $e->getMessage();
         }
     }
+    public function getEnrollees(PDO $pdo){
+        $sql = "SELECT * FROM enrollee
+                INNER JOIN educational_information ON enrollee.Educational_Information_Id 
+                = educational_information.Educational_Information_Id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 ?>

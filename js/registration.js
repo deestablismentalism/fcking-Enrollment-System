@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             alert(data.message);
             if (data.success) {
-                window.location.href = "login.php"; // Redirect to login page
+                window.location.href = "login.php";
             }
         })
         .catch(error => {
