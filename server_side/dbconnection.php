@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
 class Connect {
     protected $conn = null;
     protected $servername;
@@ -12,12 +14,15 @@ class Connect {
         $this->connect();
     }
 
-    //initialze variables about database
+    //initialize variables about database
     protected function initialize() {
-        $this->servername = "mysql-ssis-test.alwaysdata.net";
-        $this->username = "ssis-test";
-        $this->password = "SSISdatabasetest123";
-        $this->dbname = "ssis-test_database"; 
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+        $dotenv->load();
+
+        $this->servername = $_ENV['SERVERNAME'];
+        $this->username = $_ENV['USERNAME'];
+        $this->password = $_ENV['PASSWORD'];
+        $this->dbname = $_ENV['DBNAME'];
     }
 
     //connect to database

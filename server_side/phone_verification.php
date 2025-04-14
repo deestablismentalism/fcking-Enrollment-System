@@ -7,10 +7,14 @@ class PhoneVerification {
     private $twilio_number;
     
     public function __construct() {
-        // Initialize Twilio client
-        $sid = getenv('TWILIO_ACCOUNT_SID');
-        $token = getenv('TWILIO_AUTH_TOKEN');
-        $this->twilio_number = getenv('TWILIO_PHONE_NUMBER');
+        // initialize environment Variables
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+
+        // get environment variables
+        $sid = $_ENV('TWILIO_ACCOUNT_SID');
+        $token = $_ENV('TWILIO_AUTH_TOKEN');
+        $this->twilio_number = $_ENV('TWILIO_PHONE_NUMBER');
         
         if (!$sid || !$token || !$this->twilio_number) {
             throw new Exception('Twilio credentials not properly configured');
