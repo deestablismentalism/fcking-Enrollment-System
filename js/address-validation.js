@@ -257,8 +257,7 @@ async  function getBarangay() {
     else {
       initialSelectValue(barangay, "City/Municipality");
     }
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
+  form.addEventListener("submit", function(){
     changeAddressValues();
     getBarangay;
     getCity;

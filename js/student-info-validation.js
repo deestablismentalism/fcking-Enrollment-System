@@ -79,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     } 
     function validatePSA() {
-        if(isEmpty(psaNumber)) {
+        const currentIndex = psaNumber.selectionStart;
+        if(isEmpty(psaNumber) && currentIndex !== 0) {
             errorMessages("em-PSA-number", emptyError, psaNumber);
             checkEmptyFocus(psaNumber, "em-PSA-number");
         }
@@ -91,7 +92,8 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
     function validateLRN() {
-        if(isEmpty(lrn)) {
+        const currentIndex = lrn.selectionStart;
+        if(isEmpty(lrn) && currentIndex !== 0) {
             errorMessages("em-LRN", emptyError, lrn);
             checkEmptyFocus(lrn, "em-LRN");
         }

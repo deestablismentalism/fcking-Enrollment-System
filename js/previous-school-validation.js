@@ -157,8 +157,7 @@ document.addEventListener('DOMContentLoaded',function(){
     endYear.addEventListener('keyup',validateAcademicYear);
     lastYear.addEventListener('keyup',validateYearFinished);
 
-    form.addEventListener('submit', function(e){
-        e.preventDefault();
+    form.addEventListener('submit', function() {
         //validate again upon submission
        fields.forEach(({element, error}) =>{
         validateSchool(element, error);
@@ -167,6 +166,5 @@ document.addEventListener('DOMContentLoaded',function(){
         validateYearFinished();
         validateAcademicYear();
     });
-
 });    
  

@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   function validatePhoneNumber(element, errorElement, e) {
+    const currentIndex = element.selectionStart; 
     if(isNaN(e.key) && e.key !== "Backspace") {
         errorMessages(errorElement, notNumber, element);
         checkEmptyFocus(element, errorElement);
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
         checkEmptyFocus(element, errorElement);
         e.preventDefault();
     }
-    else if(isEmpty(element)) {
+    else if(isEmpty(element) && currentIndex !== 0) {
         errorMessages(errorElement, emptyError, element);
         checkEmptyFocus(element, errorElement);
     }
