@@ -220,6 +220,7 @@ class EnrollmentForm {
             
             if (!$Educational_Background_Id || !$Educational_Information_Id || !$Disabled_Student_Id || !$Enrollee_Address_Id) {
                 throw new Exception("Error: Failed to insert enrollee.");
+                
             }
 
             // Insert enrollee
@@ -251,8 +252,15 @@ class EnrollmentForm {
             $insert_enrollee->bindParam(':Educational_Information_Id', $Educational_Information_Id);
             $insert_enrollee->bindParam(':Educational_Background_Id', $Educational_Background_Id);
             $insert_enrollee->bindParam(':Disabled_Student_Id', $Disabled_Student_Id);
-            $insert_enrollee->execute();
-            $Enrollee_Id = $this->conn->lastInsertId();
+            if ($insert_enrollee->execute()) {
+                // If the enrollee is successfully inserted, get the last inserted ID
+                $Enrollee_Id = $this->conn->lastInsertId();
+            } else {
+                throw new Exception("Error: Failed to insert enrollee.");
+                $this->conn->rollBack();
+                echo "Submission Failed: " . $e->getMessage();
+            }
+
 
             // Initialize Variables for parent type
             if ($Father_Information_Id) {
@@ -260,7 +268,7 @@ class EnrollmentForm {
                 $select_enrollee_father_type = $this->conn->prepare($sql_enrollee_father);
                 $select_enrollee_father_type->bindParam(':Father_Information_Id', $Father_Information_Id);
                 $select_enrollee_father_type->execute();
-                $Father_Parent_Type = $select_enrollee_father_type->fetch(PDO::FETCH_ASSOC);
+                $Father_Parent_Type = $select_enrollee_father_type->fetch(PDO::FETCH_ASSOC)['Parent_Type'];
             }
 
             if ($Mother_Information_Id) {
@@ -268,14 +276,14 @@ class EnrollmentForm {
                 $select_enrollee_mother_type = $this->conn->prepare($sql_enrollee_mother);
                 $select_enrollee_mother_type->bindParam(':Mother_Information_Id', $Mother_Information_Id);
                 $select_enrollee_mother_type->execute();
-                $Mother_Parent_Type = $select_enrollee_mother_type->fetch(PDO::FETCH_ASSOC);
+                $Mother_Parent_Type = $select_enrollee_mother_type->fetch(PDO::FETCH_ASSOC)['Parent_Type'];
             }
             if ($Guardian_Information_Id) {
                 $sql_enrollee_guardian = "SELECT Parent_Type FROM parent_information WHERE Parent_Id = :Guardian_Information_Id";
                 $select_enrollee_guardian_type = $this->conn->prepare($sql_enrollee_guardian);
                 $select_enrollee_guardian_type->bindParam(':Guardian_Information_Id', $Guardian_Information_Id);
                 $select_enrollee_guardian_type->execute();
-                $Guardian_Parent_Type = $select_enrollee_guardian_type->fetch(PDO::FETCH_ASSOC);
+                $Guardian_Parent_Type = $select_enrollee_guardian_type->fetch(PDO::FETCH_ASSOC)['Parent_Type'];
             }
             // Insert parent-student relationship in junction
             //father
