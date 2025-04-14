@@ -78,8 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Student_Email = $_POST['email'];
     $Enrollment_Status = "3";
 
+
     $enrollment_form->Insert_Enrollee($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
-    Insert_Enrollee($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
+    $School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
     $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
     $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
     $House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region,
