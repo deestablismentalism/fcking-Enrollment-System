@@ -69,14 +69,20 @@
     padding: 10px;
 }
 
-.alt-1 {
-    background-color: #FFFFFF;
-    padding: 10px;
+.enrollments tr:nth-child(even) {
+    background-color: #F4F4F4; /* Light gray for even rows */
 }
 
-.alt-2 {
-    background-color: #F4F4F4;
-    padding: 10px;
+.enrollments tr:nth-child(odd) {
+    background-color: #FFFFFF; /* White for odd rows */
+}
+
+.edit-button {
+    background-color: #003366d5; /* Dark blue */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 @media (max-width: 600px) {
