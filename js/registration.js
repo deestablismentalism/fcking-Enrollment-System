@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     case 'database':
                         alert('Database Error: ' + data.message);
                         break;
+                    case 'sms_error':
+                        alert('Registration successful but failed to send password: ' + data.message);
+                        break;
                     default:
                         alert(data.message);
                 }
