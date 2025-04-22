@@ -1,0 +1,19 @@
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 4em;
+    padding: 3em;
+}
+h1 {
+    text-align: center;
+    font-size: 4em;
+}
+.status-text {
+    text-align: center;
+    font-size: 4rem;
+    color: rgba(211, 211, 0, 0.723)
+}
+p {
+    text-align: center
+}

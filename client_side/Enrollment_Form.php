@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/enrollment_form.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_errors.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_mq.css" media="all">
+</head>
+</body>
 <?php
     include './user_base_designs.php';
 ?>
