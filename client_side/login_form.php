@@ -32,14 +32,13 @@
             <div class="error-msg">
                 <span class="em-login"> Error Message Here </span>
             </div>
-           <form action="" method="post">
+           <form action="../server_side/post_login_verify.php" method="post">
                <div class="box">
                    <BR>
-                   <input type="text" id="email" name="email" placeholder="Email Address* " required>
+                   <input type="text" id="phone_number" name="phone_number" placeholder="Phone Number" required>
                    <BR>
                    <input type="password" id="password" name="password" placeholder="Password* "  required>
                 </div>
-                
                 <div class="wrap">
                     <button type="submit">
                         Submit

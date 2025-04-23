@@ -24,7 +24,7 @@ class SendPassword {
         $Cleaned_Contact_Number = $this->cleanPhoneNumber($Recipient_Contact_Number);
         
         $data = [
-            "message" => "Hello, $Last_Name ,$First_Name $Middle_Name! Your password is $User_Password",
+            "message" => "Hello $Last_Name, $First_Name $Middle_Name! Your password is $User_Password. Please keep this password safe and don't share it with anyone",
             "phoneNumbers" => ["+$Cleaned_Contact_Number"],
             "simNumber" => 2
         ];
