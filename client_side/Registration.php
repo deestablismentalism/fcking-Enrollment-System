@@ -74,7 +74,7 @@
                     </div>  
                     <!-- Submit button -->                      
                     <div class="button">
-                        <button type="submit" name="submit" class="btn">
+                        <button type="submit" name="submit" class="btn submit-btn">
                             Register
                         </button>
                     </div>

@@ -1,0 +1,19 @@
+# Environment variables
+.env
+.env.*
+
+# Composer
+/vendor/
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log 
