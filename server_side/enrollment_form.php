@@ -189,8 +189,22 @@ class EnrollmentForm {
     }
 
     // Insert images function
-    public function images() {
-
+    public function images($filename, $directory) {
+            try {
+                $sql_images = "INSERT INTO images (filename, directory) 
+                                VALUES (:filename, :directory,)";
+                $insert_images = $this->conn->prepare($sql_images);
+                $insert_images->bindParam(':filename', $filename);
+                $insert_images->bindParam(':directory', $directory);
+                if ($insert_images->execute()) {
+                    return $this->conn->lastInsertId();
+                } else {
+                    return "Error: Failed to insert images.";
+                }
+            } 
+            catch (PDOException $e) {
+                return "Submission Failed: " . $e->getMessage();
+            }
     }   
 
     // Insert enrollee function MAIN FUNCTION!!!!
@@ -215,6 +229,7 @@ class EnrollmentForm {
             $Father_Information_Id = $this->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps);
             $Mother_Information_Id = $this->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps);
             $Guardian_Information_Id = $this->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps);
+            $Psa_Image_Id = $this->images($psa_Image_Id, $filename, $directory, $Uploaded_At);
             $Enrollee_Id;
 
             
@@ -229,7 +244,7 @@ class EnrollmentForm {
                             Educational_Information_Id, Educational_Background_Id, Disabled_Student_Id)
                             VALUES (:Student_First_Name, :Student_Middle_Name, :Student_Last_Name, :Student_Extension, :Learner_Reference_Number, :Psa_Number, :Birth_Date, :Age, :Sex, :Religion, :Native_Language, 
                             :If_Cultural, :Cultural_Group, :Student_Email, :Enrollment_Status, :Enrollee_Address_Id, :Educational_Information_Id, 
-                            :Educational_Background_Id, :Disabled_Student_Id);";
+                            :Educational_Background_Id, :Disabled_Student_Id. :Psa_Image_Id);";
 
             // just binding parameters
             $insert_enrollee = $this->conn->prepare($sql_enrollee);
@@ -251,7 +266,7 @@ class EnrollmentForm {
             $insert_enrollee->bindParam(':Enrollee_Address_Id', $Enrollee_Address_Id);
             $insert_enrollee->bindParam(':Educational_Information_Id', $Educational_Information_Id);
             $insert_enrollee->bindParam(':Educational_Background_Id', $Educational_Background_Id);
-            $insert_enrollee->bindParam(':Disabled_Student_Id', $Disabled_Student_Id);
+            $insert_enrollee->bindParam(':Psa_Image_Id', $Psa_Image_Id);
             if ($insert_enrollee->execute()) {
                 // If the enrollee is successfully inserted, get the last inserted ID
                 $Enrollee_Id = $this->conn->lastInsertId();
@@ -335,13 +350,38 @@ class EnrollmentForm {
             return "Submission Failed: " . $e->getMessage();
         }
     }
-    public function getEnrollees(PDO $pdo){
-        $sql = "SELECT * FROM enrollee
-                INNER JOIN educational_information ON enrollee.Educational_Information_Id 
-                = educational_information.Educational_Information_Id";
-        $stmt = $pdo->prepare($sql);
+    public function getEnrollees(){
+        $sql = "SELECT * FROM enrollee_parents
+                INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
+                INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
+                WHERE parent_information.Parent_Type = 'Guardian';";
+        $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function getEnrollmentInformation($id) {
+        $sql = "SELECT * FROM enrollee_parents
+                INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
+                INNER JOIN educational_background ON enrollee.Educational_Background_Id = educational_background.Educational_Background_Id
+                INNER JOIN enrollee_address ON enrollee.Enrollee_Address_Id = enrollee_address.Enrollee_Address_Id
+                INNER JOIN disabled_student ON enrollee.Disabled_Student_Id = disabled_student.Disabled_Student_Id
+                INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
+                WHERE enrollee_parents.Enrollee_Id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function countEnrollees():string {
+        $sql = "SELECT COUNT(*) AS total FROM enrollee WHERE Enrollment_Status = 3";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return (string)$result['total'];
     }
 }
 ?>

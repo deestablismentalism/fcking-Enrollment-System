@@ -78,7 +78,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Student_Email = $_POST['email'] ?? "";
     $Enrollment_Status = "3";
 
-    //Bind all Information
+    //Image handling
+    if(isset($_FILES['image'])) {
+        $uploadDirectory = "../imageUploads/". date("Y")."/"; // directory to save the uploaded image
+
+        if (!is_dir($uploadDirectory)) {
+            mkdir($uploadDirectory, 0777, true); // create the directory if it doesn't exist
+        }
+        $image = $_FILES['image'];
+        $imageName = $_FILES['image']['name'];
+        $imageTmpName = $_FILES['image']['tmp_name'];
+        $imageSize = $_FILES['image']['size'];
+        $imageError = $_FILES['image']['error'];
+        $imageType = $_FILES['image']['type'];
+
+        $imageExt = explode('.', $imageName); // get the file extension
+        $imageActualExt = strtolower(end($imageExt)); // get the actual file extension
+        $allowedTypes = ['jpg', 'jpeg', 'png'];
+
+        if (in_array($imageActualExt, $allowedTypes)) {
+            if ($imageError === 0) {
+                $targetFilePath = $uploadDirectory . basename($imageName);
+                if (move_uploaded_file($imageTmpName, $targetFilePath)) {
+                    $enrollment_form->images($image, $targetFilePath);
+                }
+            } else {
+                echo "Error uploading image.";
+            }
+        } 
+        else {
+            echo "Invalid file type.";
+        }
+    }
+
+
     $enrollment_form->Insert_Enrollee($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
     $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
     $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
