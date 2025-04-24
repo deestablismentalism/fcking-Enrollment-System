@@ -62,7 +62,7 @@ input { /* email and password input */
     opacity: 70%;
 }
 
-#email , #password {
+#phone_number , #password {
     margin-top: 1em;   
     font-size: .8em;
 }

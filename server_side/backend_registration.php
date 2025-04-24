@@ -34,7 +34,6 @@ class Registration {
             // Generate and hash password
             $password = $this->generatePassword();
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
             
             // Insert into users table
             $sql_insert_password = "INSERT INTO users(Registration_Id, Password)
@@ -103,11 +102,10 @@ class Registration {
     }
     
     private function generatePassword() {
-        // Generate a random 8-character password
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $password = '';
-        for ($i = 0; $i < 8; $i++) {    
-            $password .= $chars[rand(0, strlen($chars) - 1)];
+        for ($i = 0; $i < 8; $i++) {
+            $password .= $chars[random_int(0, strlen($chars) - 1)];
         }
         return $password;
     }

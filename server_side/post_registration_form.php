@@ -2,7 +2,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-require_once 'backend_registration_temporary.php';  // Changed to use temporary version
+require_once 'backend_registration.php';
 header("Content-Type: application/json");
     
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
