@@ -1,23 +1,23 @@
 <?php
     declare(strict_types=1);
     require_once __DIR__ . './dbconnection.php';
-    require_once __DIR__ . './enrollment_form.php';
+    require_once __DIR__ . './getEnrolleesModel.php';
 
 class AdminEnrollmentAccessStatus {
     protected $conn;
-    protected $enrollmentForm;
+    protected $getEnrollees;
     
     public function __construct() {
        $db = new Connect();
        $this->conn = $db->getConnection();
-       $this->enrollmentForm = new EnrollmentForm();
+       $this->getEnrollees = new getEnrollees();
     }
 
     public function schoolLevelInfo() {
        if(isset($_GET['s'])) {
          $student = $_GET['s'];
          $allInfo = [];
-         $data = $this->enrollmentForm->getEnrollmentInformation($student);
+         $data = $this->getEnrollees->getEnrollmentInformation($student);
          foreach($data as $rows) {
              $allInfo = [
                  'taong panuruan' => htmlspecialchars($rows['School_Year_Start']) . '-' . htmlspecialchars($rows['School_Year_End']),
@@ -45,7 +45,7 @@ class AdminEnrollmentAccessStatus {
         if(isset($_GET['s'])) {
         $student = $_GET['s'];
         $allInfo = [];
-        $data = $this->enrollmentForm->getEnrollmentInformation($student);
+        $data = $this->getEnrollees->getEnrollmentInformation($student);
         foreach($data as $rows) {
             $culutralGroup = ($rows['If_Cultural'] == 1) ? htmlspecialchars($rows['Cultural_Group']) : 'Walang katutubong grupo';
             $allInfo = [
@@ -75,7 +75,7 @@ class AdminEnrollmentAccessStatus {
     public function ifDisabled() {
         if(isset($_GET['s'])) {
             $student = $_GET['s'];
-            $data = $this->enrollmentForm->getEnrollmentInformation($student);
+            $data = $this->getEnrollees->getEnrollmentInformation($student);
             foreach($data as $rows) {
                 $specialCondition = ($rows['Have_Special_Condition'] == 1) ? htmlspecialchars($rows['Special_Condition']) : 'None';
                 $assistiveTech = ($rows['Have_Assistive_Tech'] == 1) ? htmlspecialchars($rows['Assistive_Tech']) : 'None';

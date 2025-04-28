@@ -2,21 +2,21 @@
     declare(strict_types=1);
 
 require_once __DIR__ . '/dbconnection.php';
-require_once __DIR__ . '/enrollment_form.php';
+require_once __DIR__ . '/getEnrolleesModel.php';
 
 class AdminEnrollmentStatusView {
     protected $conn;
-    protected $enrollmentForm;
+    protected $getEnrollees;
 
     public function __construct(){
         $db = new Connect();
         $this->conn = $db->getConnection();
-        $this->enrollmentForm = new EnrollmentForm();
+        $this->getEnrollees = new getEnrollees();
     }
 
     public function displayCount() {
         try {
-            $count = $this->enrollmentForm->countEnrollees();
+            $count = $this->getEnrollees->countEnrollees();
             echo "<h2>" . htmlspecialchars($count) . "</h2>";
         }
         catch(PDOException $e) {
@@ -27,7 +27,7 @@ class AdminEnrollmentStatusView {
     
         try {
     
-            $data = $this->enrollmentForm->getEnrollees();
+            $data = $this->getEnrollees->getEnrollees();
             foreach($data as $rows) {   
                 $enrollmentStatus = "";
                 $parentMiddleInitial = substr($rows['Middle_Name'], 0, 1) . ".";
