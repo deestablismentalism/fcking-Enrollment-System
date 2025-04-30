@@ -189,25 +189,22 @@ class EnrollmentForm {
     }
 
     // Insert images function
-    public function images($Psa_Id, $Image_URL, $Image_Type) 
-    {
-        try 
-        {
-            $sql_insert_images = "INSERT INTO PSA_Information (PSA_ID, Image_URL, Image_Type)
-                                VALUES (:PSA_Information, :Image_URL, :Image_Type)";
-            $insert_images = $this->conn->prepare($sql_insert_images);
-            $insert_images->bindParam(':PSA_ID', $Psa_Id);
-            $insert_images->bindParam(':Image_URL', $Image_URL);
-            $insert_images->bindParam('Image_Type', $Image_Type);
-            if ($insert_images->execute()) {
-                return $this->conn->lastInsertId();
+    public function images($filename, $directory) {
+            try {
+                $sql_images = "INSERT INTO Psa_directory(filename, directory) 
+                                VALUES (:filename, :directory)";
+                $insert_images = $this->conn->prepare($sql_images);
+                $insert_images->bindParam(':filename', $filename);
+                $insert_images->bindParam(':directory', $directory);
+                if ($insert_images->execute()) {
+                    return $this->conn->lastInsertId();
+                } else {
+                    return "Error: Failed to insert images.";
+                }
+            } 
+            catch (PDOException $e) {
+                return "Submission Failed: " . $e->getMessage();
             }
-            else {
-                return "error: failed to submit image";
-            }
-        } catch (PDOExeption $e) {
-            
-        }
     }   
 
     // Insert enrollee function MAIN FUNCTION!!!!
@@ -219,7 +216,7 @@ class EnrollmentForm {
     $Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps,
     $Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps,
     $Student_First_Name, $Student_Middle_Name, $Student_Last_Name, $Student_Extension, $Learner_Reference_Number, $Psa_Number, $Birth_Date, $Age, $Sex, $Religion, 
-    $Native_Language, $If_Cultural, $Cultural_Group, $Student_Email, $Enrollment_Status) {
+    $Native_Language, $If_Cultural, $Cultural_Group, $Student_Email, $Enrollment_Status, $filename, $directory) {
         try{
             // If even one of the queries fail, none of the queries will be executed
             $this->conn->beginTransaction();
@@ -232,21 +229,23 @@ class EnrollmentForm {
             $Father_Information_Id = $this->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps);
             $Mother_Information_Id = $this->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps);
             $Guardian_Information_Id = $this->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps);
+            $Psa_Image_Id = $this->images($filename, $directory);
             $Enrollee_Id;
 
             
             if (!$Educational_Background_Id || !$Educational_Information_Id || !$Disabled_Student_Id || !$Enrollee_Address_Id) {
                 throw new Exception("Error: Failed to insert enrollee.");
+                
             }
 
             // Insert enrollee
             $sql_enrollee = "INSERT INTO enrollee (Student_First_Name, Student_Middle_Name, Student_Last_Name, Student_Extension, Learner_Reference_Number, Psa_Number, Birth_Date, Age, Sex, Religion, 
                             Native_Language, If_Cultural, Cultural_Group, Student_Email, Enrollment_Status, Enrollee_Address_Id,
-                            Educational_Information_Id, Educational_Background_Id, Disabled_Student_Id)
+                            Educational_Information_Id, Educational_Background_Id, Disabled_Student_Id, Psa_Image_Id)
                             VALUES (:Student_First_Name, :Student_Middle_Name, :Student_Last_Name, :Student_Extension, :Learner_Reference_Number, :Psa_Number, :Birth_Date, :Age, :Sex, :Religion, :Native_Language, 
                             :If_Cultural, :Cultural_Group, :Student_Email, :Enrollment_Status, :Enrollee_Address_Id, :Educational_Information_Id, 
-                            :Educational_Background_Id, :Disabled_Student_Id);";
-
+                            :Educational_Background_Id, :Disabled_Student_Id, :Psa_Image_Id);";
+            
             // just binding parameters
             $insert_enrollee = $this->conn->prepare($sql_enrollee);
             $insert_enrollee->bindParam(':Student_First_Name', $Student_First_Name);
@@ -268,8 +267,16 @@ class EnrollmentForm {
             $insert_enrollee->bindParam(':Educational_Information_Id', $Educational_Information_Id);
             $insert_enrollee->bindParam(':Educational_Background_Id', $Educational_Background_Id);
             $insert_enrollee->bindParam(':Disabled_Student_Id', $Disabled_Student_Id);
-            $insert_enrollee->execute();
-            $Enrollee_Id = $this->conn->lastInsertId();
+            $insert_enrollee->bindParam(':Psa_Image_Id', $Psa_Image_Id);
+            if ($insert_enrollee->execute()) {
+                // If the enrollee is successfully inserted, get the last inserted ID
+                $Enrollee_Id = $this->conn->lastInsertId();
+            } else {
+                $this->conn->rollBack();
+                throw new Exception("Error: Failed to insert enrollee.");
+                echo "Submission Failed: " . $e->getMessage();
+            }
+
 
             // Initialize Variables for parent type
             if ($Father_Information_Id) {
@@ -277,7 +284,7 @@ class EnrollmentForm {
                 $select_enrollee_father_type = $this->conn->prepare($sql_enrollee_father);
                 $select_enrollee_father_type->bindParam(':Father_Information_Id', $Father_Information_Id);
                 $select_enrollee_father_type->execute();
-                $Father_Parent_Type = $select_enrollee_father_type->fetch(PDO::FETCH_ASSOC);
+                $Father_Parent_Type = $select_enrollee_father_type->fetch(PDO::FETCH_ASSOC)['Parent_Type'];
             }
 
             if ($Mother_Information_Id) {
@@ -285,15 +292,17 @@ class EnrollmentForm {
                 $select_enrollee_mother_type = $this->conn->prepare($sql_enrollee_mother);
                 $select_enrollee_mother_type->bindParam(':Mother_Information_Id', $Mother_Information_Id);
                 $select_enrollee_mother_type->execute();
-                $Mother_Parent_Type = $select_enrollee_mother_type->fetch(PDO::FETCH_ASSOC);
+                $Mother_Parent_Type = $select_enrollee_mother_type->fetch(PDO::FETCH_ASSOC)['Parent_Type'];
             }
+          
             if ($Guardian_Information_Id) {
                 $sql_enrollee_guardian = "SELECT Parent_Type FROM parent_information WHERE Parent_Id = :Guardian_Information_Id";
                 $select_enrollee_guardian_type = $this->conn->prepare($sql_enrollee_guardian);
                 $select_enrollee_guardian_type->bindParam(':Guardian_Information_Id', $Guardian_Information_Id);
                 $select_enrollee_guardian_type->execute();
-                $Guardian_Parent_Type = $select_enrollee_guardian_type->fetch(PDO::FETCH_ASSOC);
+                $Guardian_Parent_Type = $select_enrollee_guardian_type->fetch(PDO::FETCH_ASSOC)['Parent_Type'];
             }
+          
             // Insert parent-student relationship in junction
             //father
             $sql_father_student_relationship = "INSERT INTO enrollee_parents (Enrollee_Id, Parent_Id, Relationship)
@@ -302,7 +311,11 @@ class EnrollmentForm {
             $insert_father_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_father_student_relationship->bindParam(':Parent_Id', $Father_Information_Id);
             $insert_father_student_relationship->bindParam(':Relationship', $Father_Parent_Type);
-            $insert_father_student_relationship->execute();
+            if($insert_father_student_relationship->execute()) {
+                echo 'Successfully inserted father';
+            } else {
+                throw new PDOException("Error: Failed to insert father-student relationship.");
+            }
 
             //mother
             $sql_mother_student_relationship = "INSERT INTO enrollee_parents (Enrollee_Id, Parent_Id, Relationship)
@@ -311,7 +324,11 @@ class EnrollmentForm {
             $insert_mother_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_mother_student_relationship->bindParam(':Parent_Id', $Mother_Information_Id);
             $insert_mother_student_relationship->bindParam(':Relationship', $Mother_Parent_Type);
-            $insert_mother_student_relationship->execute();
+            if($insert_mother_student_relationship->execute()) {
+                echo 'Successfully inserted';
+            } else {
+                throw new PDOException("Error: Failed to insert mother-student relationship.");
+            }
 
             //guardian
             $sql_guardian_student_relationship = "INSERT INTO enrollee_parents (Enrollee_Id, Parent_Id, Relationship)
@@ -320,8 +337,11 @@ class EnrollmentForm {
             $insert_guardian_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_guardian_student_relationship->bindParam(':Parent_Id', $Guardian_Information_Id);
             $insert_guardian_student_relationship->bindParam(':Relationship', $Guardian_Parent_Type);
-            $insert_guardian_student_relationship->execute();
-
+            if($insert_guardian_student_relationship->execute()) {
+                echo 'Successfully inserted';
+            } else {
+                throw new PDOException("Error: Failed to insert guardian-student relationship.");
+            }
             $this->conn->commit();
             return "Submission Successful Your Enrollee ID is: " . $Enrollee_Id;
         }
@@ -331,5 +351,6 @@ class EnrollmentForm {
             return "Submission Failed: " . $e->getMessage();
         }
     }
+
 }
 ?>

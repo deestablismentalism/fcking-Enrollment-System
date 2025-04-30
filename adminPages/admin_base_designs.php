@@ -1,7 +1,7 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/admin_base_designs.css">
     <link rel="stylesheet" href="../css/reset.css">
-    <script src="../js/admin_base_designs.js"></script>
+    <script src="../js/admin-base-designs.js"></script>
 </head>
 <body>
     <div class="sidebar">
@@ -16,7 +16,7 @@
                 <div class="menu border-100sb" id="dashboard">
                     <img src="../imgs/easel.svg" class="bi">
                     <span id="dashboard-spn" class="menu-title">
-                        <a href="../client_side/Admin_Dashboard.php">Dashboard</a>
+                        <a href="./Admin_Dashboard.php">Dashboard</a>
                     </span>
                 </div>
 

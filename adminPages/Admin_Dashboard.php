@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/admin_dashboard.css"> 
     <?php
-        include '../client_side/user_base_designs.php'; 
+        include './admin_base_designs.php'; 
     ?>
 
         <!--START OF THE MAIN CONTENT-->

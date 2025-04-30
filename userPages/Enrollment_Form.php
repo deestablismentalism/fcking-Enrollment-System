@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/enrollment_form.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_errors.css" media="all">
     <link rel="stylesheet" href="../css/enrollment_form_mq.css" media="all">
+</head>
+</body>
 <?php
     include './user_base_designs.php';
 ?>
@@ -279,9 +281,9 @@
                         <div class="student-disability-wrapper">
                             <div class="special-needs">
                                 <p class="dfont">Ang mag-aaral ba ay nangangailangan ng espesyal na tulong sa pag-aaral? (e.g ADHD)</p>
-                                <input type="radio" name="sn" id="yes" class="radio" value="yes">
+                                <input type="radio" name="sn" id="yes" class="radio" value="0">
                                 <label for="yes">Mayroon</label>
-                                <input type="radio" name="sn" id="no" class="radio" value="no">
+                                <input type="radio" name="sn" id="no" class="radio" value="1">
                                 <label for="no">Wala</label>
                             </div>
 
@@ -294,9 +296,9 @@
                             </div>
                             <div class="assisttech">
                                 <p class="dfont">May nagagamit bang “assistive technology devices” (e.g Braille)</p>
-                                <input type="radio" name="at" id="yes" class="radio" value="yes">
+                                <input type="radio" name="at" id="yes" class="radio" value="0">
                                 <label for="yes">Oo</label>
-                                <input type="radio" name="at" id="no" class="radio" value="no">
+                                <input type="radio" name="at" id="no" class="radio" value="1">
                                 <label for="no">Hindi</label>
                             </div>
                             <div class="trueassisttech">
@@ -522,9 +524,9 @@
                         </div>
                         <div class="image-confirm">
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
-                            <!-- <input type="file" value="Insert Image (Di pa nagana)"> -->
-                            <button type="submit" style="border: 1px black solid; cursor: pointer;">Submit</button>
+                            <input type="file" name="psa-image" value="Insert Image (Di pa nagana)"> 
                         </div>
+                        <button type="submit" style="border: 1px black solid; cursor: pointer;">Submit</button>
                     </div>
                 </form>
             </div>
