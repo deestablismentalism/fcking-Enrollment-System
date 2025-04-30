@@ -114,6 +114,7 @@
                         <div class="account-link-wrapper">
                             <a href=""><img src="" alt="">Edit Profile</a><br>
                             <a href=""><img src="" alt="">Update Password</a>
+                            <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout">Logout</a>
                         </div>
                     </div>
                 </div>

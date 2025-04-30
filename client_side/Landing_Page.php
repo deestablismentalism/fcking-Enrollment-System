@@ -11,7 +11,13 @@
 
 <body>
     <div class="main">
-        <div>
+        <div class="content">
+            <div class="header">
+                <h2>Lucena South II Elementary School</h2>
+            </div>
+            <div id="School-Logo-Container">
+                <img src="../imgs/R(1).png" alt="School Logo" id="school-logo">
+            </div>
             
         </div>
     </div>

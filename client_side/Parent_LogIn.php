@@ -13,10 +13,9 @@
     <div class="main">
 
         <div class="left-div">
-        <div class="header">
-            <h2>Lucena South II Elementary School</h2>
-        </div>
-        
+            <div class="header">
+                <h2>Lucena South II Elementary School</h2>
+            </div>
             <div id="logo-container">
                     <img src="../imgs/mother.jpg" 
                     alt="Parent-Image" id="Parent-Image">
