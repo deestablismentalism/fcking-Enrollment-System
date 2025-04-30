@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/Registration.css">
     <link rel="stylesheet" href="../css/registration_form_errors.css">
     <link rel="stylesheet" href="../css/fonts.css">
-    <script src="../js/registration.js"></script>
+    <script src="../js/registration.js"></script> 
 
 </head>
 
@@ -97,6 +97,6 @@
         <img src="../imgs/student.jpg" 
         alt="student" id="student">
     </div>
-    <script src="../js/registration-validation.js"></script>
+   <!-- <script src="../js/registration-validation.js"></script> -->
 </body>
 </html>

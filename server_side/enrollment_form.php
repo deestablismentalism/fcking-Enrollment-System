@@ -189,8 +189,25 @@ class EnrollmentForm {
     }
 
     // Insert images function
-    public function images() {
-
+    public function images($Psa_Id, $Image_URL, $Image_Type) 
+    {
+        try 
+        {
+            $sql_insert_images = "INSERT INTO PSA_Information (PSA_ID, Image_URL, Image_Type)
+                                VALUES (:PSA_Information, :Image_URL, :Image_Type)";
+            $insert_images = $this->conn->prepare($sql_insert_images);
+            $insert_images->bindParam(':PSA_ID', $Psa_Id);
+            $insert_images->bindParam(':Image_URL', $Image_URL);
+            $insert_images->bindParam('Image_Type', $Image_Type);
+            if ($insert_images->execute()) {
+                return $this->conn->lastInsertId();
+            }
+            else {
+                return "error: failed to submit image";
+            }
+        } catch (PDOExeption $e) {
+            
+        }
     }   
 
     // Insert enrollee function MAIN FUNCTION!!!!

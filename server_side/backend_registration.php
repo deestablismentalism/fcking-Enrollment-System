@@ -14,6 +14,20 @@ class Registration {
     }
     
     public function register($First_Name, $Last_Name, $Middle_Name, $Contact_Number) {
+        $sql_insert_registers = "INSERT INTO registrations(First_Name, Last_Name, Middle_Name, Contact_Number)
+                                VALUES (:First_Name, :Last_Name, :Middle_Name, :Contact_Number)";
+        $sql_insert_register = $this->conn->prepare($sql_insert_registers);
+        $sql_insert_register->bindParam(':First_Name', $First_Name);
+        $sql_insert_register->bindParam(':Last_Name', $Last_Name);
+        $sql_insert_register->bindParam(':Middle_Name', $Middle_Name);
+        $sql_insert_register->bindParam(':Contact_Number', $Contact_Number);
+        
+        if ($sql_insert_register->execute()) {
+            echo "Registration successful!";
+        } else {
+            echo "Error: " . $insert_register->errorInfo()[2];
+        }
+        $Registration_Id = $this->conn->lastInsertId();
         $this->conn->beginTransaction();
         try {
             // Validate and format phone number
@@ -92,6 +106,8 @@ class Registration {
             $password .= $chars[rand(0, strlen($chars) - 1)];
         }
         return $password;
+    
     }
 }
+
 ?>
