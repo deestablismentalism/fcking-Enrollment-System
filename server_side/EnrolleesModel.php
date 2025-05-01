@@ -65,4 +65,25 @@ class getEnrollees {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+    public function getUserEnrollees($id) {
+        $sql = "SELECT * FROM enrollee WHERE User_Id = :id";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT );
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function getUserStatus($userId, $enrolleeId) {
+        $sql = "SELECT Enrollment_Status FROM enrollee WHERE User_Id = :userId AND Enrollee_Id = :enrolleeId";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':enrolleeId', $enrolleeId, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return (int)$result['Enrollment_Status'];
+    }
 }

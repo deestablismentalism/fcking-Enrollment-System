@@ -1,12 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['User_Id']) || !isset($_SESSION['Registration_Id'])) {
-    header("Location: ../client_side/login_form.php");
-    exit();
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
     <head>

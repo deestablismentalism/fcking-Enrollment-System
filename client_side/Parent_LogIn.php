@@ -19,6 +19,11 @@
             <div id="logo-container">
                     <img src="../imgs/mother.jpg" 
                     alt="Parent-Image" id="Parent-Image">
+
+                    <table>
+                        <tr>
+                        </tr>
+                    </table>
             </div>
         </div>
 

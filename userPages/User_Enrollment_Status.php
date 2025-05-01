@@ -14,7 +14,11 @@
 
        <div class="main-wrapper">
             <h1> Enrollment Status</h1>
-            <h6 class="status-text"> Pending </h6>
+            <?php 
+                include_once __DIR__ . '/../server_side/userEnrollmentStatusView.php';
+                $status = new displayEnrollmentStatus();
+                $status->displayStatus(); 
+            ?>
             <p> Your enrollment form is currently being processed. Please wait for 3-4 working days <p>
        </div>
     </body>

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['User_Id']) || !isset($_SESSION['Registration_Id'])) {
+    header("Location: ../client_side/login_form.php");
+    exit();
+}
+
+?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/user_base_design.css">
@@ -98,7 +106,11 @@
             <div class="account">
                 <button id="user-profile"><img src="../imgs/check2-circle.svg" alt=""></button>
                 <div class="account-settings-wrapper">
-                    <p class="username">David jearard</p>
+                    <?php if(isset($_SESSION['First-Name']) && isset($_SESSION['Last-Name'])) {
+                        $name = $_SESSION['First-Name'] . ", " . $_SESSION['Last-Name'];
+                        echo "<p class='username'> $name </p>";
+                        }
+                    ?>
                     <p class="account-type">user</p>
                 </div>
                 <div class="account-settings-btn">
@@ -107,7 +119,6 @@
                         <div class="user-info-wrapper border-100sb">
                             <img src="../imgs/check2-circle.svg" alt="">
                             <div class="user-name">
-                                <p class="username">David jearard</p>
                                 <p class="account-type">user</p>
                             </div>
                         </div>
