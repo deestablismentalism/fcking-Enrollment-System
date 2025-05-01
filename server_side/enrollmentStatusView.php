@@ -2,7 +2,7 @@
     declare(strict_types=1);
 
 require_once __DIR__ . '/dbconnection.php';
-require_once __DIR__ . '/getEnrolleesModel.php';
+require_once __DIR__ . '/EnrolleesModel.php';
 
 class AdminEnrollmentStatusView {
     protected $conn;
@@ -57,6 +57,7 @@ class AdminEnrollmentStatusView {
                             . $enrollmentStatus.'
                         </td>
                         <td> <a href="Admin_Enrollment_Access_Status.php?s='.urlencode($rows['Enrollee_Id']).'" class="view-button"> View Info </a> </td>
+                        <td> <button class="view-button" data-id="' . htmlspecialchars($rows['Enrollee_Id']) . '"> View info</button><td>
                         </tr>';
             }
         }

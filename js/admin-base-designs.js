@@ -44,7 +44,7 @@ function enrollsDrop()
     }
 }
 
-function accountDrop() {
+/* function accountDrop() {
     var account = document.querySelector('.account-settings-btn-content-wrapper');
     account.classList.toggle('show');
     }
@@ -62,4 +62,4 @@ function accountDrop() {
             }
         }
     }
-}
+} */

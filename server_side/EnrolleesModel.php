@@ -43,4 +43,26 @@ class getEnrollees {
 
         return (string)$result['total'];
     }
+    public function getPsaImg($id) {
+        $sql = " SELECT Psa_directory.directory FROM enrollee 
+                INNER JOIN Psa_directory ON enrollee.Psa_Image_Id = Psa_directory.Psa_Image_Id
+                WHERE Enrollee_Id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if($result) {
+            return (string)$result['directory'];
+        }
+        else {
+            return "";
+        }
+    }
+    public function updateEnrollee($id, $status) {
+        $sql = "UPDATE enrollee SET Enrollment_Status = :status WHERE Enrollee_Id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':status', $status, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

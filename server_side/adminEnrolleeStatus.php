@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
     require_once __DIR__ . './dbconnection.php';
-    require_once __DIR__ . './getEnrolleesModel.php';
+    require_once __DIR__ . './EnrolleesModel.php';
 
 class AdminEnrollmentAccessStatus {
     protected $conn;
@@ -14,8 +14,8 @@ class AdminEnrollmentAccessStatus {
     }
 
     public function schoolLevelInfo() {
-       if(isset($_GET['s'])) {
-         $student = $_GET['s'];
+       if(isset($_GET['id'])) {
+         $student = $_GET['id'];
          $allInfo = [];
          $data = $this->getEnrollees->getEnrollmentInformation($student);
          foreach($data as $rows) {
@@ -42,8 +42,8 @@ class AdminEnrollmentAccessStatus {
 } 
     
     public function enrolleeInfo() {
-        if(isset($_GET['s'])) {
-        $student = $_GET['s'];
+        if(isset($_GET['id'])) {
+        $student = $_GET['id'];
         $allInfo = [];
         $data = $this->getEnrollees->getEnrollmentInformation($student);
         foreach($data as $rows) {
@@ -73,8 +73,9 @@ class AdminEnrollmentAccessStatus {
         }
     }   
     public function ifDisabled() {
-        if(isset($_GET['s'])) {
-            $student = $_GET['s'];
+        if(isset($_GET['id'])) {
+            $student = $_GET['id'];
+            $allInfo = [];
             $data = $this->getEnrollees->getEnrollmentInformation($student);
             foreach($data as $rows) {
                 $specialCondition = ($rows['Have_Special_Condition'] == 1) ? htmlspecialchars($rows['Special_Condition']) : 'None';
@@ -92,5 +93,26 @@ class AdminEnrollmentAccessStatus {
                     </tr>';
             }
         }
+    }
+
+    public function displayPsaImg() {
+
+       try{
+            if(isset($_GET['id'])) {
+                $student = $_GET['id'];
+                $data = $this->getEnrollees->getPsaImg($student);
+                $img = htmlspecialchars($data);
+                $noImg = "Walang pinasang PSA image";
+                if ($img == "") {
+                    echo "<p> $noImg </p>";
+                }
+                else {
+                    echo "<img src='$img' alt='PSA image' class='psa-img'>";
+                }
+            }
+       }
+       catch(PDOException $e) {
+        die("Query Failed: " . $e->getMessage());
+       }
     }
 }

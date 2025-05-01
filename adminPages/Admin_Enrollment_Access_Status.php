@@ -14,13 +14,6 @@
     <div class="main-content">
         <div class="content">
             <div class="student-status-start">
-                <div class="student">
-                    <div class="status">
-                        <button class="officially-enrolled">Officially Enrolled</button>
-                        <button class="temporarily-enrolled">Temporarily Enrolled</button>
-                        <button class="pending">Pending</button>
-                        <button class="rejected">Rejected</button>
-                    </div>
                     <div class="header">
                         <h2>Student Enrollment Form</h2>
                     </div>
@@ -50,9 +43,22 @@
 
                             $enrollmentStatusView->ifDisabled();
                           ?>
-                        </table>                    
+                        </table>
+                        <table class="disability-info-table">
+                        <?php
+                            $enrollmentStatusView = new AdminEnrollmentAccessStatus();
+
+                            $enrollmentStatusView->displayPsaImg();
+                          ?>
+                        </table>                          
                     </div>
                 </div>
             </div>
+                <div class="student">
+                    <div class="status">
+                        <button class="officially-enrolled">Officially Enrolled</button>
+                        <button class="temporarily-enrolled">Temporarily Enrolled</button>
+                        <button class="rejected">Rejected</button>
+                    </div>
         </div>
     </div>
