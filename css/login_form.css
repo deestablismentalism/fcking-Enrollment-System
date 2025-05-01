@@ -73,13 +73,12 @@ input { /* email and password input */
     width: 37em;
     text-align: center;
     min-height: 0%;
-    height: 100vh
+    height: 100vh;
 }
 
 body {
     display: flex;
     align-items: left;
-
     font-family: sans-serif;
     max-height: 100vh;
     background: #f3f3f3;

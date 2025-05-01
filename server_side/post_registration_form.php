@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once 'backend_registration.php';
@@ -14,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Last_Name = $_POST['Guardian-Last-Name'] ?? "";
         $Middle_Name = $_POST['Guardian-Middle-Name'] ?? "";
         $Contact_Number = $_POST['Contact-Number'] ?? "";
+        $User_Type = "4";
         
         if (empty($First_Name) || empty($Last_Name) || empty($Contact_Number)) {
             echo json_encode([
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
         
-        $result = $registration->register($First_Name, $Last_Name, $Middle_Name, $Contact_Number);
+        $result = $registration->register($First_Name, $Last_Name, $Middle_Name, $Contact_Number, $User_Type);
         echo json_encode($result);
     } catch (Exception $e) {
         echo json_encode([
