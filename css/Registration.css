@@ -131,8 +131,9 @@ p{
     color: white;
 }
 
-.register {
+.signin-link {
     color: #E1A23C;
+    cursor: pointer;
 }
 
 .vlorange{
