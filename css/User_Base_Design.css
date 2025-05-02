@@ -214,7 +214,6 @@ body {
 }
 
 .header-title {
-    flex-grow: 1;
     padding: .2em;
     padding-left: 1em;
     color: #E1A23C;

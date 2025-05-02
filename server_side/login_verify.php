@@ -33,7 +33,7 @@ Class VerifyLogin {
                     $_SESSION['Middle-Name'] = $result['Middle_Name'];
                     $_SESSION['Contact-Number'] = $result['Contact_Number'];
                     //replace with change location and add session shit
-                    header("Location: ../client_side/Parent_LogIn.php");
+                    header("Location: ../userPages/Parent_Login.php");
                     exit();
                 }
                 

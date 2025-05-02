@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
+    header("Location: ../userPages/Parent_Login.php");
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -37,7 +46,7 @@
                    <BR>
                    <input type="text" id="phone_number" name="phone_number" placeholder="Phone Number" required>
                    <BR>
-                   <input type="password" id="password" name="password" placeholder="Password* "  required>
+                   <input type="password" id="password" name="password" placeholder="Password*" required>
                 </div>
                 <div class="wrap">
                     <button type="submit">
@@ -47,9 +56,9 @@
             </form>
         </div>
         
-        <p>Don't have an account?
-            <a href="#" class="register" style="text-decoration: none;">
-                Create a New Account.
+        <p><span style="color: white;">Don't have an account?</span>
+            <a href="../client_side/Registration.php" class="register-link">
+                Create a New Account
             </a>
         </p>
     </div>

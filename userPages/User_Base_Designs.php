@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['User_Id']) || !isset($_SESSION['Registration_Id'])) {
+if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
     header("Location: ../client_side/login_form.php");
     exit();
 }
@@ -28,10 +28,13 @@ if (!isset($_SESSION['User_Id']) || !isset($_SESSION['Registration_Id'])) {
                     <button class="dashboard-btn" onclick="dashboarddrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="dashboard-ul">
                         <li>
-                            <a href="" class="eForm">Enrollment Form</a>
+                            <a href="../userPages/Student_Dashboard.php">Home</a>
                         </li>
                         <li>
-                            <a href="" class="eStat">Enrollment Status</a>
+                            <a href="../userPages/Enrollment_Form.php" class="eForm">Enrollment Form</a>
+                        </li>
+                        <li>
+                            <a href="../userPages/User_Enrollment_Status.php" class="eStat">Enrollment Status</a>
                         </li>
                     </ul>
                 </div>
@@ -99,10 +102,7 @@ if (!isset($_SESSION['User_Id']) || !isset($_SESSION['Registration_Id'])) {
                     Welcome to South II Student Information System
                 </p>
             </div>
-        
-            <div class="searchbox-wrapper">
-                <input type="search" name="" id="" class="searchbox" placeholder="Search here..">
-            </div>
+
             <div class="account">
                 <button id="user-profile"><img src="../imgs/check2-circle.svg" alt=""></button>
                 <div class="account-settings-wrapper">
@@ -124,7 +124,7 @@ if (!isset($_SESSION['User_Id']) || !isset($_SESSION['Registration_Id'])) {
                         </div>
                         <div class="account-link-wrapper">
                             <a href=""><img src="" alt="">Edit Profile</a><br>
-                            <a href=""><img src="" alt="">Update Password</a>
+                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="" alt="">Update Password</a><br>
                             <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout">Logout</a>
                         </div>
                     </div>

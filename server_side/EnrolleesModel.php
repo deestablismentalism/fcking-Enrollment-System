@@ -21,6 +21,7 @@ class getEnrollees {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
     public function getEnrollmentInformation($id) {
         $sql = "SELECT * FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
@@ -35,6 +36,7 @@ class getEnrollees {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
     public function countEnrollees():string {
         $sql = "SELECT COUNT(*) AS total FROM enrollee WHERE Enrollment_Status = 3";
         $stmt = $this->conn->prepare($sql);
@@ -43,6 +45,7 @@ class getEnrollees {
 
         return (string)$result['total'];
     }
+
     public function getPsaImg($id) {
         $sql = " SELECT Psa_directory.directory FROM enrollee 
                 INNER JOIN Psa_directory ON enrollee.Psa_Image_Id = Psa_directory.Psa_Image_Id
@@ -58,6 +61,7 @@ class getEnrollees {
             return "";
         }
     }
+
     public function updateEnrollee($id, $status) {
         $sql = "UPDATE enrollee SET Enrollment_Status = :status WHERE Enrollee_Id = :id";
         $stmt = $this->conn->prepare($sql);
@@ -65,6 +69,7 @@ class getEnrollees {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
+
     public function getUserEnrollees($id) {
         $sql = "SELECT * FROM enrollee WHERE User_Id = :id";
 
