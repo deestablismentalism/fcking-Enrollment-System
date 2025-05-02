@@ -76,6 +76,8 @@ body {
     flex-wrap:  wrap;
     align-content: flex-end;
     flex: 1;
+    margin: 2em 0em 0em 0em;
+    justify-content: center;
 }
 
 
@@ -94,10 +96,10 @@ body {
 
 
 input {
-    margin-bottom: 1em;
+    margin: .4em .3em 2em .3em;
     display: inline-block;
-    width: 15em;
-    height: 2.1em;
+    width: 16em;
+    height: 3.5em;
     font-size: .9em;
     box-sizing: border-box;
     border-radius: 8px;
@@ -108,14 +110,15 @@ input {
 
 .details {
     color: rgb(255, 248, 248);
-    margin-bottom: .8em;
+    margin-bottom: 8em;
     text-align: start;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
-    display: flex;
+    display: center;
     font-size: .8em;
     font-family: Baloo-Thambi-2;
     font-weight: 400;
+    text-align: center;
 }
 
 .cn {
