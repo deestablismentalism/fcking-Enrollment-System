@@ -30,12 +30,13 @@ class displayEnrollmentStatus {
     
     public function displayStatus() {
 
-        if(isset($_SESSION['User_Id']) && isset($_GET['id'])) {
-            $userId = $_SESSION['User_Id'];
+        if(isset($_SESSION['User-Id']) && isset($_GET['id'])) {
+            $userId = $_SESSION['User-Id'];
             $enrolleeId = $_GET['id'];
 
             $data = $this->enrollee->getUserStatus($userId, $enrolleeId);
             $status = $this->stringEquivalent((int) $data);
+            echo "<script> console.log('" . $status . "') </script>";
 
             echo '<h6 class="status-text">' . $status .'</h6>';
         }

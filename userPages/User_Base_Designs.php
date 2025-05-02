@@ -4,9 +4,8 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
     header("Location: ../client_side/login_form.php");
     exit();
 }
-
 ?>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/user_base_design.css">
     <link rel="stylesheet" href="../css/reset.css">
@@ -46,10 +45,10 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                     <button class="subjects-btn" onclick="subjectsdrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="subjects-ul">
                             <li>
-                            <a href="All_Subjects.html" class="allSubj">All subjects</a>
+                            <a href="" class="classSched">Class Schedule</a>
                             </li>
                             <li>
-                                <a href="" class="viewGrades">View Grades</a>
+                                <a href="view-Grades.php" class="viewGrades">View Grades</a>
                             </li>
                     </ul>
                 </div>
@@ -77,7 +76,7 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                 <!--MISSION AND VISION-->
                 <div class="menu border-100sb" id="mv">
                     <img src="../imgs/check2-circle.svg" class="bi">
-                    <a href=""><span class="menu-title">Mission & Vision</span></a>
+                    <a href="mission-vision.php"><span class="menu-title">Mission & Vision</span></a>
                 </div>  
             </div>
         </div>

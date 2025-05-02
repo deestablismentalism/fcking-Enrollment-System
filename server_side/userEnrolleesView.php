@@ -4,7 +4,7 @@
 class displayEnrollmentForms {
     protected $conn;
     protected $enrollee;
-
+    
     public function __construct() {
         $db = new Connect();
         $this->conn = $db->getConnection();

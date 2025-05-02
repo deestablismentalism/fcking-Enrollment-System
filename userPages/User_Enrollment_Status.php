@@ -1,11 +1,10 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SSIS-Admin User Enrollment Status</title> 
-        <link rel="stylesheet" href="../css/user_base_designs.css">
-        <link rel="stylesheet" href="../css/user_enrollment_status.css">
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title> 
+    <link rel="stylesheet" href="../css/user_enrollment_status.css">
 
     <body>
        <?php
