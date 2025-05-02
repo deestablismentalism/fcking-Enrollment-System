@@ -83,7 +83,7 @@
         </div>
         <!-- Create Account  -->     
         <p>Already have an existing account?
-            <a href="#" class="register" style="text-decoration: none;">
+            <a href="./login_form.php" class="register" style="text-decoration: none;">
                 Sign In.
             </a>
         </p>

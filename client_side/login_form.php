@@ -48,7 +48,7 @@
         </div>
         
         <p>Don't have an account?
-            <a href="#" class="register" style="text-decoration: none;">
+            <a href="./Registration.php" class="register" style="text-decoration: none;">
                 Create a New Account.
             </a>
         </p>
