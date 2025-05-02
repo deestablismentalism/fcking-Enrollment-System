@@ -1,22 +1,17 @@
 {
-    "name": "j/smstry",
+    "name": "lovel/fcking-enrollment-system",
     "autoload": {
         "psr-4": {
-            "J\\Smstry\\": "src/"
+            "Lovel\\FckingEnrollmentSystem\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Frostydayz",
-            "email": "157420039+Frostydayz@users.noreply.github.com"
+            "name": "Lovelyy",
+            "email": "lovelycruz.1317@gmail.com"
         }
     ],
-    "require": {
-        "capcom6/android-sms-gateway": "^2.0",
-        "symfony/http-client": "^6.0",
-        "psr/http-client": "^1.0",
-        "nyholm/psr7": "^1.8"
-    },
+    "require": {},
     "config": {
         "allow-plugins": {
             "php-http/discovery": true

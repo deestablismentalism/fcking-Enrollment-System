@@ -129,7 +129,14 @@
     display: block; 
     margin: 0 auto; 
 }
-
+.psa-img {
+    width: 300px;
+    height: 500px;
+}
+.psa-img:hover {
+    width: 400px;
+    height: 600px;
+}
 /* For screens smaller than 600px (typically mobile devices) */
 @media (max-width: 600px) {
     .student-status-start {
@@ -166,6 +173,10 @@
         height: auto; 
         display: block;  
         margin: 0 auto;  
+    }
+    .psa-img {
+        width: 200px;
+        height: 400px;
     }
 }
 

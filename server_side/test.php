@@ -160,5 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $Guardian_Educational_Attainment, $Guardian_Contact_Number, $Guardian_Email, $If_4Ps);
 
     echo ("All data successfully inserted!");
+
+    
 }
 ?>

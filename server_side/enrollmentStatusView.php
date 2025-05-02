@@ -2,21 +2,34 @@
     declare(strict_types=1);
 
 require_once __DIR__ . '/dbconnection.php';
-require_once __DIR__ . '/enrollment_form.php';
+require_once __DIR__ . '/EnrolleesModel.php';
 
 class AdminEnrollmentStatusView {
     protected $conn;
-    protected $enrollmentForm;
+    protected $getEnrollees;
+    public const ENROLLED = 1;
+    public const DENIED = 2;
+    public const PENDING = 3;
 
+    public function stringEquivalent(int $value): string {
+       switch($value) {
+            case self::ENROLLED:
+                return "ENROLLED";
+            case self::DENIED:
+                return "DENIED";
+            case self::PENDING:
+                return "PENDING";
+        }
+    }
     public function __construct(){
         $db = new Connect();
         $this->conn = $db->getConnection();
-        $this->enrollmentForm = new EnrollmentForm();
+        $this->getEnrollees = new getEnrollees();
     }
 
     public function displayCount() {
         try {
-            $count = $this->enrollmentForm->countEnrollees();
+            $count = $this->getEnrollees->countEnrollees();
             echo "<h2>" . htmlspecialchars($count) . "</h2>";
         }
         catch(PDOException $e) {
@@ -27,20 +40,12 @@ class AdminEnrollmentStatusView {
     
         try {
     
-            $data = $this->enrollmentForm->getEnrollees();
+            $data = $this->getEnrollees->getEnrollees();
             foreach($data as $rows) {   
-                $enrollmentStatus = "";
+                $dbEnrollmentStatus = htmlspecialchars($rows['Enrollment_Status']);
+                $enrollmentStatus = $this->stringEquivalent((int) $dbEnrollmentStatus);
                 $parentMiddleInitial = substr($rows['Middle_Name'], 0, 1) . ".";
                 $studentMiddleInitial = substr($rows['Student_Middle_Name'], 0, 1) . ".";
-                if ($rows['Enrollment_Status'] == 1) {
-                    $enrollmentStatus = "Enrolled";
-                }
-                else if ($rows['Enrollment_Status'] == 2) {
-                    $enrollmentStatus = "Denied";
-                }
-                else {
-                    $enrollmentStatus = "Pending";
-                }
                 echo '<tr class="enrollee-row"> 
                         <td>' . htmlspecialchars($rows['Learner_Reference_Number']) . '</td>
     
@@ -57,6 +62,7 @@ class AdminEnrollmentStatusView {
                             . $enrollmentStatus.'
                         </td>
                         <td> <a href="Admin_Enrollment_Access_Status.php?s='.urlencode($rows['Enrollee_Id']).'" class="view-button"> View Info </a> </td>
+                        <td> <button class="view-button" data-id="' . htmlspecialchars($rows['Enrollee_Id']) . '"> View info</button><td>
                         </tr>';
             }
         }

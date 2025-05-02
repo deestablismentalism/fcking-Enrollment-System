@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Student Dashboard</title> 
     <?php
-        include '../client_side/User_Base_Designs.php';
+        include '../userPages/User_Base_Designs.php';
     ?>
     <link rel="stylesheet" href="../css/Student_Dashboard.css">
 </head>

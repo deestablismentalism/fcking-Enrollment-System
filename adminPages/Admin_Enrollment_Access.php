@@ -45,8 +45,14 @@
                                 ?>
                         </table>
                     </div>
+                    <div id="enrolleeModal" class="modal">
+                        <div class="modal-content">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>       
+    </div>   
+    <script src="../js/enrollee-popUp.js" defer></script>
 </body>    
+</html>

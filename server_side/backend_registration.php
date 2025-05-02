@@ -10,7 +10,7 @@ class Registration {
         $db = new Connect();
         $this->conn = $db->getConnection();
     }
-    public function register($First_Name, $Last_Name, $Middle_Name, $Contact_Number) {
+    public function register($First_Name, $Last_Name, $Middle_Name, $Contact_Number, $User_Type) {
         $this->conn->beginTransaction();
         try {
             // Validate phone number format
@@ -36,11 +36,12 @@ class Registration {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             
             // Insert into users table
-            $sql_insert_password = "INSERT INTO users(Registration_Id, Password)
-                                    VALUES (:Registration_Id, :Password)";
+            $sql_insert_password = "INSERT INTO users(Registration_Id, Password, User_Type)
+                                    VALUES (:Registration_Id, :Password, :User_Type)";
             $insert_password = $this->conn->prepare($sql_insert_password);
             $insert_password->bindParam(':Registration_Id', $Registration_Id);
             $insert_password->bindParam(':Password', $hashed_password);
+            $insert_password->bindParam(':User_Type', $User_Type);
             
             if (!$insert_password->execute()) {
                 throw new Exception("Failed to insert user data");
@@ -110,4 +111,4 @@ class Registration {
         return $password;
     }
 }
-?>
+?> 

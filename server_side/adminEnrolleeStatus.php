@@ -1,23 +1,23 @@
 <?php
     declare(strict_types=1);
     require_once __DIR__ . './dbconnection.php';
-    require_once __DIR__ . './enrollment_form.php';
+    require_once __DIR__ . './EnrolleesModel.php';
 
 class AdminEnrollmentAccessStatus {
     protected $conn;
-    protected $enrollmentForm;
+    protected $getEnrollees;
     
     public function __construct() {
        $db = new Connect();
        $this->conn = $db->getConnection();
-       $this->enrollmentForm = new EnrollmentForm();
+       $this->getEnrollees = new getEnrollees();
     }
 
     public function schoolLevelInfo() {
-       if(isset($_GET['s'])) {
-         $student = $_GET['s'];
+       if(isset($_GET['id'])) {
+         $student = $_GET['id'];
          $allInfo = [];
-         $data = $this->enrollmentForm->getEnrollmentInformation($student);
+         $data = $this->getEnrollees->getEnrollmentInformation($student);
          foreach($data as $rows) {
              $allInfo = [
                  'taong panuruan' => htmlspecialchars($rows['School_Year_Start']) . '-' . htmlspecialchars($rows['School_Year_End']),
@@ -42,10 +42,10 @@ class AdminEnrollmentAccessStatus {
 } 
     
     public function enrolleeInfo() {
-        if(isset($_GET['s'])) {
-        $student = $_GET['s'];
+        if(isset($_GET['id'])) {
+        $student = $_GET['id'];
         $allInfo = [];
-        $data = $this->enrollmentForm->getEnrollmentInformation($student);
+        $data = $this->getEnrollees->getEnrollmentInformation($student);
         foreach($data as $rows) {
             $culutralGroup = ($rows['If_Cultural'] == 1) ? htmlspecialchars($rows['Cultural_Group']) : 'Walang katutubong grupo';
             $allInfo = [
@@ -73,9 +73,10 @@ class AdminEnrollmentAccessStatus {
         }
     }   
     public function ifDisabled() {
-        if(isset($_GET['s'])) {
-            $student = $_GET['s'];
-            $data = $this->enrollmentForm->getEnrollmentInformation($student);
+        if(isset($_GET['id'])) {
+            $student = $_GET['id'];
+            $allInfo = [];
+            $data = $this->getEnrollees->getEnrollmentInformation($student);
             foreach($data as $rows) {
                 $specialCondition = ($rows['Have_Special_Condition'] == 1) ? htmlspecialchars($rows['Special_Condition']) : 'None';
                 $assistiveTech = ($rows['Have_Assistive_Tech'] == 1) ? htmlspecialchars($rows['Assistive_Tech']) : 'None';
@@ -92,5 +93,26 @@ class AdminEnrollmentAccessStatus {
                     </tr>';
             }
         }
+    }
+
+    public function displayPsaImg() {
+
+       try{
+            if(isset($_GET['id'])) {
+                $student = $_GET['id'];
+                $data = $this->getEnrollees->getPsaImg($student);
+                $img = htmlspecialchars($data);
+                $noImg = "Walang pinasang PSA image";
+                if ($img == "") {
+                    echo "<p> $noImg </p>";
+                }
+                else {
+                    echo "<img src='$img' alt='PSA image' class='psa-img'>";
+                }
+            }
+       }
+       catch(PDOException $e) {
+        die("Query Failed: " . $e->getMessage());
+       }
     }
 }
