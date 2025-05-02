@@ -136,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function(){
     });
     form.addEventListener('submit', function(e) 
     {
-        e.preventDefault();
     });
     psaNumber.addEventListener('keydown', function(e) {
         if(isNaN(e.key) && e.key !== "Backspace"){

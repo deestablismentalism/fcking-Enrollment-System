@@ -30,6 +30,11 @@
     padding-bottom: 1.5em;
 }
 
+.em-login {
+    color: #e84646;
+    visibility: hidden;
+}
+
 hr{
     border: 0;
     height: 1px;
@@ -58,7 +63,7 @@ input { /* email and password input */
     border-radius: 15px;
     font-family: Arial;
     margin: 0 auto;
-    background-color: #ddd;
+    background-color: #ffffff;
     opacity: 70%;
 }
 
@@ -73,13 +78,12 @@ input { /* email and password input */
     width: 37em;
     text-align: center;
     min-height: 0%;
-    height: 100vh
+    height: 100vh;
 }
 
 body {
     display: flex;
     align-items: left;
-
     font-family: sans-serif;
     max-height: 100vh;
     background: #f3f3f3;
@@ -110,8 +114,12 @@ button {
     color: white;
 }
 
-.register {
+.register-link {
     color: #E1A23C;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 2em;
+    cursor: pointer;
 }
 
 .vlorange{

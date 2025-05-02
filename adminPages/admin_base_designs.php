@@ -16,7 +16,7 @@
                 <div class="menu border-100sb" id="dashboard">
                     <img src="../imgs/easel.svg" class="bi">
                     <span id="dashboard-spn" class="menu-title">
-                        <a href="../client_side/Admin_Dashboard.php">Dashboard</a>
+                        <a href="./Admin_Dashboard.php">Dashboard</a>
                     </span>
                 </div>
 

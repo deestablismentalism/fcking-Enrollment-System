@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'dbconnection.php';
 
 Class VerifyLogin {
@@ -25,8 +26,15 @@ Class VerifyLogin {
                 $User_Typed_Password = trim($User_Typed_Password);
                 if (password_verify($User_Typed_Password, $User_Password)) {
 
+                    $_SESSION['User-Id'] = $result['User_Id'];
+                    $_SESSION['Registration-Id'] = $result['Registration_Id'];
+                    $_SESSION['First-Name'] = $result['First_Name'];
+                    $_SESSION['Last-Name'] = $result['Last_Name'];
+                    $_SESSION['Middle-Name'] = $result['Middle_Name'];
+                    $_SESSION['Contact-Number'] = $result['Contact_Number'];
                     //replace with change location and add session shit
-                    echo "Login successful!";
+                    header("Location: ../userPages/Parent_Login.php");
+                    exit();
                 }
                 
                 else {

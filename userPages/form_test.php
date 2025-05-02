@@ -1,4 +1,4 @@
-<form action="../server_side/post_enrollment_form_data.php" method="post">
+<form action="../server_side/post_enrollment_form_data.php" method="post" enctype="multipart/form-data">
 <h3>Educational Information</h3>
         <label>School Year Start: <input type="text" name="start-year" required></label><br>
         <label>School Year End: <input type="text" name="end-year" required></label><br>
@@ -62,6 +62,8 @@
         <label>Part of Cultural Group? <input type="text" name="group"></label><br>
         <label>Cultural Group Name: <input type="text" name="community"></label><br>
         <label>Email: <input type="email" name="email" required></label><br>
+
+        <input type="file" name="psa-image" value="Insert Image (Di pa nagana)"> 
         
         <button type="submit">Submit</button>
     </form>
