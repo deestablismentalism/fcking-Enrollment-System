@@ -4,9 +4,8 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
     header("Location: ../client_side/login_form.php");
     exit();
 }
-
 ?>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/user_base_design.css">
     <link rel="stylesheet" href="../css/reset.css">

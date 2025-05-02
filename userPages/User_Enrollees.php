@@ -1,6 +1,7 @@
-<html>
-    <head>  
-    <?php include_once "./User_Base_Designs.php";?>
+<html> 
+    <head>
+    <?php include_once "./User_Base_Designs.php";?>    
+
     <body>
         <h1> Enrollment Forms Submitted </h1>
         <table> 

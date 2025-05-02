@@ -32,8 +32,9 @@ Class VerifyLogin {
                     $_SESSION['Last-Name'] = $result['Last_Name'];
                     $_SESSION['Middle-Name'] = $result['Middle_Name'];
                     $_SESSION['Contact-Number'] = $result['Contact_Number'];
+                    echo "<script> console.log('" . $_SESSION['User-Id']."') </script>";
                     //replace with change location and add session shit
-                    header("Location: ../userPages/Parent_Login.php");
+                    header("Location: ../userPages/User_Enrollees.php");
                     exit();
                 }
                 
