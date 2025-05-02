@@ -34,22 +34,40 @@ class ChangePassword {
                         $update_password->bindparam(':User_Id', $User_Id);
                         
                         if ($update_password->execute()) {
-                            echo "Password changed successfully.";
-                        } else {
-                            echo "Failed to change password.";
+                            return [
+                                'success' => true,
+                                'message' => 'Password changed successfully.'
+                            ];
+                        } 
+                        
+                        else {
+                            return  [
+                                'sucess' => false,
+                                'message' => 'Failed to change password.'
+                            ];
                         }
-                    } else {
-                        echo "New passwords do not match.";
+                    } 
+                    
+                    else {
+                        return [
+                            'success' => false,
+                            'message' => 'New password and confirmation do not match.'
+                        ];  
                     }
                 }
                 
                 else {
-                    echo "Invalid password.";
+                    return[
+                        'success' => false,
+                        'message' => "Incorrect password."
+                    ];
                 }
             } else {
-                echo "User not found.";
+                return [
+                    'success' => false,
+                    'message' => 'User not found.'
+                ];
             }
         }
     }
-
 }
