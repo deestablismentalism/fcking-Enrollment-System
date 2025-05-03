@@ -16,6 +16,8 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
     <title>Login Form</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login_form.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <script src="../js/registration.js"></script> 
 </head>
 
 <body>  
@@ -44,9 +46,11 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
            <form action="../server_side/post_login_verify.php" method="post">
                <div class="box">
                    <BR>
-                   <input type="text" id="phone_number" name="phone_number" placeholder="Phone Number" required>
+                   <label for="phone_number" style="color: white;  font-family: Baloo-Thambi-2;  font-size: .8em;" > Phone Number</label>
+                   <input type="text" id="phone_number" name="phone_number" placeholder="09xx xxx xxxx" required>
                    <BR>
-                   <input type="password" id="password" name="password" placeholder="Password*" required>
+                   <label for="password" style="color: white; margin-bottom: 2em; font-family: Baloo-Thambi-2;  font-size: .8em; ">Password</label>
+                   <input type="password" id="password" name="password" placeholder="Enter password here" required>
                 </div>
                 <div class="wrap">
                     <button type="submit">
@@ -70,6 +74,7 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
         <img src="../imgs/student.jpg" 
         alt="student" id="student">
     </div>
+
 
 </body>
 </html>
