@@ -7,3 +7,13 @@
     font-family: 'Baloo-Thambi-2';
     src: url('../fonts/BalooThambi2-Medium.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Balthazar';
+    src: url('..\fonts\Balthazar-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Baloo-Tamma';
+    src: url('../fonts/BalooTamma2-Regular.ttf') format('truetype');
+}
