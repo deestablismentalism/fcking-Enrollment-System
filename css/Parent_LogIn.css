@@ -144,14 +144,14 @@ h3 {
     font-family: 'Baloo-Tamma';
     font-size: 1.8em;
     color: white;
-    margin: 4em 4em 1em 8.5em;
+    margin: 4em 4em 1em 8.8em;
 }
 
 h4 {
     font-family: "Baloo-Tamma";
     font-size: .9em;
     color: white;
-    margin: 0em 12em 3em 18.5em;
+    margin: 0em 12em 3em 18.8em;
 }
 
 .btn-group button {
@@ -163,7 +163,7 @@ h4 {
     padding: 10px 24px;
     cursor: pointer;
     float: bottom;
-    margin: 1em 10em .7em 11em;
+    margin: 1em 10em .7em 12em;
     font-size: 1.1em;
     font-family: "Baloo-Tamma";
     height: 3em;
