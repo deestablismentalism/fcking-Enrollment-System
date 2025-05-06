@@ -113,5 +113,7 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Staff-Id'])) {
             </div>
         </div>
         <!--END OF HEADER-->
+
 </body>
 </html>
+
