@@ -5,13 +5,17 @@
     <title>Admin Login</title>
     <link rel="stylesheet" href="../css/admin_login_form.css">
     <link rel="stylesheet" href="../css/fonts.css">
+    <script src="../js/admin-login.js"></script> 
 </head>
 <body>
     <div class="bg-image">
     <div class="blurred-background"></div>
         <div class="form">
-            <form class="overlay-form" method="POST" action="../server_side/post_admin_login.php">
-                <h2 style="text-align: center;">Admin LogIn</h2>
+            <form class="overlay-form" method="POST" action="../server_side/post_admin_login.php" id ="admin-login-form">
+                <div class="title-container">
+                    <a href="login_form.php" class="login-back">Back to Login</a>
+                    <h2 style="text-align: center;">Admin LogIn</h2>
+                </div>
                 <input type="text" name="phone_number" placeholder="Phone Number" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit">LogIn</button>

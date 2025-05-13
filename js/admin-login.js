@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("change-password-form");
+    const form = document.getElementById("admin-login-form");
     
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         
         const formData = new FormData(form);
         
-        fetch("../server_side/post_change_password.php", {
+        fetch("../server_side/post_admin_login.php", {
             method: "POST", 
             body: formData,
         })
@@ -22,15 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             if (data.success) {
-                alert(data.message);
                 form.reset();
+                window.location.href = " ../adminPages/Admin_Dashboard.php";
             } else if (!data.success){
                 alert(data.message);
             }
         })
         .catch(error => {
             console.error("Fetch Error:", error);
-            alert("Change Password failed. Please check the console for details.");
+            alert("An error occured. Please try again.");
         });
     });
 });
