@@ -13,8 +13,8 @@ class displayEnrollmentForms {
 
     public function displaySubmittedForms() {
         try {
-            if(isset($_SESSION['User-Id'])) {
-                $id = $_SESSION['User-Id'];
+            if(isset($_SESSION['User']['User-Id'])) {
+                $id = $_SESSION['User']['User-Id'];
     
                 $data = $this->enrollee->getUserEnrollees($id);
                 foreach($data as $rows) {
@@ -24,7 +24,7 @@ class displayEnrollmentForms {
                                     .htmlspecialchars($rows['Student_First_Name']) . ' ' 
                                     .htmlspecialchars($studentMiddleInitial) 
                                     . '</td>
-                            <td> <a href="../userPages/User_Enrollment_Status.php?id='.htmlspecialchars($rows['Enrollee_Id']).'"> Check Status </a></td>
+                            <td class = "button"> <a class= "Check-Status" href="../userPages/User_Enrollment_Status.php?id='.htmlspecialchars($rows['Enrollee_Id']).'"> Check Status </a></td>
                         </tr>';
                 }       
             }

@@ -18,7 +18,7 @@ Class VerifyLogin {
                                     WHERE registrations.Contact_Number = :Contact_Number;";
         $find_information = $this->conn->prepare($sql_find_information);
         $find_information->bindparam(':Contact_Number', $User_Typed_Phone_Number);
-        if ($find_information->execute()) {
+        if ($find_information->execute()) { 
             $result = $find_information->fetch(PDO::FETCH_ASSOC);
             if ($result) {
                 $User_Password = $result['Password'];
@@ -26,24 +26,35 @@ Class VerifyLogin {
                 $User_Typed_Password = trim($User_Typed_Password);
                 if (password_verify($User_Typed_Password, $User_Password)) {
 
-                    $_SESSION['User-Id'] = $result['User_Id'];
-                    $_SESSION['Registration-Id'] = $result['Registration_Id'];
-                    $_SESSION['First-Name'] = $result['First_Name'];
-                    $_SESSION['Last-Name'] = $result['Last_Name'];
-                    $_SESSION['Middle-Name'] = $result['Middle_Name'];
-                    $_SESSION['Contact-Number'] = $result['Contact_Number'];
-                    echo "<script> console.log('" . $_SESSION['User-Id']."') </script>";
-                    //replace with change location and add session shit
-                    header("Location: ../userPages/User_Enrollees.php");
+                    $_SESSION['User'] = [
+                        'User-Id' => $result['User_Id'],
+                        'Registration-Id' => $result['Registration_Id'],
+                        'First-Name' => $result['First_Name'],
+                        'Last-Name' => $result['Last_Name'],
+                        'Middle-Name' => $result['Middle_Name'],
+                        'Contact-Number' => $result['Contact_Number'],
+                        'User-Type' => $result['User_Type']
+                    ];
+
+                    return [
+                        'success' => true,
+                        'message' => 'Login successful.',
+                    ];
+                    
                     exit();
                 }
                 
                 else {
-                    //should still input an alert for the user to know the password was invalid
-                    echo "Invalid password.";
+                    return [
+                        'success' => false,
+                        'message' => 'Incorrect Password.',
+                    ];
                 }
             } else {
-                echo "User not found.";
+                return [
+                    'success' => false,
+                    'message' => 'User not found.',
+                ];
             }
         }
     }
