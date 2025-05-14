@@ -1,12 +1,13 @@
 <?php
 session_start();
+require_once __DIR__ . '/../server_side/UserTypeView.php';
 if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id'])) {
     header("Location: ../client_side/admin_login_form.php");
     exit();
 }
 ?>
 
-<link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/admin_base_designs.css">
     <link rel="stylesheet" href="../css/reset.css">
     <script src="../js/admin-base-designs.js"></script>
@@ -35,7 +36,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                     <button class="students-btn" onclick="studentsDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="students-ul">
                         <li>
-                            <a href="../client_side/Admin_All_Students.php" class="allStudents">All Students</a>
+                            <a href="./Admin_All_Students.php" class="allStudents">All Students</a>
                         </li>
                         <li>
                             <a href="../client_side/Admin_Students.php" class="studentInfo">Student</a>
@@ -65,7 +66,10 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                     <button class="enrolls-btn" onclick="enrollsDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="enrolls-ul">
                         <li>
-                            <a href="./Admin_Enrollment_Access.php" class="pending">Pending</a>
+                            <a href="./Admin_Enrollment_Enrolled.php" class="enrolled">Enrolled</a>
+                        </li>
+                        <li>
+                            <a href="./Admin_Enrollment_Pending.php" class="pending">Pending</a>
                         </li>
                         <li>
                             <a href="" class="toFollow">To Follow-up</a>
@@ -96,12 +100,8 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                 <div class="account-settings-wrapper">
                     <?php 
                         if (isset($_SESSION['Admin']['First-Name']) && isset($_SESSION['Admin']['Last-Name']) && $_SESSION['Admin']['User-Type']) {
-                            $userType = "";
                             echo $_SESSION['Admin']['First-Name'] . " " . $_SESSION['Admin']['Last-Name'];
-                            if ($_SESSION['Admin']['User-Type'] == 1) {
-                                $userType = "Admin";
-                                echo "<p> $userType </p>";
-                            }
+                            $viewType = new UserTypeView();
                         } 
                         else {
                             echo "User Name";
@@ -118,8 +118,8 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                             </div>
                         </div>
                         <div class="account-edit-info-wrapper">
-                            <a href=""><img src="../imgs/edit-information.svg" class="edit-info-icon" alt="" ></a>
-                            <a href="" class="edit-info-text">Edit Profile</a>
+                            <a href="../adminPages/edit_information_links.php"><img src="../imgs/edit-information.svg" class="edit-info-icon" alt="" ></a>
+                            <a href="../adminPages/edit_information_links.php" class="edit-info-text">Edit Profile</a>
                         </div>  
 
                         <div class="account-link-wrapper">
