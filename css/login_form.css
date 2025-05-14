@@ -45,37 +45,42 @@ hr{
 
 }
 
+
 .box {
     width: 17em;
     height: 12em;
-    background-color: #5e598085;
+    background-color: #003366;
     border-radius: 12px;
     margin: 0 auto;
-   
-    }
+}
 
 input { /* email and password input */
     display: block;
     width: 16em;
-    height: 4em;
+    height: 3.5em;
     padding: 1em;
     box-sizing: border-box;
-    border-radius: 15px;
+    border-radius: 8px;
     font-family: Arial;
-    margin: 0 auto;
-    background-color: #ffffff;
+    background-color: #8f9fb1;
     opacity: 70%;
+    color: rgb(0, 0, 0);
+    margin: 0em 2em 0em 3em;
+    justify-content: center;
+ 
+  
 }
 
 #phone_number , #password {
     margin-top: 1em;   
     font-size: .8em;
+    font-family: Baloo-Thambi-2;
 }
 
 .main {
     background-color: #003366;
     padding: 0px 0px;
-    width: 37em;
+    width: 41.9em;
     text-align: center;
     min-height: 0%;
     height: 100vh;
@@ -92,13 +97,16 @@ body {
     font-family: "Balthazar";
 }
 
+::placeholder {
+    color: rgb(243, 228, 228);
+    opacity: 1;
 
+}
 
 button {
     padding: 15px;
     border-radius: 78px;
-    margin-top: 2.5em;
-    margin-bottom: 3em;
+    margin: 4.1em 13em 1.3em 13em;
     color: white;
     cursor: pointer;
     background-color: #E1A23C;
@@ -142,4 +150,17 @@ button {
 
 #student{
     height: 100vh;
+}
+
+#label {
+    font-family: Baloo-Thambi-2;
+    background-color: #8f9fb1;
+}
+
+html, body {
+    height: 100%;    
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
