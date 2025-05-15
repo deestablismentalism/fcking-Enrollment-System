@@ -74,7 +74,7 @@ input { /* email and password input */
 #phone_number , #password {
     margin-top: 1em;   
     font-size: .8em;
-    font-family: Baloo-Thambi-2;
+        ;
 }
 
 .main {

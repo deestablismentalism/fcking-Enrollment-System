@@ -5,25 +5,205 @@
     height: 100vh;
 }
 
-.left-div {
+.main {
     display: flex;
-    color: white;
-    background-color: #E1A23C;
-    width: 50%;
+    width: 100vw;
+    background-color: #003366;
     height: 100vh;
 }
+.left-container {
+    display: flex;
+    Width: 100vw;
+    flex-wrap: nowrap;
+    height: 100vh;
+    width: 50em;
+    background-color: #003366;
+    flex-direction: column;
+}
 
+.mother-name {
+    font-size: 1.3em;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0em 12em 2em 13em;
+    font-family: "Balthazar";
+}
 
 #Parent-Image {
     border-radius: 100%;
-    height: 6.5em;
-    width: 6.5em;
-    margin: 4em 0em 7em 10em;
-
+    height: 9em;
+    width: 9em;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
 }
+
+#logo-container {
+    perspective: 1000px; /* Gives depth for the 3D flip */
+    margin: 3em 19em;
+}
+
+.flip-card {
+    width: 9em;
+    height: 9em;
+    border-radius: 50%;
+    position: relative;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .flip-card-front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+
 .header {
     display: flex;
-    text-align: center;
-    padding: 0 2em;
-    color: #295077;
+    text-align: justify;
+    color: #ffffff;
+    margin: 4em 6em 0em 6em;
+    font-size: 1.7em;
+    font-weight: 900;
 }
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #E1A23C, #ccc, #E1A23C);
+    width: 8em;
+    margin: 0.7em 2em 6.8px 1.4em;
+}
+
+h1 {
+    font-size: .8em;
+    font-weight: 200;
+    color: #ffffff;
+    margin:0em 4em 1em 4em;
+    font-family: Balthazar-Regular;
+
+}
+
+.Enroll-New-Link {
+    color: #E1A23C;
+    text-decoration: none;
+    font-size: 1em;
+    margin-top: 2em;
+    cursor: pointer;
+}
+
+p{
+    margin: 7em 10em 2em 19.5em; 
+}
+
+.right-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 95vh;
+    width: 153vh;
+    background-color: #CC8B20;
+    border-radius: 3em;
+    margin: 1em;
+}
+
+h3 {
+    font-family: 'Baloo-Tamma';
+    font-size: 1.8em;
+    color: white;
+    margin: 4em 4em 1em 8.8em;
+}
+
+h4 {
+    font-family: "Baloo-Tamma";
+    font-size: .9em;
+    color: white;
+    margin: 0em 12em 3em 18.8em;
+}
+
+.btn-group button {
+    background-color: #E1A23C;
+    width: 5em;
+    border-radius: 1em;
+    border: 1px solid #816700;
+    color: white;
+    padding: 10px 24px;
+    cursor: pointer;
+    float: bottom;
+    margin: 1em 10em .7em 12em;
+    font-size: 1.1em;
+    font-family: "Baloo-Tamma";
+    height: 3em;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+
+
+.btn-group {
+
+    flex-wrap: no wrap;
+    gap: 10px;
+    width: 90%;
+    max-width: 600px;
+    justify-content: space-between;
+    animation: fadeIn 1s ease forwards;
+    flex: 1 1 47%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    opacity: 0;
+    animation: slideUp 0.5s ease forwards
+  }
+
+  .btn-group button:nth-child(1) { animation-delay: 0.2s; }
+  .btn-group button:nth-child(2) { animation-delay: 0.4s; }
+  .btn-group button:nth-child(3) { animation-delay: 0.6s; }
+  .btn-group button:nth-child(4) { animation-delay: 0.8s; }
+
+  .btn-group button:hover {
+    background-color: #e4c969;
+    transform: scale(1.09);
+    border-bottom: solid 3px  #826d2f;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+  }

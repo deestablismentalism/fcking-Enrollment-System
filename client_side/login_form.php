@@ -60,11 +60,11 @@ if (isset($_SESSION['User-Id']) && isset($_SESSION['Registration-Id'])) {
             </form>
         </div>
         
-        <p><span style="color: white;">Don't have an account?</span>
-            <a href="../client_side/Registration.php" class="register-link">
-                Create a New Account
-            </a>
-        </p>
+            <p><span style="color: white;">Don't have an account?</span>
+                <a href="../client_side/Registration.php" class="register-link">
+                    Create a New Account
+                </a>
+            </p>
     </div>
 
     <div class="vlorange"></div>
