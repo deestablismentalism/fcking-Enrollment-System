@@ -55,13 +55,8 @@
                         </tr>
                     </table>
                     <div class="class-sched-more">
-                        <button class="button" onclick="handleButtonClick()">See More</button>
-                        <script>
-                        function handleButtonClick() {
-                            alert('Read More!');
-                        }
-                        </script>
-                        </div>
+                        <!-- <a href = "class-Sched.php" class="button">See More</a> -->
+                    </div>
                         <!--END OF CLASS SCHED-->
                 </div>
                 <div class="student-dashboard">
@@ -75,15 +70,6 @@
                         <p class="announcement"> Lorem ipsum dolor - Tamet, consectetur adipiscing elit, 
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....</p>
-                        </div>
-                            <div class="announcement-more">
-                            <button class="button" onclick="handleButtonClick()">See More</button>
-                                <script>
-                                function handleButtonClick() {
-                                    alert('Read More!');
-                                }
-                                </script>
-                            </div>
                         </div>
                     <!--END OF ANNOUNCEMENTS-->
                 </div>
