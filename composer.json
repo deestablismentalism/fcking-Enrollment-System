@@ -1,14 +1,14 @@
 {
-    "name": "lovel/fcking-enrollment-system",
+    "name": "zenturi/fcking-enrollment-system",
     "autoload": {
         "psr-4": {
-            "Lovel\\FckingEnrollmentSystem\\": "src/"
+            "Zenturi\\FckingEnrollmentSystem\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "Lovelyy",
-            "email": "lovelycruz.1317@gmail.com"
+            "name": "Ben-10-Tech",
+            "email": "llorin.221571@lucena.sti.edu.ph"
         }
     ],
     "require": {},

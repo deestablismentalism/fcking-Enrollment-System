@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSIS-Admin Teacher Info</title> 
     <?php
-        include '../client_side/admin_base_designs.php';
+        include '../adminPages/admin_base_designs.php';
     ?>
     <link rel="stylesheet" href="../css/Admin_Teacher_Info.css">
 </head>
@@ -23,7 +23,13 @@
                     </div>
                     <div class="header-right">
                         <p class="teacher-status">Status</p>
-                        <p class="status">Active</p>
+                        <p class="status">
+                            <?php
+                                require_once '../server_side/adminTeacherInfoView.php';
+                                $teacherInfo = new TeacherInformationView();
+                                $teacherInfo->displayStatus();
+                            ?>
+                        </p>
                         <button class="button">Edit</button>
                     </div>
                 </div>
@@ -34,19 +40,43 @@
                         </div>
                         <div class="profile-name">
                             <p class="profile-top">Teacher Name</p>
-                            <p class="profile-bottom">Marion J. Park</p>
+                            <p class="profile-bottom">
+                                <?php
+                                    require_once '../server_side/adminTeacherInfoView.php';
+                                    $teacherInfo = new TeacherInformationView();
+                                    $teacherInfo->displayFullName();
+                                ?>
+                            </p>
                         </div>
                         <div class="profile-email">
                             <p class="profile-top">Email</p>
-                            <p class="profile-bottom">jeonpark@gmail.com</p>
+                            <p class="profile-bottom">
+                                <?php
+                                    require_once '../server_side/adminTeacherInfoView.php';
+                                    $teacherInfo = new TeacherInformationView();
+                                    $teacherInfo->displayEmail();
+                                ?>
+                            </p>
                         </div>
                         <div class="profile-contact">
                             <p class="profile-top">Contact Number</p>
-                            <p class="profile-bottom">+63 935 487 7747</p>
+                            <p class="profile-bottom">
+                                <?php
+                                    require_once '../server_side/adminTeacherInfoView.php';
+                                    $teacherInfo = new TeacherInformationView();
+                                    $teacherInfo->displayContact();
+                                ?>
+                            </p>
                         </div>
                         <div class="profile-address">
                             <p class="profile-top">Address</p>
-                            <p class="profile-bottom">Providence Tower 3000, Unit 2112, Leon Guinto St., Malate, Manila</p>
+                            <p class="profile-bottom">
+                                <?php
+                                    require_once '../server_side/adminTeacherInfoView.php';
+                                    $teacherInfo = new TeacherInformationView();
+                                    $teacherInfo->displayAddress();
+                                ?>  
+                            </p>
                         </div>
                     </div>
                     <div class="profile-content">
@@ -89,6 +119,19 @@
                                 <td>Grade 2</td>
                                 <td>Acacia</td>
                                 <td>25</td>
+                            </tr>
+                        </table>
+                        <p class="government-id">Government ID(s)</p>
+                        <table class="profile-info">
+                            <tr>
+                                <th>Employee Number</th>
+                                <th>Philhealth Number</th>
+                                <th>TIN</th>
+                            </tr>
+                            <tr>
+                                <td>123456</td>
+                                <td>1234567890</td>
+                                <td>123-456-789</td>
                             </tr>
                         </table>
                     </div>
