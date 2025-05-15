@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/login_form.css">
     <link rel="stylesheet" href="../css/fonts.css">
+<<<<<<< HEAD
+    <script src="../js/registration.js"></script> 
+=======
     <script src="../js/login-validation.js"></script> 
+>>>>>>> 8015157b62c32bcee98af7e18de83600250e6c08
 </head>
 
 <body>  
