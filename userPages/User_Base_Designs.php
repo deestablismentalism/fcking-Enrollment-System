@@ -75,15 +75,10 @@ if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registrati
                         </li>
                 </div> -->
                 <!--MISSION AND VISION-->
-                <!-- <div class="menu border-100sb" id="mv">
+                <div class="menu border-100sb" id="mv">
                     <img src="../imgs/check2-circle.svg" class="bi">
-<<<<<<< HEAD
                     <a href="mission-vision.php"><span class="menu-title">Mission & Vision</span></a>
                 </div>  
-=======
-                    <a href=""><span class="menu-title">Mission & Vision</span></a>
-                </div>   -->
->>>>>>> 8015157b62c32bcee98af7e18de83600250e6c08
             </div>
         </div>
     </div>
