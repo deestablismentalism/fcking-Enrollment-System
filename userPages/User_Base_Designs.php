@@ -46,10 +46,10 @@ if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registrati
                     <button class="subjects-btn" onclick="subjectsdrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="subjects-ul">
                             <li>
-                            <a href="All_Subjects.html" class="allSubj">All subjects</a>
+                            <a href="" class="classSched">Class Schedule</a>
                             </li>
                             <li>
-                                <a href="" class="viewGrades">View Grades</a>
+                                <a href="view-Grades.php" class="viewGrades">View Grades</a>
                             </li>
                     </ul>
                 </div> -->
@@ -75,10 +75,10 @@ if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registrati
                         </li>
                 </div> -->
                 <!--MISSION AND VISION-->
-                <!-- <div class="menu border-100sb" id="mv">
+                <div class="menu border-100sb" id="mv">
                     <img src="../imgs/check2-circle.svg" class="bi">
-                    <a href=""><span class="menu-title">Mission & Vision</span></a>
-                </div>   -->
+                    <a href="mission-vision.php"><span class="menu-title">Mission & Vision</span></a>
+                </div>  
             </div>
         </div>
     </div>
