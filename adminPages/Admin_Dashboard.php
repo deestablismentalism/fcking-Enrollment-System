@@ -36,7 +36,11 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            1300
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayPendingStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -48,19 +52,27 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            1300
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayToFollowStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
                 <!--Early Registration-->
                 <div class="card card-4">
                     <div class="card-image border-50">
-                        <img src="../imgs/student.svg" alt="">
-                        <p class="card-text">Early Registration</p>   
+                        <img src="../imgs/Early.png" alt="">
+                        <p class="card-text">Temporarily Enrolled</p>   
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            1300
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayTemporarilyEnrolledStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -75,36 +87,11 @@
                             <th>Name</th>
                             <th>Level</th>
                         </tr>
-                        <tr>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                        </tr>
-                        <tr>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                        </tr>
-                        <tr>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                        </tr>
-                        <tr>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                        </tr>
-                        <tr>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                            <td>Hi</td>
-                        </tr>
+                        <?php
+                            include_once '../server_side/DashboardView.php';
+                            $dashboard = new DashboardView();
+                            $dashboard->displayPendingEnrolleesInformation();
+                        ?>
                     </table>
                 </div>
                 <!--Post Announcments BIG-->
