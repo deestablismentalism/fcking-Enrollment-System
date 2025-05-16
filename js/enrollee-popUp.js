@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function (){ 
-
+        const modal = document.getElementById('enrolleeModal');
+        const modalContent = document.querySelector('.modal-content');
     document.addEventListener('click', function (e) {
        if (e.target.classList.contains('view-button')) {
             const enrolleeId = e.target.getAttribute('data-id');
             console.log(enrolleeId);
-            const modal = document.getElementById('enrolleeModal');
-            const modalContent = document.querySelector('.modal-content');
                 
             modal.style.display = 'block';
             modalContent.innerHTML = '<p> Wait for data to load... </p>'; // Show loader while fetching data
@@ -29,12 +28,13 @@ document.addEventListener('DOMContentLoaded', function (){
     })
 
     document.addEventListener('click', function(e){
-        if (e.target.matches('.accept-btn') || e.target.matches('.reject-btn')) {
+        if (e.target.matches('.accept-btn')) {
             const enrolleeId = e.target.getAttribute('data-id');
             const action = e.target.getAttribute('data-action');
-
-            const status = action === 'accept' ? 1 : 2; //ternary operator: 1 if accepted, 2 if rejected
-
+            const status = 0
+            if (action === "accept") {
+                status = 4
+            } 
             fetch('../server_side/updateEnrolleeStatus.php', {
                 method: 'POST',
                 headers: {
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function (){
             .then(response => response.json())
             .then(data=> {
                 if (data.success) {
+                    alert("successfully submitted");
                     this.location.reload();
                 }
                 else {
@@ -54,40 +55,43 @@ document.addEventListener('DOMContentLoaded', function (){
                 }
             })
         }
-        if (e.target.matches('.toFollow-btn')) {
+        if (e.target.matches('.toFollow-btn') || e.target.matches('.reject-btn')) {
             const enrolleeId = e.target.getAttribute('data-id');
-            const modal = document.getElementById('enrolleeModal');
-            const modalContent = document.querySelector('.modal-content');
+            const action = e.target.getAttribute('data-action');
+            const status = action === 'toFollow' ? 1 : 2;
             modalContent.innerHTML = `
                 <span class="close">&times;</span>
-                <p> What is the reason for following up this enrollee? </p>
-                <input type="checkbox" id="wrong-input" name="wrong-input" value="wrong-input" class="checkboxes">
-                <label for="wrong-input">There are fields with wrong input</label><br>
-                <input type="checkbox" id="no-input" name="no-input" value="wrong-input" class="checkboxes">
-                <label for="no-input">There are fields without input</label><br>
-                <div id="fields-to-flag">
+                <form id="deny-followup">
+                    <input type="hidden" name="id" value="${enrolleeId}">
+                    <input type="hidden" name="status" value="${status}">
+                    <p> What is the reason for following up/Denying this enrollee? </p>
+                    <input type="checkbox" id="wrong-input" name="reasons[]" value="Wrong input" class="checkboxes">
+                    <label for="wrong-input">There are fields with wrong input</label><br>
+                    <input type="checkbox" id="no-input" name="reasons[]" value="No input" class="checkboxes">
+                    <label for="no-input">There are fields without input</label><br>
+                    <input type="checkbox" id="blurred-image" name="reasons[]" value="Blurred Image" class="checkboxes">
+                    <label for="blurred-image"> Blurred Image </label>
+                    <p> State Accurate description </p>
+                    <textarea id="description" class="description-box" name="description" rows="6" cols="40" placeholder="write description here.."></textarea><br>
+                    <button type="submit"> Submit followup </button>
+                </form>
             `;
             const close = document.querySelector('.close');
                 close.addEventListener('click', function(){
                     modal.style.display = 'none';
                 });
-
-            fetch('../server_side/adminEnrolleeFollowup.php?id='+ encodeURIComponent(enrolleeId))
+            const form = document.getElementById('deny-followup');
+            const formData = new FormData(form);
+            fetch('../server_side/adminEnrolleeFollowup.php', {
+                method: 'POST',
+                body: formData
+            })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 if (data.success) {
-                    data.fields.forEach(field => {
-                        modalContent.insertAdjacentElement('beforeend', `
-                            <input type="checkbox" id="${field}" name="${field}" value="${field}" class="checkboxes">
-                            <label for="${field}">${field}</label><br>
-                        `);  
-                    });
-                    modalContent.innerHTML += `
-                        <button class="submit-btn" data-id="${enrolleeId}">Submit</button>
-                    `;
+                    console.log(data);
                 } else {
-                    alert('Error loading fields: ' + data.message);
+                    console.log('Error sending data: ' + data.message);
                 }
             })
         }

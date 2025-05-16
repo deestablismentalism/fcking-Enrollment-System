@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     error_log($enrolleeId);
     error_log($status);
 
-    if($enrolleeId && in_array($status, [1, 2])) {
+    if($enrolleeId && $status) {
         $updateStatus->updateEnrollee($enrolleeId, $status);
 
         echo json_encode(['success' => true]);

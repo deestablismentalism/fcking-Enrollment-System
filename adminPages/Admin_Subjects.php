@@ -42,6 +42,23 @@
                         </div>
                         <button type="submit" class="submit-button"> Add subject </button>
                     </form>
+                    <div class="subjects-list">
+                        <h2> Subjects List </h2>
+
+                        <table>
+                            <thead> 
+                                <th> Subject Name </th>
+                                <th> Grade Level </th>
+                            </thead>
+                            <tbody> 
+                                <?php 
+                                    require_once __DIR__ . '/../server_side/adminSubjectsView.php';
+                                    $view = new adminSubjectsView();
+                                    $view->displaySubjects();
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

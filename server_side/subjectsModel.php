@@ -51,4 +51,24 @@ class subjectsModel {
         }
     }
 
+    public function getSubjectsPerGradeLevel() {
+        try {
+            $sql = "SELECT
+                    s.Subject_Name,
+                    g.Grade_Level
+                    FROM grade_level_subjects
+                    JOIN subjects s ON grade_level_subjects.Subject_Id = s.Subject_Id
+                    JOIN grade_level g ON grade_level_subjects.Grade_Level_Id = g.Grade_Level_Id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        }
+        catch(PDOException $e) {
+            return "Error" . $e->getMessage();
+        }
+    }
+
 }
