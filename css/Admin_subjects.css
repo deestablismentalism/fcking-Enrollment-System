@@ -38,6 +38,8 @@ input[type="checkbox"]:checked::after {
     background-color: blue;
     position: absolute;
 }
+
+
 .form {
     width: 70vw;
     justify-content: center;

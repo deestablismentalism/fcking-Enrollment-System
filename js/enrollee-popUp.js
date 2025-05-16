@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', function (){
                 });
             const form = document.getElementById('deny-followup');
             const formData = new FormData(form);
+
+            for(const[key, value] of formData.entries()){
+                console.log(`${key}: ${value}`);
+            }
             fetch('../server_side/adminEnrolleeFollowup.php', {
                 method: 'POST',
                 body: formData
