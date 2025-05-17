@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
+require_once __DIR__ . '/../server_side/UserTypeView.php';
+if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registration-Id'])) {
     header("Location: ../client_side/login_form.php");
     exit();
 }
@@ -27,19 +28,19 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                     <button class="dashboard-btn" onclick="dashboarddrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="dashboard-ul">
                         <li>
-                            <a href="../userPages/Student_Dashboard.php">Home</a>
+                            <a href="../userPages/User_Enrollees.php">Home</a>
                         </li>
                         <li>
                             <a href="../userPages/Enrollment_Form.php" class="eForm">Enrollment Form</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="../userPages/User_Enrollment_Status.php" class="eStat">Enrollment Status</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
 
                 <!--SUBJECTS-->
-                <div class="menu border-100sb" id="subjects">
+                <!-- <div class="menu border-100sb" id="subjects">
                     <img src="../imgs/book.svg" class="bi">
                     <span class="menu-title">Subjects</span>
                     <button class="subjects-btn" onclick="subjectsdrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
@@ -51,10 +52,10 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                                 <a href="view-Grades.php" class="viewGrades">View Grades</a>
                             </li>
                     </ul>
-                </div>
+                </div> -->
                 
                 <!--TEACHERS-->
-                <div class="menu border-100sb" id="teachers">
+                <!-- <div class="menu border-100sb" id="teachers">
                     <img src="../imgs/people-fill.svg" class="bi bi-person">
                     <span class="menu-title">Teachers</span>
                     <button class="teachers-btn" onclick="teachersdrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
@@ -72,7 +73,7 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                             <a href="" class="">Prof. Dr. Eng. Jearard David</a>
                             <a href="" class="">Prof. Dr. Eng. Jearard David</a>
                         </li>
-                </div>
+                </div> -->
                 <!--MISSION AND VISION-->
                 <div class="menu border-100sb" id="mv">
                     <img src="../imgs/check2-circle.svg" class="bi">
@@ -103,14 +104,14 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
             </div>
 
             <div class="account">
-                <button id="user-profile"><img src="../imgs/check2-circle.svg" alt=""></button>
                 <div class="account-settings-wrapper">
-                    <?php if(isset($_SESSION['First-Name']) && isset($_SESSION['Last-Name'])) {
-                        $name = $_SESSION['First-Name'] . ", " . $_SESSION['Last-Name'];
-                        echo "<p class='username'> $name </p>";
+                    <?php
+                        if (isset($_SESSION['User']) && isset($_SESSION['User']['First-Name']) && isset($_SESSION['User']['Last-Name']) && isset($_SESSION['User']['User-Type'])) {
+                            $name = $_SESSION['User']['First-Name'] . ", " . $_SESSION['User']['Last-Name'];
+                            echo "<p class='user-name'>$name</p>";
+                            $viewType = new UserTypeView();
                         }
                     ?>
-                    <p class="account-type">user</p>
                 </div>
                 <div class="account-settings-btn">
                     <button class="account-btn" onclick="accountDrop()"><img src="../imgs/chevron-down-black.svg" id="account-drop" alt=""></button>
@@ -118,13 +119,17 @@ if (!isset($_SESSION['User-Id']) || !isset($_SESSION['Registration-Id'])) {
                         <div class="user-info-wrapper border-100sb">
                             <img src="../imgs/check2-circle.svg" alt="">
                             <div class="user-name">
-                                <p class="account-type">user</p>
+                                <p class="account-type">User</p>
                             </div>
                         </div>
                         <div class="account-link-wrapper">
-                            <a href=""><img src="" alt="">Edit Profile</a><br>
-                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="" alt="">Update Password</a><br>
-                            <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout">Logout</a>
+                            <!-- <a href=""><img src="" alt="">Edit Profile</a><br> -->
+                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="../imgs/lock-solid.svg" class="change-pass-icon" alt=""></a>
+                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php" class="update-password">Update Password</a><br>
+                        </div>
+                        <div class="account-logout-wrapper">
+                            <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
+                            <a href="../../fcking-enrollment-system/server_side/logout.php" class="logout-text">Logout</a>
                         </div>
                     </div>
                 </div>

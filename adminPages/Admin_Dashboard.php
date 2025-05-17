@@ -6,7 +6,7 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../css/admin_dashboard.css"> 
     <?php
-        include './admin_base_designs.php'; 
+        include '../adminPages/admin_base_designs.php'; 
     ?>
 
         <!--START OF THE MAIN CONTENT-->
@@ -20,7 +20,11 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            1,300
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayEnrolledStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -32,7 +36,11 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            450
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayPendingStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
@@ -44,23 +52,14 @@
                     </div>
                     <div class="number-div">
                         <p class="number">
-                            213
+                            <?php
+                                include_once '../server_side/DashboardView.php';
+                                $dashboard = new DashboardView();
+                                $dashboard->displayToFollowStudents();
+                            ?>
                         </p>
                     </div>
                 </div>
-                <!--Early Registration-->
-                <div class="card card-4">
-                    <div class="card-image border-50">
-                        <img src="../imgs/Early.png" alt="">
-                        <p class="card-text">Early Registration</p>   
-                    </div>
-                    <div class="number-div">
-                        <p class="number">
-                            59
-                        </p>
-                    </div>
-                </div>
-            </div>
             <div class="big-card-wrapper">
                 <!--PENDING ENROLLMENTS BIG-->
                 <div class="pending-enrollments-wrapper">
@@ -70,38 +69,12 @@
                             <th>LRN</th>
                             <th>Name</th>
                             <th>Level</th>
-                            <th>Contact Number</th>
                         </tr>
-                        <tr>
-                            <td># 33595868798</td>
-                            <td>Lovely Jane Dela Cruz</td>
-                            <td>4</td>
-                            <td># 0991209977</td>
-                        </tr>
-                        <tr>
-                            <td># 33595868798</td>
-                            <td>Kenneth Jeffrey Alojado</td>
-                            <td>3</td>
-                            <td># 0991209977</td>
-                        </tr>
-                        <tr>
-                            <td># 33859350393</td>
-                            <td>Nemesio Benedict Llorin</td>
-                            <td>5</td>
-                            <td># 0991209977</td>
-                        </tr>
-                        <tr>
-                            <td># 332113384993</td>
-                            <td>Jearard David</td>
-                            <td>6</td>
-                            <td># 093120808</td>
-                        </tr>
-                        <tr>
-                            <td># 33859350393</td>
-                            <td>Chong Tae</td>
-                            <td>6</td>
-                            <td># 0991209977</td>
-                        </tr>
+                        <?php
+                            include_once '../server_side/DashboardView.php';
+                            $dashboard = new DashboardView();
+                            $dashboard->displayPendingEnrolleesInformation();
+                        ?>
                     </table>
                 </div>
                 <!--Post Announcments BIG-->

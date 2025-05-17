@@ -20,16 +20,16 @@ class AdminEnrollmentAccessStatus {
          $data = $this->getEnrollees->getEnrollmentInformation($student);
          foreach($data as $rows) {
              $allInfo = [
-                 'taong panuruan' => htmlspecialchars($rows['School_Year_Start']) . '-' . htmlspecialchars($rows['School_Year_End']),
-                 'Baitang na nais ipatala' => htmlspecialchars($rows['Enrolling_Grade_Level']),
-                 'Huling baitang na natapos' => htmlspecialchars($rows['Last_Grade_Level']),
-                 'Huling natapos na taon' => htmlspecialchars($rows['Last_Year_Attended']),
+                 'taong panuruan' => $rows['School_Year_Start'] . '-' . $rows['School_Year_End'],
+                 'Baitang na nais ipatala' => htmlspecialchars($rows['E_Grade_Level']),
+                 'Huling baitang na natapos' => htmlspecialchars($rows['L_Grade_Level']),
+                 'Huling natapos na taon' => $rows['Last_Year_Attended'],
                  'Huling paaralan' => htmlspecialchars($rows['Last_School_Attended']),
-                 'ID ng paaralan' => htmlspecialchars($rows['School_Id']),
+                 'ID ng paaralan' => $rows['School_Id'],
                  'Address ng paaralan' => htmlspecialchars($rows['School_Address']),
                  'Nais na paaralan' => htmlspecialchars($rows['Initial_School_Choice']),
                  'Address ng nais na paaralan' => htmlspecialchars($rows['Initial_School_Address']),
-                 'ID ng nais na paaralan' => htmlspecialchars($rows['Initial_School_Id']),
+                 'ID ng nais na paaralan' => $rows['Initial_School_Id'],
              ];
      }
      foreach($allInfo as $field=> $value) {
@@ -49,16 +49,18 @@ class AdminEnrollmentAccessStatus {
         foreach($data as $rows) {
             $culutralGroup = ($rows['If_Cultural'] == 1) ? htmlspecialchars($rows['Cultural_Group']) : 'Walang katutubong grupo';
             $allInfo = [
-                'Numero ng Sertipiko ng Kapanganakan' => htmlspecialchars($rows['Psa_Number']),
-                'Learner Reference Number' => htmlspecialchars($rows['Learner_Reference_Number']),
-                'Buong Pangalan' => htmlspecialchars($rows['Last_Name']) . ', '. htmlspecialchars($rows['First_Name']) . ' ' . htmlspecialchars($rows['Middle_Name']),
+                'Numero ng Sertipiko ng Kapanganakan' => $rows['Psa_Number'],
+                'Learner Reference Number' => $rows['Learner_Reference_Number'],
+                'Apelyido' => htmlspecialchars($rows['Student_Last_Name']) , 
+                'Pangalan'=> htmlspecialchars($rows['Student_First_Name']), 
+                'Panggitna'=> htmlspecialchars($rows['Student_Middle_Name']),
                 'Petsa ng Kapanganakan' => htmlspecialchars($rows['Birth_Date']),
-                'Edad' => htmlspecialchars($rows['Age']),
+                'Edad' => $rows['Age'],
                 'Kabilang sa katutubong grupo ' => $culutralGroup,
                 'Kinagisnang wika' => htmlspecialchars($rows['Native_Language']),
                 'Relihiyon' => htmlspecialchars($rows['Religion']),
                 'Email Address' => htmlspecialchars($rows['Student_Email']),
-                'Buong Address' => htmlspecialchars($rows['House_Number']) .' ' .htmlspecialchars($rows['Subd_Name'])
+                'Buong Address' => $rows['House_Number'] .' ' .htmlspecialchars($rows['Subd_Name'])
                  . '. ' .htmlspecialchars($rows['Brgy_Name']). ', ' .htmlspecialchars($rows['Municipality_Name']) . ', '
                  . htmlspecialchars($rows['Province_Name']) . ' ' . htmlspecialchars($rows['Region']),
             ];
@@ -90,6 +92,37 @@ class AdminEnrollmentAccessStatus {
                 echo '<tr> 
                         <td>' . $field . '</td>
                         <td>' . $value . '</td>
+                    </tr>';
+            }
+        }
+    }
+
+    public function parentInfo() {
+        if(isset($_GET['id'])) {
+            $student = $_GET['id'];
+            $allInfo = [];
+            $data = $this->getEnrollees->getEnrollmentInformation($student);
+            foreach($data as $rows) {
+                $if4ps = ($rows['If_4Ps'] == 1) ? 'Oo' : 'Hindi';
+                $allInfo[] = [
+                    'Relasyon' => htmlspecialchars($rows['Parent_Type']),
+                    'Apleyido' => htmlspecialchars($rows['Last_Name']) , 
+                    'Pangalan'=> htmlspecialchars($rows['First_Name']) , 
+                    'Panggitna '=> htmlspecialchars($rows['Middle_Name']),
+                    'Educational attainment' => htmlspecialchars($rows['Educational_Attainment']),
+                    'Numero ng telepono' => $rows['Contact_Number'],
+                    'Kabilang sa 4ps' => $if4ps
+                ];
+            }
+            foreach($allInfo as $info) {
+                foreach($info as $field=> $value) {
+                    echo '<tr> 
+                            <td>' . $field . '</td>
+                            <td>' . $value . '</td>
+                        </tr>';
+                }
+                echo '<tr>
+                        <td colspan="2" class="divider"></td>
                     </tr>';
             }
         }

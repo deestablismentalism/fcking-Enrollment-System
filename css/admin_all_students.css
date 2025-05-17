@@ -1,0 +1,38 @@
+.content {
+    padding: 2rem;
+}
+.table-title {
+    padding: 1rem;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.table-title h2 {
+    font-family: Barlow, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+.students {
+    width: 100%;
+}
+.students th {
+    font-weight: bold;
+    background: #fff;
+}
+.students th, td {
+    font-family: Barlow, sans-serif;
+    text-align: center;
+    padding: 1rem;
+}
+tr:nth-child(even) {background-color: #ffffff;}
+
+tr:nth-child(odd) {background-color: #f4f4f4;}
+.view-student  {
+    background-color: #003366d5; /* Dark blue */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}

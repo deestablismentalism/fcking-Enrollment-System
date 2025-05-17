@@ -119,6 +119,15 @@
     margin: 0.4em;
     border-radius: 5px;
 }
+.toFollow-btn {
+    background-color:rgb(255, 255, 0);
+    padding: 0.3em 1em 0.3em 1em;
+    margin: 0.4em;
+    border-radius: 5px;
+}
+.description-box {
+    border: 1px solid black;
+}
 .modal-table img:hover {
     width: 600px;
     height: 700px;
@@ -137,6 +146,29 @@
     padding: 6px 12px;
     border-radius: 5px;
     cursor: pointer;
+}
+.checkboxes {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 0.2em;
+    position: relative;
+    cursor: pointer;
+}
+.checkboxes:checked {
+    background-color: #003366d5; /* Dark blue */
+    border: 2px solid #003366d5; /* Dark blue */
+}
+.checkboxes:checked::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 @media (max-width: 600px) {

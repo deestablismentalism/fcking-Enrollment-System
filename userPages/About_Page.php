@@ -23,7 +23,7 @@
                     <img src="../imgs/sample-teacher.png" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/sample-teacher.png" alt="Image 1">s
                 </div>
                 <div class="item" tabindex="0">
                     <img src="../imgs/sample-teacher.png" alt="Image 1">
@@ -52,5 +52,35 @@
             </div>
         </div>
     </div>
+
+    <div class="slider-container">
+        <div class="images">
+            <input type="radio" name="slide" id="img1" checked>
+            <input type="radio" name="slide" id="img2">
+            <input type="radio" name="slide" id="img3">
+            <input type="radio" name="slide" id="img4">
+            <input type="radio" name="slide" id="img5">
+            <input type="radio" name="slide" id="img6">
+            <input type="radio" name="slide" id="img7">
+
+            <img src="../imgs/studs.jpg" class="m1" alt="img1">
+            <img src="../imgs/grad.jpg" class="m2" alt="img2">
+            <img src="../imgs/teacher.jpg" class="m3" alt="img3">
+            <img src="../imgs/painting.jpg" class="m4" alt="img4">
+            <img src="../imgs/grad.jpg" class="m5" alt="img5">
+            <img src="../imgs/womday.jpg" class="m6" alt="img6">
+            <img src="../imgs/planting.jpg" class="m7" alt="img7">
+        </div>
+        <div class="dots">
+            <label for="img1"></label>
+            <label for="img2"></label>
+            <label for="img3"></label>
+            <label for="img4"></label>
+            <label for="img5"></label>
+            <label for="img6"></label>
+            <label for="img7"></label>
+        </div>
+    </div>
+
 </body>
 </html>

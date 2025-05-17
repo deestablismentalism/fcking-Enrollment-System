@@ -10,29 +10,38 @@ class getEnrollees {
         $this->conn = $db->getConnection();
     }
 
-    public function getEnrollees(){
-        $sql = "SELECT * FROM enrollee_parents
-                INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
-                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
-                INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
-                WHERE parent_information.Parent_Type = 'Guardian';";
+    public function getPendingEnrollees(){
+        $sql = "SELECT * FROM enrollee WHERE Enrollment_Status = 3";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-
     public function getEnrollmentInformation($id) {
-        $sql = "SELECT * FROM enrollee_parents
+        $sql = "SELECT enrollee_parents.*,
+                        enrollee.*,
+                        educational_information.*,
+                        educational_background.*,
+                        enrollee_address.*,
+                        disabled_student.*,
+                        parent_information.*,
+
+                        enrolling_level.Grade_Level AS E_Grade_Level,
+                        last_level.Grade_Level AS L_Grade_Level
+
+                FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
-                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id
+                INNER JOIN grade_level AS enrolling_level ON enrolling_level.Grade_Level_Id = educational_information.Enrolling_Grade_Level
+                INNER JOIN grade_level AS last_level ON last_level.Grade_Level_Id = educational_information.Last_Grade_Level 
                 INNER JOIN educational_background ON enrollee.Educational_Background_Id = educational_background.Educational_Background_Id
                 INNER JOIN enrollee_address ON enrollee.Enrollee_Address_Id = enrollee_address.Enrollee_Address_Id
                 INNER JOIN disabled_student ON enrollee.Disabled_Student_Id = disabled_student.Disabled_Student_Id
                 INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
                 WHERE enrollee_parents.Enrollee_Id = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['id' => $id]);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
@@ -67,9 +76,24 @@ class getEnrollees {
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':status', $status, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        return $stmt->execute();
     }
-
+    public function insertEnrolleeTransaction($id , $transactionCode , $staffId, $reason,$description) {
+        $sql ="INSERT INTO enrollment_transactions(Enrollee_Id,Transaction_Code, Staff_Id, Reason,Description)
+            VALUES (:enrollee_id, :transaction_code, :staff_Id,:reason, :description)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':enrollee_id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':transaction_code', $transactionCode);
+        $stmt->bindParam(':staff_Id', $staffId, PDO::PARAM_INT);
+        $stmt->bindParam(':reason', $reason);
+        $stmt->bindParam(':description', $description);
+        if($stmt->execute()) {
+            return ['success'=> true, 'message'=> 'query successful'];
+        }
+        else {
+            return ['success'=> false, 'message'=> 'query failed'];
+        }
+    } 
     public function getUserEnrollees($id) {
         $sql = "SELECT * FROM enrollee WHERE User_Id = :id";
 
@@ -91,4 +115,54 @@ class getEnrollees {
 
         return (int)$result['Enrollment_Status'];
     }
+    public function getEnrolled() {
+        $sql = "SELECT * FROM enrollee_parents
+                INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
+                INNER JOIN grade_level AS enrolling_level ON enrolling_level.Grade_Level_Id = educational_information.Enrolling_Grade_Level
+                INNER JOIN grade_level AS last_level ON last_level.Grade_Level_Id = educational_information.Last_Grade_Level
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
+                INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
+                WHERE parent_information.Parent_Type = 'Guardian' AND Enrollment_Status = 1;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+    public function countEnrolled():string {
+        $sql = "SELECT COUNT(*) AS total FROM enrollee WHERE Enrollment_Status = 1;";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (string)$result['total'];
+    }
+    public function searchEnrollees($query) {
+       try {
+         $query = "%$query%";
+        $sql = "SELECT * FROM enrollee
+                WHERE Enrollment_Status = 3 AND Student_First_Name LIKE :search
+                OR Student_Last_Name LIKE :search";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':search', $query);
+
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+       }
+       catch(PDOException $e) {
+        echo "<td> Error: " . $e->getMessage() . "<td>";
+       }
+    }
+
+    public function sendTransactionStatus($id) {
+        $sql = "SELECT et.*, e.Enrollment_Status FROM enrollment_transactions AS et 
+                LEFT JOIN enrollee AS e ON et.Enrollee_Id = e.Enrollee_Id WHERE et.Enrollee_Id = :id";
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+   
 }

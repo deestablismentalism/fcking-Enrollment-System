@@ -4,18 +4,25 @@ body {
     background-color: rgb(235, 231, 231);
 }
 
+p {
+    cursor: default;
+}
 /*----SIDEBAR DESIGNS----*/
 .sidebar {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
-    bottom: 0;
-    width: 3.5vw;
-    background-color: #003366;
     height: 100vh;
-    transition: width 0.2s ease-in, opacity 0.15s ease-out;
-    overflow: hidden;
-    font-family: 'Barlow', Arial;
+    width: 60px; /* collapsed width */
+    background-color: #003366;
+    overflow-x: hidden;
+    transition: width 0.3s ease;
+    font-family: 'Barlow', 'Arial';
+    z-index: 100;
+}
+
+.sidebar ~ .main-content {
+    margin-left: 2.8vw;/*same width lagi dapat ng .sidebar*/
 }
 
 .sidebar button {
@@ -134,11 +141,12 @@ body {
 .dashboard-ul a:hover {
     color: white;
 }
-
-#dashboard-spn a{
-    color: white !important;
+#dashboard-spn a:hover {
+    color: #E1A23C;
 }
-
+#dashboard-spn a {
+   color: white;
+}
 /*STUDENTS*/
 .students-ul a:hover {
     color: white;
@@ -235,9 +243,9 @@ body {
 
 /*--HEADER DESIGNS--*/
 .main-content {
-    position: relative;
     background-color:antiquewhite;
     width: 100%;
+    height: 100%;
 }
 
 .header-title {
@@ -254,6 +262,9 @@ body {
     align-items: center;
     flex-wrap: wrap;
     background-color: white;
+    height: 3.2em;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+
 }
 
 .searchbox {
@@ -270,6 +281,7 @@ body {
 .account {
     display: flex;
     padding-right: 2em;
+    font-family: 'Arial';
 }
 
 .account button {
@@ -298,6 +310,10 @@ body {
     display: inline-block;
 }
 
+.account-settings-wrapper{
+    font-weight: 700;
+}
+
 .account-settings-btn-content-wrapper {
     display: none;
     position: absolute;
@@ -310,8 +326,37 @@ body {
     z-index: 1;
 }
 
+.account-link-wrapper:hover, .account-logout-wrapper:hover, .account-edit-info-wrapper:hover {
+    background-color: #a7a39d;
+}
+
 .account-settings-btn-content-wrapper a{
     cursor: pointer;
+}
+
+
+.account-link-wrapper, .account-logout-wrapper, .account-edit-info-wrapper{
+    display: flex;
+}
+
+.update-password {
+    margin: auto 0px;
+}
+
+.account .change-pass-icon, .account .logout-icon, .account .edit-info-icon{
+    padding: .4em;
+    margin: .5em;
+    border-radius: 50%;
+    background-color: #cfcbc4;
+    border: #a7a39d 1px solid;
+}
+
+.logout-text, .edit-info-text {
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    margin: auto;
+    margin-left: .2em;
 }
 
 .user-info-wrapper {
@@ -324,6 +369,12 @@ body {
 /*--END OF HEADER DESIGNS--*/
 /*MEDIA QUERIES*/
 @media (max-width: 1510px) {
+    sidebar.active {
+        min-width: 20vw;
+        font-size: .7em;
+        transition: all .2s ease-out;
+    }
+
     .sidebar {
         font-size: .85em;
     }

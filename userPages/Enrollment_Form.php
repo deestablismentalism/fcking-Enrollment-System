@@ -18,7 +18,7 @@
             </div>
 
             <div class="content-wrapper">
-                <form id="enrollment-form" class="form-main" method="POST" action="../server_side/post_enrollment_form_data.php">
+                <form id="enrollment-form" class="form-main" method="POST" action="../server_side/post_enrollment_form_data.php" enctype="multipart/form-data">
                     <!--ANTAS AT IMPORMASYON NG PAARALAN-->
                     <div class="previous-school border-75">
                         <div class="previous-school-title">
@@ -42,11 +42,11 @@
                             <div class="learner-radio">
                                 <p class="dfont">I-check lamang naaangkop</p>
                                 <div class="lrn-radio-buttons-selections">
-                                    <input type="radio" id="No-LRN" name="LRN" value="No-LRN" class="radio">
+                                    <input type="radio" id="No-LRN" name="LRN" value="0" class="radio">
                                     <label for="no-lrn">Walang LRN</label>
-                                    <input type="radio" id="With-LRN" name="LRN" value="With-LRN" class="radio">
+                                    <input type="radio" id="With-LRN" name="LRN" value="1" class="radio">
                                     <label for="with-lrn">Mayroong LRN</label>
-                                    <input type="radio" id="Returning" name="LRN" value="Returning" class="radio">
+                                    <input type="radio" id="Returning" name="LRN" value="2" class="radio">
                                     <label for="returning">Returning (Balik Aral)</label>
                                 </div>
                             </div>
@@ -57,26 +57,17 @@
 
                                 <p class="dfont">Baitang na nais ipatala</p>
                                 <select name="grades-tbe" id="grades-tbe" class="select">
-                                    <option value="Kinder1">Kinder 1</option>
-                                    <option value="Kinder2">Kinder 2</option>
-                                    <option value="Grade1">Grade 1</option>
-                                    <option value="Grade2">Grade 2</option>
-                                    <option value="Grade3">Grade 3</option>
-                                    <option value="Grade4">Grade 4</option>
-                                    <option value="Grade5">Grade 5</option>
-                                    <option value="Grade6">Grade 6</option>
+                                    <?php
+                                        require_once '../server_side/getGradeLevels.php';
+                                        $view = new getGradeLevels();
+                                    ?>
                                 </select>
 
                                 <p class="dfont">Huling baitang na natapos</p>
                                 <select name="last-grade" id="last-grade" class="select">
-                                    <option value="Kinder1">Kinder 1</option>
-                                    <option value="Kinder2">Kinder 2</option>
-                                    <option value="Grade1">Grade 1</option>
-                                    <option value="Grade2">Grade 2</option>
-                                    <option value="Grade3">Grade 3</option>
-                                    <option value="Grade4">Grade 4</option>
-                                    <option value="Grade5">Grade 5</option>
-                                    <option value="Grade6">Grade 6</option>
+                                    <?php 
+                                        $view = new getGradeLevels();
+                                    ?>
                                 </select>
 
                                 <div class="last-year-finished">
@@ -185,14 +176,14 @@
                                     <input type="text" name="fname" id="fname" class="textbox" placeholder="John Mark">
                                 </div>
                                 <div class="mname">
-                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <p class="dfont">Gitnang Pangalan(Iwang blanko kung hindi naaangkop)</p>
                                     <div class="error-msg">
                                         <span class="em-mname"></span>
                                     </div>
                                     <input type="text" name="mname" id="mname" class="textbox" placeholder="Jimenez">
                                 </div>
                                 <div class="extension">
-                                    <p class="dfont">Extensyon (Jr., Sr.)</p>
+                                    <p class="dfont">Extensyon(Jr., Sr.) (Iwang blanko kung hindi naaangkop)</p>
                                     <div class="error-msg">
                                         <span class="em-extension"></span>
                                     </div>
@@ -229,9 +220,9 @@
                                         <p class="dfont">Nabibilang sa katutubong grupo/ <br class="responsive-text-break">
                                                     Komunidad ng Katutubong Kultural</p>
                                         <div>
-                                            <input type="radio" name="group" id="yes" class="radio" value="yes">
+                                            <input type="radio" name="group" id="yes" class="radio" value="1">
                                             <label for="yes">Oo</label>
-                                            <input type="radio" name="group" id="no" class="radio" value="no">
+                                            <input type="radio" name="group" id="no" class="radio" value="0">
                                             <label for="no">Hindi</label>
                                         </div>
                                     </div>
@@ -281,9 +272,9 @@
                         <div class="student-disability-wrapper">
                             <div class="special-needs">
                                 <p class="dfont">Ang mag-aaral ba ay nangangailangan ng espesyal na tulong sa pag-aaral? (e.g ADHD)</p>
-                                <input type="radio" name="sn" id="yes" class="radio" value="0">
+                                <input type="radio" name="sn" id="yes" class="radio" value="1">
                                 <label for="yes">Mayroon</label>
-                                <input type="radio" name="sn" id="no" class="radio" value="1">
+                                <input type="radio" name="sn" id="no" class="radio" value="0">
                                 <label for="no">Wala</label>
                             </div>
 
@@ -296,9 +287,9 @@
                             </div>
                             <div class="assisttech">
                                 <p class="dfont">May nagagamit bang “assistive technology devices” (e.g Braille)</p>
-                                <input type="radio" name="at" id="yes" class="radio" value="0">
+                                <input type="radio" name="at" id="yes" class="radio" value="1">
                                 <label for="yes">Oo</label>
-                                <input type="radio" name="at" id="no" class="radio" value="1">
+                                <input type="radio" name="at" id="no" class="radio" value="0">
                                 <label for="no">Hindi</label>
                             </div>
                             <div class="trueassisttech">
@@ -417,7 +408,7 @@
                                     <div class="error-msg">
                                         <span class="em-f-number"></span>
                                     </div>
-                                    <input type="text" name="F-number" id="F-number" class="textbox" placeholder="09123456789">
+                                    <input type="text" name="F-Number" id="F-number" class="textbox" placeholder="09123456789">
                                 </div>
                             </div>
 
@@ -462,7 +453,7 @@
                                     <div class="error-msg">
                                         <span class="em-m-number"></span>
                                     </div>
-                                    <input type="text" name="M-number" id="M-number" class="textbox" placeholder="09123456789">
+                                    <input type="text" name="M-Number" id="M-number" class="textbox" placeholder="09123456789">
                                 </div>
                             </div>
 
@@ -507,7 +498,7 @@
                                     <div class="error-msg">
                                         <span class="em-g-number"></span>
                                     </div>
-                                    <input type="text" name="G-number" id="G-number" class="textbox" placeholder="09123456789">
+                                    <input type="text" name="G-Number" id="G-number" class="textbox" placeholder="09123456789">
                                 </div>
                             </div>
                         </div>
@@ -526,7 +517,7 @@
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
                             <input type="file" name="psa-image" value="Insert Image (Di pa nagana)"> 
                         </div>
-                        <button type="submit" style="border: 1px black solid; cursor: pointer;">Submit</button>
+                        <button type="submit" class="submit-button" >Submit</button>
                     </div>
                 </form>
             </div>
