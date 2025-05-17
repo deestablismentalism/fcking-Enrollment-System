@@ -118,7 +118,7 @@
                             <option value="Principal 5">Principal 5</option>
                         </select>
                         <p class="advisory">Class Advisory</p>
-                        <table class="profile-info">
+                        <!-- <table class="profile-info">
                             <tr>
                                 <th>Section</th>
                                 <th>Grade Level</th>
@@ -156,7 +156,7 @@
                                 <td>Acacia</td>
                                 <td>25</td>
                             </tr>
-                        </table>
+                        </table> -->
                         <p class="government-id">Government ID(s)</p>
                         <table class="profile-info">
                             <tr>

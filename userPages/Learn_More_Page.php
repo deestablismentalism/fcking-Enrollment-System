@@ -21,7 +21,20 @@
             <div class="learn-more-container">
                 <div class="learn-more-content">
                     <div class="image-text-container">
-                        <img src="../imgs/temp-announcement.png" alt="Image 1" class="image">
+                        <img src="../imgs/studs.jpg" alt="Image 1" class="image">
+                        <div class="text-container">
+                            <h3>Our Beloved School</h3>
+                            <p>Lucena South II Elementary School is dedicated to improving teaching and learning through 
+                                continuous teacher training and the use of innovative strategies. The school promotes student 
+                                engagement by integrating technology and learner-centered approaches. It remains committed to creating 
+                                a supportive, inclusive environment that fosters academic growth and excellence.
+</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="learn-more-content">
+                    <div class="image-text-container">
+                        <img src="../imgs/teacher.jpg" alt="Image 1" class="image">
                         <div class="text-container">
                             <h3>Our Teachers</h3>
                             <p>Our dedicated teachers are committed to providing quality education and support to all students.</p>
@@ -30,28 +43,23 @@
                 </div>
                 <div class="learn-more-content">
                     <div class="image-text-container">
-                        <img src="../imgs/temp-announcement.png" alt="Image 1" class="image">
+                        <img src="../imgs/grad.jpg" alt="Image 1" class="image">
                         <div class="text-container">
-                            <h3>Our Teachers</h3>
-                            <p>Our dedicated teachers are committed to providing quality education and support to all students.</p>
+                            <h3>History</h3>
+                            <p>Lucena South II Elementary School was established in 1963 and has since played a vital 
+                                role in providing quality education in Lucena City. Over the decades, it has evolved to 
+                                meet the growing needs of learners and the demands of modern education.
                         </div>
                     </div>
                 </div>
                 <div class="learn-more-content">
                     <div class="image-text-container">
-                        <img src="../imgs/temp-announcement.png" alt="Image 1" class="image">
+                        <img src="../imgs/planting.jpg" alt="Image 1" class="image">
                         <div class="text-container">
-                            <h3>Our Teachers</h3>
-                            <p>Our dedicated teachers are committed to providing quality education and support to all students.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="learn-more-content">
-                    <div class="image-text-container">
-                        <img src="../imgs/temp-announcement.png" alt="Image 1" class="image">
-                        <div class="text-container">
-                            <h3>Our Teachers</h3>
-                            <p>Our dedicated teachers are committed to providing quality education and support to all students.</p>
+                             <h3>Community</h3>
+                            <p>The school thrives through the strong support of its local community. Parents, stakeholders, 
+                                and nearby organizations actively participate in school programs, fostering a collaborative and 
+                                nurturing learning environment.</p>
                         </div>
                     </div>
                 </div>

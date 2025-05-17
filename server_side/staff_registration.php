@@ -40,6 +40,11 @@ class StaffRegistration {
         try {
             $this->conn->beginTransaction();
 
+            if (!preg_match('/^09\d{9}$/', $Staff_Contact_Number)) {
+                $this->conn->rollBack();
+                echo ("Invalid phone number format. Please use a valid Philippine mobile number (09XXXXXXXXX).");
+                return;
+            }   
             // Call staffInformation() inside the transaction
             $Staff_Id = $this->staffInformation($Staff_First_Name, $Staff_Middle_Name, $Staff_Last_Name, $Staff_Email, $Staff_Contact_Number, $Staff_Status, $Staff_Type);
 

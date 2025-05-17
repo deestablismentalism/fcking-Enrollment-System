@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Last_Name = $_POST['Guardian-Last-Name'] ?? "";
         $Middle_Name = $_POST['Guardian-Middle-Name'] ?? "";
         $Contact_Number = $_POST['Contact-Number'] ?? "";
-        $User_Type = "4";
+        $User_Type = "3";
         
         if (empty($First_Name) || empty($Last_Name) || empty($Contact_Number)) {
             echo json_encode([

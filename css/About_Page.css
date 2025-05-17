@@ -64,9 +64,7 @@
     width: 33%; /* Underline width is 25% of the element */
     border-bottom: 2px solid rgba(241, 189, 34, 0.75);
     transform: translateX(-50%); /* Center the underline relative to its own width */
-    max-width: 100%; /* Ensure it doesn't exceed the element's width */
 }
-
 
 /** CSS for the image gallery */
 .wrapper{
@@ -88,7 +86,7 @@
 
 .item{
     width: calc(var(--index) * 3);
-    height: calc(var(--index) * 25);
+    height: calc(var(--index) * 22);
     background-color: #222;
     background-size: cover;
     background-position: center;
@@ -102,7 +100,7 @@
 .item img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .item::before, .item::after{
@@ -174,104 +172,4 @@
     margin: 0 .45vw;
 }
 
-
 /** END of CSS for the image gallery */
-
-
-
-/* Extra small phones (320px - 374px) */
-@media (min-width: 320px) and (max-width: 374px) {
-    .content-text {
-        font-size: .6em;
-    }
-    .wrapper {
-        display: none;
-    }
-
-    .slider-container {
-        display: flex  ;
-        width: 100%;
-        max-width: 600px;
-        flex-direction: column;
-        align-items: center;
-        margin: auto;
-        padding-bottom: 30px; /* give space for dots */
-        position: relative;
-    }
-}
-
-/* Small phones (375px - 425px) */
-@media (min-width: 375px) and (max-width: 425px) {
-
-    .content-text {
-        font-size: .9em;
-    }
-    .wrapper {
-        display: none;
-    }
-
-    .slider-container {
-        display: block;
-    } 
-}
-
-/* Mobile & Small Devices (426 - 768px) */
-@media (min-width: 426px) and (max-width: 768px) {
-
-    .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 15px;
-    }
-    .page-title{
-        height: 169px;
-        font-size: 1.1em;
-        padding-bottom: 52px;
-    }    
-    .content-text {
-    font-size: 1em;
-    }
-    .wrapper {
-        display: none;
-    }
-    .separator {
-        display: none;
-    }
-    .slider-container {
-    display: block;
-    }
-}
-
-/* Tablets (769px - 1023px) */
-@media (min-width: 769px) and (max-width: 1023px) {
-
-    .content-text {
-        font-size: 1.2em;
-    }
-
-    .page-title {
-        height: 250px;
-        font-size: 1.5em;
-    }
-
-    .separator {
-        font-size: 24px;
-    }
-
-    .wrapper {
-        height: 70vh;
-    }
-}
-
-/* Desktops (1024px and up) */
-@media (min-width: 1024px) {
-    .separator {
-        font-size: 28px;
-    }
-    .slider-container {
-        display: none;
-    }
-}
-
-
-

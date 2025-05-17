@@ -20,39 +20,40 @@
         <div class="wrapper">
             <div class="items">
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/studs.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">s
+                    <img src="../imgs/painting.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/quiz.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/planting.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/grad.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/boyscout.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs//painting.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/studs.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/planting.jpg" alt="Image 1">
                 </div>
                 <div class="item" tabindex="0">
-                    <img src="../imgs/sample-teacher.png" alt="Image 1">
+                    <img src="../imgs/grad.jpg" alt="Image 1">
                 </div>
             </div>
         </div>
     </div>
 
+     <!--  
     <div class="slider-container">
         <div class="images">
             <input type="radio" name="slide" id="img1" checked>
@@ -80,7 +81,7 @@
             <label for="img6"></label>
             <label for="img7"></label>
         </div>
-    </div>
+    </div>-->
 
 </body>
 </html>

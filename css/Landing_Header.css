@@ -172,7 +172,7 @@
         font-size: 20px;
     }
     .content-text {
-        font-size: 1.2em;
+        font-size: 2em;
     }
     .header-right {
         font-size: 11px;
@@ -201,5 +201,8 @@
 
     .separator {
         font-size: 28px;
+    }
+        .content-text {
+        font-size: 2em;
     }
 }
