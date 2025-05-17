@@ -34,7 +34,10 @@
                 <label for="Region">Region:</label>
                 <input type="text" id="Region" name="Region" required>
 
-                <input type="submit" value="Update">    
+                <div class="form-buttons">
+                    <input type="submit" value="Update">  
+                    <a href="./edit_information_links.php" class="back">Go Back</a>
+                </div>
             </form>
         </div>
     </div>
