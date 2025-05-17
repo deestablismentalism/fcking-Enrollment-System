@@ -9,6 +9,13 @@ try {
         $subjectName = $_POST['subject-name'];
         $subjectLevel = (int)$_POST['subject-level'];
 
+        if (empty($subjectName)) {
+            echo"<script> 
+                alert('Subject name cannot be empty'); 
+                window.location.href = '../adminPages/Admin_Subjects.php'
+            </script>";
+            exit();
+        }
         $convertedName = strtoupper($subjectName);
         if (isset($_POST['levels'])) {
             $subjects = $_POST['levels'];
