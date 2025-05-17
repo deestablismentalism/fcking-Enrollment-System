@@ -19,7 +19,7 @@ h2 {
 }
 
 .bg-image {
-    background-image: url('../imgs/student.jpg'); /* <-- Set your background image here */
+    background-image: url('../imgs/teacher.jpg'); /* <-- Set your background image here */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -91,7 +91,7 @@ button:hover {
 }
 
 .blurred-background {
-    background-image: url('../imgs/student.jpg');
+    background-image: url('../imgs/teacher.jpg');
     background-size: cover;
     background-position: center;
     filter: blur(10px);

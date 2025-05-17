@@ -2,6 +2,10 @@
     background-color: #003366;
 }
 
+img {
+    max-width: 70%;
+}
+
 .page-title {
     font-size: 2.75em;
     color: #ffffff;
@@ -59,9 +63,11 @@
 .learn-more-container > .learn-more-content {
     background-color: #f1f1f1;
     border: 1px solid rgba(0, 0, 0, 0.25);
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     border-radius: 5px;
+    height: 40em;
+
 }
 
 .learn-more-text {

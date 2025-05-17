@@ -20,7 +20,7 @@
         </div>
 
         <div id="logo-container">
-            <img src="../imgs/R(1).png" 
+            <img src="../imgs/logo.jpg" 
             alt="School Logo" id="school-logo">
         </div>
 
@@ -94,7 +94,7 @@
     <div class="vlyellow"></div>
 
     <div id="img-container">
-        <img src="../imgs/student.jpg" 
+        <img src="../imgs/teacher.jpg" 
         alt="student" id="student">
     </div>
    <!-- <script src="../js/registration-validation.js"></script> -->

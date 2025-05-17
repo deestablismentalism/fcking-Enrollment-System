@@ -86,7 +86,7 @@
 
 .item{
     width: calc(var(--index) * 3);
-    height: calc(var(--index) * 25);
+    height: calc(var(--index) * 22);
     background-color: #222;
     background-size: cover;
     background-position: center;
