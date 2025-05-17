@@ -18,7 +18,8 @@
                     <input type="password" id="old-password" name="old-password" placeholder="Old Password" required><br>
                     <input type="password" id="new-password" name="new-password" placeholder="New Password" required><br>   
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm New Password" required><br>
-                    <div class="button" role="button" type="submit" class="submit" style="center">Change Password</div>
+                    <button type="submit" class="submit" style="center">Change Password</button>
+                    <a href="../adminPages/Admin_Dashboard.php" class="back">Go Back</a>
                 </form>
             </div>
     </div>
