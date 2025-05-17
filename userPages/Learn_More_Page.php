@@ -28,7 +28,7 @@
                                 continuous teacher training and the use of innovative strategies. The school promotes student 
                                 engagement by integrating technology and learner-centered approaches. It remains committed to creating 
                                 a supportive, inclusive environment that fosters academic growth and excellence.
-</p>
+                            </p>
                         </div>
                     </div>
                 </div>

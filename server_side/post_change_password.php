@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_SESSION['User']) && isset($_SESSION['User']['User-Type']) && $_SESSION['User']['User-Type'] == 4) {
+    if (isset($_SESSION['User']) && isset($_SESSION['User']['User-Type']) && $_SESSION['User']['User-Type'] == 3) {
         $User_Typed_Password = $_POST['old-password'];
         $User_New_Password = $_POST['new-password'];
         $User_New_Password_Confirm = $_POST['confirm-password'];
