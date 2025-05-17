@@ -173,3 +173,108 @@
 }
 
 /** END of CSS for the image gallery */
+
+
+
+/* Extra small phones (320px - 374px) */
+@media (min-width: 320px) and (max-width: 320px)  {
+    .header-right  {
+        font-size: 9px;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 4px 65px;
+        align-items: center;
+    }z
+ }
+
+/* Small phones (375px - 424px) */
+@media (min-width: 375px) and (max-width: 324px) {
+    .header-left {
+        font-size: 14px;
+        margin: 0px 0px;
+        align-items: center;        
+    }
+
+    .header-right {
+        margin: 4px 65px;
+        align-items: center;
+    }
+
+        .content-text {
+        font-size: .9em;
+    }
+ }
+
+
+/* Mobile & Small Devices (425 - 767px) */
+@media (min-width: 425px) and (max-width: 767px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .header-left {
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+
+    .header-right {
+        font-size: 9px;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 4px 120px;
+    }
+    .page-title{
+        height: 169px;
+        font-size: 1.1em;
+        padding-bottom: 52px;
+    }    
+    .content-text {
+    font-size: 1em;
+    }
+    .wrapper{
+        height: 57vh;
+    }
+    .separator {
+        display: none;
+    }
+}
+
+/* Tablets (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header-left {
+        font-size: 20px;
+    }
+    .content-text {
+        font-size: 1.2em;
+    }
+    .header-right {
+        font-size: 11px;
+    }
+    .page-title{
+        height: 250px;
+        font-size: 1.5em;
+    }
+    .separator {
+        font-size: 24px;
+    }
+    .wrapper{
+        height: 70vh;
+    }
+}
+
+/* Desktops (1024px and up) */
+@media (min-width: 1024px) {
+    .header-left {
+        font-size: 32px;
+    }
+
+    .header-right {
+        font-size: 18px;
+    }
+
+    .separator {
+        font-size: 28px;
+    }
+}
