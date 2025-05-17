@@ -78,7 +78,7 @@
                     </table>
                 </div>
                 <!--Post Announcments BIG-->
-                <div class="post-announcement-wrapper">
+                <!-- <div class="post-announcement-wrapper">
                     <div class="big-card-header">
                         <h3 class="big-card-title post-announcements-title">
                             Post Announcements
@@ -90,7 +90,7 @@
                     <div class="img-container">
                         <img src="" alt="">
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

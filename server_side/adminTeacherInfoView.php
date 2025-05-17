@@ -1,11 +1,13 @@
 <?php
     require_once '../server_side/adminTeacherInfoModel.php';
+    require_once '../server_side/encryption_and_decryption.php';
 
 
     class TeacherInformationView {
         protected $teacherInfoModel;
         protected $staff_id;
         protected $teacherInformation;
+        protected $encryption;
 
         const ACTIVE = 1;
         const RETIRED = 2;
@@ -13,7 +15,7 @@
 
         public function __construct(){
             $this->teacherInfoModel = new TeacherInformationModel();
-
+            $this->encryption = new Encryption();
             if (isset($_GET['staff_id'])) {
                 $this->staff_id = $_GET['staff_id'];
                 $this->teacherInformation = $this->teacherInfoModel->getAllResults($this->staff_id);
@@ -79,6 +81,8 @@
         }
 
         public function displayPosition() {
+
+            
             if(!isset($this->teacherInformation['Position'])) {
                 echo "N/A";
             }
@@ -86,6 +90,7 @@
                 $Position = $this->teacherInformation['Position'];
                 echo $Position;
             }
+            
             
         }
 
@@ -95,8 +100,11 @@
             }
             else {
                 $Employee_Number = $this->teacherInformation['Employee_Number'];
-                echo $Employee_Number;
+                $Decrypted_Employee_Number = $this->encryption->passDecrypt($Employee_Number);
+                echo $Decrypted_Employee_Number;
             }
+
+
         }
 
         public function displayPhilhealthNumber() {
@@ -105,7 +113,8 @@
             }
             else {
                 $Philhealth_Number = $this->teacherInformation['Philhealth_Number'];
-                echo $Philhealth_Number;
+                $Decrypted_Philhealth_Number = $this->encryption->passDecrypt($Philhealth_Number);
+                echo $Decrypted_Philhealth_Number;
             }
         }
 
@@ -115,7 +124,8 @@
             }
             else {
                 $TIN = $this->teacherInformation['TIN'];
-                echo $TIN;
+                $Decrypted_TIN = $this->encryption->passDecrypt($TIN);
+                echo $Decrypted_TIN;
             }
         }
     }

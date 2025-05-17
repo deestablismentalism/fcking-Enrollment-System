@@ -14,7 +14,7 @@
         <div class="form">
             <form class="overlay-form" method="POST" action="../server_side/post_admin_login.php" id ="admin-login-form">
                 <div class="title-container">
-                    <h2 style="text-align: center;">Admin LogIn</h2>
+                    <h2 style="text-align: center;">Teacher LogIn</h2>
                 </div>
                 <input type="text" name="phone_number" placeholder="Phone Number" required>
                 <input type="password" name="password" placeholder="Password" required>

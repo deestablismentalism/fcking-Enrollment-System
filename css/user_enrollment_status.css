@@ -9,10 +9,9 @@ h1 {
     text-align: center;
     font-size: 4em;
 }
-.status-text {
+.status {
     text-align: center;
     font-size: 4rem;
-    color: rgba(211, 211, 0, 0.723)
 }
 p {
     text-align: center

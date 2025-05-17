@@ -21,8 +21,8 @@ class displayEnrollmentStatus {
         return match ($status) {
         3 => 'PENDING',
         4 => 'ENROLLED',
-        1 => 'DENIED',
-        2 => 'FOR FOLLOW-UP',
+        2 => 'DENIED',
+        1 => 'FOR FOLLOW-UP',
         default => 'UNKNOWN',
     };
     }
@@ -43,7 +43,7 @@ public function displayStatus() {
         if ($status === "ENROLLED") {
             echo "<p> SUCCESSFULLY ENROLLED</p>";
         } else {
-            echo "<p>STATUS: {$status}</p>";
+            echo "<p class=status>STATUS: {$status}</p>";
 
             $transactions = $this->enrollee->sendTransactionStatus($enrolleeId);
 
@@ -66,10 +66,10 @@ public function displayStatus() {
 
                 // Now output once grouping is complete
                 foreach ($grouped as $code => $data) {
-                    echo '<div style="margin-bottom:15px;">';
+                    echo '<div>';
                     echo '<p><strong>Transaction Code:</strong> ' . htmlspecialchars($code) . '</p>';
                     echo '<p><strong>Description:</strong> ' . htmlspecialchars($data['Description']) . '</p>';
-                    echo '<ul><strong>Reasons:</strong>';
+                    echo '<ul style="justify-self:center;"><strong>Reasons:</strong>';
                     foreach ($data['Reasons'] as $reason) {
                         echo '<li>' . htmlspecialchars($reason) . '</li>';
                     }

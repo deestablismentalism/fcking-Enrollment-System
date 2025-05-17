@@ -34,12 +34,15 @@ $statusCode = ($status === 1) ? "F" : "D";
 $transactionCode = $statusCode . "-" . $date . "-" . $time;
 
 if (!isset($_POST['reasons'])) {
-    echo json_encode(['succes'=> false, 'message'=> 'Missing reasons' ]);
+    echo json_encode(['success'=> false, 'message'=> 'Missing reasons' ]);
     exit();
 }
-
-$reasons = $_POST['reasons'];
-
+$reasons = array_filter($_POST['reasons'], function($value) {
+    return trim($value) !== '';
+});
+if(empty($reasons)) {
+    echo json_encode(['success'=> false, 'message'=>'No reasons provided']);
+}
 $success = true;
 foreach ($reasons as $value) {
     $insert = $enrolleeModel->insertEnrolleeTransaction($enrolleeId, $transactionCode, $staffId, $value, $description);
@@ -50,7 +53,7 @@ foreach ($reasons as $value) {
 }
     if ($success) {
         if($enrolleeModel->updateEnrollee($enrolleeId, $status)) {
-            echo json_encode(['success'=> false, 'message' => 'Insert failed']);
+            echo json_encode(['success'=> true, 'message' => 'Insert successful']);
             exit();
         }
         else {

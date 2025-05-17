@@ -41,6 +41,9 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                         <li>
                             <a href="./Admin_Subjects.php" class="studentInfo">Add Subjects</a>
                         </li>
+                        <li> 
+                            <a href="./Admin_Sections.php" class="studentInfo"> Add Section</a>
+                        </li>
                     </ul>
                 </div>
 

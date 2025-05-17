@@ -45,9 +45,14 @@ class Encryption {
 
     public function passEncrypt($original) {
         $encrypted = $this->encrypt($original, $this->Encryption_Key);
-        $decrypted = $this->decrypt($encrypted, $this->Encryption_Key);
         
         return $encrypted;
+    }
+
+    public function passDecrypt($original) {
+        $decrypted = $this->decrypt($original, $this->Encryption_Key);
+        
+        return $decrypted;
     }
 }
 ?>
