@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function(){
     
     document.querySelectorAll('input[name="LRN"]').forEach(radio => {
         radio.addEventListener('change', function() {
-            console.log(radio.value);
             if (radio.value === "0" || radio.value === "2") {
                 lrn.disabled = true;
                 lrn.style.opacity = "0.2";
@@ -124,16 +123,22 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     //Function for displaying error messages
     function errorMessages(errorElement, message, childElement) {
-        document.querySelector("."+errorElement).classList.add("show");
+        const container = childElement.parentElement.querySelector('.error-msg');
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.add('show');
         childElement.style.border = "1px solid red";
-        document.querySelector("."+errorElement).innerHTML = message;
+        errorSpan.innerHTML = message;
+        console.log(container);
     }
     //clear error messages
     function clearError(errorElement, childElement) {
-        const errorField = document.querySelector("." + errorElement);
-        errorField.classList.remove("show");
-        errorField.innerHTML = "";
+        const container = childElement.parentElement.querySelector('.error-msg');
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.remove('show');
         childElement.style.border = "1px solid #616161";
+        errorSpan.innerHTML = '';
     }
     function checkEmptyFocus(element, errorElement) {
         element.addEventListener('blur', ()=> clearError(errorElement, element));

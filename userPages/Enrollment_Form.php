@@ -60,6 +60,7 @@
                                     <?php
                                         require_once '../server_side/getGradeLevels.php';
                                         $view = new getGradeLevels();
+                                    
                                     ?>
                                 </select>
 
@@ -210,9 +211,9 @@
                                     <div class="gender">
                                         <p class="dfont">Kasarian</p>
                                         <div> 
-                                            <input type="radio" name="gender" id="male" class="radio" value="male">
+                                            <input type="radio" name="gender" id="male" class="radio" value="Male">
                                             <label for="male">Lalake</label>                                
-                                            <input type="radio" name="gender" id="female" class="radio" value="female">
+                                            <input type="radio" name="gender" id="female" class="radio" value="Female">
                                             <label for="female">Babae</label>
                                         </div>
                                     </div>
@@ -378,7 +379,7 @@
                                     <input type="text" class="textbox" name="Father-Last-Name" id="Father-Last-Name" placeholder="Dela Cruz">
                                 </div><br>
                                 <div class="Father-Middle-Name">
-                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <p class="dfont">Gitnang Pangalan(Iwang blanko kung di naaangkop)</p>
                                     <div class="error-msg">
                                         <span class="em-father-middle-name"></span>
                                     </div>
@@ -423,7 +424,7 @@
                                     <input type="text" class="textbox" name="Mother-Last-Name" id="Mother-Last-Name" placeholder="Dela Cruz">
                                 </div><br>
                                 <div class="Mother-Middle-Name">
-                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <p class="dfont">Gitnang Pangalan(Iwang blanko kung di naaangkop)</p>
                                     <div class="error-msg">
                                         <span class="em-mother-middle-name"></span>
                                     </div>
@@ -468,7 +469,7 @@
                                     <input type="text" class="textbox" name="Guardian-Last-Name" id="Guardian-Last-Name" placeholder="Dela Cruz">
                                 </div><br>
                                 <div class="Guardian-Middle-Name">
-                                    <p class="dfont">Gitnang Pangalan</p>
+                                    <p class="dfont">Gitnang Pangalan(Iwang blanko kung di naaangkop)</p>
                                     <div class="error-msg">
                                         <span class="em-guardian-middle-name"></span>
                                     </div>
@@ -527,5 +528,6 @@
     <script src="../js/address-validation.js" defer></script>
     <script src="../js/previous-school-validation.js" defer></script>
     <script src="../js/student-info-validation.js" defer></script>
+    <script src = "../js/post-enrollment-form-fetcher.js" defer></script>
 </body>
 </html>

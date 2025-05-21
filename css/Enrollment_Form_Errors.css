@@ -4,61 +4,7 @@
     visibility: hidden;
     min-height: 1.2em;
  }
-.em-start-year,
-.em-last-year-finished,
-.em-lschool,
-.em-lschoolAddress,
-.em-lschoolID,
-.em-fschool,
-.em-fschoolAddress,
-.em-fschoolID,
-.em-PSA-number,
-.em-language,
-.em-religion,
-.em-email,
-.em-region,
-.em-province,
-.em-city,
-.em-barangay,
-.em-father-last-name,
-.em-father-middle-name,
-.em-father-first-name,
-.em-mother-last-name,
-.em-mother-middle-name,
-.em-mother-first-name,
-.em-guardian-last-name,
-.em-guardian-middle-name,
-.em-guardian-first-name,
-.em-f-number,
-.em-m-number,
-.em-g-number {visibility: hidden;}
+ .error-msg.show {
+    visibility: visible;
+ }
 
-.em-start-year.show,
-.em-last-year-finished.show,
-.em-lschool.show,
-.em-lschoolAddress.show,
-.em-lschoolID.show,
-.em-fschool.show,
-.em-fschoolAddress.show,
-.em-fschoolID.show,
-.em-PSA-number.show 
-.em-language.show,
-.em-religion.show,
-.em-email.show,
-.em-region.show,
-.em-province.show,
-.em-city.show,
-.em-barangay.show
-.em-father-last-name.show,
-.em-father-middle-name.show,
-.em-father-first-name.show,
-.em-mother-last-name.show,
-.em-mother-middle-name.show,
-.em-mother-first-name.show,
-.em-guardian-last-name.show,
-.em-guardian-middle-name.show,
-.em-guardian-first-name.show,
-.em-f-number.show,
-.em-m-number.show,
-.em-g-number.show
- {visibility:visible;}

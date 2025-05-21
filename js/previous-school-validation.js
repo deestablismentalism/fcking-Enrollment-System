@@ -11,23 +11,61 @@ document.addEventListener('DOMContentLoaded',function(){
     const fschoolId = document.getElementById("fschoolID"); //nais paaralan ID
 
     const enrollingGradeLevel = document.getElementById("grades-tbe");
-    const  lastGradeLevel = document.getElementById("last-grade");
+    const  lastGradeLevel = document.getElementById("last-grade");    
+    function replaceSelectValues(replaceElement, replaceId) {
+    let createTBox = document.createElement("input");
+        createTBox.type = "text";
+        createTBox.id = replaceId;
+        createTBox.placeholder = `eg. Grade 5`;
+        createTBox.className = "textbox";
+        replaceElement.replaceWith(createTBox);
+    }
 
-    enrollingGradeLevel.selectedIndex = lastGradeLevel.selectedIndex + 1;
+    if (lastGradeLevel &&  enrollingGradeLevel ) {
+        enrollingGradeLevel.selectedIndex = lastGradeLevel.selectedIndex + 1;
+        lastGradeLevel.options[lastGradeLevel.options.length - 1].disabled = true;
 
-    lastGradeLevel.options[lastGradeLevel.options.length - 1].disabled = true; 
-    lastGradeLevel.addEventListener('change' ,function() {
-       const nextIndex = this.selectedIndex + 1;
-       if (nextIndex < enrollingGradeLevel.options.length) {
-            enrollingGradeLevel.selectedIndex = nextIndex;
-       }
-    });
-    enrollingGradeLevel.addEventListener('change' ,function() {
-        const prevIndex = this.selectedIndex - 1;
-        if (prevIndex >= 0) {
-            lastGradeLevel.selectedIndex = prevIndex;
+        lastGradeLevel.addEventListener('change' ,function() {
+        const nextIndex = this.selectedIndex + 1;
+        if (nextIndex < enrollingGradeLevel.options.length) {
+                enrollingGradeLevel.selectedIndex = nextIndex;
         }
-    });
+        });
+        enrollingGradeLevel.addEventListener('change' ,function() {
+            const prevIndex = this.selectedIndex - 1;
+            if (prevIndex >= 0) {
+                lastGradeLevel.selectedIndex = prevIndex;
+            }
+        });
+        if (lastGradeLevel.options.length === 0 && enrollingGradeLevel.options.length === 0) {
+            enrollingGradeLevel.innerHTML = `
+                <option value="1">Kinder I</option>
+                <option value="2">Kinder II</option>
+                <option value="3">Grade 1</option>       
+                <option value="4">Grade 2</option>
+                <option value="5">Grade 3</option>
+                <option value="6">Grade 4</option>
+                <option value="7">Grade 5</option>
+                <option value="8">Grade 6</option>
+                <option value="9">Grade 7</option>
+           `;
+           lastGradeLevel.innerHTML = `
+                <option value="1">Kinder I</option>
+                <option value="2">Kinder II</option>
+                <option value="3">Grade 1</option>       
+                <option value="4">Grade 2</option>
+                <option value="5">Grade 3</option>
+                <option value="6">Grade 4</option>
+                <option value="7">Grade 5</option>
+                <option value="8">Grade 6</option>
+                <option value="9">Grade 7</option>
+           `;
+        }
+    }
+    else {
+        replaceSelectValues(enrollingGradeLevel, 'grades-tbe');
+        replaceSelectValues(lastGradeLevel, 'last-grade')
+    }
    //set default academic year
     const year = new Date().getFullYear();
     startYear.value = year;
@@ -59,7 +97,6 @@ document.addEventListener('DOMContentLoaded',function(){
             errorMessages("em-start-year", "Year is lower than the current year", startYear);
         }
         else if(startYearVal > endYearVal) {
-            console.log(startYear);
             errorMessages("em-start-year", "Starting year cannot be greater than the end year", startYear);
         }
         else {
@@ -94,7 +131,7 @@ document.addEventListener('DOMContentLoaded',function(){
     //check if huling natapos na taon is not greater than the current year
     function validateYearFinished(){
         const lastYearVal = parseInt(lastYear.value);
-        console.log(lastYearVal);
+
         if (isEmpty(lastYear)) {
             errorMessages("em-last-year-finished", emptyError, lastYear);
             checkEmptyFocus(lastYear, "em-last-year-finished");
@@ -104,6 +141,9 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         else if (lastYearVal > year) {
             errorMessages("em-last-year-finished", "Value cannot be greater than the current year", lastYear);
+        }
+        else if (lastYearVal < 1950) {
+            errorMessages("em-last-year-finished", "Year is too low", lastYear);
         }
         else {
             clearError("em-last-year-finished", lastYear);
@@ -154,36 +194,58 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     //Function for displaying error messages
     function errorMessages(errorElement, message, childElement) {
-        document.querySelector("."+errorElement).classList.add("show");
+        const container = childElement.parentElement.querySelector('.error-msg');
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.add('show');
         childElement.style.border = "1px solid red";
-        document.querySelector("."+errorElement).innerHTML = message;
+        errorSpan.innerHTML = message;
     }
+
     //clear error messages
     function clearError(errorElement, childElement) {
-        const errorField = document.querySelector("." + errorElement);
-        errorField.classList.remove("show");
-        errorField.innerHTML = "";
+        const container = childElement.parentElement.querySelector('.error-msg');
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.remove('show');
         childElement.style.border = "1px solid #616161";
+        errorSpan.innerHTML = '';
     }
     //Event triggers
     fields.forEach(({element, error}) => {
-        element.addEventListener('keyup', ()=> validateSchool(element, error));
+        element.addEventListener('input', ()=> validateSchool(element, error));
     });
     fields2.forEach(({element, error})=>{
-        element.addEventListener('keyup', ()=> validateSchoolId(element, error));
+        element.addEventListener('input', ()=> validateSchoolId(element, error));
     });
-    startYear.addEventListener('keyup',validateStartYear);
-    endYear.addEventListener('keyup',validateAcademicYear);
-    lastYear.addEventListener('keyup',validateYearFinished);
+    startYear.addEventListener('input',validateStartYear);
+    endYear.addEventListener('input',validateAcademicYear);
+    lastYear.addEventListener('input',validateYearFinished);
 
-    form.addEventListener('submit', function() {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
         //validate again upon submission
        fields.forEach(({element, error}) =>{
         validateSchool(element, error);
        });
+       fields2.forEach(({element, error})=>{
+        element.addEventListener('input', ()=> validateSchoolId(element, error));
+        });
         validateStartYear();
         validateYearFinished();
         validateAcademicYear();
+
+        const errors = document.querySelectorAll('.show');
+
+        if(errors.length > 0) {
+
+            const firstError = errors[0];
+
+            firstError.scrollIntoView({behavior: "smooth", block: "center"});
+        }
+        else {
+            form.submit();
+        }
     });
 });    
  

@@ -27,9 +27,12 @@ document.addEventListener("DOMContentLoaded", function() {
     element.addEventListener('blur', ()=> clearError(errorElement, element));
   } 
   function errorMessages(errorElement, message, childElement) {
-    document.querySelector("."+errorElement).classList.add("show");
+    const container = childElement.parentElement.querySelector('.error-msg');
+    const errorSpan = container.querySelector('.' + errorElement);
+
+    container.classList.add("show");
     childElement.style.border = "1px solid red";
-    document.querySelector("."+errorElement).innerHTML = message;
+    errorSpan.innerHTML = message;
   }
   function validateEmpty(element, errorElement) {
     if(isEmpty(element)) {
@@ -88,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
           replaceTextBox(provinces, "province");
           replaceTextBox(cityOrMunicipality, "city");
           replaceTextBox(barangay, "barangay");
-        }, 3000);
+        }, 10000);
         const response = await fetch("https://psgc.gitlab.io/api/regions", {signal});
                         
         if (!response.ok) {
