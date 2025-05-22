@@ -13,7 +13,27 @@ document.addEventListener("DOMContentLoaded", function() {
   const emptyError = "This field is required";
   const notNumber = "This field must be a number";
 
-  
+  // Function to clear error messages on user interaction
+  function clearAddressErrors(element) {
+    const container = element.parentElement.querySelector('.error-msg');
+    if (container) {
+      container.classList.remove("show");
+      const errorSpan = container.querySelector('span');
+      if (errorSpan) {
+        errorSpan.innerHTML = '';
+      }
+    }
+    element.style.border = "1px solid #616161";
+  }
+
+  // Add error clearing to address fields
+  [regions, provinces, cityOrMunicipality, barangay, subdivsion, houseNumber].forEach(element => {
+    if (element) {
+      element.addEventListener('change', () => clearAddressErrors(element));
+      element.addEventListener('input', () => clearAddressErrors(element));
+    }
+  });
+
   function isEmpty(element) {
     return !element.value.trim();
   }
@@ -27,9 +47,12 @@ document.addEventListener("DOMContentLoaded", function() {
     element.addEventListener('blur', ()=> clearError(errorElement, element));
   } 
   function errorMessages(errorElement, message, childElement) {
-    document.querySelector("."+errorElement).classList.add("show");
+    const container = childElement.parentElement.querySelector('.error-msg');
+    const errorSpan = container.querySelector('.' + errorElement);
+
+    container.classList.add("show");
     childElement.style.border = "1px solid red";
-    document.querySelector("."+errorElement).innerHTML = message;
+    errorSpan.innerHTML = message;
   }
   function validateEmpty(element, errorElement) {
     if(isEmpty(element)) {
@@ -50,31 +73,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
   function validateHouseNumber(e) {
-    if(isNaN(e.key) && e.key !== "Backspace") {
-      errorMessages("em-house-number", notNumber, houseNumber);
-      checkEmptyFocus(houseNumber, "em-house-number");
-      e.preventDefault();
+    if(isEmpty(houseNumber)) {
+        errorMessages("em-house-number", emptyError, houseNumber);
+        checkEmptyFocus(houseNumber, "em-house-number");
+        return;
     }
-    else if(isEmpty(houseNumber)) {
-      errorMessages("em-house-number", emptyError, houseNumber);
-      checkEmptyFocus(houseNumber, "em-house-number");
-  }
+    if(isNaN(e.key) && e.key !== "Backspace") {
+        errorMessages("em-house-number", notNumber, houseNumber);
+        checkEmptyFocus(houseNumber, "em-house-number");
+        e.preventDefault();
+    }
     else {
         clearError("em-house-number", houseNumber);
     }
   }
   function initialSelectValue(selectElement, parentElement) {
       selectElement.innerHTML = `<option value=""> Select a ${parentElement} first </option>`;
-  }
-  function replaceTextBox(replaceElement, addressType) {
-    let createTBox = document.createElement("input");
-        createTBox.type = "text";
-        createTBox.id = addressType;
-        createTBox.placeholder = `Enter ${addressType} manually`;
-        createTBox.className = "textbox";
-        replaceElement.replaceWith(createTBox);
-
-        createTBox.addEventListener('keyup', ()=> validateEmpty(createTBox, `em-${addressType}`));
   }
   async function getRegions() {
     try {
@@ -88,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
           replaceTextBox(provinces, "province");
           replaceTextBox(cityOrMunicipality, "city");
           replaceTextBox(barangay, "barangay");
-        }, 3000);
+        }, 10000);
         const response = await fetch("https://psgc.gitlab.io/api/regions", {signal});
                         
         if (!response.ok) {
@@ -209,7 +223,13 @@ async  function getBarangay() {
     }
   });
   subdivsion.addEventListener('keyup', validateSubdivision);
-  houseNumber.addEventListener('keydown', (e)=> validateHouseNumber(e));
+  houseNumber.addEventListener('keydown', validateHouseNumber);
+  houseNumber.addEventListener('blur', function() {
+    if(isEmpty(houseNumber)) {
+      errorMessages("em-house-number", emptyError, houseNumber);
+      checkEmptyFocus(houseNumber, "em-house-number");
+    }
+  });
   async function changeAddressValues() {
     try {
 
@@ -257,11 +277,70 @@ async  function getBarangay() {
     else {
       initialSelectValue(barangay, "City/Municipality");
     }
-  form.addEventListener("submit", function(){
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    // Validate required fields
+    if(isEmpty(houseNumber)) {
+      errorMessages("em-house-number", emptyError, houseNumber);
+    }
+    validateEmpty(subdivsion, "em-subdivision");
+    
+    // Validate address selections
+    if (regions.tagName === "SELECT") {
+      if(!regions.value) {
+        errorMessages("em-region", emptyError, regions);
+      }
+    } else if(isEmpty(regions)) {
+      errorMessages("em-region", emptyError, regions);
+    }
+
+    if (provinces.tagName === "SELECT") {
+      if(!provinces.value) {
+        errorMessages("em-province", emptyError, provinces);
+      }
+    } else if(isEmpty(provinces)) {
+      errorMessages("em-province", emptyError, provinces);
+    }
+
+    if (cityOrMunicipality.tagName === "SELECT") {
+      if(!cityOrMunicipality.value) {
+        errorMessages("em-city", emptyError, cityOrMunicipality);
+      }
+    } else if(isEmpty(cityOrMunicipality)) {
+      errorMessages("em-city", emptyError, cityOrMunicipality);
+    }
+
+    if (barangay.tagName === "SELECT") {
+      if(!barangay.value) {
+        errorMessages("em-barangay", emptyError, barangay);
+      }
+    } else if(isEmpty(barangay)) {
+      errorMessages("em-barangay", emptyError, barangay);
+    }
+
+    // Change address values for submission
     changeAddressValues();
-    getBarangay;
-    getCity;
-    getProvinces;
-    getRegions;
+
+    // Check for any validation errors
+    const errors = document.querySelectorAll('.show');
+    if (errors.length > 0) {
+      const firstError = errors[0];
+      firstError.scrollIntoView({behavior: "smooth", block: "center"});
+      return false;
+    }
   });
+
+  async function replaceTextBox(replaceElement, addressType) {
+    let createTBox = document.createElement("input");
+    createTBox.type = "text";
+    createTBox.id = addressType;
+    createTBox.placeholder = `Enter ${addressType} manually`;
+    createTBox.className = "textbox";
+    replaceElement.replaceWith(createTBox);
+
+    // Add error clearing to the new textbox
+    createTBox.addEventListener('input', () => clearAddressErrors(createTBox));
+    createTBox.addEventListener('keyup', ()=> validateEmpty(createTBox, `em-${addressType}`));
+  }
 });

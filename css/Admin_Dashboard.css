@@ -1,12 +1,18 @@
 .content {
     font-family: 'Barlow';
-    height: 95vh;
+    height: 100%;
 }
-
+.data-title {
+    font-weight: bold;
+    font-size: 2em;
+    color: rgb(0,51,102);
+}
 .border-50 {
     position: relative;
 }
-
+.enrollee-data-wrapper {
+    padding: 2rem;
+}
 .border-50::after {
     content: '';
     position: absolute;
@@ -21,18 +27,20 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-
-.card {
+.chart-loading {
     background-color: white;
-    padding: 2em 1em 1em 2em;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    justify-content: space-between;
-    gap: 2em;
+    padding: 1.5em;
+    border-radius: 1em;
+}
+.card {
+    display: none;
+    background-color: white;
+    padding: 1em;
+    justify-content: center;
     margin: 1em 2em 1em;
-    border-radius: 3px;
-    width: 16em;
-    height: 10em;
+    border-radius: 1.5em;
+    width: 25em;
+    height: 25em;
 }
 
 .card-4 {

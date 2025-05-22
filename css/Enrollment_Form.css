@@ -181,6 +181,7 @@ label{
 .student-info-row-1 {
     background-color: #fff;
     padding: 1em 1em 1em 4em;
+    gap: 0.8rem;
     width: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -278,7 +279,31 @@ label{
     padding-left: 4%;
     box-shadow: 1px 1px 1px 1px #059200;
 }
-
+.success-message {
+    display: none;
+    position: fixed; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 15px; 
+    border-radius: 4px; 
+    background-color: #d4edda; 
+    color: #155724; 
+    border: 1px solid #c3e6cb; 
+    z-index: 1000;
+}
+.error-message {
+    display: none;
+    position: fixed; 
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 15px; border-radius: 4px; 
+    background-color: 
+    #f8d7da; color: #721c24; 
+    border: 1px solid #f5c6cb; 
+    z-index: 1000;
+}
 .submit-button:hover {
     background-color: #059200;
     color: rgb(217, 250, 231)

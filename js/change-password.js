@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     return JSON.parse(text);
                 } catch (e) {
                     throw new Error('Invalid JSON response: ' + text);
-                }
+                }   
             });
         })
         .then(data => {

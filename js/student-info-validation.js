@@ -3,17 +3,32 @@ document.addEventListener('DOMContentLoaded', function(){
     const lrn = document.getElementById("LRN");
     const lname = document.getElementById("lname");
     const fname = document.getElementById("fname");
-    const mname = document.getElementById("mname");
-    const suffix = document.getElementById("extension");
     const birthDate = document.getElementById("bday");
     const age = document.getElementById("age");
     const language = document.getElementById("language");
     const religion = document.getElementById("religion");
     const form = document.getElementById("enrollment-form");
     
+    // Set max date to today and min date to 3 years ago
+    const today = new Date();
+    const minDate = new Date();
+    minDate.setFullYear(today.getFullYear() - 25); // Assuming max age is 25 for enrollment
+    const maxDate = new Date();
+    maxDate.setFullYear(today.getFullYear() - 3); // Assuming minimum age is 3 for enrollment
+
+    // Set the date input constraints
+    birthDate.max = formatDate(maxDate);
+    birthDate.min = formatDate(minDate);
+
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     document.querySelectorAll('input[name="LRN"]').forEach(radio => {
         radio.addEventListener('change', function() {
-            console.log(radio.value);
             if (radio.value === "0" || radio.value === "2") {
                 lrn.disabled = true;
                 lrn.style.opacity = "0.2";
@@ -27,8 +42,6 @@ document.addEventListener('DOMContentLoaded', function(){
     const allInfo = [
         {element: lname, error: "em-lname"},
         {element: fname, error: "em-fname"},
-        {element: mname, error: "em-mname"},
-        {element: suffix, error: "em-extension"},
         {element: language, error: "em-language"},
         {element: religion, error: "em-religion"}
     ];
@@ -37,13 +50,25 @@ document.addEventListener('DOMContentLoaded', function(){
         {textBoxElement: "boolsn", nameValue: "sn"},
         {textBoxElement: "atdevice", nameValue: "at"}
     ];
-    const today = new Date();
     //regex
     const lrnRegex = /^([0-9]){12}$/;
     const bCertRegex = /^([0-9]){13}$/;
     //emptyError
     const emptyError = "This field is required";
     const notNumber = "This field must be a number";
+    // Add these validation state objects after the regex declarations
+    const validationState = {
+        psa: {
+            isEmpty: false,
+            isInvalidFormat: false,
+            isNonNumeric: false
+        },
+        lrn: {
+            isEmpty: false,
+            isInvalidFormat: false,
+            isNonNumeric: false
+        }
+    };
     //functions
     function checkIndigenous(textBoxElement, nameValue ) {
         const radioInput = document.querySelector(`input[name="${nameValue}"]:checked`);
@@ -57,12 +82,37 @@ document.addEventListener('DOMContentLoaded', function(){
             textbox.style.opacity = "1";
         }
     }
+    function validateAge(ageValue) {
+        const minAge = 3;
+        const maxAge = 25;
+        
+        if (isNaN(ageValue)) {
+            errorMessages("em-age", "Age must be a number", age);
+            return false;
+        }
+        
+        if (ageValue < minAge) {
+            errorMessages("em-age", "Student must be at least 3 years old", age);
+            return false;
+        }
+        
+        if (ageValue > maxAge) {
+            errorMessages("em-age", "Student must be 25 years old or younger", age);
+            return false;
+        }
+
+        clearError("em-age", age);
+        return true;
+    }
     function setBirthYear() {
         let ageValue = parseInt(age.value, 10);
-        let currentYear = today.getFullYear();
-        let setYear = currentYear - ageValue;
-        let formattedDate = `${setYear}-01-01`;
-        birthDate.value = formattedDate;
+        
+        if (validateAge(ageValue)) {
+            let currentYear = today.getFullYear();
+            let setYear = currentYear - ageValue;
+            let formattedDate = `${setYear}-01-01`;
+            birthDate.value = formattedDate;
+        }
     }
     function getAge() {
         let currentYear = today.getFullYear();
@@ -70,7 +120,18 @@ document.addEventListener('DOMContentLoaded', function(){
         let currentDay = today.getDate(); 
 
         let bday = birthDate.value;
+        if (!bday) {
+            errorMessages("em-bday", "Please select a birth date", birthDate);
+            return;
+        }
+
         let getDate = new Date(bday);
+        
+        // Validate if date is in the future
+        if (getDate > today) {
+            errorMessages("em-bday", "Birth date cannot be in the future", birthDate);
+            return;
+        }
 
         let birthYear = getDate.getFullYear();
         let birthMonth = getDate.getMonth()+1;
@@ -80,10 +141,39 @@ document.addEventListener('DOMContentLoaded', function(){
         if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
             ageValue--;
         }
-        age.value = ageValue;
-        console.log(ageValue);
-         
+
+        if (validateAge(ageValue)) {
+            age.value = ageValue;
+            clearError("em-bday", birthDate);
+        } else {
+            age.value = "";
+        }
     }
+    // Clear error messages on input/change
+    age.addEventListener('input', function(e) {
+        const value = e.target.value;
+
+        if(/\D/.test(value)) {
+            const cursorPos = e.target.selectionStart;
+            const sanitizedValue = value.replace(/\D/g, '');
+            const posDiff = value.length - sanitizedValue.length;
+            e.target.value = sanitizedValue;
+            e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
+            value = sanitizedValue;
+        }
+        
+        if(value.length > 2) {
+            e.target.value = value.slice(0, 2);
+        }
+
+        if (value) {
+            validateAge(parseInt(value, 10));
+        }
+        setBirthYear();
+    });
+    birthDate.addEventListener('change', function() {
+        getAge();
+    });
     function validateEmpty(element, errorElement) {
         if(isEmpty(element)) {
             errorMessages(errorElement, emptyError, element);
@@ -94,46 +184,111 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     } 
     function validatePSA() {
-        const currentIndex = psaNumber.selectionStart;
-        if(isEmpty(psaNumber) && currentIndex !== 0) {
+        const value = psaNumber.value.trim();
+        
+        // Reset validation state
+        validationState.psa = {
+            isEmpty: false,
+            isInvalidFormat: false,
+            isNonNumeric: false
+        };
+
+        // Check for empty value
+        if (!value) {
+            validationState.psa.isEmpty = true;
             errorMessages("em-PSA-number", emptyError, psaNumber);
-            checkEmptyFocus(psaNumber, "em-PSA-number");
+            return;
         }
-        else if(!bCertRegex.test(psaNumber.value)) {
-            errorMessages("em-PSA-number", "Enter a valid birth certificate number", psaNumber);
+
+        // Check for non-numeric values
+        if (!/^\d*$/.test(value)) {
+            validationState.psa.isNonNumeric = true;
+            errorMessages("em-PSA-number", notNumber, psaNumber);
+            return;
         }
-        else {
-            clearError("em-PSA-number", psaNumber);
+
+        // Check length and format
+        if (!bCertRegex.test(value)) {
+            validationState.psa.isInvalidFormat = true;
+            errorMessages("em-PSA-number", value.length > 13 ? "Only 13 digits are allowed" : "Enter a valid birth certificate number", psaNumber);
+            return;
         }
+
+        clearError("em-PSA-number", psaNumber);
     }
     function validateLRN() {
-        const currentIndex = lrn.selectionStart;
-        if(isEmpty(lrn) && currentIndex !== 0) {
-            errorMessages("em-LRN", emptyError, lrn);
-            checkEmptyFocus(lrn, "em-LRN");
-        }
-        else if(!lrnRegex.test(lrn.value)) {
-            errorMessages("em-LRN", "Enter a valid LRN", lrn);
-        }
-        else {
+        const value = lrn.value.trim();
+        
+        // Reset validation state
+        validationState.lrn = {
+            isEmpty: false,
+            isInvalidFormat: false,
+            isNonNumeric: false
+        };
+
+        // Skip validation if LRN is disabled
+        if (lrn.disabled) {
             clearError("em-LRN", lrn);
+            return;
         }
+
+        // Check for empty value
+        if (!value) {
+            validationState.lrn.isEmpty = true;
+            errorMessages("em-LRN", emptyError, lrn);
+            return;
+        }
+
+        // Check for non-numeric values
+        if (!/^\d*$/.test(value)) {
+            validationState.lrn.isNonNumeric = true;
+            errorMessages("em-LRN", notNumber, lrn);
+            return;
+        }
+
+        // Check length and format
+        if (!lrnRegex.test(value)) {
+            validationState.lrn.isInvalidFormat = true;
+            errorMessages("em-LRN", value.length > 12 ? "Only 12 digits are allowed" : "Enter a valid LRN", lrn);
+            return;
+        }
+
+        clearError("em-LRN", lrn);
     }
     function isEmpty(element) {
         return !element.value.trim();
     }
     //Function for displaying error messages
     function errorMessages(errorElement, message, childElement) {
-        document.querySelector("."+errorElement).classList.add("show");
+        // Find the closest ancestor that contains the error message container
+        let container = childElement.parentElement.querySelector('.error-msg');
+        if (!container) {
+            container = childElement.closest('div').querySelector('.error-msg');
+        }
+        if (!container) {
+            container = childElement.parentElement.parentElement.querySelector('.error-msg');
+        }
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.add('show');
         childElement.style.border = "1px solid red";
-        document.querySelector("."+errorElement).innerHTML = message;
+        errorSpan.innerHTML = message;
+        console.log(container);
     }
     //clear error messages
     function clearError(errorElement, childElement) {
-        const errorField = document.querySelector("." + errorElement);
-        errorField.classList.remove("show");
-        errorField.innerHTML = "";
+        let container = childElement.parentElement.querySelector('.error-msg');
+        if (!container) {
+            container = childElement.closest('div').querySelector('.error-msg');
+        }
+        if (!container) {
+            container = childElement.parentElement.parentElement.querySelector('.error-msg');
+        }
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.remove('show');
         childElement.style.border = "1px solid #616161";
+        errorSpan.innerHTML = '';
     }
     function checkEmptyFocus(element, errorElement) {
         element.addEventListener('blur', ()=> clearError(errorElement, element));
@@ -150,37 +305,149 @@ document.addEventListener('DOMContentLoaded', function(){
     allInfo.forEach(({element, error}) => {
         element.addEventListener('keyup', ()=>validateEmpty(element, error));
     });
-    form.addEventListener('submit', function(e) 
-    {
+
+    // Add PSA and LRN to required fields
+    const numberFields = [
+        {element: psaNumber, error: "em-PSA-number"},
+        {element: lrn, error: "em-LRN"},
+        {element: age, error: "em-age"}
+    ];
+
+    // Add empty validation for number fields
+    numberFields.forEach(({element, error}) => {
+        element.addEventListener('blur', function() {
+            if (element === lrn && lrn.disabled) {
+                clearError(error, element);
+                return;
+            }
+            if (isEmpty(element)) {
+                errorMessages(error, emptyError, element);
+                checkEmptyFocus(element, error);
+            }
+        });
     });
+    psaNumber.addEventListener('input', function(e) {
+        const value = e.target.value;
+        
+        // Only sanitize if there are actual changes to sanitize
+        if (/\D/.test(value)) {
+            // Preserve cursor position
+            const cursorPos = e.target.selectionStart;
+            const sanitizedValue = value.replace(/\D/g, '');
+            e.target.value = sanitizedValue;
+            // Restore cursor position accounting for removed characters
+            const posDiff = value.length - sanitizedValue.length;
+            e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
+            value = sanitizedValue;
+        }
+        
+        // Limit to 13 digits
+        if (value.length > 13) {
+            e.target.value = value.slice(0, 13);
+        }
+        
+        validatePSA();
+    });
+
+    // Add keydown handler for special keys
     psaNumber.addEventListener('keydown', function(e) {
-        if(isNaN(e.key) && e.key !== "Backspace"){
-            errorMessages("em-PSA-number", notNumber, psaNumber);
-            checkEmptyFocus(psaNumber, "em-PSA-number");
-            e.preventDefault();
-        }
-        else if(psaNumber.value.length >= 13 && e.key !== "Backspace"){ 
-            errorMessages("em-PSA-number", "Only 13 digits are allowed", psaNumber);
-            checkEmptyFocus(psaNumber, "em-PSA-number");
-            e.preventDefault();
-        }
-        else {
-            validatePSA();
+        // Allow: backspace, delete, tab, escape, enter
+        if ([46, 8, 9, 27, 13].indexOf(e.key) !== -1 ||
+            // Allow: Ctrl+A, Command+A
+            (e.key === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: Ctrl+C, Command+C
+            (e.key === 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: Ctrl+V, Command+V
+            (e.key === 86 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: Ctrl+X, Command+X
+            (e.key === 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: home, end, left, right, up, down
+            (e.key >= 35 && e.key <= 40)) {
+            return;  // let it happen, don't do anything
         }
     });
+
+    psaNumber.addEventListener('blur', validatePSA);
+
+    lrn.addEventListener('input', function(e) {
+        const value = e.target.value;
+        
+        // Only sanitize if there are actual changes to sanitize
+        if (/\D/.test(value)) {
+            // Preserve cursor position
+            const cursorPos = e.target.selectionStart;
+            const sanitizedValue = value.replace(/\D/g, '');
+            e.target.value = sanitizedValue;
+            // Restore cursor position accounting for removed characters
+            const posDiff = value.length - sanitizedValue.length;
+            e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
+            value = sanitizedValue;
+        }
+        
+        // Limit to 12 digits
+        if (value.length > 12) {
+            e.target.value = value.slice(0, 12);
+        }
+        
+        validateLRN();
+    });
+
+    // Add keydown handler for special keys
     lrn.addEventListener('keydown', function(e) {
-        if(isNaN(e.key) && e.key !== "Backspace"){
-            errorMessages("em-LRN", notNumber, lrn);
-            checkEmptyFocus(lrn, "em-LRN");
-            e.preventDefault();
+        // Allow: backspace, delete, tab, escape, enter
+        if ([46, 8, 9, 27, 13].indexOf(e.keyCode) !== -1 ||
+            // Allow: Ctrl+A, Command+A
+            (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: Ctrl+C, Command+C
+            (e.keyCode === 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: Ctrl+V, Command+V
+            (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: Ctrl+X, Command+X
+            (e.keyCode === 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+            // Allow: home, end, left, right, up, down
+            (e.keyCode >= 35 && e.keyCode <= 40)) {
+            return;  // let it happen, don't do anything
         }
-        else if(lrn.value.length >= 12 && e.key !== "Backspace"){ 
-            errorMessages("em-LRN", "Only 12 digits are allowed", lrn);
-            checkEmptyFocus(lrn, "em-LRN");
-            e.preventDefault();
+    });
+
+    lrn.addEventListener('blur', validateLRN);
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validate all required fields
+        allInfo.forEach(({element, error}) => {
+            validateEmpty(element, error);
+        });
+
+        // Validate number fields
+        numberFields.forEach(({element, error}) => {
+            if (element === lrn && lrn.disabled) {
+                return;
+            }
+            if (isEmpty(element)) {
+                errorMessages(error, emptyError, element);
+            } else if (element === psaNumber) {
+                validatePSA();
+            } else if (element === lrn) {
+                validateLRN();
+            } else if (element === age) {
+                validateAge(parseInt(element.value, 10));
+            }
+        });
+
+        // Validate birth date
+        if (!birthDate.value) {
+            errorMessages("em-bday", emptyError, birthDate);
+        } else {
+            getAge();
         }
-        else {
-            validateLRN();
+
+        // Check for any validation errors
+        const errors = document.querySelectorAll('.show');
+        if (errors.length > 0) {
+            const firstError = errors[0];
+            firstError.scrollIntoView({behavior: "smooth", block: "center"});
+            return false;
         }
     });
 });

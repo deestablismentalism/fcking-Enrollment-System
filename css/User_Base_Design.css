@@ -388,6 +388,9 @@ p {
 
 /*MOBILE VERSION OF HEADER & SIDEBAR*/
 @media (max-width: 768px ) {
+    .sidebar ~ .main-content {
+        margin-left: 0vh;
+    }
     .content {
         overflow-x: hidden;
     }

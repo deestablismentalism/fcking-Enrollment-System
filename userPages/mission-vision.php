@@ -23,9 +23,8 @@
                         </div>
                         <div class="container-box">
                             <p class = body-text> 
-                                Lorem ipsum dolor - Tamet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                Welcome to Lucena South II Elementary School! We are dedicated to providing a nurturing and inclusive environment for all students.
+                                Our mission is to foster a love for learning and help each child reach their full potential.
                             </p>
                         </div>
                     </div>
@@ -37,9 +36,7 @@
                     <div class="container-body">
                         <div class="container-box">
                             <p class = body-text> 
-                                Lorem ipsum dolor - Tamet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                To provide quality education that empowers students to become responsible and productive citizens.
                             </p>
                         </div>
                     </div>
@@ -51,9 +48,7 @@
                     <div class="container-body">
                         <div class="container-box">
                             <p class = body-text> 
-                                Lorem ipsum dolor - Tamet, consectetur adipiscing elit, 
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat....
+                                To be a leading institution in education, known for excellence and innovation.
                             </p>
                         </div>
                     </div>

@@ -12,19 +12,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const guardianMname = document.getElementById("Guardian-Middle-Name");
     const guardianFname = document.getElementById("Guardian-First-Name");
     const guardianCPnum = document.getElementById("G-number");
-
+    
     const emptyError = "This field is required";
     const notNumber = "This field must be a number";
 
     const allInfo = [
         {element: fatherLname, error: "em-father-last-name"},
-        {element: fatherMname, error: "em-father-middle-name"},
         {element: fatherFname, error: "em-father-first-name"},
         {element: motherLname, error: "em-mother-last-name"},
-        {element: motherMname, error: "em-mother-middle-name"},
         {element: motherFname, error: "em-mother-first-name"},
         {element: guardianLname, error: "em-guardian-last-name"},
-        {element: guardianMname, error: "em-guardian-middle-name"},
         {element: guardianFname, error: "em-guardian-first-name"}
     ];
     const phoneInfo = [
@@ -36,18 +33,23 @@ document.addEventListener("DOMContentLoaded", function() {
     return !element.value.trim();
   }
   function clearError(errorElement, childElement) {
-    const errorField = document.querySelector("." + errorElement);
-    errorField.classList.remove("show");
-    errorField.innerHTML = "";
-    childElement.style.border = "1px solid #616161";
-}
+        const container = childElement.parentElement.querySelector('.error-msg');
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.remove('show');
+        childElement.style.border = "1px solid #616161";
+        errorSpan.innerHTML = '';
+  }
   function checkEmptyFocus(element, errorElement) {
     element.addEventListener('blur', ()=> clearError(errorElement, element));
   } 
   function errorMessages(errorElement, message, childElement) {
-    document.querySelector("."+errorElement).classList.add("show");
+    const container = childElement.parentElement.querySelector('.error-msg');
+    const errorSpan = container.querySelector('.' + errorElement);
+
+    container.classList.add('show');
     childElement.style.border = "1px solid red";
-    document.querySelector("."+errorElement).innerHTML = message;
+    errorSpan.innerHTML = message;
   }
 
   function validateEmpty(element, errorElement) {
@@ -61,6 +63,11 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   function validatePhoneNumber(element, errorElement, e) {
     const currentIndex = element.selectionStart; 
+    if(isEmpty(element)) {
+        errorMessages(errorElement, emptyError, element);
+        checkEmptyFocus(element, errorElement);
+        return;
+    }
     if(isNaN(e.key) && e.key !== "Backspace") {
         errorMessages(errorElement, notNumber, element);
         checkEmptyFocus(element, errorElement);
@@ -71,18 +78,47 @@ document.addEventListener("DOMContentLoaded", function() {
         checkEmptyFocus(element, errorElement);
         e.preventDefault();
     }
-    else if(isEmpty(element) && currentIndex !== 0) {
-        errorMessages(errorElement, emptyError, element);
-        checkEmptyFocus(element, errorElement);
-    }
     else {
         clearError(errorElement, element);
     }
   }
   phoneInfo.forEach(({element, error}) => {
     element.addEventListener('keydown', (e)=> validatePhoneNumber(element, error, e));
+    element.addEventListener('blur', function() {
+        if(isEmpty(element)) {
+            errorMessages(error, emptyError, element);
+            checkEmptyFocus(element, error);
+        }
+    });
   });
   allInfo.forEach(({element, error}) => {
     element.addEventListener('keyup', ()=> validateEmpty(element, error));
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validate all required name fields
+    allInfo.forEach(({element, error}) => {
+      validateEmpty(element, error);
+    });
+
+    // Validate all phone numbers
+    phoneInfo.forEach(({element, error}) => {
+      if(isEmpty(element)) {
+        errorMessages(error, emptyError, element);
+      }
+      else if (element.value.length !== 11) {
+        errorMessages(error, "Phone number must be 11 digits", element);
+      }
+    });
+
+    // Check for any validation errors
+    const errors = document.querySelectorAll('.show');
+    if (errors.length > 0) {
+      const firstError = errors[0];
+      firstError.scrollIntoView({behavior: "smooth", block: "center"});
+      return false;
+    }
   });
 });

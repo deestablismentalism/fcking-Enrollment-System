@@ -1,0 +1,75 @@
+.sections-container {
+   margin: 2em;
+}
+
+.sections-form {
+    padding: 1em;
+    background-color: #ffffff;
+    padding: 2em;
+    border-radius: 1.5em;
+}
+.form {
+    display: flex;
+    gap: 1em;
+}
+.sections-form input[type="text"],
+.sections-form select {
+    width: 30%;
+    padding: 0.75em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.sections-form .submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75em 2em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    height: 50%;
+}
+.sections-form .submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.sections-list {
+    margin-top: 2em;
+    background: #fff;
+    padding: 2em;
+    border-radius: 1.5em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sections-list h2 {
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.sections-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafafa;
+    border-radius: 1em;
+    overflow: hidden;
+}
+.sections-table th, .sections-table td {
+    padding: 1em;
+    text-align: left;
+}
+.sections-table th {
+    background: #f0f0f0;
+    color: #333;
+    font-weight: 600;
+}
+.sections-table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+.sections-table tr:hover {
+    background: #e6f0ff;
+}

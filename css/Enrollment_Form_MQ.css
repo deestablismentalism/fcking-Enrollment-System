@@ -1,26 +1,49 @@
 /*--MEDIA QUERIES--*/
-@media(max-width: 2560px) {
+@media (max-width: 2560px) {
     .content {
         font-size: 1.5em;
-    }
-    .previous-school-wrapper {
-        grid-template-columns: 20% 40% 35%;
+        max-width: 90%;
+        margin: 0 auto;
     }
     .textbox, .select {
         width: 10em;
         height: 1.5em;
+        font-size: inherit;
+    }
+    .address-wrapper .textbox {
+        width: 15em;
+        height: 2em;
+        padding: 0.2em;
+    }
+    .previous-school-wrapper {
+        grid-template-columns: 20% 40% 35%;
+        gap: 2em;
     }
     .previous-school-wrapper,.student-information-wrapper,.student-disability-wrapper,.address-wrapper,
     .parents-guardian-information-wrapper {
         padding:1em 1em 1em 4em;
     }
 }
+@media (max-width: 2000px) {
+    .content {
+        font-size: 1.2em;
+        padding: 1em 4em;
+    }
+    .textbox, .select {
+        width: 10em;
+        height: 1.5em;
+    }
+    .address-wrapper .textbox {
+        width: 13em;
+        height: 2em;
+        padding: 0.2em;
+    }
+}
 /*For 1600px width*/
 @media (max-width: 1600px) {
     .content {
-        padding-top: 1em;
-        padding-left: 4em;
-        font-size: .9em;
+        font-size: 0.9em;
+        padding: 1em 4em;
     }
     #lschoolAddress, #fschoolAddress {
         width: 18em;
@@ -53,29 +76,55 @@
     }
 
     .address-wrapper {
-        grid-template-columns: 25% 25% 25%;
+        grid-template-columns: repeat(3, 25%);
         padding:1em 1em 1em 4em;
     }
     .textbox, .select {
         width: 13em;
         height: 2em;
     }
+    .address-wrapper .textbox {
+        width: 13em;
+        height: 2em;
+        padding: 0.2em;
+    }
     .parents-guardian-information-wrapper {
-        grid-template-columns:  auto auto auto;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2em;
         padding:1em 1em 1em 4em;
     }
 }
+@media (max-width: 1400px) {
+    .content {
+        font-size: 0.8em;
+        padding: 1em 2em;
+    }
+    .textbox, .select {
+        width: 12em;
+        height: 2em;
+    }
+    .address-wrapper .textbox {
+        width: 11em;
+        height: 2em;
+        padding: 0.2em;
+    }
+}
+@media (max-width: 1200px) {
+    .content {
+        font-size: 0.7em;
+        padding: 1em 2em;
+    }
 
+}
 /*For 1360px Width*/
 
 @media (max-width: 1190px) {
     .content {
-        padding-top: 1em;
-        padding-left: 4em;
-        font-size: .7em;
+        font-size: 0.7em;
+        padding: 1em 3em;
     }
     .label {
-        font-size: .7em;
+        font-size: 0.7em;
     }
     .radio {
         cursor: pointer;
@@ -83,16 +132,24 @@
         box-sizing: border-box;
         margin: 3px 3px 0px 5px;
         padding: initial;
-        width: .7em;
-        height: .7em;
+        width: 0.7em;
+        height: 0.7em;
     }
 }
 
 /*For laptop standard*/
 @media (max-width: 1024px) {
     .content {
-        padding: 0 3em 1em 3em;
-        font-size: .66em;
+        padding: 0 3em 1em;
+        font-size: 0.66em;
+    }
+    .textbox, .select {
+        width: 11em;
+        height: 2em;
+    }
+    .address-wrapper .textbox {
+        width: 11em;
+        padding: 0.2em;
     }
 }
 /*for tablet*/
@@ -105,15 +162,15 @@
     .student-disability-wrapper,
     .address-wrapper,
     .parents-guardian-information-wrapper {
-        padding: 0.5em 1em 0.5em 1em;
+        padding: 0.5em 1em;
         font-size: 1.3em;
     }
     .lname,.fname,.mname,.extension {
         padding: 0.8em;
     }
     .content {
+        font-size: 0.55em;
         padding-top: 1em;
-        font-size: .55em;
     }
     .previous-school-row-1,
     .student-info-row-1 {
@@ -131,11 +188,10 @@
         width: 7.5em;
     }
     .previous-school-wrapper {
-        padding: 0.5em 1em 0.5em 1em;
-        display: grid;
-        font-size: 1.5em;
         grid-template-columns: 33% 35% 33%;
-        gap: 0;
+        gap: 1em;
+        padding: 0.5em 1em;
+        font-size: 1.5em;
     }
     #lschoolAddress,
     #fschoolAddress
@@ -146,7 +202,7 @@
     .fschool-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 1em;
     }
     .grade,
     .heducation,
@@ -171,8 +227,8 @@
         width: 15em;
     }
     .address-wrapper {
+        grid-template-columns: repeat(3, 33%);
         font-size: 1.5em;
-        grid-template-columns: 33% 33% 33%;
     }
     /*IMPORMASYON NG TAGAPAG ALAGA*/
     .parents-guardian-information-wrapper .textbox {
@@ -180,7 +236,7 @@
     }
     /*CONFIRMATION*/
     .confirmation {
-        padding: 0.5em 1em 0.5em 1em;
+        padding: 0.5em 1em;
     }
     /*ayusin mo nalang pag nag media query ka na */
     .content {
@@ -188,6 +244,26 @@
     }
     .fourPS, .image-confirm {
         font-size: 1.5em;
+    }
+}
+@media(max-width: 800px) {
+    .content {
+        font-size: 0.6em;
+    }
+    .textbox, .select {
+        width: 10em;
+    }
+    #lschoolAddress,
+    #fschoolAddress
+    {
+        width: 11em;
+    }
+    .address-wrapper .textbox {
+        width: 10em;
+        font-size: 1em;
+    }
+    .parents-guardian-information-wrapper .textbox {
+        width: 10em;
     }
 }
 @media(max-width: 768px) {
@@ -261,7 +337,7 @@
         padding: 0.5em 0.5em 0 1em;
     }
     .previous-school-row-1 .textbox {
-        width: 3.5em;
+        width: 5em;
     }
     
     .heducation label {
@@ -357,12 +433,12 @@
     }
     .title {
         margin-top: 1em;
-        font-size: 1.5em;
-        padding: 0.3em 1em 1em 1.5em;
+        font-size: 1.3em;
+        padding: 0.3em 1em 1em;
     }
     .form-main {
         width: 100%;
-        padding: 1em;
+        padding: 0.5em;
         display: flex;
         flex-direction: column;
     }
@@ -371,7 +447,6 @@
     .student-disability-title,
     .address-title,
     .parents-guardian-information-title {
-        padding: 1em;
-        padding-left: 1.5em;
+        padding: 1em 1.5em;
     }
 }

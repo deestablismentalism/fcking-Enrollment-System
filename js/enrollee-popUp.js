@@ -65,15 +65,17 @@ document.addEventListener('DOMContentLoaded', function (){
             modalContent.innerHTML = `
                 <span class="close">&times;</span>
                 <form id="deny-followup">
-                    <input type="hidden" name="id" value="${enrolleeId}">
-                    <input type="hidden" name="status" value="${status}">
-                    <p> What is the reason for following up/Denying this enrollee? </p>
-                    <input type="checkbox" id="wrong-input" name="reasons[]" value="Wrong input" class="checkboxes">
-                    <label for="wrong-input">There are fields with wrong input</label><br>
-                    <input type="checkbox" id="no-input" name="reasons[]" value="No input" class="checkboxes">
-                    <label for="no-input">There are fields without input</label><br>
-                    <input type="checkbox" id="blurred-image" name="reasons[]" value="Blurred Image" class="checkboxes">
-                    <label for="blurred-image"> Blurred Image </label>
+                    <div> 
+                        <input type="hidden" name="id" value="${enrolleeId}">
+                        <input type="hidden" name="status" value="${status}">
+                        <p> What is the reason for following up/Denying this enrollee? </p>
+                        <input type="checkbox" id="wrong-input" name="reasons[]" value="Wrong input" class="checkboxes">
+                        <label for="wrong-input">There are fields with wrong input</label><br>
+                        <input type="checkbox" id="no-input" name="reasons[]" value="No input" class="checkboxes">
+                        <label for="no-input">There are fields without input</label><br>
+                        <input type="checkbox" id="blurred-image" name="reasons[]" value="Blurred Image" class="checkboxes">
+                        <label for="blurred-image"> Blurred Image </label>
+                    </div>
                     <p> State Accurate description </p>
                     <textarea id="description" class="description-box" name="description" rows="6" cols="40" placeholder="write description here.."></textarea><br>
                     <button type="submit"> Submit followup </button>

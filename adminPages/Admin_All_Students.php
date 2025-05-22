@@ -3,6 +3,7 @@
     include_once __DIR__ . '/../adminPages/admin_base_designs.php';
 ?>
  <link rel="stylesheet" href="../css/admin_all_students.css">
+ <script src="../js/admin-students.js"></script>
 </head>
 <body>
     <div class="main-content">
@@ -21,7 +22,9 @@
                         <th> Student LRN </th>
                         <th> Grade Level </th>
                         <th> Section </th>
-                        <th> Display Information </th>
+                        <th> Student Email </th>
+                        <th> Student Status </th>
+                        <th> Student Actions </th>
                     </tr>
                     <tbody class="student-info">
                             <?php 

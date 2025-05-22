@@ -115,12 +115,24 @@ class getEnrollees {
 
         return (int)$result['Enrollment_Status'];
     }
+    public function getAllPartialEnrollees() {
+        $sql = "SELECT Learner_Reference_Number,
+                        Student_First_Name,
+                        Student_Last_Name,
+                        Student_Middle_Name,
+                        Enrollment_Status   
+                FROM enrollee";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+    }
     public function getEnrolled() {
         $sql = "SELECT * FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
                 INNER JOIN grade_level AS enrolling_level ON enrolling_level.Grade_Level_Id = educational_information.Enrolling_Grade_Level
                 INNER JOIN grade_level AS last_level ON last_level.Grade_Level_Id = educational_information.Last_Grade_Level
-                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
                 INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
                 WHERE parent_information.Parent_Type = 'Guardian' AND Enrollment_Status = 1;";
         $stmt = $this->conn->prepare($sql);

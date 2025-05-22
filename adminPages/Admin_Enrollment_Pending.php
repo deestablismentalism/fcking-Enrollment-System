@@ -30,7 +30,6 @@
                                 <th> Age </th>
                                 <th> Birthdate </th>
                                 <th> Biological Sex </th>
-                                <th>Enrollment Form Status</th>
                                 <th> Display Enrollment Information</th>
                             </tr>
                             <tbody id="query-table"> 
