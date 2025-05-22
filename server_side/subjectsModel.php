@@ -26,20 +26,28 @@ class subjectsModel {
 
     }
     public function insertGradeLevelSubjects($subjectId, $gradeLevelId) {
-        $sql = "INSERT INTO grade_level_subjects(Grade_Level_Id, Subject_Id) VALUES (:subjectId, :gradeLevelId)";
+        $sql = "INSERT INTO grade_level_subjects(Subject_Id, Grade_Level_Id) VALUES (:subjectId, :gradeLevelId)";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':subjectId', $subjectId);
         $stmt->bindParam(':gradeLevelId', $gradeLevelId, PDO::PARAM_INT);
-        $stmt->execute();
+        return $stmt->execute();
     }
     public function insertSubjectAndLevel($subjectName, $gradeLevelId) {
         try {
             $this->conn->beginTransaction();
 
             $subjectId = $this->insertSubject($subjectName);
+            
+            if (!is_numeric($subjectId)) {
+                throw new PDOException("Failed to insert subject: " . $subjectId);
+            }
 
-            $this->insertGradeLevelSubjects($subjectId, $gradeLevelId);
+            $result = $this->insertGradeLevelSubjects($subjectId, $gradeLevelId);
+            
+            if (!$result) {
+                throw new PDOException("Failed to associate subject with grade level");
+            }
 
             $this->conn->commit();
 
@@ -47,7 +55,7 @@ class subjectsModel {
         }
         catch(PDOException $e) {
             $this->conn->rollBack();
-            return "Error" . $e->getMessage();
+            return "Error: " . $e->getMessage();
         }
     }
 
