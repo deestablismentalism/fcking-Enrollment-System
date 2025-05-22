@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $Province_Name = $_POST['Province_Name'];
             $Region = $_POST['Region'];
 
-            $EditInformation->Update_Address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
+            $response = $EditInformation->Update_Address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
+            echo json_encode($response);
             break;
 
         case 'update_identifiers':
@@ -24,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $Philhealth_Number = $_POST['Philhealth_Number'];
             $TIN = $_POST['TIN'];
             
-            $EditInformation->Update_Identifiers($Employee_Number, $Philhealth_Number, $TIN);
+            $response = $EditInformation->Update_Identifiers($Employee_Number, $Philhealth_Number, $TIN);
+            echo json_encode($response);
             break;
         
         case 'update_information':
@@ -34,9 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $Staff_Email = $_POST['Staff_Email'];
             $Staff_Contact_Number = $_POST['Staff_Contact_Number'];
 
-            $EditInformation->Update_Information($Staff_First_Name, $Staff_Middle_Name, $Staff_Last_Name, $Staff_Email, $Staff_Contact_Number);
+            $response =  $EditInformation->Update_Information($Staff_First_Name, $Staff_Middle_Name, $Staff_Last_Name, $Staff_Email, $Staff_Contact_Number);
+
+            echo json_encode($response);
             break;
-            
+
         default:
             echo "Error: Invalid form type.";
             break;

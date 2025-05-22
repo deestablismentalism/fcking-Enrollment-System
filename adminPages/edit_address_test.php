@@ -42,5 +42,6 @@
         </div>
     </div>
 </body>
+<script src="../js/edit-staff-information.js"></script>
 </html>
 

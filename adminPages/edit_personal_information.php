@@ -38,5 +38,7 @@
         </form>
       </div>
   </div>
+<script src="../js/edit-staff-information.js"></script>
+
 </body>
 </html>
