@@ -118,9 +118,9 @@ class getEnrollees {
     public function getEnrolled() {
         $sql = "SELECT * FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id
+                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
                 INNER JOIN grade_level AS enrolling_level ON enrolling_level.Grade_Level_Id = educational_information.Enrolling_Grade_Level
                 INNER JOIN grade_level AS last_level ON last_level.Grade_Level_Id = educational_information.Last_Grade_Level
-                INNER JOIN educational_information ON  enrollee.Educational_Information_Id = educational_information.Educational_Information_Id 
                 INNER JOIN parent_information ON enrollee_parents.Parent_Id = parent_information.Parent_Id 
                 WHERE parent_information.Parent_Type = 'Guardian' AND Enrollment_Status = 1;";
         $stmt = $this->conn->prepare($sql);

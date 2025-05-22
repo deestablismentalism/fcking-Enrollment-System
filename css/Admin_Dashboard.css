@@ -1,12 +1,18 @@
 .content {
     font-family: 'Barlow';
-    height: 100vh;
+    height: 100%;
 }
-
+.data-title {
+    font-weight: bold;
+    font-size: 2em;
+    color: rgb(0,51,102);
+}
 .border-50 {
     position: relative;
 }
-
+.enrollee-data-wrapper {
+    padding: 2rem;
+}
 .border-50::after {
     content: '';
     position: absolute;
@@ -21,13 +27,18 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-
+.chart-loading {
+    background-color: white;
+    padding: 1.5em;
+    border-radius: 1em;
+}
 .card {
+    display: none;
     background-color: white;
     padding: 1em;
     justify-content: center;
     margin: 1em 2em 1em;
-    border-radius: 3px;
+    border-radius: 1.5em;
     width: 25em;
     height: 25em;
 }

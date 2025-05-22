@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 try {
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (!isset($_SESSION['User']['User-Id'])) {
-            echo json_encode(['success'=> false , 'message' => 'unrecognized user']);
+            echo json_encode(['success'=> false , 'message' => 'Unrecognized user']);
             exit();
         }
 
@@ -107,7 +107,7 @@ try {
             $allowedTypes = ['jpg', 'jpeg', 'png'];
 
             if(!in_array($imageActualExt, $allowedTypes)) {
-                echo json_encode(['success' => false, 'message' => 'invalid image type']);
+                echo json_encode(['success' => false, 'message' => 'Invalid image type']);
                 exit();
             }
 
@@ -118,7 +118,7 @@ try {
             $directory =  $uploadDirectory . $filename;
 
             if (!move_uploaded_file($imageTmpName, $directory)) {
-                echo json_encode(['success'=> false , 'message' => 'failed to upload image']);
+                echo json_encode(['success'=> false , 'message' => 'Failed to upload image']);
                 exit();
             }
                     

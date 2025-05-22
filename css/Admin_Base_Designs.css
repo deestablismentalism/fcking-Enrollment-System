@@ -245,7 +245,9 @@ p {
 .main-content {
     background-color:antiquewhite;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
 }
 
 .header-title {

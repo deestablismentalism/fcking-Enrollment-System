@@ -13,21 +13,27 @@
 
         <!--START OF THE MAIN CONTENT-->
         <div class="content">
-            <h1> Enrollees </h1>
-            <div class="card-container">
+            <div class="enrollee-data-wrapper">
+                <h1 class="data-title"> Enrollees </h1>
+                <div class="card-container">
                 <!--Enrolled-->
-                <div class="card card-1">
-                    <canvas id="enrollee-pie-chart"></canvas>
+                <p class="chart-loading" id="enrollee-pie-chart-loading"> Waiting for the data to load...</p>
+                <div class="card card-1" id="pie-chart-container">
+                    <canvas id="enrollee-pie-chart" ></canvas>
                 </div>
                 <!--Pending Enrollees-->
-                <div class="card card-2">
-                    <canvas id="enrollee-grade-level-distribution"></canvas>
+                <p class="chart-loading" id="enrollee-grade-level-distribution-loading"> Waiting for the data to load...</p>
+                <div class="card card-2" id="grade-level-distribution-container">
+                    <canvas id="enrollee-grade-level-distribution">canvas>
                 </div>
                 <!--To Follow Up-->
-                <div class="card card-3">
+                <p class="chart-loading" id="enrollee-biological-sex-loading"> Waiting for the data to load...</p>
+                <div class="card card-3" id="biological-sex-container">
                      <canvas id="enrollee-biological-sex"></canvas>
                 </div>
-            <div class="big-card-wrapper">
+                </div>
+            </div>
+                <div class="big-card-wrapper">
                 <!--PENDING ENROLLMENTS BIG-->
                 <div class="pending-enrollments-wrapper">
                     <h3 class="big-card-title">Pending Enrollees</h3>
@@ -43,7 +49,6 @@
                             $dashboard->displayPendingEnrolleesInformation();
                         ?>
                     </table>
-                </div>
                 <!--Post Announcments BIG-->
                 <!-- <div class="post-announcement-wrapper">
                     <div class="big-card-header">

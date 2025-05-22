@@ -42,11 +42,11 @@
                             <div class="learner-radio">
                                 <p class="dfont">I-check lamang naaangkop</p>
                                 <div class="lrn-radio-buttons-selections">
-                                    <input type="radio" id="No-LRN" name="LRN" value="0" class="radio">
+                                    <input type="radio" id="no-lrn" name="LRN" value="0" class="radio">
                                     <label for="no-lrn">Walang LRN</label>
-                                    <input type="radio" id="With-LRN" name="LRN" value="1" class="radio">
+                                    <input type="radio" id="with-lrn" name="LRN" value="1" class="radio">
                                     <label for="with-lrn">Mayroong LRN</label>
-                                    <input type="radio" id="Returning" name="LRN" value="2" class="radio">
+                                    <input type="radio" id="returning" name="LRN" value="2" class="radio">
                                     <label for="returning">Returning (Balik Aral)</label>
                                 </div>
                             </div>
@@ -96,16 +96,18 @@
                                         <input type="number" name="lschoolID" id="lschoolID" class="textbox">
                                     </div>
                                 </div>
-                                <p class="dfont">Address ng paaralan</p>
-                                <div class="error-msg">
-                                    <span class="em-lschoolAddress"> Error Message Here.</span>
-                                </div>
-                                <input type="text" name="lschoolAddress" id="lschoolAddress" class="textbox">  
+                                <div class="last-school-address">
+                                    <p class="dfont">Address ng paaralan</p>
+                                    <div class="error-msg">
+                                        <span class="em-lschoolAddress"> Error Message Here.</span>
+                                    </div>
+                                    <input type="text" name="lschoolAddress" id="lschoolAddress" class="textbox"> 
+                                </div> 
                                 <p class="dfont">Huling natapos na taon sa paaralan</p>
                                 <div> 
-                                    <input type="radio" name="educational-choice" id="" class="radio" value="private">
+                                <input type="radio" name="educational-choice" id="private" class="radio" value="Private">
                                     <label for="private">Pribado</label>
-                                    <input type="radio" name="educational-choice" id="" class="radio" value="public">
+                                    <input type="radio" name="educational-choice" id="public" class="radio" value="Public">
                                     <label for="public">Pampubliko</label>
                                 </div>
                             </div>
@@ -127,11 +129,13 @@
                                         <input type="number" name="fschoolID" id="fschoolID" class="textbox">
                                     </div>
                                 </div>
-                                <p class="dfont">Address ng paaralan</p>
-                                <div class="error-msg">
-                                    <span class="em-fschoolAddress"> Error Message Here. </span>
-                                </div>
+                                <div>
+                                    <p class="dfont">Address ng paaralan</p>
+                                    <div class="error-msg">
+                                        <span class="em-fschoolAddress"> Error Message Here. </span>
+                                    </div>
                                 <input type="text" name="fschoolAddress" id="fschoolAddress" class="textbox">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -221,10 +225,10 @@
                                         <p class="dfont">Nabibilang sa katutubong grupo/ <br class="responsive-text-break">
                                                     Komunidad ng Katutubong Kultural</p>
                                         <div>
-                                            <input type="radio" name="group" id="yes" class="radio" value="1">
-                                            <label for="yes">Oo</label>
-                                            <input type="radio" name="group" id="no" class="radio" value="0">
-                                            <label for="no">Hindi</label>
+                                            <input type="radio" name="group" id="is-ethnic" class="radio" value="1">
+                                            <label for="is-ethnic">Oo</label>
+                                            <input type="radio" name="group" id="not-ethnic" class="radio" value="0">
+                                            <label for="not-ethnic">Hindi</label>
                                         </div>
                                     </div>
                                 </div>
@@ -273,10 +277,10 @@
                         <div class="student-disability-wrapper">
                             <div class="special-needs">
                                 <p class="dfont">Ang mag-aaral ba ay nangangailangan ng espesyal na tulong sa pag-aaral? (e.g ADHD)</p>
-                                <input type="radio" name="sn" id="yes" class="radio" value="1">
-                                <label for="yes">Mayroon</label>
-                                <input type="radio" name="sn" id="no" class="radio" value="0">
-                                <label for="no">Wala</label>
+                                <input type="radio" name="sn" id="is-disabled" class="radio" value="1">
+                                <label for="is-disabled">Mayroon</label>
+                                <input type="radio" name="sn" id="not-disabled" class="radio" value="0">
+                                <label for="not-disabled">Wala</label>
                             </div>
 
                             <div class="truespecialneeds">
@@ -288,10 +292,10 @@
                             </div>
                             <div class="assisttech">
                                 <p class="dfont">May nagagamit bang “assistive technology devices” (e.g Braille)</p>
-                                <input type="radio" name="at" id="yes" class="radio" value="1">
-                                <label for="yes">Oo</label>
-                                <input type="radio" name="at" id="no" class="radio" value="0">
-                                <label for="no">Hindi</label>
+                                <input type="radio" name="at" id="has-assistive-tech" class="radio" value="1">
+                                <label for="has-assistive-tech">Oo</label>
+                                <input type="radio" name="at" id="no-assistive-tech" class="radio" value="0">
+                                <label for="no-assistive-tech">Hindi</label>
                             </div>
                             <div class="trueassisttech">
                                 <p class="dfont">Kung MAYROON, isulat kung ano ito</p>
@@ -509,10 +513,10 @@
                     <div class="confirmation border-75">
                         <div class="fourPS">
                             <p class="dfont">Kabilang ba ang inyong pamilya sa 4Ps ng DSWD?</p>
-                            <input type="radio" name="fourPS" id="yes" class="radio" value="yes">
-                            <label for="fourPS">Oo</label>
-                            <input type="radio" name="fourPS" id="no" class="radio" value="no">
-                            <label for="fourPS">Hinde</label>
+                            <input type="radio" name="fourPS" id="is-4ps" class="radio" value="yes">
+                            <label for="is-4ps">Oo</label>
+                            <input type="radio" name="fourPS" id="not-4ps" class="radio" value="no">
+                            <label for="not-4ps">Hinde</label>
                         </div>
                         <div class="image-confirm">
                             <p class="dfont">Ipasa ang malinaw na larawan ng mga Dokumento gaya ng <b>PSA BIRTH CERTIFICATE at REPORT CARD.<b></p>
@@ -524,6 +528,8 @@
             </div>
         </div>
     </div>
+    <div class="success-message" id="success-message"></div>
+    <div class="error-message" id="error-message"></div>
     <script src="../js/parent-info-validation.js" defer></script>
     <script src="../js/address-validation.js" defer></script>
     <script src="../js/previous-school-validation.js" defer></script>

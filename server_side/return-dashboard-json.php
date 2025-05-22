@@ -10,6 +10,7 @@ $data = new DashboardModel();
 $enrolled = $data->EnrolledStudents();
 $pending = $data->PendingStudents();
 $followUp = $data->FollowUpStudents();
+$denied = $data->DeniedStudents();
 //enrollments grade distribution count
 $kinder1 = $data->getKinderOneEnrollees();
 $kinder2 = $data->getKinderTwoEnrollees();
@@ -39,7 +40,8 @@ $result = [
     'chart1'=> [
         ['label' => 'Enrolled', 'value' => $enrolled],
         ['label' => 'Pending', 'value' => $pending],
-        ['label' => 'To Follow up', 'value' => $followUp]
+        ['label' => 'To Follow up', 'value' => $followUp],
+        ['label' => 'Denied', 'value' => $denied]
     ],
     'chart2' => [
         ['label' => 'Kinder I', 'value' => $kinder1],

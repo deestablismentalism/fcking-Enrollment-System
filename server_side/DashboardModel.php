@@ -36,6 +36,18 @@ class DashboardModel {
 
     public function FollowUpStudents() {
         try {
+            $sql_get_to_follow = "SELECT COUNT('Enrollee_Id') AS enrollee_count FROM enrollee WHERE Enrollment_Status = 2;";
+            $get_to_follow = $this->conn->prepare($sql_get_to_follow);
+            $get_to_follow->execute();
+            $to_follow_count = $get_to_follow->fetch(PDO::FETCH_ASSOC);
+            return (int)$to_follow_count['enrollee_count'];
+        }
+        catch(PDOExcepion $e) {
+            return['success' => false , 'message'=> $e->getMessage()];
+        }
+    }
+    public function DeniedStudents() {
+        try {
             $sql_get_to_follow = "SELECT COUNT('Enrollee_Id') AS enrollee_count FROM enrollee WHERE Enrollment_Status = 4;";
             $get_to_follow = $this->conn->prepare($sql_get_to_follow);
             $get_to_follow->execute();

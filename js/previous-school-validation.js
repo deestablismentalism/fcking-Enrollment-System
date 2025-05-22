@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded',function(){
     const fschool = document.getElementById("fschool"); //nais paaralan
     const fschoolAddr = document.getElementById("fschoolAddress"); //nais paaralan address
     const fschoolId = document.getElementById("fschoolID"); //nais paaralan ID
-
     const enrollingGradeLevel = document.getElementById("grades-tbe");
     const  lastGradeLevel = document.getElementById("last-grade");    
+
     function replaceSelectValues(replaceElement, replaceId) {
     let createTBox = document.createElement("input");
         createTBox.type = "text";
@@ -22,6 +22,36 @@ document.addEventListener('DOMContentLoaded',function(){
     }
 
     if (lastGradeLevel &&  enrollingGradeLevel ) {
+        if (lastGradeLevel.options.length === 0 && enrollingGradeLevel.options.length === 0) {
+            enrollingGradeLevel.innerHTML = `
+                <option value="1">Kinder I</option>
+                <option value="2">Kinder II</option>
+                <option value="3">Grade 1</option>       
+                <option value="4">Grade 2</option>
+                <option value="5">Grade 3</option>
+                <option value="6">Grade 4</option>
+                <option value="7">Grade 5</option>
+                <option value="8">Grade 6</option>
+           `;
+           lastGradeLevel.innerHTML = `
+                <option value="1">Kinder I</option>
+                <option value="2">Kinder II</option>
+                <option value="3">Grade 1</option>       
+                <option value="4">Grade 2</option>
+                <option value="5">Grade 3</option>
+                <option value="6">Grade 4</option>
+                <option value="7">Grade 5</option>
+                <option value="8">Grade 6</option>
+           `;
+        }
+        else {
+            enrollingGradeLevel.innerHTML = `
+                <option value=""> Select grade level </option>
+            `;
+             lastGradeLevel.innerHTML = `
+                <option value=""> Select grade level </option>
+            `;
+        }
         enrollingGradeLevel.selectedIndex = lastGradeLevel.selectedIndex + 1;
         lastGradeLevel.options[lastGradeLevel.options.length - 1].disabled = true;
 
@@ -37,30 +67,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 lastGradeLevel.selectedIndex = prevIndex;
             }
         });
-        if (lastGradeLevel.options.length === 0 && enrollingGradeLevel.options.length === 0) {
-            enrollingGradeLevel.innerHTML = `
-                <option value="1">Kinder I</option>
-                <option value="2">Kinder II</option>
-                <option value="3">Grade 1</option>       
-                <option value="4">Grade 2</option>
-                <option value="5">Grade 3</option>
-                <option value="6">Grade 4</option>
-                <option value="7">Grade 5</option>
-                <option value="8">Grade 6</option>
-                <option value="9">Grade 7</option>
-           `;
-           lastGradeLevel.innerHTML = `
-                <option value="1">Kinder I</option>
-                <option value="2">Kinder II</option>
-                <option value="3">Grade 1</option>       
-                <option value="4">Grade 2</option>
-                <option value="5">Grade 3</option>
-                <option value="6">Grade 4</option>
-                <option value="7">Grade 5</option>
-                <option value="8">Grade 6</option>
-                <option value="9">Grade 7</option>
-           `;
-        }
+        
     }
     else {
         replaceSelectValues(enrollingGradeLevel, 'grades-tbe');
@@ -150,7 +157,7 @@ document.addEventListener('DOMContentLoaded',function(){
         }   
     }
     //validate school Id
-    const fields2 = [
+    const idFields = [
         {element: lschoolId, error: "em-lschoolID"},
         {element: fschoolId, error: "em-fschoolID"}
     ];
@@ -159,8 +166,13 @@ document.addEventListener('DOMContentLoaded',function(){
         {element: lschool, error: "em-lschool"},
         {element: lschoolAddr, error: "em-lschoolAddress"},
         {element: fschool, error: "em-fschool"},
-        {element: fschoolAddr, error: "em-fschoolAddress"},
+        {element: fschoolAddr, error: "em-fschoolAddress"}
     ];
+    const yearFields = [
+        {element: startYear, error: "em-start-year"},
+        {element: endYear, error: "em-start-year"},
+        {element: lastYear, error: "em-last-year-finished"}
+    ]
     function validateSchoolId(element, errorElement) {
         if (isEmpty(element)) {
             errorMessages(errorElement, emptyError, element);
@@ -194,7 +206,14 @@ document.addEventListener('DOMContentLoaded',function(){
     }
     //Function for displaying error messages
     function errorMessages(errorElement, message, childElement) {
-        const container = childElement.parentElement.querySelector('.error-msg');
+        // Find the closest ancestor that contains the error message container
+        let container = childElement.parentElement.querySelector('.error-msg');
+        if (!container) {
+            container = childElement.closest('div').querySelector('.error-msg');
+        }
+        if (!container) {
+            container = childElement.parentElement.parentElement.querySelector('.error-msg');
+        }
         const errorSpan = container.querySelector('.' + errorElement);
 
         container.classList.add('show');
@@ -204,7 +223,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
     //clear error messages
     function clearError(errorElement, childElement) {
-        const container = childElement.parentElement.querySelector('.error-msg');
+        let container = childElement.parentElement.querySelector('.error-msg');
+        if (!container) {
+            container = childElement.closest('div').querySelector('.error-msg');
+        }
+        if (!container) {
+            container = childElement.parentElement.parentElement.querySelector('.error-msg');
+        }
         const errorSpan = container.querySelector('.' + errorElement);
 
         container.classList.remove('show');
@@ -215,8 +240,72 @@ document.addEventListener('DOMContentLoaded',function(){
     fields.forEach(({element, error}) => {
         element.addEventListener('input', ()=> validateSchool(element, error));
     });
-    fields2.forEach(({element, error})=>{
-        element.addEventListener('input', ()=> validateSchoolId(element, error));
+    yearFields.forEach(({element, error}) => {
+        element.addEventListener('input', function(e) {
+            const value = e.target.value;
+
+            if (/\D/.test(value)) {
+                const cursorPos = e.target.selectionStart;
+                const sanitizedValue = value.replace(/\D/g, '');
+                e.target.value = sanitizedValue;
+                const posDiff = value.length - sanitizedValue.length;
+                e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
+                value = sanitizedValue;
+            }
+            if (value.length > 4) {
+                e.target.value = value.slice(0, 4);
+            }
+            validateYear(element, error);
+        });
+    });
+    idFields.forEach(({element, error}) => {
+        element.addEventListener('input', function(e) {
+            const value = e.target.value;
+            
+            // Only sanitize if there are actual changes to sanitize
+            if (/\D/.test(value)) {
+                // Preserve cursor position
+                const cursorPos = e.target.selectionStart;
+                const sanitizedValue = value.replace(/\D/g, '');
+                e.target.value = sanitizedValue;
+                // Restore cursor position accounting for removed characters
+                const posDiff = value.length - sanitizedValue.length;
+                e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
+                value = sanitizedValue;
+            }
+            
+            // Limit to 6 digits
+            if (value.length > 6) {
+                e.target.value = value.slice(0, 6);
+            }
+            
+            validateSchoolId(element, error);
+        });
+
+        // Add keydown handler for special keys
+        element.addEventListener('keydown', function(e) {
+            // Allow: backspace, delete, tab, escape, enter
+            if ([46, 8, 9, 27, 13].indexOf(e.key) !== -1 ||
+                // Allow: Ctrl+A, Command+A
+                (e.key === 'a' && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: Ctrl+C, Command+C
+                (e.key === 'c' && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: Ctrl+V, Command+V
+                (e.key === 'v' && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: Ctrl+X, Command+X
+                (e.key === 'x' && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Allow: home, end, left, right, up, down
+                (e.key >= 35 && e.key <= 40)) {
+                return;  // let it happen, don't do anything
+            }
+            
+            // Prevent if not a number
+            if (!/^\d$/.test(e.key) && !e.ctrlKey && !e.metaKey) {
+                e.preventDefault();
+            }
+        });
+
+        element.addEventListener('blur', () => validateSchoolId(element, error));
     });
     startYear.addEventListener('input',validateStartYear);
     endYear.addEventListener('input',validateAcademicYear);
@@ -228,8 +317,16 @@ document.addEventListener('DOMContentLoaded',function(){
        fields.forEach(({element, error}) =>{
         validateSchool(element, error);
        });
-       fields2.forEach(({element, error})=>{
-        element.addEventListener('input', ()=> validateSchoolId(element, error));
+       idFields.forEach(({element, error})=>{
+            if(isEmpty(element)) {
+                errorMessages(error, emptyError, element);
+            }
+            else if (element.value.length !== 6) {
+                errorMessages(error, "school ID must be 6 digits", element);
+            }
+            else {
+                validateSchoolId(element, error);
+            }
         });
         validateStartYear();
         validateYearFinished();

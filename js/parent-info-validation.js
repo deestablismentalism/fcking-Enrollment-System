@@ -63,6 +63,11 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   function validatePhoneNumber(element, errorElement, e) {
     const currentIndex = element.selectionStart; 
+    if(isEmpty(element)) {
+        errorMessages(errorElement, emptyError, element);
+        checkEmptyFocus(element, errorElement);
+        return;
+    }
     if(isNaN(e.key) && e.key !== "Backspace") {
         errorMessages(errorElement, notNumber, element);
         checkEmptyFocus(element, errorElement);
@@ -73,18 +78,47 @@ document.addEventListener("DOMContentLoaded", function() {
         checkEmptyFocus(element, errorElement);
         e.preventDefault();
     }
-    else if(isEmpty(element) && currentIndex !== 0) {
-        errorMessages(errorElement, emptyError, element);
-        checkEmptyFocus(element, errorElement);
-    }
     else {
         clearError(errorElement, element);
     }
   }
   phoneInfo.forEach(({element, error}) => {
     element.addEventListener('keydown', (e)=> validatePhoneNumber(element, error, e));
+    element.addEventListener('blur', function() {
+        if(isEmpty(element)) {
+            errorMessages(error, emptyError, element);
+            checkEmptyFocus(element, error);
+        }
+    });
   });
   allInfo.forEach(({element, error}) => {
     element.addEventListener('keyup', ()=> validateEmpty(element, error));
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Validate all required name fields
+    allInfo.forEach(({element, error}) => {
+      validateEmpty(element, error);
+    });
+
+    // Validate all phone numbers
+    phoneInfo.forEach(({element, error}) => {
+      if(isEmpty(element)) {
+        errorMessages(error, emptyError, element);
+      }
+      else if (element.value.length !== 11) {
+        errorMessages(error, "Phone number must be 11 digits", element);
+      }
+    });
+
+    // Check for any validation errors
+    const errors = document.querySelectorAll('.show');
+    if (errors.length > 0) {
+      const firstError = errors[0];
+      firstError.scrollIntoView({behavior: "smooth", block: "center"});
+      return false;
+    }
   });
 });

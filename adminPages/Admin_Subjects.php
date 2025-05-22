@@ -16,10 +16,12 @@
                         <input type="text" placeholder="enter subject name..." name="subject-name">
                         <div class="radio-container">
                             <p> Is this subject being taught in many grade levels?</p>
-                            <input type="radio" id="multiLevelYes" name="subject" value="Yes">
-                            <label for="multiLevelYes">  Yes </label>
-                            <input type="radio" id="multiLevelNo" name="subject" value="No">
-                            <label for="multiLevelNo"> No </label>
+                            <div> 
+                                <input type="radio" id="multiLevelYes" name="subject" value="Yes">
+                                <label for="multiLevelYes">  Yes </label>
+                                <input type="radio" id="multiLevelNo" name="subject" value="No">
+                                <label for="multiLevelNo"> No </label>
+                            </div>
                         </div>
                         <div class="select-container" id="select-container">
                             <select name="subject-level" id="subject-level">
@@ -42,10 +44,11 @@
                         </div>
                         <button type="submit" class="submit-button"> Add subject </button>
                     </form>
-                    <div class="subjects-list">
+                </div>
+                <div class="subjects-list">
                         <h2> Subjects List </h2>
 
-                        <table>
+                        <table class="subjects-table">
                             <thead> 
                                 <th> Subject Name </th>
                                 <th> Grade Level </th>
@@ -59,9 +62,10 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
         </div>
+        <div class="success-message"></div>
+        <div class="error-message"></div>
     </body>
 <script src="../js/subjects-validation.js"defer></script>
 </html>
