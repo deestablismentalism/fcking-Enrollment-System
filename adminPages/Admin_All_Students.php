@@ -10,6 +10,7 @@
         <div class="content">
             <div class="table-title">
                 <div class="table-title-left"><h2> Students </h2></div>
+                <div> <button class="add-student-btn"> <img src="../imgs/plus-solid.svg"></button></div>
                 <div class="table-title-right">
                     <input type="text" id="search" class="search-box" placeholder="search student...">
                 </div>

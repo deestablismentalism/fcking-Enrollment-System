@@ -17,13 +17,10 @@
                 <div class="enrollment-access">
                     <div class="header">
                         <div class="header-left">
-                            <h2> Enrolled </h2>
+                            <h2> All Enrollees </h2>
                         </div>
                         <div class="header-right">
-                            <?php
-                            $enrollmentStatusView = new adminEnrolledView();
-                            $enrollmentStatusView->displayCount();
-                            ?>
+                            <input type="text" id="search" class="search-box" placeholder="search all enrollees...">
                         </div>
                     </div>
                     <div class="menu-content">
