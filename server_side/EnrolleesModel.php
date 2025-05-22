@@ -115,6 +115,18 @@ class getEnrollees {
 
         return (int)$result['Enrollment_Status'];
     }
+    public function getAllPartialEnrollees() {
+        $sql = "SELECT Learner_Reference_Number,
+                        Student_First_Name,
+                        Student_Last_Name,
+                        Student_Middle_Name,
+                        Enrollment_Status   
+                FROM enrollee";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+    }
     public function getEnrolled() {
         $sql = "SELECT * FROM enrollee_parents
                 INNER JOIN enrollee ON enrollee_parents.Enrollee_Id = enrollee.Enrollee_Id

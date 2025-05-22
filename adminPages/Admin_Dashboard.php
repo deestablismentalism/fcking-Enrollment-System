@@ -32,6 +32,9 @@
                      <canvas id="enrollee-biological-sex"></canvas>
                 </div>
                 </div>
+                <div class="students-data-wrapper">
+                    <h1 class="data-title"> Students </h1>
+                </div>
             </div>
                 <div class="big-card-wrapper">
                 <!--PENDING ENROLLMENTS BIG-->

@@ -34,7 +34,7 @@
                                 <th>Grade Level</th>
                                 <th>Guardian Name</th>
                                 <th>Guardian Contact</th>
-                                <th> Display Enrollment Information</th>
+                                <th>Display Enrollment Information</th>
                             </tr>
                                 <?php      
                                 $enrollmentStatusView = new adminEnrolledView();

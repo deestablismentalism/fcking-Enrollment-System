@@ -67,7 +67,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                     <button class="enrolls-btn" onclick="enrollsDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="enrolls-ul">
                         <li>
-                            <a href="./Admin_Enrollment_Enrolled.php" class="enrolled">Enrolled</a>
+                            <a href="./Admin_All_Enrollees.php" class="enrolled">Enrolled</a>
                         </li>
                         <li>
                             <a href="./Admin_Enrollment_Pending.php" class="pending">Pending</a>
@@ -122,12 +122,12 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
 
                         <div class="account-link-wrapper">
                             <!-- <a href=""><img src="" alt="">Edit Profile</a><br> -->
-                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php"><img src="../imgs/lock-solid.svg" class="change-pass-icon" alt=""></a>
-                            <a href="../../fcking-enrollment-system/client_side/Change_Password.php" class="update-password">Update Password</a><br>
+                            <a href="../client_side/Change_Password.php"><img src="../imgs/lock-solid.svg" class="change-pass-icon" alt=""></a>
+                            <a href="../client_side/Change_Password.php" class="update-password">Update Password</a><br>
                         </div>
                         <div class="account-logout-wrapper">
-                            <a href="../../fcking-enrollment-system/server_side/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
-                            <a href="../../fcking-enrollment-system/server_side/logout.php" class="logout-text">Logout</a>
+                            <a href="../server_side/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
+                            <a href="../server_side/logout.php" class="logout-text">Logout</a>
                         </div>
                     </div>
                 </div>
