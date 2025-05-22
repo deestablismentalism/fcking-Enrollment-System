@@ -30,7 +30,7 @@ $description = $_POST['description'];
 $date = date('Ymd');
 $time = time();
 
-$statusCode = ($status === 1) ? "F" : "D";
+$statusCode = ($status === 4) ? "F" : "D";
 $transactionCode = $statusCode . "-" . $date . "-" . $time;
 
 if (!isset($_POST['reasons'])) {

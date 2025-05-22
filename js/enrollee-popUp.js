@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function (){
             const action = e.target.getAttribute('data-action');
             let status = 0
             if (action === "accept") {
-                status = 4
+                status = 1
             } 
             else {
                 alert('unrecognized action');
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function (){
         if (e.target.matches('.toFollow-btn') || e.target.matches('.reject-btn')) {
             const enrolleeId = e.target.getAttribute('data-id');
             const action = e.target.getAttribute('data-action');
-            const status = action === 'toFollow' ? 1 : 2;
+            const status = action === 'toFollow' ? 4 : 2;
             modalContent.innerHTML = `
                 <span class="close">&times;</span>
                 <form id="deny-followup">
