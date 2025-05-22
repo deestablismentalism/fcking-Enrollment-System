@@ -10,7 +10,6 @@
     <body>
         <footer>
             <footer class="footer">
-                <img src="../imgs/footer.jpg" alt="footer background">
                 <div class="footerContainer">
                     <div class="socialIcons">
                         <a href=""><i class="fa-brands fa-facebook"></i></a>

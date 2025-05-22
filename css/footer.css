@@ -7,7 +7,7 @@
 
 
 .footer{  
-    background-image: url('../images/footer.jpg'); /* Replace with your image URL */
+    background-image: url('../imgs/footer.jpg');
     background-size: cover; /* Or 'contain' */
     background-repeat: no-repeat;
     background-position: center;
@@ -15,8 +15,14 @@
     color: white; /* Make text readable over background */
     text-align: center;
     position: relative;
-    z-index: 1; /* Ensure footer is above other content */
-    height: 60%;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 1;
 }
 
 .footerContainer{
@@ -26,7 +32,6 @@
 .socialIcons{
     display: flex;
     justify-content: center;
-    position: absolute;
 }
 .socialIcons a{
     text-decoration: none;
