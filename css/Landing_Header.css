@@ -31,8 +31,12 @@
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s ease;
+    cursor:pointer;
 }
-
+.nav-link:is(:link,:active, :visited).active {
+    color: #ffcc00;
+    text-decoration: underline;
+}
 .nav-link:hover {
     color: #ffcc00;
     text-decoration: underline;

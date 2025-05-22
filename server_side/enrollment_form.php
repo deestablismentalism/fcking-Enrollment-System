@@ -25,13 +25,13 @@ class EnrollmentForm {
             $insert_educational_information->bindParam(':Last_Grade_Level', $Last_Grade_Level);
             $insert_educational_information->bindParam(':Last_Year_Attended', $Last_Year_Attended);
             if ($insert_educational_information->execute()) {
-                return $this->conn->lastInsertId(); // Return the last inserted ID
+                return $this->conn->lastInsertId(); 
             } else {
-                return "Error: Failed to insert educational information.";
+                return ['status' => 'error', 'message' => 'failed to insert educational information'];
             }
         }
         catch (PDOException $e){
-            return "Submission Failed: " . $e->getMessage();
+            return ['status' => 'error', 'message' => 'educational information query failed: ' .$e->getMessage()];
         }
     }
 
@@ -53,11 +53,11 @@ class EnrollmentForm {
             if ($insert_educational_background->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to insert educational background.";
+                return ['status'=> 'error', 'message' => 'failed to insert educational background'];
             }
         } 
         catch (PDOException $e) {
-            return "Submission Failed: " . $e->getMessage();
+            return ['status'=> 'error', 'message' => 'education background query failed: ' .$e->getMessage()];
         }
     }
 
@@ -75,11 +75,11 @@ class EnrollmentForm {
             if ($insert_disabled_student->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to insert disability information.";
+                return ['status' => 'error' , 'message' => 'failed to insert disability information'];
             }
         } 
         catch (PDOException $e) {
-            return "Submission Failed: " . $e->getMessage();
+            return ['status' => 'error', 'message' => 'disability query failed: ' . $e->getMessage()];
         } 
     }
 
@@ -99,11 +99,11 @@ class EnrollmentForm {
             if ($insert_enrollee_address->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to enrollee address.";
+                return ['status'=> 'error', 'message'=> 'failed to insert enrollee address'];
             }
         }
         catch (PDOException $e) {
-            return "Submission Failed: " . $e->getMessage();
+            return ['status'=> 'error', 'message' => 'address query failed: ' . $e->getMessage()];
         }
     }
     
@@ -126,11 +126,11 @@ class EnrollmentForm {
             if ($insert_father_information->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to insert father information.";
+                return ['status'=> 'error', 'message'=> 'failed to insert father information'];
             }                                        
         }
         catch (PDOException $e) {
-            return "Submission Failed: " . $e->getMessage();
+            return ['status' => 'error', 'message' => 'father information query failed: ' . $e->getMessage()];
         }
     }
 
@@ -153,11 +153,11 @@ class EnrollmentForm {
             if ($insert_mother_information->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to insert mother information.";
+                return ['status'=>'error', 'message' => 'failed to insert mother information'];
             }                                        
         }
         catch (PDOException $e) {
-            return "Submission Failed: " . $e->getMessage();
+            return ['status'=> 'error', 'message' => 'mother information query failed: ' . $e->getMessage()];
         }
     }
 
@@ -180,11 +180,11 @@ class EnrollmentForm {
             if ($insert_guardian_information->execute()) {
                 return $this->conn->lastInsertId();
             } else {
-                return "Error: Failed to insert guardian information.";
+                return ['status' => 'error' , 'message' => 'failed to insert guardian information'];
             }                                        
         }
         catch (PDOException $e) {
-            return "Submission Failed: " . $e->getMessage();
+            return ['status'=> 'error', 'message'=> 'guardian query failed: ' . $e->getMessage()];
         }
     }
 
@@ -199,11 +199,11 @@ class EnrollmentForm {
                 if ($insert_images->execute()) {
                     return $this->conn->lastInsertId();
                 } else {
-                    return "Error: Failed to insert images.";
+                    return ['status'=> 'error' , 'message'=> 'failed to insert image'];
                 }
             } 
             catch (PDOException $e) {
-                return "Submission Failed: " . $e->getMessage();
+                return ['status' => 'error', 'message' => 'image query failed: ' . $e->getMessage() ];
             }
     }   
 
@@ -233,9 +233,9 @@ class EnrollmentForm {
             $Enrollee_Id;
 
             
-            if (!$Educational_Background_Id || !$Educational_Information_Id || !$Disabled_Student_Id || !$Enrollee_Address_Id) {
+            if (!$Educational_Background_Id || !$Educational_Information_Id || !$Disabled_Student_Id || !$Enrollee_Address_Id
+              || !$Father_Information_Id || !$Mother_Information_Id || !$Guardian_Information_Id || !$Psa_Image_Id) {
                 throw new Exception("Error: Failed to insert enrollee.");
-                
             }
 
             // Insert enrollee
@@ -275,9 +275,7 @@ class EnrollmentForm {
             } else {
                 $this->conn->rollBack();
                 throw new Exception("Error: Failed to insert enrollee.");
-                echo "Submission Failed: " . $e->getMessage();
             }
-
 
             // Initialize Variables for parent type
             if ($Father_Information_Id) {
@@ -312,12 +310,9 @@ class EnrollmentForm {
             $insert_father_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_father_student_relationship->bindParam(':Parent_Id', $Father_Information_Id);
             $insert_father_student_relationship->bindParam(':Relationship', $Father_Parent_Type);
-            if($insert_father_student_relationship->execute()) {
-                echo 'Successfully inserted father';
-            } else {
+            if(!$insert_father_student_relationship->execute()) {
                 throw new PDOException("Error: Failed to insert father-student relationship.");
-            }
-
+            } 
             //mother
             $sql_mother_student_relationship = "INSERT INTO enrollee_parents (Enrollee_Id, Parent_Id, Relationship)
                                                 VALUES (:Enrollee_Id, :Parent_Id, :Relationship)";
@@ -325,12 +320,9 @@ class EnrollmentForm {
             $insert_mother_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_mother_student_relationship->bindParam(':Parent_Id', $Mother_Information_Id);
             $insert_mother_student_relationship->bindParam(':Relationship', $Mother_Parent_Type);
-            if($insert_mother_student_relationship->execute()) {
-                echo 'Successfully inserted';
-            } else {
+            if(!$insert_mother_student_relationship->execute()) {
                 throw new PDOException("Error: Failed to insert mother-student relationship.");
-            }
-
+            } 
             //guardian
             $sql_guardian_student_relationship = "INSERT INTO enrollee_parents (Enrollee_Id, Parent_Id, Relationship)
                                                   VALUES (:Enrollee_Id, :Parent_Id, :Relationship)";
@@ -338,18 +330,16 @@ class EnrollmentForm {
             $insert_guardian_student_relationship->bindParam(':Enrollee_Id', $Enrollee_Id);
             $insert_guardian_student_relationship->bindParam(':Parent_Id', $Guardian_Information_Id);
             $insert_guardian_student_relationship->bindParam(':Relationship', $Guardian_Parent_Type);
-            if($insert_guardian_student_relationship->execute()) {
-                echo 'Successfully inserted';
-            } else {
-                throw new PDOException("Error: Failed to insert guardian-student relationship.");
-            }
+            if(!$insert_guardian_student_relationship->execute()) {
+               throw new PDOException("Error: Failed to insert guardian-student relationship.");
+            } 
             $this->conn->commit();
-            return "Submission Successful Your Enrollee ID is: " . $Enrollee_Id;
+            return ['success' => true , 'message' => 'submission successful'];
         }
         catch(PDOException $e) {
             //rollback if something goes wrong
             $this->conn->rollBack();
-            return "Submission Failed: " . $e->getMessage();
+            return ['success' => false , 'message' => 'submission failed: ' .$e->getMessage()];
         }
     }
 

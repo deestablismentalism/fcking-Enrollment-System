@@ -17,7 +17,7 @@
             </div>
             <div class="header-right">
                 <!-- will turn this into a href or a button, same with about, learn-more, and log-in + Test with JScript -->
-                <a href = "./Index.php" class = "nav-link"> Home </a> 
+                <a href = "./index.php" class = "nav-link"> Home </a> 
                 <span class = "separator"> | </span>
                 <a href = "./About_Page.php" class = "nav-link"> About Us </a>
                 <span class = "separator"> | </span>
@@ -47,5 +47,6 @@
             </div>
         </div>
     </div>
+    <script src='./js/landing-header.js' defer></script>
 </body>
 </html>

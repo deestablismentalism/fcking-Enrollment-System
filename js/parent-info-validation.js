@@ -12,19 +12,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const guardianMname = document.getElementById("Guardian-Middle-Name");
     const guardianFname = document.getElementById("Guardian-First-Name");
     const guardianCPnum = document.getElementById("G-number");
-
+    
     const emptyError = "This field is required";
     const notNumber = "This field must be a number";
 
     const allInfo = [
         {element: fatherLname, error: "em-father-last-name"},
-        {element: fatherMname, error: "em-father-middle-name"},
         {element: fatherFname, error: "em-father-first-name"},
         {element: motherLname, error: "em-mother-last-name"},
-        {element: motherMname, error: "em-mother-middle-name"},
         {element: motherFname, error: "em-mother-first-name"},
         {element: guardianLname, error: "em-guardian-last-name"},
-        {element: guardianMname, error: "em-guardian-middle-name"},
         {element: guardianFname, error: "em-guardian-first-name"}
     ];
     const phoneInfo = [
@@ -36,18 +33,23 @@ document.addEventListener("DOMContentLoaded", function() {
     return !element.value.trim();
   }
   function clearError(errorElement, childElement) {
-    const errorField = document.querySelector("." + errorElement);
-    errorField.classList.remove("show");
-    errorField.innerHTML = "";
-    childElement.style.border = "1px solid #616161";
-}
+        const container = childElement.parentElement.querySelector('.error-msg');
+        const errorSpan = container.querySelector('.' + errorElement);
+
+        container.classList.remove('show');
+        childElement.style.border = "1px solid #616161";
+        errorSpan.innerHTML = '';
+  }
   function checkEmptyFocus(element, errorElement) {
     element.addEventListener('blur', ()=> clearError(errorElement, element));
   } 
   function errorMessages(errorElement, message, childElement) {
-    document.querySelector("."+errorElement).classList.add("show");
+    const container = childElement.parentElement.querySelector('.error-msg');
+    const errorSpan = container.querySelector('.' + errorElement);
+
+    container.classList.add('show');
     childElement.style.border = "1px solid red";
-    document.querySelector("."+errorElement).innerHTML = message;
+    errorSpan.innerHTML = message;
   }
 
   function validateEmpty(element, errorElement) {
