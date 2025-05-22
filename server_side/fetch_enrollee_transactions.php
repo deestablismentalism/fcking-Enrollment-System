@@ -1,0 +1,28 @@
+<?php
+require_once 'dbconnection.php';
+
+header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['id'])) {
+    echo json_encode(['success' => false, 'message' => 'Invalid request']);
+    exit();
+}
+
+$id = (int) $_POST['id'];
+
+try {
+    $db = new Connect();
+    $conn = $db->getConnection();
+
+    $stmt = $conn->prepare("SELECT Reason, Description FROM enrollment_transactions WHERE Enrollee_Id = :id");
+    $stmt->execute(['id' => $id]);
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($data) {
+        echo json_encode(['success' => true, 'data' => $data]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'No transactions found']);
+    }
+} catch (Exception $e) {
+    echo json_encode(['success' => false, 'message' => 'Server error']);
+}

@@ -1,19 +1,20 @@
-# Environment variables
+# Environment Files
 .env
-.env.*
 
-# Composer
+# Vendor directory
 /vendor/
 
-# IDE files
-.idea/
+# IDE specific files
 .vscode/
-*.sublime-project
-*.sublime-workspace
+.idea/
 
-# OS files
+# System Files
 .DS_Store
 Thumbs.db
 
 # Logs
-*.log 
+*.log
+
+# PHP specific
+*.phar
+.phpunit.result.cache

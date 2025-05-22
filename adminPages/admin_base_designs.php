@@ -73,7 +73,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                             <a href="./Admin_Enrollment_Pending.php" class="pending">Pending</a>
                         </li>
                         <li>
-                            <a href="./Admin_Denied_Followup.php"> Denied & To follow </a>
+                            <a href="./Admin_Denied_FollowUp.php"> Denied & To follow </a>
                         </li>
                     </ul>
                 </div>
