@@ -12,7 +12,7 @@ class AdminDeniedFollowUpView {
     }
 
     public function displayDeniedAndFollowUpStudents() {
-        echo '<table>
+        echo '<table class="enrollments">
                 <tr>
                 <th>LRN</th>
                 <th>Full Name</th>

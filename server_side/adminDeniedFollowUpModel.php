@@ -1,3 +1,69 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Denied and Follow-Up Students</title>
+  <style>
+
+    .adminDeniedFollowUpView {
+        font-family: Barlow, sans-serif;
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        background-color: #FFFFFF;
+    }
+.content{
+    margin: 0 36.5px ;
+}
+    table.enrollments {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      padding: 10px;
+    }
+
+    table.enrollments th, table.enrollments td {
+      padding: 10px;
+      text-align: center; 
+      font-family: Barlow, sans-serif;
+    
+    }
+
+    table.enrollments th {
+      background-color:rgb(255, 255, 255);
+      color: black;
+    }
+
+    table.enrollments tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    table.enrollments tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    button[data-id] {
+      padding: 5px 10px;
+      background-color: #003366d5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[data-id]:hover {
+      background-color:rgba(15, 90, 166, 0.83);
+    }
+
+    .enrollment {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 20px;
+    
+    }
+  </style>
+</head>
 <?php
 
 require_once '../server_side/dbconnection.php';
