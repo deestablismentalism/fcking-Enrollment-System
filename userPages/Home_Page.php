@@ -19,15 +19,11 @@
 
                 <!-- Full-width images with number and caption text -->
                 <div class="mySlides fade">
-                    <img src="../imgs/south-2.png" alt="Image 1" style="width:100%">
+                    <img src="../imgs/teacher.jpg" alt="Image 1" style="width:100%">
                 </div>
 
                 <div class="mySlides fade">
-                    <img src="../imgs/studs.jpg" alt="Image 2" style="width:100%">
-                </div>
-
-                <div class="mySlides fade">
-                    <img src="../imgs/painting.jpg" alt="Image 3" style="width:100%">
+                    <img src="../imgs/grad.jpg" alt="Image 3" style="width:100%">
                 </div>
                 <div class="mySlides fade">
                     <img src="../imgs/boyscout.jpg" alt="Image 4" style="width:100%">
@@ -50,5 +46,10 @@
         </div>
     </div>
     <script src="../js/Home_Page.js"></script>
+        <div class = "footer">
+        <?php
+            include '../userPages/footer.php';
+        ?>
+    </div>
 </body>
 </html>
