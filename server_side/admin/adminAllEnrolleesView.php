@@ -1,45 +1,65 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/dbconnection.php';
+require_once __DIR__ . '/../dbconnection.php';
 require_once __DIR__ . '/../EnrolleesModel.php';
 
-class adminEnrolledView {
+class adminAllEnrolleesView {
     protected $conn;
-    protected $getEnrolled;
-    protected $getEnrolledCount;
+    protected $getAllEnrollees;
+    protected $getAllEnrolleesCount;
+    public const ENROLLED = 1;
+    public const DENIED = 2;
+    public const PENDING = 3;
+    public const TO_FOLLOW = 4;
+
+    public function stringEquivalent(int $value): string {
+       switch($value) {
+            case self::ENROLLED:
+                return "enrolled";
+            case self::DENIED:
+                return "denied";
+            case self::PENDING:
+                return "pending";
+            case self::TO_FOLLOW:
+                return "to-follow";
+            default:
+                return "unknown";
+        }
+    }
 
     public function __construct() {
         $db = new Connect();
         $this->conn = $db->getConnection();
         $enrollee = new getEnrollees();
-        $this->getEnrolled = $enrollee->getEnrolled();
-        $this->getEnrolledCount = $enrollee->countEnrolled();
+        $this->getAllEnrollees = $enrollee->getAllEnrollees();
+        $this->getAllEnrolleesCount = $enrollee->countAllEnrollees();
     }
 
     public function displayCount() {
         try {
-            $count = $this->getEnrolledCount;
-            echo "<h2>" . htmlspecialchars($count) . "</h2>";
+            $count = $this->getAllEnrolleesCount;
+            echo htmlspecialchars($count);
         }
         catch(PDOException $e) {
             die("Query Failed: " . $e->getMessage());
         }
     }
 
-    public function displayEnrolled() {
+    public function displayAllEnrollees() {
         try {
-    
-            $data = $this->getEnrolled;
+            $data = $this->getAllEnrollees;
             foreach($data as $rows) {   
                 $parentMiddleInitial = substr($rows['Middle_Name'], 0, 1) . ".";
                 $studentMiddleInitial = substr($rows['Student_Middle_Name'], 0, 1) . ".";
+                $status = $this->stringEquivalent((int)$rows['Enrollment_Status']);
+                
                 echo '<tr class="enrollee-row"> 
                         <td>' . htmlspecialchars($rows['Learner_Reference_Number']) . '</td>
-    
                         <td>' .htmlspecialchars($rows['Student_Last_Name']) . ', ' 
                         .htmlspecialchars($rows['Student_First_Name']) . ' ' 
                         .htmlspecialchars($studentMiddleInitial) . '</td>
                         <td>' . htmlspecialchars($rows['Last_Grade_Level']) . '</td>
+                        <td>' . htmlspecialchars($status) . '</td>
                         <td>' . htmlspecialchars($rows['Last_Name']) . ', ' . htmlspecialchars($rows['First_Name']) . ' ' 
                                .htmlspecialchars($parentMiddleInitial) . '</td> 
                         <td>' 
@@ -53,5 +73,4 @@ class adminEnrolledView {
             die("Query Failed: " . $e->getMessage());
         }
     }
-
-}
+} 

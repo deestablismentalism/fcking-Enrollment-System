@@ -67,7 +67,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                     <button class="enrolls-btn" onclick="enrollsDrop()"><img src="../imgs/chevron-down.svg" class ="bi-chevron-down"></button>
                     <ul class="enrolls-ul">
                         <li>
-                            <a href="./Admin_All_Enrollees.php" class="enrolled">Enrolled</a>
+                            <a href="./Admin_All_Enrollees.php" class="enrolled">All Enrollees</a>
                         </li>
                         <li>
                             <a href="./Admin_Enrollment_Pending.php" class="pending">Pending</a>

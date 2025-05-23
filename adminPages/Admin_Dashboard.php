@@ -14,7 +14,8 @@
         <!--START OF THE MAIN CONTENT-->
         <div class="content">
             <div class="enrollee-data-wrapper">
-                <h1 class="data-title"> Enrollees </h1>
+                <h1 class="data-title"> <a href="Admin_All_Enrollees.php"> All Enrollees </a>:
+                    <span id="total-enrollees"></span> </h1>
                 <div class="card-container">
                 <!--Enrolled-->
                 <p class="chart-loading" id="enrollee-pie-chart-loading"> Waiting for the data to load...</p>
@@ -33,13 +34,29 @@
                 </div>
                 </div>
                 <div class="students-data-wrapper">
-                    <h1 class="data-title"> Students </h1>
+                    <h1 class="data-title"> <a href="Admin_All_Students.php"> Students </a>:
+                        <span id="total-students"></span> </h1>
+                        <div class="card-container">
+
+                            <p class="chart-loading" id="student-pie-chart-loading"> Waiting for the data to load...</p>
+                            <div class="card card-4" id="student-pie-chart-container">
+                                <canvas id="student-pie-chart"></canvas>
+                            </div>
+                            <p class="chart-loading" id="student-grade-level-distribution-loading"> Waiting for the data to load...</p>
+                            <div class="card card-5" id="student-grade-level-distribution-container">
+                                <canvas id="student-grade-level-distribution"></canvas>
+                            </div>
+                            <p class="chart-loading" id="student-biological-sex-loading"> Waiting for the data to load...</p>
+                            <div class="card card-6" id="student-biological-sex-container">
+                                <canvas id="student-biological-sex"></canvas>
+                            </div>
+                        </div>
                 </div>
             </div>
                 <div class="big-card-wrapper">
                 <!--PENDING ENROLLMENTS BIG-->
                 <div class="pending-enrollments-wrapper">
-                    <h3 class="big-card-title">Pending Enrollees</h3>
+                    <h3 class="big-card-title"><a href="Admin_Enrollment_Pending.php">Pending Enrollees</a></h3>
                     <table class="pending-enrollments-table">
                         <tr>
                             <th>LRN</th>
