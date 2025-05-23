@@ -169,7 +169,7 @@
                                 <select id="status" name="status" required>
                                     <option value="1" <?php echo ($student['Student_Status'] == 1) ? 'selected' : ''; ?>>Active</option>
                                     <option value="2" <?php echo ($student['Student_Status'] == 2) ? 'selected' : ''; ?>>Inactive</option>
-                                    <option value="3" <?php echo ($student['Student_Status'] == 3) ? 'selected' : ''; ?>>On Leave</option>
+                                    <option value="3" <?php echo ($student['Student_Status'] == 3) ? 'selected' : ''; ?>>Dropped</option>
                                 </select>
                             </div>
                         </div>

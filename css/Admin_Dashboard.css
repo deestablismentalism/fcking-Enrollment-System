@@ -7,6 +7,12 @@
     font-size: 2em;
     color: rgb(0,51,102);
 }
+.data-title a {
+    cursor: pointer;
+}
+.data-title a:hover {
+    color: #fff;
+}
 .border-50 {
     position: relative;
 }
@@ -84,7 +90,12 @@
     color: rgb(0,51,102);
     border-bottom:1px rgba(241, 189, 34, 0.3) solid ;
 }
-
+.big-card-title a {
+    cursor: pointer;
+}
+.big-card-title a:hover {
+    color: rgb(0,51,102);
+}
 .post-announcements-title {
     border: none;
 }

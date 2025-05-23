@@ -8,7 +8,19 @@ class DashboardModel {
         $db = new Connect();
         $this->conn = $db->getConnection();
     }
-
+    public function TotalEnrollees() {
+        try {
+            $sql_get_total_enrollees = "SELECT COUNT('Enrollee_Id') AS enrollee_count FROM enrollee;";
+            $get_total_enrollees = $this->conn->prepare($sql_get_total_enrollees);
+            $get_total_enrollees->execute();
+            $total_enrollees = $get_total_enrollees->fetch(PDO::FETCH_ASSOC);
+            return (int)$total_enrollees['enrollee_count'];
+        }
+        catch(PDOException $e) {
+            return['success'=> false, 'message'=> $e->getMessage()];
+        }
+    }
+    
     public function EnrolledStudents(){
         try {
             $sql_get_enrolled = "SELECT COUNT('Enrollee_Id') AS enrollee_count FROM enrollee WHERE Enrollment_Status = 1;";
@@ -204,6 +216,58 @@ class DashboardModel {
             return ['success'=> false, 'message'=> $e->getMessage()];
         }
     }
+    public function countTotalStudents() {
+        try {
+            $sql = "SELECT COUNT(Student_Id) AS TotalStudents FROM students;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['TotalStudents'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message'=> $e->getMessage()];
+        }
+    }
+    public function countActiveStudents() {
+        try {
+            $sql = "SELECT COUNT(Student_Id) AS ActiveStudents FROM students WHERE Student_Status = 1;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['ActiveStudents'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message'=> $e->getMessage()];
+        }
+    }
+    public function countInactiveStudents() {
+        try {
+            $sql = "SELECT COUNT(Student_Id) AS InactiveStudents FROM students WHERE Student_Status = 2;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['InactiveStudents'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message'=> $e->getMessage()];
+        }
+    }
+    public function countDroppedStudents() {
+        try {
+            $sql = "SELECT COUNT(Student_Id) AS DroppedStudents FROM students WHERE Student_Status = 3;";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['DroppedStudents'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message'=> $e->getMessage()];
+        }
+    }
     public function PendingEnrolleesInformation() {
         $sql_get_pending_enrollees = "SELECT enrollee.Enrollee_Id,
                                         enrollee.Learner_Reference_Number,
@@ -223,6 +287,159 @@ class DashboardModel {
         $get_pending_enrollees->execute();
         $pending_enrollees = $get_pending_enrollees->fetchAll(PDO::FETCH_ASSOC);
         return $pending_enrollees;
+    }
+    
+    // New methods for student grade level distribution
+    public function getKinderOneStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS KinderOneTotal FROM students 
+                    WHERE Grade_Level_Id = 1";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['KinderOneTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getKinderTwoStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS KinderTwoTotal FROM students 
+                    WHERE Grade_Level_Id = 2";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['KinderTwoTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getGradeOneStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS GradeOneTotal FROM students 
+                    WHERE Grade_Level_Id = 3";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['GradeOneTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getGradeTwoStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS GradeTwoTotal FROM students 
+                    WHERE Grade_Level_Id = 4";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['GradeTwoTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getGradeThreeStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS GradeThreeTotal FROM students 
+                    WHERE Grade_Level_Id = 5";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['GradeThreeTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getGradeFourStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS GradeFourTotal FROM students 
+                    WHERE Grade_Level_Id = 6";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['GradeFourTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getGradeFiveStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS GradeFiveTotal FROM students 
+                    WHERE Grade_Level_Id = 7";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['GradeFiveTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getGradeSixStudents() {
+        try {
+            $sql = "SELECT COUNT(Grade_Level_Id) AS GradeSixTotal FROM students 
+                    WHERE Grade_Level_Id = 8";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['GradeSixTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message' => $e->getMessage()];
+        }
+    }
+    
+    public function getMaleStudents() {
+        try {
+            $sql = "SELECT COUNT(enrollee.Sex) AS MaleTotal FROM students 
+                    JOIN enrollee ON students.Enrollee_Id = enrollee.Enrollee_Id 
+                    WHERE enrollee.Sex = 'Male'";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['MaleTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message'=> $e->getMessage()];
+        }
+    }
+    
+    public function getFemaleStudents() {
+        try {
+            $sql = "SELECT COUNT(enrollee.Sex) AS FemaleTotal FROM students 
+                    JOIN enrollee ON students.Enrollee_Id = enrollee.Enrollee_Id 
+                    WHERE enrollee.Sex = 'Female'";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return (int)$result['FemaleTotal'];
+        }
+        catch(PDOException $e) {
+            return ['success'=> false, 'message'=> $e->getMessage()];
+        }
     }
 }
 

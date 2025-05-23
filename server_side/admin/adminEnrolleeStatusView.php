@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . './adminEnrolleeStatus.php';
+    require_once __DIR__ . '/../adminEnrolleeStatus.php';
 
     $view = new AdminEnrollmentAccessStatus();
 ?>
