@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>Admin Denied Follow Up</title> 
+    <link rel="stylesheet" href="../css/adminDeniedFollowUpModel.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <?php
         include '../adminPages/admin_base_designs.php'; 
         include '../server_side/adminDeniedFollowUpView.php';
     ?>
-
+        <div class="header-left">
+            <h2> Pending Enrollments </h2>
+        </div>
       <!--START OF THE MAIN CONTENT-->
       <div class="content">
         <div class="table">
