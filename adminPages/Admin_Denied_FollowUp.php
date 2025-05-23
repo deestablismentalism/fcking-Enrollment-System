@@ -11,7 +11,7 @@
         include '../server_side/adminDeniedFollowUpView.php';
     ?>
         <div class="header-left">
-            <h2> Pending Enrollments </h2>
+            <h2> Follow-Up & Denied </h2>
         </div>
       <!--START OF THE MAIN CONTENT-->
       <div class="content">
