@@ -11,7 +11,7 @@
         require_once __DIR__ . '/../server_side/admin/adminDeniedFollowUpView.php';
     ?>
         <div class="header-left">
-            <h2> Denied and To Follow </h2>
+            <h2> Follow-Up & Denied </h2>
         </div>
       <!--START OF THE MAIN CONTENT-->
       <div class="content">
