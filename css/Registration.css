@@ -30,9 +30,10 @@
     height: 5em;
     width: 5em;
     border-radius: 50%;
-    background-color: #003366;
+    background-color: #cc8b20;
     margin: 0 auto;  
     margin-bottom: 2.5em;
+    padding: 8px;
 }
 
 #school-logo {
@@ -112,8 +113,14 @@ input {
     border-radius: 8px;
     font-family: 'Baloo Thambi';
     background-color: #70859c;
+    color: white;
 }
 
+#guardian-first-name, #guardian-last-name, #guardian-middle-name, #contact-number {
+    margin-top: 1em;
+    font-size: .8em;
+    font-family: Baloo-Thambi-2;
+}
 .details {
     color: rgb(255, 248, 248);
     margin-bottom: 8em;
@@ -128,9 +135,59 @@ input {
 }
 
 /*button, Create, Two Lines*/
-.button {
-    margin: .6em 12em 0.8em 12em;
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+.container-button {
+
+  transform: translate(-50%, -50%);
+  display: flex;
+  margin: 2.3em 12em 0em 18em;
 }
+
+.center {
+  width: 130px;
+  height: 40px;
+}
+
+.button {
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91C9FF;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+svg {
+  position: absolute;
+  left: -4.5px;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+  width: 140px;
+  height: 40px;
+
+}
+
+.button:hover {
+  transition: 1s ease-in-out;
+  background: #4F95DA;
+}
+
+.button:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.button span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+/*button, Create, Two Lines*/
 
 p{  
     color: white;
@@ -153,21 +210,6 @@ p{
     height: auto;
     min-height: 100vh;
     width: 2em;
-}
-.submit-btn {
-    padding: 1em 2em 2em 2em;
-    border-radius: 78px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    background-color: #E1A23C;
-    width: 12em;
-    height: 2.7em;
-    font-size: 1em;
-}
-
-.submit-btn:hover {
-    background-color: #CC8B20;
-    transition: all 0.3s ease;
 }
 
 /* Desktops (1024px and up) */
@@ -199,9 +241,10 @@ p{
     #student, #img-container {
         display: none;
     }
-    button {
+    .button {
         margin: -1px 18px 9px 6px;
-        width: 26%;
+        width: 140px;
+        height: 40px;
     }
     #wrap {
         width: 99%;
@@ -232,10 +275,10 @@ p{
     input{
         font-size: 8.7px;
     }
-    button, .admin-login-button {
-        height: 46px;
+    .button {
+        width: 140px;
+        height: 40px;
         margin: 2px 2%;
-        width: 37%;
         font-size: 14px;
     }
     #student, #img-container {
@@ -245,13 +288,9 @@ p{
         margin: 2em -1em 0em 1em;
         font-size: 11px;
     }
-    button {
-        margin: -1px 18px 9px 6px;
-        width: 26%;
-    }
     p {
-    color: white;
-    font-size: 13px;
+        color: white;
+        font-size: 13px;
     }
 }
 
@@ -266,8 +305,9 @@ p{
     .box {
         width: 95%;
     }
-    button, .admin-login-button {
-        width: 95%; 
+    .button {
+        width: 140px;
+        height: 40px;
     }
     input {
         margin: 4px auto;
@@ -279,8 +319,9 @@ p{
     h2 {
         font-size: .9em;
     }
-    button, .admin-login-button {
-        width: 100%;
+    .button {
+        width: 140px;
+        height: 40px;
     }
 
   #student, #img-container {

@@ -14,8 +14,9 @@
     width: 5em;
     border-radius: 50%;
     margin: 0 auto;  
-    background-color: #003366;
+    background-color: #cc8b20;
     margin-bottom: 2.5em;
+    padding: 8px;
 }
 
 #school-logo {
@@ -61,11 +62,12 @@ input { /* email and password input */
     box-sizing: border-box;
     border-radius: 8px;
     font-family: Arial;
-    background-color: #8f9fb1;
-    opacity: 70%;
+    background-color: #70859c;
+    opacity: 100%;
     color: rgb(0, 0, 0);
     margin: 0em 2em 0em 3em;
     justify-content: center;
+    color: white;
 }
 
 #phone_number , #password {
@@ -104,26 +106,66 @@ html, body {
 
 }
 
-button, .admin-login-button  {
-    padding: 15px;
-    border-radius: 78px;
-    color: white;
-    display: block;
-    cursor: pointer;
-    background-color: #E1A23C;
-    width: 12em;
-    font-size: 1em;
-    margin: 0 2%;
+
+/*button, Create, Two Lines*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+.container-button {
+
+  transform: translate(-50%, -50%);
+  display: flex;
+  margin: 3.3em 1.5em -1.5em 17.6em;
+  font-size: 16px;
+
 }
 
-.wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 99%;
-    margin: 3% 0;
+.center {
+  width: 130px;
+  height: 40px;
 }
+
+.button, .admin-login-button {
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91C9FF;
+  outline: none;
+  transition: 1s ease-in-out;
+  color: white;
+  align-content: center;
+}
+
+svg {
+  position: absolute;
+  left: -4.5px;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+  width: 140px;
+  height: 40px;
+
+}
+
+.button:hover {
+  transition: 1s ease-in-out;
+  background: #4F95DA;
+}
+
+.button:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.button, .admin-login-button span {
+  color: white;
+  font-size: 16px;
+  font-weight: 100;
+}
+/*button, Create, Two Lines*/
+
 
 .register-link {
     color: #E1A23C;

@@ -12,24 +12,15 @@
             <footer class="footer">
                 <div class="footerContainer">
                     <div class="socialIcons">
-                        <a href=""><i class="fa-brands fa-facebook"></i></a>
-                        <a href=""><i class="fa-brands fa-instagram"></i></a>
-                        <a href=""><i class="fa-brands fa-twitter"></i></a>
-                        <a href=""><i class="fa-brands fa-google-plus"></i></a>
-                        <a href=""><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                    <div class="footerNav">
-                        <ul><li><a href="">Home</a></li>
-                            <li><a href="">News</a></li>
-                            <li><a href="">About</a></li>
-                            <li><a href="">Contact Us</a></li>
-                            <li><a href="">our Team</a></li>
-                        </ul>
+                        <a href="https://www.facebook.com/DepEdTayoLS2ES109732"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://twitter.gov.ph/"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://deped.gov.ph"><i class="fa-brands fa-google-plus"></i></a>
                     </div>
                 </div>
             </footer>
             <footer class="footerBottom">
-                <p>Copyright &copy;2023; Designed by <span class="designer">Noman</span></p>
+                <p>Copyright All Right Reserved &copy; 2025</p>
             </footer>
         </footer>
     </body>

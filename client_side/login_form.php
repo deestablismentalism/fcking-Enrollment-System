@@ -43,11 +43,16 @@
                    <label for="password" style="color: white; margin-bottom: 2em; font-family: Baloo-Thambi-2;  font-size: .8em; ">Password</label>
                    <input type="password" id="password" name="password" placeholder="Enter password here" required>
                 </div>
-                <div class="wrap">
-                    <button type="submit">
-                        Log In
-                    </button>
-
+                <div class="container-button">
+                    <div class="center">
+                            <button class="button" type="submit" >
+                                <svg viewBox="0 0 180 60" class="border">
+                                <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+                                <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+                                </svg>
+                                <span> Log In </span>
+                            </button>
+                    </div>
                     <a class ="admin-login-button" href="admin_login_form.php">Login as Teacher</a>
                 </div>
             </form>

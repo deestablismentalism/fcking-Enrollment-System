@@ -11,7 +11,7 @@
     background-size: cover; /* Or 'contain' */
     background-repeat: no-repeat;
     background-position: center;
-    padding: 40px 20px; /* Add space so content doesn't overlap image */
+    padding: 67px 20px; /* Add space so content doesn't overlap image */
     color: white; /* Make text readable over background */
     text-align: center;
     position: relative;
@@ -21,7 +21,7 @@
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  background: rgba(0, 0, 0, 0.267); /* dark overlay */
   z-index: 1;
 }
 

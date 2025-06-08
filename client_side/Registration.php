@@ -72,12 +72,21 @@
                         </div>
                         <input type="text" name="Contact-Number" id="contact-number" placeholder="Ex: 09xx xxx xxxx" required>
                     </div>  
-                    <!-- Submit button -->                      
-                    <div class="button">
-                        <button type="submit" name="submit" class="btn submit-btn">
-                            Register
-                        </button>
+                    <!-- Submit button -->      
+                     
+                    
+                    <div class="container-button">
+                        <div class="center">
+                            <button class="button">
+                                <svg viewBox="0 0 180 60" class="border">
+                                <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+                                <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+                                </svg>
+                                <span> Register </span>
+                            </button>
+                        </div>
                     </div>
+                
                 </div>
             </form>
         </div>
