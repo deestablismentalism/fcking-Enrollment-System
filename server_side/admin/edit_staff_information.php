@@ -69,9 +69,17 @@
                 $update_address->bindparam(':Region', $Region);
                 $update_address->bindparam(':Staff_Address_Id', $address_id);
                 if($update_address->execute()) {
-                    echo $address_id;
+                    return [
+                        'success' => true,
+                        'Address_Id' => 'Successfully updated',
+                        'Staff_Address_Id' => $address_id
+                    ];
                 } else {
-                    echo 'Error updating address';
+                    return [
+                        'success' => false,
+                        'message' => 'Error updating address',
+                        'error' => 'Error updating address'
+                    ];
                 }
             }
 
@@ -88,9 +96,16 @@
                 $insert_address->bindparam(':Region', $Region);
 
                 if($insert_address->execute()) {
-                    echo $this->conn->lastInsertId();
+                    return [
+                        'success' => true,
+                        'message' => 'Address inserted successfully',
+                        'Address_Id' => $this->conn->lastInsertId()
+                    ];
                 } else {
-                    return 'Error inserting address';
+                    return [
+                        'success' => false,
+                        'error' => 'Address'
+                    ];
                 }
             }
         }
@@ -121,9 +136,15 @@
                 $update_identifiers->bindparam(':TIN', $Encrypted_TIN);
                 $update_identifiers->bindparam(':Staff_Identifier_Id', $Identifier_Id);
                 if($update_identifiers->execute()) {
-                    echo $Identifier_Id;
+                    return [
+                        'success' => true,
+                        'Identifier_Id' => $Identifier_Id
+                    ];
                 } else {
-                    return 'Error updating identifiers';
+                    return [
+                        'success' => false,
+                        'error' => 'Identifiers'
+                    ];
                 }
             }
 
@@ -144,14 +165,23 @@
                     $update_staff->bindparam(':Staff_Identifier_Id', $Identifier_Id_Insert);
                     $update_staff->bindparam(':Staff_Id', $this->Staff_Id);
                     if($update_staff->execute()) {
-                        echo $Identifier_Id_Insert;
+                        return [
+                            'success' => true,
+                            'message' => 'Identifiers inserted successfully',
+                            'Identifier_Id' => $Identifier_Id_Insert
+                        ];
                     } else {
-                        return 'Error updating staff with identifier id';
+                        return [
+                            'success' => false,
+                            'message' => 'Error updating staff with identifier id'
+                        ];
                     }
-                } 
-                
-                else {
-                    return 'Error inserting identifiers';
+                } else {
+                    return [
+                        'success' => false,
+                        'message' => 'Error inserting identifiers',
+                        'error' => 'Identifiers'
+                    ];
                 }
             }
             //4. Return last inserted id
@@ -160,16 +190,12 @@
         //MAIN FUNCTION!!!!
         public function Update_Information($Staff_First_Name, $Staff_Middle_Name, $Staff_Last_Name, $Staff_Email, $Staff_Contact_Number){
             try {
-                // Check if the new contact number already exists for another staff
-                $sql_check = "SELECT Staff_Id FROM staffs WHERE Staff_Contact_Number = :Staff_Contact_Number AND Staff_Id != :Staff_Id";
-                $check_stmt = $this->conn->prepare($sql_check);
-                $check_stmt->bindParam(':Staff_Contact_Number', $Staff_Contact_Number);
-                $check_stmt->bindParam(':Staff_Id', $Staff_Id);
-                $check_stmt->execute();
-        
-                if ($check_stmt->rowCount() > 0) {
-                    echo "Update failed: This contact number is already registered to another staff member.";
-                    return;
+                if (!preg_match('/^09\d{9}$/', $Staff_Contact_Number)) {
+                    return [
+                        'success' => false,
+                        'message' => 'Invalid phone number format. Please use 09XXXXXXXXX.',
+                        'error' => 'invalid_phone_number'
+                    ];
                 }
 
                 $sql_update_information = "UPDATE staffs SET
@@ -187,13 +213,25 @@
                 $update_information->bindparam(':Staff_Email', $Staff_Email);
                 $update_information->bindparam(':Staff_Contact_Number', $Staff_Contact_Number);
                 if($update_information->execute()) {
-                    echo "Information updated successfully";
+                    return ["success" => true, "message" => "Information updated successfully"];
                 } else {
-                    echo "Error updating information";
+                    return ["success" => false, "message" => "Error updating information"];
                 }
             } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
+                if ($e->errorInfo[1] === 1062) {
+                    return [
+                        'success' => false,
+                        'message' => 'Update failed: The number you entered is already registered.',
+                        'error' => 'duplicate_entry'
+                    ];
+                } else {
+                    return [
+                        'success' => false,
+                        'message' => 'Database error: ' . $e->getMessage(),
+                        'error' => 'database'
+                    ];
+                }
             }
-        }   
+        }
     }
-?> 
+?>

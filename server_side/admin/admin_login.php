@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'dbconnection.php';
+require_once __DIR__ .'/../core/dbconnection.php';
 
 Class VerifyLogin {
     protected $conn;

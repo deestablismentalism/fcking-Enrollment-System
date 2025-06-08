@@ -13,23 +13,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $enrolleeId = $_POST['id'] ?? null;
     $status = (int)$_POST['status'] ?? null;
 
-    if($enrolleeId && $status && $status === 4) {
+    // Define valid status codes
+    $validStatuses = [1, 2, 3, 4];
+
+    if($enrolleeId && in_array($status, $validStatuses)) {
         $update = $updateStatus->updateEnrollee($enrolleeId, $status);
-        if($update) {
+        // Only attempt to insert into students table if status is 1 (Enrolled)
+        if($update && $status === 1) {
             $insert = $students->insertEnrolleeToStudent($enrolleeId);
             if($insert) {
                 echo json_encode($insert);
                 exit();
             }
-        else {
-            echo json_encode(['success' => false, 'message'=> 'inserting enrollee failed']);
+            else {
+                echo json_encode(['success' => false, 'message'=> 'inserting enrollee failed']);
+                exit();
+            }
         }
-        }
-        echo json_encode(['success' => true, 'message'=> "Insert successful"]);
+        echo json_encode(['success' => true, 'message'=> "Update successful"]);
         exit();
     }
     else {
-        echo json_encode(['success' => false, 'message' => 'Invalid input']);
+        echo json_encode(['success' => false, 'message' => 'Invalid input: enrolleeId or status is invalid']);
         exit();
     }
 

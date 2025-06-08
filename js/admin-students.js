@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Function to view student details
 function viewStudentDetails(studentId) {
     // Create a modal to display student details
-    fetch(`../server_side/fetchStudentDetails.php?id=${studentId}`)
+    fetch(`../server_side/students/fetchStudentDetails.php?id=${studentId}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {

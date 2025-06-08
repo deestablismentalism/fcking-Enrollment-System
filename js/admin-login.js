@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         const formData = new FormData(form);
         
-        fetch("../server_side/post_admin_login.php", {
+        fetch("../server_side/admin/post_admin_login.php", {
             method: "POST", 
             body: formData,
         })

@@ -1,5 +1,5 @@
 <?php
-require_once 'dbconnection.php';
+require_once __DIR__ .'/../core/dbconnection.php';
 
 class EnrollmentForm {
     protected $conn;
@@ -84,17 +84,24 @@ class EnrollmentForm {
     }
 
     // Insert enrollee address function
-    public function enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region) {
+    public function enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Brgy_Code, $Municipality_Name, $Municipality_Code, 
+    $Province_Name, $Province_Code, $Region, $Region_Code) {
         try {
-            $sql_enrollee_address = "INSERT INTO enrollee_address (House_Number, Subd_Name, Brgy_Name, Municipality_Name, Province_Name, Region)
-                                    VALUES (:House_Number, :Subd_Name, :Brgy_Name, :Municipality_Name, :Province_Name, :Region)";
+            $sql_enrollee_address = "INSERT INTO enrollee_address (House_Number, Subd_Name, Brgy_Name, Brgy_Code, Municipality_Name, Municipality_Code, 
+                                    Province_Name, Province_Code, Region, Region_Code)
+                                    VALUES (:House_Number, :Subd_Name, :Brgy_Name, :Brgy_Code, :Municipality_Name, :Municipality_Code, 
+                                    :Province_Name, :Province_Code, :Region, :Region_Code)";
             $insert_enrollee_address = $this->conn->prepare($sql_enrollee_address);
             $insert_enrollee_address->bindParam(':House_Number', $House_Number);
             $insert_enrollee_address->bindParam(':Subd_Name', $Subd_Name);
             $insert_enrollee_address->bindParam(':Brgy_Name', $Brgy_Name);
+            $insert_enrollee_address->bindParam(':Brgy_Code', $Brgy_Code);
             $insert_enrollee_address->bindParam(':Municipality_Name', $Municipality_Name);
+            $insert_enrollee_address->bindParam(':Municipality_Code', $Municipality_Code);
             $insert_enrollee_address->bindParam(':Province_Name', $Province_Name);
+            $insert_enrollee_address->bindParam(':Province_Code', $Province_Code);
             $insert_enrollee_address->bindParam(':Region', $Region);
+            $insert_enrollee_address->bindParam(':Region_Code', $Region_Code);
 
             if ($insert_enrollee_address->execute()) {
                 return $this->conn->lastInsertId();
@@ -211,7 +218,7 @@ class EnrollmentForm {
     public function Insert_Enrollee($User_Id, $School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
     $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
     $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
-    $House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region,
+    $House_Number, $Subd_Name, $Brgy_Name, $Brgy_Code, $Municipality_Name, $Municipality_Code, $Province_Name, $Province_Code, $Region, $Region_Code,
     $Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps,
     $Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps,
     $Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps,
@@ -225,7 +232,7 @@ class EnrollmentForm {
             $Educational_Information_Id = $this->educational_information($School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended);
             $Educational_Background_Id = $this->educational_background($Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address);
             $Disabled_Student_Id = $this->disabled_student($Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech);
-            $Enrollee_Address_Id = $this->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region);
+            $Enrollee_Address_Id = $this->enrollee_address($House_Number, $Subd_Name, $Brgy_Name, $Brgy_Code, $Municipality_Name, $Municipality_Code, $Province_Name, $Province_Code, $Region, $Region_Code);
             $Father_Information_Id = $this->father_information($Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps);
             $Mother_Information_Id = $this->mother_information($Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps);
             $Guardian_Information_Id = $this->guardian_information($Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps);

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class Connect {
     protected $conn = null;
@@ -16,7 +16,7 @@ class Connect {
 
     //initialize variables about database
     protected function initialize() {
-        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
         $dotenv->load();
 
         $this->servername = $_ENV['SERVERNAME'];

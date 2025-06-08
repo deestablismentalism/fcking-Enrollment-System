@@ -2,7 +2,7 @@
 declare(strict_types=1);
 session_start();
 
-require_once __DIR__ .'/../server_side/EnrolleesModel.php';
+require_once __DIR__ .'/../models/EnrolleesModel.php';
 
 header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] !== "POST") {
@@ -30,7 +30,7 @@ $description = $_POST['description'];
 $date = date('Ymd');
 $time = time();
 
-$statusCode = ($status === 1) ? "F" : "D";
+$statusCode = ($status === 4) ? "F" : "D";
 $transactionCode = $statusCode . "-" . $date . "-" . $time;
 
 if (!isset($_POST['reasons'])) {

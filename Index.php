@@ -50,10 +50,5 @@
                 </div>
             </div>
             <script src="./js/Home_Page.js"></script>
-            <footer>
-                <?php
-                    include './userPages/footer.php';
-                ?>
-            </footer>
     </body>
 </html>

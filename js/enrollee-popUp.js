@@ -5,10 +5,9 @@ document.addEventListener('DOMContentLoaded', function (){
        if (e.target.classList.contains('view-button')) {
             const enrolleeId = e.target.getAttribute('data-id');
             console.log(enrolleeId);
-                
             modal.style.display = 'block';
             modalContent.innerHTML = '<p> Wait for data to load... </p>'; // Show loader while fetching data
-            fetch('../server_side/adminEnrolleeStatusView.php?id=' + encodeURIComponent(enrolleeId))
+            fetch('../server_side/admin/adminEnrolleeStatusView.php?id=' + encodeURIComponent(enrolleeId))
             .then(response => response.text())
             .then(data => {
                 modalContent.innerHTML = data;
@@ -17,16 +16,23 @@ document.addEventListener('DOMContentLoaded', function (){
                     <button class="reject-btn" data-action="reject" data-id="${enrolleeId}">Reject</button>
                     <button class="toFollow-btn" data-action="toFollow" data-id="${enrolleeId}">To Follow</button>
                 `;
-
                 const close = document.querySelector('.close');
                 close.addEventListener('click', function(){
                     modal.style.display = 'none';
                 });
             })
-            .catch(error => console.error('Error loading data:', error));
+            .catch(error => {
+                console.error("Fetch error:", error);
+                modalContent.innerHTML = `<span class="close">&times;</span><p> Error loading data. Please try again. </p>`;
+                const close = document.querySelector('.close');
+                close.addEventListener('click', function(){
+                    modal.style.display = 'none';
+                });
+            });
+            
        }
     })
-
+    
     document.addEventListener('click', function(e){
         if (e.target.matches('.accept-btn')) {
             const enrolleeId = e.target.getAttribute('data-id');
@@ -34,11 +40,12 @@ document.addEventListener('DOMContentLoaded', function (){
             let status = 0
             if (action === "accept") {
                 status = 1
+                console.log(status);
             } 
             else {
                 alert('unrecognized action');
             }
-            fetch('../server_side/updateEnrolleeStatus.php', {
+            fetch('../server_side/admin/adminUpdateEnrolleeStatus.php', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded',
@@ -92,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function (){
                 for (const [key, value] of formData.entries()) {
                     console.log(`${key}: ${value}`);
                 }
-                fetch('../server_side/adminEnrolleeFollowup.php', {
+                fetch('../server_side/admin/adminEnrolleeFollowup.php', {
                     method: 'POST',
                     body: formData
                 })

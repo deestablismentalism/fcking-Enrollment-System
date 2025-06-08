@@ -1,0 +1,30 @@
+.status-cell {
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.status-enrolled {
+    background-color: #6EE7B7;
+    color:  #047857;
+}
+.status-pending {
+    background-color: #A5B4FC;
+    color:  #4338CA;
+}
+.status-denied {
+    background-color: #FCA5A5;
+    color: #B91C1C;
+}
+.status-to-follow {
+    background-color:#f0c986;
+    color:  #b39843;
+}
+.count-display {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+.count-number {
+    font-weight: bold;
+    font-size: 1.2rem;
+}

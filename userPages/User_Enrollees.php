@@ -15,15 +15,18 @@
         <div class="wrapper">
             <p class = "title"> Enrollment Forms Submitted </p> <br>
             <div class="table-container">
-                <table> 
-                    <?php
-                    include_once __DIR__ . '/../server_side/userEnrolleesView.php';
-                    $enrollee = new displayEnrollmentForms();
-                    $enrollee->displaySubmittedForms();
-                    ?>
+                <table id="user-enrollees-table"> 
+                   <tbody> 
+                        <?php
+                        include_once __DIR__ . '/../server_side/users/userEnrolleesView.php';
+                        $enrollee = new displayEnrollmentForms();
+                        $enrollee->displaySubmittedForms();
+                        ?>
+                   </tbody>
                 </table>
             </div>
         </div>
     </div>
 </body>
+<script src="../js/user-enrollees.js"defer></script>
 </html>

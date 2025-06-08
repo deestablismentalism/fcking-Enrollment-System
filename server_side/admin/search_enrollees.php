@@ -1,7 +1,7 @@
 <?php 
 
 declare(strict_types=1);
-require_once __DIR__ . '/EnrolleesModel.php';
+require_once __DIR__ . '/../models/EnrolleesModel.php';
 
 class searchEnrollee {
     protected $conn;
@@ -35,18 +35,16 @@ class searchEnrollee {
 
             if ($data) {
                 foreach ($data as $rows) {
-                    $dbEnrollmentStatus = htmlspecialchars($rows['Enrollment_Status']);
-                    $enrollmentStatus = $this->stringEquivalent((int) $dbEnrollmentStatus);
                     $studentMiddleInitial = !empty($rows['Student_Middle_Name']) ? substr($rows['Student_Middle_Name'], 0, 1) . "." : "";
+                    $lrn = $rows['Learner_Reference_Number'] === 0 ? "No LRN" : $rows['Learner_Reference_Number'];
                     echo '<tr class="enrollee-row"> 
-                            <td>' . htmlspecialchars($rows['Learner_Reference_Number']) . '</td>
+                            <td>' . $lrn . '</td>
                             <td>' . htmlspecialchars($rows['Student_Last_Name']) . ', ' 
                             . htmlspecialchars($rows['Student_First_Name']) . ' ' 
                             . htmlspecialchars($studentMiddleInitial) . '</td>
-                            <td>' . htmlspecialchars($rows['Age']) . '</td>
+                            <td>' . $rows['Age']. '</td>
                             <td>' . htmlspecialchars($rows['Birth_Date']) . '</td>
                             <td>' .htmlspecialchars($rows['Sex']) . '</td> 
-                            <td>' . $enrollmentStatus .'</td>
                             <td> <button class="view-button" data-id="' . $rows['Enrollee_Id'] .'"> View Info </button> </td>
                         </tr>';
                 }

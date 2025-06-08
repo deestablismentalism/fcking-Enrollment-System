@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
             searchEnrollee.innerHTML = originalTable;
         }
         else {
-            fetch('../server_side/searchEnrolleeView.php', {
+            fetch('../server_side/admin/searchEnrolleeView.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',

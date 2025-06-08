@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../server_side/UserTypeView.php';
+require_once __DIR__ . '/../server_side/common/UserTypeView.php';
 if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id'])) {
     header("Location: ../client_side/admin_login_form.php");
     exit();
@@ -130,7 +130,7 @@ if (!isset($_SESSION['Admin']['User-Id']) || !isset($_SESSION['Admin']['Staff-Id
                         </div>
                         <div class="account-logout-wrapper">
                             <a href="../server_side/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
-                            <a href="../server_side/logout.php" class="logout-text">Logout</a>
+                            <a href="../server_side/common/logout.php" class="logout-text">Logout</a>
                         </div>
                     </div>
                 </div>

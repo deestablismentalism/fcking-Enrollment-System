@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
+    const textFields = document.querySelectorAll('input[type="text"]');
     const psaNumber = document.getElementById("PSA-number");
     const lrn = document.getElementById("LRN");
     const lname = document.getElementById("lname");
@@ -7,8 +8,15 @@ document.addEventListener('DOMContentLoaded', function(){
     const age = document.getElementById("age");
     const language = document.getElementById("language");
     const religion = document.getElementById("religion");
-    const form = document.getElementById("enrollment-form");
-    
+    const disability = document.getElementById("boolsn");
+    const assistiveTech = document.getElementById("atdevice");
+    const nativeGroup = document.getElementById("community");
+
+    const disabilityFields = [
+        {element: nativeGroup, error: "em-community"},
+        {element: disability, error: "em-boolsn"},
+        {element: assistiveTech, error: "em-atdevice"}
+    ];
     // Set max date to today and min date to 3 years ago
     const today = new Date();
     const minDate = new Date();
@@ -26,13 +34,51 @@ document.addEventListener('DOMContentLoaded', function(){
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
     }
+    function validateDisability(element, error) {
+        if (!element.disabled) {
+            if (ValidationUtils.isEmpty(element)) {
+                ValidationUtils.errorMessages(error, ValidationUtils.emptyError, element);
+            }
+            else {
+                ValidationUtils.clearError(error, element);
+            }
+        }
+        else {
+            ValidationUtils.clearError(error, element);
+        }
+    }
+    textFields.forEach(input=> {
+        input.addEventListener('input', function(e) {
+             const value = e.target.value;
+             const cursorPos = e.target.selectionStart;
 
+             if(value.length > 0) {
+                const firstChar = value.charAt(0);
+                if (firstChar === firstChar.toLowerCase() && firstChar !== firstChar.toUpperCase()) {
+                    e.target.value = firstChar.toUpperCase() + value.slice(1);
+                    e.target.setSelectionRange(cursorPos, cursorPos);
+                }
+             }
+             if (cursorPos > 0) {
+                e.target.setSelectionRange(cursorPos, cursorPos);
+             }
+        })
+    })
+    disabilityFields.forEach(({element, error}) => {
+        if(!element.disabled) {
+            element.addEventListener('input', () => validateDisability(element, error));
+        }
+        else {
+            ValidationUtils.clearError(error, element);
+        }
+    });
     document.querySelectorAll('input[name="LRN"]').forEach(radio => {
         radio.addEventListener('change', function() {
             if (radio.value === "0" || radio.value === "2") {
                 lrn.disabled = true;
                 lrn.style.opacity = "0.2";
                 lrn.value ="";
+                ValidationUtils.clearError("em-LRN", lrn);
             } else {
                 lrn.disabled = false;
                 lrn.style.opacity = "1";
@@ -46,9 +92,9 @@ document.addEventListener('DOMContentLoaded', function(){
         {element: religion, error: "em-religion"}
     ];
     const radioGroups = [
-        {textBoxElement: "community", nameValue: "group"},
-        {textBoxElement: "boolsn", nameValue: "sn"},
-        {textBoxElement: "atdevice", nameValue: "at"}
+        {textBoxElement: "community", nameValue: "group",error: "em-community"},
+        {textBoxElement: "boolsn", nameValue: "sn",error: "em-boolsn"},
+        {textBoxElement: "atdevice", nameValue: "at",error: "em-atdevice"}
     ];
     //regex
     const lrnRegex = /^([0-9]){12}$/;
@@ -70,13 +116,16 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     };
     //functions
-    function checkIndigenous(textBoxElement, nameValue ) {
+    function checkIndigenous(textBoxElement, nameValue, error) {
         const radioInput = document.querySelector(`input[name="${nameValue}"]:checked`);
         const textbox = document.getElementById(textBoxElement);
         if (radioInput.value === "0") {
             textbox.disabled = true;
             textbox.style.opacity = "0.2";
             textbox.value ="";
+            if (textbox.disabled) {
+                ValidationUtils.clearError(error, textbox);
+            }
         } else {
             textbox.disabled = false;
             textbox.style.opacity = "1";
@@ -87,21 +136,18 @@ document.addEventListener('DOMContentLoaded', function(){
         const maxAge = 25;
         
         if (isNaN(ageValue)) {
-            errorMessages("em-age", "Age must be a number", age);
-            return false;
+            return ValidationUtils.errorMessages("em-age", "Age must be a number", age);
         }
         
         if (ageValue < minAge) {
-            errorMessages("em-age", "Student must be at least 3 years old", age);
-            return false;
+            return ValidationUtils.errorMessages("em-age", "Student must be at least 3 years old", age);
         }
         
         if (ageValue > maxAge) {
-            errorMessages("em-age", "Student must be 25 years old or younger", age);
-            return false;
+            return ValidationUtils.errorMessages("em-age", "Student must be 25 years old or younger", age);
         }
 
-        clearError("em-age", age);
+        ValidationUtils.clearError("em-age", age);
         return true;
     }
     function setBirthYear() {
@@ -121,16 +167,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
         let bday = birthDate.value;
         if (!bday) {
-            errorMessages("em-bday", "Please select a birth date", birthDate);
-            return;
+            ValidationUtils.errorMessages("em-bday", "Please select a birth date", birthDate);
+            return false;
         }
 
         let getDate = new Date(bday);
         
         // Validate if date is in the future
         if (getDate > today) {
-            errorMessages("em-bday", "Birth date cannot be in the future", birthDate);
-            return;
+            ValidationUtils.errorMessages("em-bday", "Birth date cannot be in the future", birthDate);
+            return false;
         }
 
         let birthYear = getDate.getFullYear();
@@ -144,9 +190,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
         if (validateAge(ageValue)) {
             age.value = ageValue;
-            clearError("em-bday", birthDate);
+            ValidationUtils.clearError("em-bday", birthDate);
+            return true;
         } else {
             age.value = "";
+            return false;
         }
     }
     // Clear error messages on input/change
@@ -157,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function(){
             const cursorPos = e.target.selectionStart;
             const sanitizedValue = value.replace(/\D/g, '');
             const posDiff = value.length - sanitizedValue.length;
-            e.target.value = sanitizedValue;
+            e.target.value = sanitizedValue.slice(0, 2);
             e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
             value = sanitizedValue;
         }
@@ -174,15 +222,6 @@ document.addEventListener('DOMContentLoaded', function(){
     birthDate.addEventListener('change', function() {
         getAge();
     });
-    function validateEmpty(element, errorElement) {
-        if(isEmpty(element)) {
-            errorMessages(errorElement, emptyError, element);
-            checkEmptyFocus(element, errorElement);
-        }
-        else {
-            clearError(errorElement, element);
-        }
-    } 
     function validatePSA() {
         const value = psaNumber.value.trim();
         
@@ -196,25 +235,29 @@ document.addEventListener('DOMContentLoaded', function(){
         // Check for empty value
         if (!value) {
             validationState.psa.isEmpty = true;
-            errorMessages("em-PSA-number", emptyError, psaNumber);
-            return;
+            ValidationUtils.errorMessages("em-PSA-number", emptyError, psaNumber);
+            return false;
         }
 
         // Check for non-numeric values
         if (!/^\d*$/.test(value)) {
             validationState.psa.isNonNumeric = true;
-            errorMessages("em-PSA-number", notNumber, psaNumber);
-            return;
+            ValidationUtils.errorMessages("em-PSA-number", notNumber, psaNumber);
+            return false;
         }
 
         // Check length and format
         if (!bCertRegex.test(value)) {
             validationState.psa.isInvalidFormat = true;
-            errorMessages("em-PSA-number", value.length > 13 ? "Only 13 digits are allowed" : "Enter a valid birth certificate number", psaNumber);
-            return;
+            ValidationUtils.errorMessages("em-PSA-number", 
+                value.length > 13 ? "Only 13 digits are allowed" : "Enter a valid birth certificate number", 
+                psaNumber
+            );
+            return false;
         }
 
-        clearError("em-PSA-number", psaNumber);
+        ValidationUtils.clearError("em-PSA-number", psaNumber);
+        return true;
     }
     function validateLRN() {
         const value = lrn.value.trim();
@@ -228,71 +271,37 @@ document.addEventListener('DOMContentLoaded', function(){
 
         // Skip validation if LRN is disabled
         if (lrn.disabled) {
-            clearError("em-LRN", lrn);
-            return;
+            ValidationUtils.clearError("em-LRN", lrn);
+            return true;
         }
 
         // Check for empty value
         if (!value) {
             validationState.lrn.isEmpty = true;
-            errorMessages("em-LRN", emptyError, lrn);
-            return;
+            ValidationUtils.errorMessages("em-LRN", emptyError, lrn);
+            return false;
         }
 
         // Check for non-numeric values
         if (!/^\d*$/.test(value)) {
             validationState.lrn.isNonNumeric = true;
-            errorMessages("em-LRN", notNumber, lrn);
-            return;
+            ValidationUtils.errorMessages("em-LRN", notNumber, lrn);
+            return false;
         }
 
         // Check length and format
         if (!lrnRegex.test(value)) {
             validationState.lrn.isInvalidFormat = true;
-            errorMessages("em-LRN", value.length > 12 ? "Only 12 digits are allowed" : "Enter a valid LRN", lrn);
-            return;
+            ValidationUtils.errorMessages("em-LRN", 
+                value.length > 12 ? "Only 12 digits are allowed" : "Enter a valid LRN",
+                lrn
+            );
+            return false;
         }
 
-        clearError("em-LRN", lrn);
+        ValidationUtils.clearError("em-LRN", lrn);
+        return true;
     }
-    function isEmpty(element) {
-        return !element.value.trim();
-    }
-    //Function for displaying error messages
-    function errorMessages(errorElement, message, childElement) {
-        // Find the closest ancestor that contains the error message container
-        let container = childElement.parentElement.querySelector('.error-msg');
-        if (!container) {
-            container = childElement.closest('div').querySelector('.error-msg');
-        }
-        if (!container) {
-            container = childElement.parentElement.parentElement.querySelector('.error-msg');
-        }
-        const errorSpan = container.querySelector('.' + errorElement);
-
-        container.classList.add('show');
-        childElement.style.border = "1px solid red";
-        errorSpan.innerHTML = message;
-        console.log(container);
-    }
-    //clear error messages
-    function clearError(errorElement, childElement) {
-        let container = childElement.parentElement.querySelector('.error-msg');
-        if (!container) {
-            container = childElement.closest('div').querySelector('.error-msg');
-        }
-        if (!container) {
-            container = childElement.parentElement.parentElement.querySelector('.error-msg');
-        }
-        const errorSpan = container.querySelector('.' + errorElement);
-
-        container.classList.remove('show');
-        childElement.style.border = "1px solid #616161";
-        errorSpan.innerHTML = '';
-    }
-    function checkEmptyFocus(element, errorElement) {
-        element.addEventListener('blur', ()=> clearError(errorElement, element));
-    } 
     //event trigger
     age.addEventListener('change', setBirthYear);
     birthDate.addEventListener('change', getAge);
@@ -303,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     });
     allInfo.forEach(({element, error}) => {
-        element.addEventListener('keyup', ()=>validateEmpty(element, error));
+        element.addEventListener('keyup', ()=>ValidationUtils.validateEmpty(element, error));
     });
 
     // Add PSA and LRN to required fields
@@ -317,35 +326,28 @@ document.addEventListener('DOMContentLoaded', function(){
     numberFields.forEach(({element, error}) => {
         element.addEventListener('blur', function() {
             if (element === lrn && lrn.disabled) {
-                clearError(error, element);
+                ValidationUtils.clearError(error, element);
                 return;
             }
-            if (isEmpty(element)) {
-                errorMessages(error, emptyError, element);
-                checkEmptyFocus(element, error);
+            if (ValidationUtils.isEmpty(element)) {
+                ValidationUtils.errorMessages(error, emptyError, element);
+                ValidationUtils.checkEmptyFocus(element, error);
             }
         });
     });
     psaNumber.addEventListener('input', function(e) {
         const value = e.target.value;
-        
         // Only sanitize if there are actual changes to sanitize
         if (/\D/.test(value)) {
             // Preserve cursor position
             const cursorPos = e.target.selectionStart;
             const sanitizedValue = value.replace(/\D/g, '');
-            e.target.value = sanitizedValue;
+            e.target.value = sanitizedValue.slice(0, 13);
             // Restore cursor position accounting for removed characters
             const posDiff = value.length - sanitizedValue.length;
             e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
             value = sanitizedValue;
         }
-        
-        // Limit to 13 digits
-        if (value.length > 13) {
-            e.target.value = value.slice(0, 13);
-        }
-        
         validatePSA();
     });
 
@@ -377,18 +379,15 @@ document.addEventListener('DOMContentLoaded', function(){
             // Preserve cursor position
             const cursorPos = e.target.selectionStart;
             const sanitizedValue = value.replace(/\D/g, '');
-            e.target.value = sanitizedValue;
+            e.target.value = sanitizedValue.slice(0, 12);
             // Restore cursor position accounting for removed characters
             const posDiff = value.length - sanitizedValue.length;
             e.target.setSelectionRange(cursorPos - posDiff, cursorPos - posDiff);
             value = sanitizedValue;
         }
-        
-        // Limit to 12 digits
-        if (value.length > 12) {
-            e.target.value = value.slice(0, 12);
+        else if (lrn.length > 12) {
+            e.preventDefault();
         }
-        
         validateLRN();
     });
 
@@ -411,43 +410,42 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     lrn.addEventListener('blur', validateLRN);
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Validate all required fields
-        allInfo.forEach(({element, error}) => {
-            validateEmpty(element, error);
-        });
 
-        // Validate number fields
-        numberFields.forEach(({element, error}) => {
-            if (element === lrn && lrn.disabled) {
-                return;
-            }
-            if (isEmpty(element)) {
-                errorMessages(error, emptyError, element);
-            } else if (element === psaNumber) {
-                validatePSA();
-            } else if (element === lrn) {
-                validateLRN();
-            } else if (element === age) {
-                validateAge(parseInt(element.value, 10));
+    function validateStudentInfo() {
+        let isValid = true;
+
+        // Validate required fields
+        const requiredFields = [
+            {element: lname, error: "em-lname"},
+            {element: fname, error: "em-fname"},
+            {element: language, error: "em-language"},
+            {element: religion, error: "em-religion"}
+        ];
+
+        requiredFields.forEach(({element, error}) => {
+            if (!ValidationUtils.validateEmpty(element, error)) {
+                isValid = false;
             }
         });
 
-        // Validate birth date
-        if (!birthDate.value) {
-            errorMessages("em-bday", emptyError, birthDate);
-        } else {
-            getAge();
+        // Validate PSA number
+        if (!validatePSA()) {
+            isValid = false;
         }
 
-        // Check for any validation errors
-        const errors = document.querySelectorAll('.show');
-        if (errors.length > 0) {
-            const firstError = errors[0];
-            firstError.scrollIntoView({behavior: "smooth", block: "center"});
-            return false;
+        // Validate LRN if enabled
+        if (!lrn.disabled && !validateLRN()) {
+            isValid = false;
         }
-    });
+
+        // Validate age and birth date
+        if (!validateAge(parseInt(age.value)) || !birthDate.value || !getAge()) {
+            isValid = false;
+        }
+
+        ValidationUtils.validationState.studentInfo = isValid;
+        return isValid;
+    }
+    // Expose the validation function to the global scope
+    window.validateStudentInfo = validateStudentInfo;
 });

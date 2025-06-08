@@ -6,38 +6,7 @@
     <title>SSIS-Admin All Enrollees</title>
     <link rel="stylesheet" href="../css/Admin_Enrollment_Pending.css">
     <link rel="stylesheet" href="../css/admin_base_designs.css">
-    <style>
-        .status-cell {
-            font-weight: bold;
-            padding: 3px 8px;
-            border-radius: 4px;
-            display: inline-block;
-        }
-        .status-enrolled {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        .status-pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-        .status-denied {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        .status-to-follow {
-            background-color: #e2e3e5;
-            color: #383d41;
-        }
-        .count-display {
-            margin: 10px 0;
-            font-size: 1rem;
-        }
-        .count-number {
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/admin_all_enrollees.css">
     <?php 
         include_once './admin_base_designs.php';
         require_once __DIR__ . '/../server_side/admin/adminAllEnrolleesView.php';

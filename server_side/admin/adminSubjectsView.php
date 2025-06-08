@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/../server_side/subjectsModel.php';
+require_once __DIR__ . '/../models/subjectsModel.php';
 
 class adminSubjectsView {
     protected $subjectsModel;

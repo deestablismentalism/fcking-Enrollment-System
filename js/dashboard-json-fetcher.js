@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
     studentGradeLevelDistributionContainer.style.display = 'none';
     studentBiologicalSexContainer.style.display = 'none';
 
-    fetch('../server_side/return-dashboard-json.php')
+    fetch('../server_side/admin/fetchDashboardChart.php')
     .then(response => response.json())
     .then(data=> {
         console.log(data);

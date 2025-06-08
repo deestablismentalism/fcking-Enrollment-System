@@ -1,7 +1,7 @@
 <?php
     declare(strict_types=1);
-    require_once __DIR__ . './dbconnection.php';
-    require_once __DIR__ . './EnrolleesModel.php';
+    require_once __DIR__ . '/../core/dbconnection.php';
+    require_once __DIR__ . '/../models/EnrolleesModel.php';
 
 class AdminEnrollmentAccessStatus {
     protected $conn;
@@ -48,9 +48,10 @@ class AdminEnrollmentAccessStatus {
         $data = $this->getEnrollees->getEnrollmentInformation($student);
         foreach($data as $rows) {
             $culutralGroup = ($rows['If_Cultural'] == 1) ? htmlspecialchars($rows['Cultural_Group']) : 'Walang katutubong grupo';
+            $lrn = $rows['Learner_Reference_Number'] === 0 ? "No LRN" : $rows['Learner_Reference_Number'];
             $allInfo = [
                 'Numero ng Sertipiko ng Kapanganakan' => $rows['Psa_Number'],
-                'Learner Reference Number' => $rows['Learner_Reference_Number'],
+                'Learner Reference Number' => $lrn,
                 'Apelyido' => htmlspecialchars($rows['Student_Last_Name']) , 
                 'Pangalan'=> htmlspecialchars($rows['Student_First_Name']), 
                 'Panggitna'=> htmlspecialchars($rows['Student_Middle_Name']),

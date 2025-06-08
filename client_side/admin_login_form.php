@@ -12,7 +12,7 @@
     <div class="bg-image">
     <div class="blurred-background"></div>
         <div class="form">
-            <form class="overlay-form" method="POST" action="../server_side/post_admin_login.php" id ="admin-login-form">
+            <form class="overlay-form" method="POST" action="../server_side/admin/post_admin_login.php" id ="admin-login-form">
                 <div class="title-container">
                     <h2 style="text-align: center;">Teacher LogIn</h2>
                 </div>

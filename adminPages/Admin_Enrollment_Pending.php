@@ -34,7 +34,7 @@
                             </tr>
                             <tbody id="query-table"> 
                                 <?php      
-                                require_once __DIR__ . '/../server_side/enrollmentStatusView.php';
+                                require_once __DIR__ . '/../server_side/admin/enrollmentStatusView.php';
                                 $enrollmentStatusView = new AdminEnrollmentStatusView();
                                 $enrollmentStatusView->displayEnrollees();
                                 ?>

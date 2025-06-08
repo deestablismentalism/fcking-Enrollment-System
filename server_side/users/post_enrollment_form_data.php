@@ -38,10 +38,14 @@ try {
         //  EROLLEE ADDRESS
         $House_Number = $_POST['house-number'] ?? "";
         $Subd_Name = $_POST['subdivision'] ?? "";
-        $Brgy_Name = $_POST['barangay'] ?? "";
-        $Municipality_Name = $_POST['city-municipality'] ?? "";
-        $Province_Name = $_POST['province'] ?? "";
-        $Region = $_POST['region'] ?? "";
+        $Brgy_Code = $_POST['barangay'] ?? "";
+        $Municipality_Code = $_POST['city-municipality'] ?? "";
+        $Province_Code = $_POST['province'] ?? "";
+        $Region_Code = $_POST['region'] ?? "";
+        $Region = $_POST['region-name'] ?? "";
+        $Province_Name = $_POST['province-name'] ?? "";
+        $Municipality_Name = $_POST['city-municipality-name'] ?? "";
+        $Brgy_Name = $_POST['barangay-name'] ?? "";
     
         // ENROLLEE PARENTS INFORMATION
         $Father_First_Name = $_POST['Father-First-Name'] ?? "";
@@ -126,7 +130,7 @@ try {
             $result = $enrollment_form->Insert_Enrollee($userId,$School_Year_Start, $School_Year_End, $If_LRNN_Returning, $Enrolling_Grade_Level, $Last_Grade_Level, $Last_Year_Attended,
                     $Last_School_Attended, $School_Id, $School_Address, $School_Type, $Initial_School_Choice, $Initial_School_Id, $Initial_School_Address,
                     $Have_Special_Condition, $Have_Assistive_Tech, $Special_Condition, $Assistive_Tech,
-                    $House_Number, $Subd_Name, $Brgy_Name, $Municipality_Name, $Province_Name, $Region,
+                    $House_Number, $Subd_Name, $Brgy_Name, $Brgy_Code, $Municipality_Name, $Municipality_Code, $Province_Name, $Province_Code, $Region, $Region_Code,
                     $Father_First_Name, $Father_Last_Name, $Father_Middle_Name, $Father_Parent_Type, $Father_Educational_Attainment, $Father_Contact_Number, $FIf_4Ps,
                     $Mother_First_Name, $Mother_Last_Name, $Mother_Middle_Name, $Mother_Parent_Type, $Mother_Educational_Attainment, $Mother_Contact_Number, $MIf_4Ps,
                     $Guardian_First_Name, $Guardian_Last_Name, $Guardian_Middle_Name, $Guardian_Parent_Type, $Guardian_Educational_Attainment, $Guardian_Contact_Number, $GIf_4Ps,
