@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/dbconnection.php';
-require_once __DIR__ . '/../EnrolleesModel.php';
+require_once __DIR__ . '/../core/dbconnection.php';
+require_once __DIR__ . '/../models/EnrolleesModel.php';
 
 class adminEnrolledView {
     protected $conn;
@@ -33,8 +33,9 @@ class adminEnrolledView {
             foreach($data as $rows) {   
                 $parentMiddleInitial = substr($rows['Middle_Name'], 0, 1) . ".";
                 $studentMiddleInitial = substr($rows['Student_Middle_Name'], 0, 1) . ".";
+                $lrn = $rows['Learner_Reference_Number'] === 0 ? "No LRN" : $rows['Learner_Reference_Number'];
                 echo '<tr class="enrollee-row"> 
-                        <td>' . htmlspecialchars($rows['Learner_Reference_Number']) . '</td>
+                        <td>' . $lrn . '</td>
     
                         <td>' .htmlspecialchars($rows['Student_Last_Name']) . ', ' 
                         .htmlspecialchars($rows['Student_First_Name']) . ' ' 

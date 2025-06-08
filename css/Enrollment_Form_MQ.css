@@ -114,10 +114,9 @@
         font-size: 0.7em;
         padding: 1em 2em;
     }
-
 }
-/*For 1360px Width*/
 
+/*For 1360px Width*/
 @media (max-width: 1190px) {
     .content {
         font-size: 0.7em;
@@ -152,6 +151,7 @@
         padding: 0.2em;
     }
 }
+
 /*for tablet*/
 @media (max-width: 912px) {
     /*GENERAL*/
@@ -246,6 +246,7 @@
         font-size: 1.5em;
     }
 }
+
 @media(max-width: 800px) {
     .content {
         font-size: 0.6em;
@@ -266,11 +267,13 @@
         width: 10em;
     }
 }
+
 @media(max-width: 768px) {
     .content-title {
         margin-top: 4em;
     }
 }
+
 @media (max-width: 688px) {
     /*GENERAL*/
     .previous-school-wrapper {
@@ -404,7 +407,8 @@
     .content-title {
         margin: 4em 1em 0 1em;
     }
-    }
+}
+
 @media (max-width: 425px) {
     .content {
         font-size: 0.5em;
@@ -419,6 +423,7 @@
         flex-direction: column;
     }
 }
+
 @media (max-width: 360px) {
     /*GENERAL*/
     .content {

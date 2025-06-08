@@ -12,15 +12,22 @@ document.addEventListener('DOMContentLoaded',function(){
     const enrollingGradeLevel = document.getElementById("grades-tbe");
     const  lastGradeLevel = document.getElementById("last-grade");    
 
+    const year = new Date().getFullYear();
+    const yearRegex = /^(1[0-9]{3}|2[0-9]{3}|3[0-9]{3})$/;
+    const idRegex = /^([0-9]){6}$/;
+    const charRegex = /^[A-Za-z0-9\s.,'-]{3,100}$/;
+    const invalidYear = "Enter a valid year";
+    const invalidSchoolId = "Not a valid school Id";
+    const invalidChar = "Enter 3 or more characters";
+
     function replaceSelectValues(replaceElement, replaceId) {
-    let createTBox = document.createElement("input");
+        let createTBox = document.createElement("input");
         createTBox.type = "text";
         createTBox.id = replaceId;
         createTBox.placeholder = `eg. Grade 5`;
         createTBox.className = "textbox";
         replaceElement.replaceWith(createTBox);
     }
-
     if (lastGradeLevel &&  enrollingGradeLevel ) {
         if (lastGradeLevel.options.length === 0 && enrollingGradeLevel.options.length === 0) {
             enrollingGradeLevel.innerHTML = `
@@ -44,14 +51,6 @@ document.addEventListener('DOMContentLoaded',function(){
                 <option value="8">Grade 6</option>
            `;
         }
-        else {
-            enrollingGradeLevel.innerHTML = `
-                <option value=""> Select grade level </option>
-            `;
-             lastGradeLevel.innerHTML = `
-                <option value=""> Select grade level </option>
-            `;
-        }
         enrollingGradeLevel.selectedIndex = lastGradeLevel.selectedIndex + 1;
         lastGradeLevel.options[lastGradeLevel.options.length - 1].disabled = true;
 
@@ -60,12 +59,14 @@ document.addEventListener('DOMContentLoaded',function(){
         if (nextIndex < enrollingGradeLevel.options.length) {
                 enrollingGradeLevel.selectedIndex = nextIndex;
         }
+        validatePreviousSchoolInfo();
         });
         enrollingGradeLevel.addEventListener('change' ,function() {
             const prevIndex = this.selectedIndex - 1;
             if (prevIndex >= 0) {
                 lastGradeLevel.selectedIndex = prevIndex;
             }
+            validatePreviousSchoolInfo();
         });
         
     }
@@ -74,87 +75,79 @@ document.addEventListener('DOMContentLoaded',function(){
         replaceSelectValues(lastGradeLevel, 'last-grade')
     }
    //set default academic year
-    const year = new Date().getFullYear();
     startYear.value = year;
     endYear.value = year + 1;
     //regex
-    const idRegex = /^([0-9]){6}$/;
-    const yearRegex = /^(1[0-9]{3}|2[0-9]{3}|3[0-9]{3})$/;//checker if number input is a valid year
-    const charRegex = /^[A-Za-z0-9\s.,'-]{3,100}$/;
     //error messages
     const emptyError = "This field is required";
-    const invalidYear = "Enter a valid year";
-    const invalidSchoolId = "Not a valid school Id";
-    const invalidChar = "Enter 3 or more characters";
-   //ensure that the start year is always higher or equal to the current year
-   function validateStartYear() {
+    function validateStartYear() {
         let startYearVal = parseInt(startYear.value);
         let endYearVal = parseInt(endYear.value);
-        if(isEmpty(startYear)) {
-            errorMessages("em-start-year", emptyError, startYear);
-            checkEmptyFocus(startYear, "em-start-year");
+        
+        if(ValidationUtils.isEmpty(startYear)) {
+            return ValidationUtils.errorMessages("em-start-year", ValidationUtils.emptyError, startYear);
         }
-        else if (!yearRegex.test(startYear.value)) {
-            errorMessages("em-start-year", invalidYear, startYear);
+        
+        if (!yearRegex.test(startYear.value)) {
+            return ValidationUtils.errorMessages("em-start-year", invalidYear, startYear);
         }
-        else if ( startYearVal == endYearVal) {
-            errorMessages("em-start-year", "Academic year cannot be equal", startYear);
+        
+        if (startYearVal == endYearVal) {
+            return ValidationUtils.errorMessages("em-start-year", "Academic year cannot be equal", startYear);
         }
-        else if(startYearVal < year) {
-            errorMessages("em-start-year", "Year is lower than the current year", startYear);
+        
+        if(startYearVal < year) {
+            return ValidationUtils.errorMessages("em-start-year", "Year is lower than the current year", startYear);
         }
-        else if(startYearVal > endYearVal) {
-            errorMessages("em-start-year", "Starting year cannot be greater than the end year", startYear);
+        
+        if(startYearVal > endYearVal) {
+            return ValidationUtils.errorMessages("em-start-year", "Starting year cannot be greater than the end year", startYear);
         }
-        else {
-            clearError("em-start-year", startYear);
-        }
-   }
+        
+        ValidationUtils.clearError("em-start-year", startYear);
+        return true;
+    }
     function validateAcademicYear(){
         const endYearVal = parseInt(endYear.value);
         const startYearVal = parseInt(startYear.value);
-        if (isEmpty(endYear)) {
-            errorMessages("em-start-year", emptyError, endYear);
-            checkEmptyFocus(endYear, "em-start-year");
+        if (ValidationUtils.isEmpty(endYear)) {
+            return ValidationUtils.errorMessages("em-start-year", ValidationUtils.emptyError, endYear);
         }
         else if (!yearRegex.test(endYear.value) ) {
-            errorMessages("em-start-year", invalidYear, endYear);
+            return ValidationUtils.errorMessages("em-start-year", invalidYear, endYear);
         }
         //ensure that the end year is not equal to the start year
         else if (endYearVal == startYearVal) {
-            errorMessages("em-start-year", "Academic year cannot be equal", endYear);
+            return ValidationUtils.errorMessages("em-start-year", "Academic year cannot be equal", endYear);
         }     
        //ensure that the end year is always greater than the start year 
         else if(endYearVal < startYearVal) {
-            errorMessages("em-start-year", "End year cannot be lower than the starting year", endYear);
+            return ValidationUtils.errorMessages("em-start-year", "End year cannot be lower than the starting year", endYear);
         }
         else if(endYearVal != startYearVal + 1) {
-            errorMessages("em-start-year", "Academic year should be 1 year apart", endYear);
+            return ValidationUtils.errorMessages("em-start-year", "Academic year should be 1 year apart", endYear);
         }
-        else {
-            clearError("em-start-year", endYear);
-        }
+        ValidationUtils.clearError("em-start-year", endYear);
+        return true;
     }
     //check if huling natapos na taon is not greater than the current year
     function validateYearFinished(){
         const lastYearVal = parseInt(lastYear.value);
 
-        if (isEmpty(lastYear)) {
-            errorMessages("em-last-year-finished", emptyError, lastYear);
-            checkEmptyFocus(lastYear, "em-last-year-finished");
+        if (ValidationUtils.isEmpty(lastYear)) {
+            return ValidationUtils.errorMessages("em-last-year-finished", ValidationUtils.emptyError, lastYear);
         }
         else if (!yearRegex.test(lastYear.value)){
-            errorMessages("em-last-year-finished", invalidYear, lastYear);
+            return ValidationUtils.errorMessages("em-last-year-finished", invalidYear, lastYear);
         }
         else if (lastYearVal > year) {
-            errorMessages("em-last-year-finished", "Value cannot be greater than the current year", lastYear);
+            return ValidationUtils.errorMessages("em-last-year-finished", "Value cannot be greater than the current year", lastYear);
         }
         else if (lastYearVal < 1950) {
-            errorMessages("em-last-year-finished", "Year is too low", lastYear);
+            return ValidationUtils.errorMessages("em-last-year-finished", "Year is too low", lastYear);
         }
-        else {
-            clearError("em-last-year-finished", lastYear);
-        }   
+        ValidationUtils.clearError("em-last-year-finished", lastYear);
+        return true;
     }
     //validate school Id
     const idFields = [
@@ -174,67 +167,24 @@ document.addEventListener('DOMContentLoaded',function(){
         {element: lastYear, error: "em-last-year-finished"}
     ]
     function validateSchoolId(element, errorElement) {
-        if (isEmpty(element)) {
-            errorMessages(errorElement, emptyError, element);
-            checkEmptyFocus(element, errorElement);
+        if (ValidationUtils.isEmpty(element)) {
+            return ValidationUtils.errorMessages(errorElement, ValidationUtils.emptyError, element);
         }
         else if(!idRegex.test(element.value)) {
-            errorMessages(errorElement, invalidSchoolId, element);
+            return ValidationUtils.errorMessages(errorElement, invalidSchoolId, element);
         }
-        else {
-            clearError(errorElement, element);
-        }
+        ValidationUtils.clearError(errorElement, element);
+        return true;
     }
     function validateSchool(element, errorElement){
-        if (isEmpty(element)) { 
-            errorMessages(errorElement, emptyError, element);
-            checkEmptyFocus(element, errorElement);
+        if (ValidationUtils.isEmpty(element)) { 
+            return ValidationUtils.errorMessages(errorElement, ValidationUtils.emptyError, element);
         }
         else if (!charRegex.test(element.value)) {
-            errorMessages(errorElement, invalidChar, element);
+            return ValidationUtils.errorMessages(errorElement, invalidChar, element);
         }
-        else {
-            clearError(errorElement, element);
-        }
-    }
-    function checkEmptyFocus(element, errorElement) {
-        element.addEventListener('blur', ()=> clearError(errorElement, element));
-    } 
-    //function to check empty fields
-    function isEmpty(element) {
-        return !element.value.trim();
-    }
-    //Function for displaying error messages
-    function errorMessages(errorElement, message, childElement) {
-        // Find the closest ancestor that contains the error message container
-        let container = childElement.parentElement.querySelector('.error-msg');
-        if (!container) {
-            container = childElement.closest('div').querySelector('.error-msg');
-        }
-        if (!container) {
-            container = childElement.parentElement.parentElement.querySelector('.error-msg');
-        }
-        const errorSpan = container.querySelector('.' + errorElement);
-
-        container.classList.add('show');
-        childElement.style.border = "1px solid red";
-        errorSpan.innerHTML = message;
-    }
-
-    //clear error messages
-    function clearError(errorElement, childElement) {
-        let container = childElement.parentElement.querySelector('.error-msg');
-        if (!container) {
-            container = childElement.closest('div').querySelector('.error-msg');
-        }
-        if (!container) {
-            container = childElement.parentElement.parentElement.querySelector('.error-msg');
-        }
-        const errorSpan = container.querySelector('.' + errorElement);
-
-        container.classList.remove('show');
-        childElement.style.border = "1px solid #616161";
-        errorSpan.innerHTML = '';
+        ValidationUtils.clearError(errorElement, element);
+        return true;
     }
     //Event triggers
     fields.forEach(({element, error}) => {
@@ -255,13 +205,11 @@ document.addEventListener('DOMContentLoaded',function(){
             if (value.length > 4) {
                 e.target.value = value.slice(0, 4);
             }
-            validateYear(element, error);
         });
     });
     idFields.forEach(({element, error}) => {
         element.addEventListener('input', function(e) {
-            const value = e.target.value;
-            
+            let value = e.target.value;
             // Only sanitize if there are actual changes to sanitize
             if (/\D/.test(value)) {
                 // Preserve cursor position
@@ -281,11 +229,11 @@ document.addEventListener('DOMContentLoaded',function(){
             
             validateSchoolId(element, error);
         });
-
         // Add keydown handler for special keys
         element.addEventListener('keydown', function(e) {
+            const allowedKeys = [46, 8, 9, 27, 13];
             // Allow: backspace, delete, tab, escape, enter
-            if ([46, 8, 9, 27, 13].indexOf(e.key) !== -1 ||
+            if (allowedKeys.includes(e.key) !== -1 ||
                 // Allow: Ctrl+A, Command+A
                 (e.key === 'a' && (e.ctrlKey === true || e.metaKey === true)) ||
                 // Allow: Ctrl+C, Command+C
@@ -304,45 +252,50 @@ document.addEventListener('DOMContentLoaded',function(){
                 e.preventDefault();
             }
         });
-
         element.addEventListener('blur', () => validateSchoolId(element, error));
     });
     startYear.addEventListener('input',validateStartYear);
     endYear.addEventListener('input',validateAcademicYear);
     lastYear.addEventListener('input',validateYearFinished);
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        //validate again upon submission
-       fields.forEach(({element, error}) =>{
-        validateSchool(element, error);
-       });
-       idFields.forEach(({element, error})=>{
-            if(isEmpty(element)) {
-                errorMessages(error, emptyError, element);
-            }
-            else if (element.value.length !== 6) {
-                errorMessages(error, "school ID must be 6 digits", element);
-            }
-            else {
-                validateSchoolId(element, error);
+    function validatePreviousSchoolInfo() {
+        let isValid = true;
+
+        // Validate school fields
+        const fields = [
+            {element: lschool, error: "em-lschool"},
+            {element: lschoolAddr, error: "em-lschoolAddress"},
+            {element: fschool, error: "em-fschool"},
+            {element: fschoolAddr, error: "em-fschoolAddress"}
+        ];
+
+        fields.forEach(({element, error}) => {
+            if (!validateSchool(element, error)) {
+                isValid = false;
             }
         });
-        validateStartYear();
-        validateYearFinished();
-        validateAcademicYear();
 
-        const errors = document.querySelectorAll('.show');
+        // Validate school IDs
+        const idFields = [
+            {element: lschoolId, error: "em-lschoolID"},
+            {element: fschoolId, error: "em-fschoolID"}
+        ];
 
-        if(errors.length > 0) {
+        idFields.forEach(({element, error}) => {
+            if (!validateSchoolId(element, error)) {
+                isValid = false;
+            }
+        });
 
-            const firstError = errors[0];
+        // Validate years
+        if (!validateStartYear()) isValid = false;
+        if (!validateAcademicYear()) isValid = false;
+        if (!validateYearFinished()) isValid = false;
 
-            firstError.scrollIntoView({behavior: "smooth", block: "center"});
-        }
-        else {
-            form.submit();
-        }
-    });
+        ValidationUtils.validationState.previousSchool = isValid;
+        return isValid;
+    }
+    // Expose the validation function to the global scope
+    window.validatePreviousSchoolInfo = validatePreviousSchoolInfo;
 });    
  

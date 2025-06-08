@@ -1,0 +1,74 @@
+# Server-Side Files Categorization
+
+## Core Files (server_side/core)
+- dbconnection.php - Database connection handling
+- encryption_and_decryption.php - Security utilities
+- tableDataTemplate.php - Templates for data tables
+
+## Common Files (server_side/common)
+- logout.php - Common logout functionality
+- login_verify.php - Authentication verification
+- post_login_verify.php - Login processing
+- change_password.php - Password change functionality
+- post_change_password.php - Password change processing
+- UserTypeView.php - User type management views
+- send_password.php - Password recovery
+
+## User-Related Files (server_side/users)
+- backend_registration.php - User registration backend
+- post_registration_form.php - Registration form processing
+- enrollment_form.php - Enrollment form handling
+- post_enrollment_form_data.php - Enrollment form data processing
+- userEnrolleesView.php - Enrollees view for regular users
+- userEnrollmentStatusView.php - Enrollment status for users
+- return-dashboard-json.php - Dashboard data for users
+
+## Admin-Related Files (server_side/admin)
+- adminModel.php - Core admin model
+- admin_login.php - Admin login functionality
+- post_admin_login.php - Admin login processing
+- adminEnrolledView.php - Enrolled students view for admins
+- adminEnrolleeStatus.php - Enrollee status management for admins
+- adminEnrolleeStatusView.php - Enrollee status view for admins
+- adminEnrolleeFollowup.php - Follow-up functionality for admin
+- adminSectionsView.php - Sections management for admin
+-Dashboard(readjust to adminDashboard)
+    -DashboardView
+- sectionsModel.php - Sections data model
+- post_sections.php - Section processing
+- adminSubjectsView.php - Subjects management for admin
+- subjectsModel.php - Subjects data model
+- post_subjects.php - Subject processing
+- adminTeacherView.php - Teacher management for admin
+- adminTeacherModel.php - Teacher data model
+- adminTeacherInfoView.php - Teacher info view for admin
+- adminTeacherInfoModel.php - Teacher info data model
+- edit_teacher_info.php - Teacher info editing
+- post_edit_teacher_info.php - Teacher info edit processing
+- staff_registration.php - Staff registration functionality
+- post_staff_registration.php - Staff registration processing
+- edit_staff_information.php - Staff info editing
+- post_edit_staff_information.php - Staff info edit processing
+- search_enrollees.php - Enrollee search functionality
+- searchEnrolleeView.php - Enrollee search view
+- updateEnrolleeStatus.php - Update enrollee status
+
+## Teacher-Related Files (server_side/teachers)
+- adminTeacherInfoView.php - Teacher info view (duplicate, move only if used by teachers)
+- edit_teacher_info.php - Teacher info editing (duplicate, move only if used by teachers)
+
+## Student-Related Files (server_side/students)
+- studentsModel.php - Student data model
+- fetchStudentDetails.php - Fetch student details
+- deleteStudent.php - Delete student functionality
+- adminStudentsView.php - Student view for admins
+- EnrolleesModel.php - Enrollees data model
+- enrollmentStatusView.php - Enrollment status view
+- getSectionsByGradeLevel.php - Get sections by grade level
+- getGradeLevels.php - Get grade levels
+##server_side
+-All post files
+-All search that will be fetched by javascript
+-All fetch
+## Files to be Evaluated Further
+- test.php - Test file, may be obsolete 

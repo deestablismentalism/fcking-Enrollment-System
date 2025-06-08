@@ -29,7 +29,7 @@
                     </tr>
                     <tbody class="student-info">
                             <?php 
-                                include_once __DIR__ . '/../server_side/adminStudentsView.php';
+                                include_once __DIR__ . '/../server_side/admin/adminStudentsView.php';
                                 $view = new adminStudentsView();
                                 $view->displayStudents();
                             ?>

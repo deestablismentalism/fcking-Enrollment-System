@@ -1,6 +1,6 @@
 <?php
     declare(strict_types =1);
-    require_once __DIR__ . '/EnrolleesModel.php';
+    require_once __DIR__ . '/../models/EnrolleesModel.php';
 class displayEnrollmentForms {
     protected $conn;
     protected $enrollee;

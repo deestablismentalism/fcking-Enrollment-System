@@ -29,96 +29,77 @@ document.addEventListener("DOMContentLoaded", function() {
         {element: motherCPnum, error: "em-m-number"},   
         {element: guardianCPnum, error: "em-g-number"}
     ];
-  function isEmpty(element) {
-    return !element.value.trim();
-  }
-  function clearError(errorElement, childElement) {
-        const container = childElement.parentElement.querySelector('.error-msg');
-        const errorSpan = container.querySelector('.' + errorElement);
 
-        container.classList.remove('show');
-        childElement.style.border = "1px solid #616161";
-        errorSpan.innerHTML = '';
-  }
-  function checkEmptyFocus(element, errorElement) {
-    element.addEventListener('blur', ()=> clearError(errorElement, element));
-  } 
-  function errorMessages(errorElement, message, childElement) {
-    const container = childElement.parentElement.querySelector('.error-msg');
-    const errorSpan = container.querySelector('.' + errorElement);
-
-    container.classList.add('show');
-    childElement.style.border = "1px solid red";
-    errorSpan.innerHTML = message;
-  }
-
-  function validateEmpty(element, errorElement) {
-    if(isEmpty(element)) {
-        errorMessages(errorElement, emptyError, element);
-        checkEmptyFocus(element, errorElement);
-    }
-    else {
-        clearError(errorElement, element);
-    }
-  }
-  function validatePhoneNumber(element, errorElement, e) {
-    const currentIndex = element.selectionStart; 
-    if(isEmpty(element)) {
-        errorMessages(errorElement, emptyError, element);
-        checkEmptyFocus(element, errorElement);
-        return;
-    }
-    if(isNaN(e.key) && e.key !== "Backspace") {
-        errorMessages(errorElement, notNumber, element);
-        checkEmptyFocus(element, errorElement);
-        e.preventDefault();
-    }
-    else if(element.value.length >= 11 && e.key !== "Backspace") {
-        errorMessages(errorElement, "Not a valid phone number", element);
-        checkEmptyFocus(element, errorElement);
-        e.preventDefault();
-    }
-    else {
-        clearError(errorElement, element);
-    }
-  }
-  phoneInfo.forEach(({element, error}) => {
-    element.addEventListener('keydown', (e)=> validatePhoneNumber(element, error, e));
-    element.addEventListener('blur', function() {
-        if(isEmpty(element)) {
-            errorMessages(error, emptyError, element);
-            checkEmptyFocus(element, error);
+    function validatePhoneNumber(element, errorElement, e) {
+        if(ValidationUtils.isEmpty(element)) {
+            ValidationUtils.errorMessages(errorElement, ValidationUtils.emptyError, element);
+            ValidationUtils.checkEmptyFocus(element, errorElement);
+            return false;
         }
-    });
-  });
-  allInfo.forEach(({element, error}) => {
-    element.addEventListener('keyup', ()=> validateEmpty(element, error));
-  });
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Validate all required name fields
-    allInfo.forEach(({element, error}) => {
-      validateEmpty(element, error);
-    });
-
-    // Validate all phone numbers
-    phoneInfo.forEach(({element, error}) => {
-      if(isEmpty(element)) {
-        errorMessages(error, emptyError, element);
-      }
-      else if (element.value.length !== 11) {
-        errorMessages(error, "Phone number must be 11 digits", element);
-      }
-    });
-
-    // Check for any validation errors
-    const errors = document.querySelectorAll('.show');
-    if (errors.length > 0) {
-      const firstError = errors[0];
-      firstError.scrollIntoView({behavior: "smooth", block: "center"});
-      return false;
+        
+        if(isNaN(e.key) && e.key !== "Backspace") {
+            ValidationUtils.errorMessages(errorElement, ValidationUtils.notNumber, element);
+            ValidationUtils.checkEmptyFocus(element, errorElement);
+            e.preventDefault();
+            return false;
+        }
+        
+        if(element.value.length >= 11 && e.key !== "Backspace") {
+            ValidationUtils.errorMessages(errorElement, "Not a valid phone number", element);
+            ValidationUtils.checkEmptyFocus(element, errorElement);
+            e.preventDefault();
+            return false;
+        }
+        
+        ValidationUtils.clearError(errorElement, element);
+        return true;
     }
-  });
+
+    function validateParentInfo() {
+        let isValid = true;
+
+        // Validate all required name fields
+        allInfo.forEach(({element, error}) => {
+            if (!ValidationUtils.validateEmpty(element, error)) {
+                isValid = false;
+            }
+        });
+
+        // Validate all phone numbers
+        phoneInfo.forEach(({element, error}) => {
+            if(ValidationUtils.isEmpty(element)) {
+                ValidationUtils.errorMessages(error, ValidationUtils.emptyError, element);
+                isValid = false;
+            }
+            else if (element.value.length !== 11) {
+                ValidationUtils.errorMessages(error, "Phone number must be 11 digits", element);
+                isValid = false;
+            }
+        });
+
+        ValidationUtils.validationState.parentInfo = isValid;
+        return isValid;
+    }
+
+    // Event Listeners
+    phoneInfo.forEach(({element, error}) => {
+        element.addEventListener('keydown', (e)=> validatePhoneNumber(element, error, e));
+        element.addEventListener('blur', function() {
+            if(ValidationUtils.isEmpty(element)) {
+                ValidationUtils.errorMessages(error, ValidationUtils.emptyError, element);
+                ValidationUtils.checkEmptyFocus(element, error);
+            }
+            validateParentInfo();
+        });
+    });
+
+    allInfo.forEach(({element, error}) => {
+        element.addEventListener('keyup', () => {
+            ValidationUtils.validateEmpty(element, error);
+            validateParentInfo();
+        });
+    });
+
+    // Expose the validation function to the global scope
+    window.validateParentInfo = validateParentInfo;
 });

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
     include_once './admin_base_designs.php';
-    require_once __DIR__ . '/../server_side/getGradeLevels.php';
+    require_once __DIR__ . '/../server_side/common/getGradeLevels.php';
 ?>
 <html>
     <link rel="stylesheet" href="../css/Admin_subjects.css">
@@ -55,7 +55,7 @@
                             </thead>
                             <tbody> 
                                 <?php 
-                                    require_once __DIR__ . '/../server_side/adminSubjectsView.php';
+                                    require_once __DIR__ . '/../server_side/admin/adminSubjectsView.php';
                                     $view = new adminSubjectsView();
                                     $view->displaySubjects();
                                 ?>

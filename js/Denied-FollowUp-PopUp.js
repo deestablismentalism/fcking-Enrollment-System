@@ -1,15 +1,16 @@
 $(document).on('click', 'button[data-id]', function() {
     const enrolleeId = $(this).data('id');
     $.ajax({
-        url: '../server_side/fetch_enrollee_transactions.php',
+        url: '../server_side/admin/fetchEnrolleeTransactions.php',
         type: 'POST',
         data: { id: enrolleeId },
         success: function(response) {
             if (response.success) {
                 let content = '<ul>';
                 response.data.forEach(item => {
-                    content += `<li>${item.Reason} - ${item.Description}</li>`;
+                    content += `<li>${item.Reason} </li>`;
                 });
+                content += `<li> ${response.data[0].Description}</li>`;
                 content += '</ul>';
                 $('#modalContent').html(content);
                 $('#reasonModal').show();
@@ -23,4 +24,5 @@ $(document).on('click', 'button[data-id]', function() {
             $('#reasonModal').show();
         }
     });
+    
 });

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../server_side/UserTypeView.php';
+require_once __DIR__ . '/../server_side/common/UserTypeView.php';
 if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registration-Id'])) {
     header("Location: ../client_side/login_form.php");
     exit();
@@ -128,8 +128,8 @@ if (!isset($_SESSION['User']['User-Id']) || !isset($_SESSION['User']['Registrati
                             <a href="../client_side/Change_Password.php" class="update-password">Update Password</a><br>
                         </div>
                         <div class="account-logout-wrapper">
-                            <a href="../server_side/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
-                            <a href="../server_side/logout.php" class="logout-text">Logout</a>
+                            <a href="../server_side/common/logout.php" id="logout"><img src="../imgs/logout.svg" class="logout-icon" alt=""></a>
+                            <a href="../server_side/common/logout.php" class="logout-text">Logout</a>
                         </div>
                     </div>
                 </div>

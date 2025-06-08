@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
     include_once __DIR__ . '/../adminPages/admin_base_designs.php';
-    require_once __DIR__ . '/../server_side/studentsModel.php';
+    require_once __DIR__ . '/../server_side/models/studentsModel.php';
     
     // Check if student ID is provided
     if (!isset($_GET['id']) || empty($_GET['id'])) {

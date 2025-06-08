@@ -7,7 +7,6 @@ try {
         $subjectsQuery = new subjectsModel();
 
         $subjectName = $_POST['subject-name'];
-        $subjectLevel = (int)$_POST['subject-level'];
 
         if (empty($subjectName)) {
             echo"<script> 
@@ -16,28 +15,47 @@ try {
             </script>";
             exit();
         }
+        
         $convertedName = strtoupper($subjectName);
-        if (isset($_POST['levels'])) {
-            $subjects = $_POST['levels'];
-            foreach($subjects as $subject) {
-                $convertedSubject = strtoupper($subject);
-                if ($subjectsQuery->insertSubjectAndLevel($convertedSubject, $subjectLevel)) {
-                    header("Location: ../adminPages/Admin_Subjects.php" );
-                    exit();
-                }
-                else {
-                    echo "Failed to insert subject and level";
+        
+        // Check if we have multiple grade levels (checkboxes)
+        if (isset($_POST['levels']) && is_array($_POST['levels'])) {
+            $success = true;
+            
+            // Each checkbox value contains a grade level ID
+            foreach($_POST['levels'] as $gradeLevelId) {
+                $result = $subjectsQuery->insertSubjectAndLevel($convertedName, (int)$gradeLevelId);
+                if ($result !== "succesfully inserted") {
+                    $success = false;
+                    echo "Failed to insert subject for grade level $gradeLevelId: $result";
+                    break;
                 }
             }
+            
+            if ($success) {
+                header("Location: ../adminPages/Admin_Subjects.php");
+                exit();
+            }
         }
-        else {
-            if ($subjectsQuery->insertSubjectAndLevel($convertedName, $subjectLevel)) {
+        // Single grade level from select dropdown
+        else if (isset($_POST['subject-level'])) {
+            $subjectLevel = (int)$_POST['subject-level'];
+            $result = $subjectsQuery->insertSubjectAndLevel($convertedName, $subjectLevel);
+            
+            if ($result === "succesfully inserted") {
                 header("Location: ../adminPages/Admin_Subjects.php");
                 exit();
             }
             else {
-                echo "Failed to insert subject and level";
+                echo "Failed to insert subject and level: $result";
             }
+        }
+        else {
+            echo "<script> 
+                alert('Please select a grade level'); 
+                window.location.href = '../adminPages/Admin_Subjects.php'
+            </script>";
+            exit();
         }
     }
 }

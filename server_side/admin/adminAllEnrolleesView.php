@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__ . '/../dbconnection.php';
-require_once __DIR__ . '/../EnrolleesModel.php';
+require_once __DIR__ . '/../core/dbconnection.php';
+require_once __DIR__ . '/../models/EnrolleesModel.php';
 
 class adminAllEnrolleesView {
     protected $conn;
@@ -54,11 +54,11 @@ class adminAllEnrolleesView {
                 $status = $this->stringEquivalent((int)$rows['Enrollment_Status']);
                 
                 echo '<tr class="enrollee-row"> 
-                        <td>' . htmlspecialchars($rows['Learner_Reference_Number']) . '</td>
+                        <td>' . $rows['Learner_Reference_Number'] . '</td>
                         <td>' .htmlspecialchars($rows['Student_Last_Name']) . ', ' 
                         .htmlspecialchars($rows['Student_First_Name']) . ' ' 
                         .htmlspecialchars($studentMiddleInitial) . '</td>
-                        <td>' . htmlspecialchars($rows['Last_Grade_Level']) . '</td>
+                        <td>' . htmlspecialchars($rows['E_Grade_Level']) . '</td>
                         <td>' . htmlspecialchars($status) . '</td>
                         <td>' . htmlspecialchars($rows['Last_Name']) . ', ' . htmlspecialchars($rows['First_Name']) . ' ' 
                                .htmlspecialchars($parentMiddleInitial) . '</td> 

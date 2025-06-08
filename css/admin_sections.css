@@ -45,12 +45,6 @@
     border-radius: 1.5em;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-
-.sections-list h2 {
-    margin-bottom: 1em;
-    color: #333;
-}
-
 .sections-table {
     width: 100%;
     border-collapse: collapse;
@@ -70,6 +64,30 @@
 .sections-table tr:nth-child(even) {
     background: #f9f9f9;
 }
+.sections-list-header {
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+}
+.sections-list-header a {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75em 2em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+}
+.sections-list-header img{
+    width: 1rem;
+    height: 1rem;
+}
 .sections-table tr:hover {
     background: #e6f0ff;
+}
+.assign-btn, .delete-section-btn img{
+    width: 1rem;
+    height: 1rem;
 }

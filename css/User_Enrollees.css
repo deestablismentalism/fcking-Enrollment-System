@@ -12,8 +12,13 @@
     padding: 1em;
     border-radius: 1.25em;
     border: 1px solid rgb(0, 0, 0, .5);
+    overflow: auto;         /* or scroll */
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
 }
-
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
 table {
     position: relative;
     margin: 0 auto;
@@ -32,8 +37,17 @@ th, td {
   text-align: left;
   padding: 8px;
 }
-
-
+.enrollee-link {
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    color: rgb(76, 76, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+td a:hover {
+    color: rgb(0, 0, 200);
+}
 .Check-Status {
     text-align: center;
     border-radius: 5px;

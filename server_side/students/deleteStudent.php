@@ -24,46 +24,36 @@ try {
     
     // Start transaction
     $conn->beginTransaction();
-
-    // First, check if the student exists
-    $sql = "SELECT * FROM students WHERE Enrollee_Id = :id";
+    
+    // First, get the Enrollee_Id to use in the next query
+    $sql = "SELECT Enrollee_Id FROM students WHERE Enrollee_Id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $studentId, PDO::PARAM_INT);
     $stmt->execute();
     
     $student = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
     if (!$student) {
         $response['message'] = 'Student not found';
         echo json_encode($response);
         exit;
     }
     
-    // Archive the student first
-    $archiveSql = "INSERT INTO archive_students SELECT * FROM students WHERE Enrollee_Id = :id";
-    $archiveStmt = $conn->prepare($archiveSql);
-    $archiveStmt->bindParam(':id', $studentId, PDO::PARAM_INT);
-    $archiveResult = $archiveStmt->execute();
-    
-    if (!$archiveResult) {
-        throw new PDOException("Failed to archive student");
-    }
-    
-    // Then delete from students table
-    $deleteSql = "DELETE FROM students WHERE Enrollee_Id = :id";
-    $deleteStmt = $conn->prepare($deleteSql);
-    $deleteStmt->bindParam(':id', $studentId, PDO::PARAM_INT);
-    $deleteStmt->execute();
+    // Delete from students table
+    $sql = "DELETE FROM students WHERE Enrollee_Id = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $studentId, PDO::PARAM_INT);
+    $stmt->execute();
     
     // Commit the transaction
     $conn->commit();
     
     $response['success'] = true;
-    $response['message'] = 'Student archived and deleted successfully';
+    $response['message'] = 'Student deleted successfully';
     
 } catch (PDOException $e) {
     // Rollback the transaction on error
-    if (isset($conn)) {
+    if ($conn) {
         $conn->rollBack();
     }
     $response['message'] = 'Database error: ' . $e->getMessage();

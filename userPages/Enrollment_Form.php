@@ -18,7 +18,7 @@
             </div>
 
             <div class="content-wrapper">
-                <form id="enrollment-form" class="form-main" method="POST" action="../server_side/post_enrollment_form_data.php" enctype="multipart/form-data">
+                <form id="enrollment-form" class="form-main" method="POST" action="../server_side/users/post_enrollment_form_data.php" enctype="multipart/form-data">
                     <!--ANTAS AT IMPORMASYON NG PAARALAN-->
                     <div class="previous-school border-75">
                         <div class="previous-school-title">
@@ -58,9 +58,9 @@
                                 <p class="dfont">Baitang na nais ipatala</p>
                                 <select name="grades-tbe" id="grades-tbe" class="select">
                                     <?php
-                                        require_once '../server_side/getGradeLevels.php';
+                                        require_once __DIR__ .'/../server_side/common/getGradeLevels.php';
                                         $view = new getGradeLevels();
-                                    
+                                        $view->createSelectValues();
                                     ?>
                                 </select>
 
@@ -68,6 +68,7 @@
                                 <select name="last-grade" id="last-grade" class="select">
                                     <?php 
                                         $view = new getGradeLevels();
+                                        $view->createSelectValues();
                                     ?>
                                 </select>
 
@@ -286,7 +287,7 @@
                             <div class="truespecialneeds">
                                 <p class="dfont">Kung MAYROON, isulat kung ano ang natatanging kalagayan ng bata:</p>
                                 <div class="error-msg">
-                                    <span id="em-boolsn"></span>
+                                    <span class="em-boolsn"></span>
                                 </div>
                                 <input type="text" name="boolsn" id="boolsn" class="textbox" placeholder="Blind, Deaf, ADHD, etc.">
                             </div>
@@ -300,7 +301,7 @@
                             <div class="trueassisttech">
                                 <p class="dfont">Kung MAYROON, isulat kung ano ito</p>
                                 <div class="error-msg">
-                                    <span id="em-atdevice"></span>
+                                    <span class="em-atdevice"></span>
                                 </div>
                                 <input type="text" name="atdevice" id="atdevice" class="textbox" placeholder="Wheelchairs">
                             </div>
@@ -313,35 +314,13 @@
                             <span class="title">TIRAHAN</span>
                         </div>
                         <div class="address-wrapper">
-                            <div class="house-number">
-                                <p class="dfont">Numero ng Bahay at kalye</p>
+                            <div class="region">
+                                <p class="dfont">Rehiyon</p>
                                 <div class="error-msg">
-                                    <span class="em-house-number"></span>
+                                    <span class="em-region"></span>
                                 </div>
-                                <input type="text" name="house-number" id="house-number" class="textbox" placeholder="32">
-                            </div>
-                            <div class="subdivision">
-                                <p class="dfont">Subdivision/ baryo/ purok/ sitio</p>
-                                <div class="error-msg">
-                                    <span class="em-subdivision"></span>
-                                </div>
-                                <input type="text" name="subdivision" id="subdivision" class="textbox" placeholder="Talipan">
-                            </div>
-                            <div class="barangay">
-                                <p class="dfont">Barangay</p>
-                                <div class="error-msg">
-                                    <span class="em-barangay"></span>
-                                </div>
-                                <select name="barangay" id="barangay" class="textbox">
-                                   
-                                </select>
-                            </div>
-                            <div class="city">
-                                <p class="dfont">Lungosd/Munisipalidad</p>
-                                <div class="error-msg">
-                                    <span class="em-city"></span>
-                                </div>
-                                <select name="city-municipality" id="city-municipality" class="textbox">
+                                <input type="hidden" name="region-name" id="region-name">
+                                <select name="region" id="region" class="textbox" >
                                     
                                 </select>
                             </div>
@@ -350,18 +329,44 @@
                                 <div class="error-msg">
                                     <span class="em-province"></span>
                                 </div>
+                                <input type="hidden" name="province-name" id="province-name">
                                 <select name="province" id="province" class="textbox">
                                    
                                 </select>
                             </div>
-                            <div class="region">
-                                <p class="dfont">Rehiyon</p>
+                            <div class="city">
+                                <p class="dfont">Lungosd/Munisipalidad</p>
                                 <div class="error-msg">
-                                    <span class="em-region"></span>
+                                    <span class="em-city"></span>
                                 </div>
-                                <select name="region" id="region" class="textbox" >
+                                <input type="hidden" name="city-municipality-name" id="city-municipality-name">
+                                <select name="city-municipality" id="city-municipality" class="textbox">
                                     
                                 </select>
+                            </div>
+                            <div class="barangay">
+                                <p class="dfont">Barangay</p>
+                                <div class="error-msg">
+                                    <span class="em-barangay"></span>
+                                </div>
+                                <input type="hidden" name="barangay-name" id="barangay-name">
+                                <select name="barangay" id="barangay" class="textbox">
+                                   
+                                </select>
+                            </div>
+                            <div class="subdivision">
+                                <p class="dfont">Subdivision/ baryo/ purok/ sitio</p>
+                                <div class="error-msg">
+                                    <span class="em-subdivision"></span>
+                                </div>
+                                <input type="text" name="subdivision" id="subdivision" class="textbox" placeholder="Talipan">
+                            </div>
+                            <div class="house-number">
+                                <p class="dfont">Numero ng Bahay at kalye</p>
+                                <div class="error-msg">
+                                    <span class="em-house-number"></span>
+                                </div>
+                                <input type="text" name="house-number" id="house-number" class="textbox" placeholder="32">
                             </div>
                         </div>
                     </div>
@@ -405,7 +410,7 @@
                                         <option value="Nakapagtapos ng Elementarya">Nakapagtapos ng Elementarya</option>
                                         <option value="Nakatuntong ng Sekundarya">Nakatuntong ng Sekundarya</option>
                                         <option value="Nakapagtapos ng Sekundarya">Nakapagtapos ng Sekundarya</option>
-                                        <option value="Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal">Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal</option>
+                                        <option value="Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal">Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal/Bokasyonal</option>
                                     </select>
                                 </div>
                                 <div class="F-number">
@@ -450,7 +455,7 @@
                                         <option value="Nakapagtapos ng Elementarya">Nakapagtapos ng Elementarya</option>
                                         <option value="Nakatuntong ng Sekundarya">Nakatuntong ng Sekundarya</option>
                                         <option value="Nakapagtapos ng Sekundarya">Nakapagtapos ng Sekundarya</option>
-                                        <option value="Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal">Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal</option>
+                                        <option value="Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal">Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal/Bokasyonal</option>
                                     </select>
                                 </div>
                                 <div class="M-number">
@@ -495,7 +500,7 @@
                                         <option value="Nakapagtapos ng Elementarya">Nakapagtapos ng Elementarya</option>
                                         <option value="Nakatuntong ng Sekundarya">Nakatuntong ng Sekundarya</option>
                                         <option value="Nakapagtapos ng Sekundarya">Nakapagtapos ng Sekundarya</option>
-                                        <option value="Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal">Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal</option>
+                                        <option value="Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal /Bokasyonal">Nakapag-aral Pagkatapos ng Sekundarya o ng Teknikal/Bokasyonal</option>
                                     </select>
                                 </div>
                                 <div class="G-number">
@@ -534,6 +539,7 @@
     <script src="../js/address-validation.js" defer></script>
     <script src="../js/previous-school-validation.js" defer></script>
     <script src="../js/student-info-validation.js" defer></script>
+    <script src="../js/validation-utils.js" defer></script>
     <script src = "../js/post-enrollment-form-fetcher.js" defer></script>
 </body>
 </html>
