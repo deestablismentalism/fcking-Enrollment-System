@@ -1,7 +1,9 @@
 .header {
     background-color: #003366;
 }
-
+.body {
+    background-color: #f1f5f4; /* Light background for contrast */
+}
 .page-title {
     font-size: 2.75em;
     color: #ffffff;
@@ -48,7 +50,6 @@
     margin-top: 40px;
     text-align: center;
     width: 100%;
-    border-bottom: 3px solid rgba(241, 189, 34, 0.75);
 }
 
 .border-50-underline {
@@ -71,7 +72,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 85vh;
 }
 
 :root{
@@ -178,7 +179,7 @@
 
 
 
-
+    
 
 /** mission, vission, values section */
 
@@ -188,15 +189,19 @@
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 84px;
+   margin-top: 44px;
 }
 
 .card {
   background: white;
   border-radius: 16px;
   padding: 2rem;
-  width: 300px;
+  width: 550px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-image: url("../imgs/crumpled-paper.jpg");
+
 }
 
 .card:hover {
@@ -207,8 +212,8 @@
 .icon {
   background-color: #e6f4f1;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -218,11 +223,19 @@
 .icon img {
   width: 24px;
   height: 24px;
+  align-content: center;
+  justify-content: center;
+}
+.icon img:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 
 h3 {
   margin: 0 0 1rem;
   color: #1f3c5b;
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
 
@@ -233,25 +246,44 @@ h3 {
 
 /* members page */
 
+h5{
+    color: #0e9f6e;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1.9rem;
+    text-align: center;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em ;
+}
+
+h5:after {
+    content: "";
+    width: 50px;
+    height: 2px;
+    background: var(--accent-color);
+    display: inline-block;
+}
+
 .hero {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-  max-width: 1200px;
+  max-width: 1437px;
   margin: auto;
+  background: #f9f9f9;
+  margin
 }
 
 .hero-text {
   flex: 1 1 400px;
 }
-
-.hero-text h5 {
-  color: #0e9f6e;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
+.hero-image {
+  flex: 2 1 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-text h1 {
@@ -282,15 +314,10 @@ h3 {
   color: #0e9f6e;
 }
 
-.hero-image {
-  flex: 1 1 300px;
-}
-
 .hero-image img {
   width: 100%;
   border-radius: 12px;
-  object-fit: cover;
-  max-height: 300px;
+  max-height: 100%;
 }
 
 .team {
@@ -300,18 +327,23 @@ h3 {
 }
 
 .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
+    display: flex;
+    align-content: center;
+    width: 0em;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1em;
+    justify-content: center;
 }
 
 .team-card {
-  background: white;
-  border-radius: 12px;
-  text-align: center;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+    background: white;
+    border-radius: 12px;
+    text-align: center;
+    overflow: hidden;
+    width: 13em;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
 }
 
 .team-card:hover {
@@ -324,7 +356,7 @@ h3 {
 
 .image-wrapper img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
   transition: transform 0.4s ease;
 }

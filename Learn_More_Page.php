@@ -21,7 +21,7 @@
             <div class="learn-more-container">
                 <div class="learn-more-content">
                     <div class="image-text-container">
-                        <img src="./imgs/studs.jpg" alt="Image 1" class="image">
+                        <img src="./imgs/students.jpg" alt="Image 1" class="image">
                         <div class="text-container">
                             <h3>Our Beloved School</h3>
                             <p>Lucena South II Elementary School is dedicated to improving teaching and learning through 
@@ -37,7 +37,11 @@
                         <img src="./imgs/teacher.jpg" alt="Image 1" class="image">
                         <div class="text-container">
                             <h3>Our Teachers</h3>
-                            <p>Our dedicated teachers are committed to providing quality education and support to all students.</p>
+                            <p>Our dedicated teachers are committed to providing quality education and support to all students.
+                              They go beyond teaching basic subjects by instilling confidence in their students, encouraging them to 
+                              believe in their abilities. Through everyday lessons and meaningful guidance, 
+                              they shape future leaders with strong values and a sense of responsibility. These educators 
+                              create a supportive environment where children feel empowered to strive for excellence in everything they do.</p>
                         </div>
                     </div>
                 </div>
@@ -65,21 +69,48 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="about-section">
-                <h2>About Us</h2>
-                <p>Welcome to Lucena South II Elementary School! We are dedicated to providing a nurturing and inclusive environment for all students.</p>
-                <p>Our mission is to foster a love for learning and help each child reach their full potential.</p>
+             <div class="container">
+            <div class="card" style="background-image: image('./imgs/crumpled-paper.jpg');">
+            <h3>Our Mission</h3>
+            <p>To protect and promote the right of every Filipino to quality, 
+            equitable, culture-based, and complete basic education where:<br>
+<br>
+                Students learn in a child-friendly, gender-sensitive, safe, and motivating environment.<br>
+                Teachers facilitate learning and constantly nurture every learner.
+                Administrators and staff, as stewards of the institution, 
+                ensure an enabling and supportive environment for effective learning to happen.
+                Family, community, and other stakeholders are actively engaged and <br>
+                share responsibility for developing life-long learners.
             </div>
-            <div class="mission-section">
-                <h2>Our Mission</h2>
-                <p>To provide quality education that empowers students to become responsible and productive citizens.</p>
+            <div class="card">
+            <h3>Our Vision</h3>
+            <p>We dream of Filipinos<br>
+                who passionately love their country<br>
+                and whose values and competencies<br>
+                enable them to realize their full potential<br>
+                and contribute meaningfully to building the nation.<br>
+<br>
+                As a learner-centered public institution,<br>
+                the Department of Education<br>
+                continuously improves itself<br>
+                to better serve its stakeholders.</p>
             </div>
-            <div class="vision-section">
-                <h2>Our Vision</h2>
-                <p>To be a leading institution in education, known for excellence and innovation.</p>
+            <div class="card">
+            <h3>Our Values</h3>
+            <p>Maka-Diyos, <br>
+                Maka-tao, <br>
+                Makakalikasan, <br>
+                Makabansa</p>
             </div>
         </div>
     </div>
+
+<footer>
+    
+    <?php include 'userPages/contact-form.html'; ?>
+    
+    <!-- Rest of your footer content -->
+</footer>
+
 </body>
 </html>

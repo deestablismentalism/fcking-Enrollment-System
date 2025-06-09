@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get in Touch</title>
+
+</head>
+<body>
+    <section class="contact-section">
+        <div class="section-header">
+            <h2 class="section-title">Get in Touch</h2>
+        </div>
+        
+        <form class="contact-form" id="contactForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="First Name" required>
+                    <div class="input-icon">👤</div>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email Address" required>
+                    <div class="input-icon">📧</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <input type="text" class="form-input" placeholder="Subject" required>
+                    <div class="input-icon">📋</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <textarea class="form-textarea" placeholder="Write Message..." required></textarea>
+                    <div class="input-icon">💬</div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = this.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Sending...';
+            btn.style.background = 'linear-gradient(135deg, #ff9800, #f57c00)';
+            
+            setTimeout(() => {
+                btn.textContent = 'Message Sent!';
+                btn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Add floating animation to form elements
+        const formElements = document.querySelectorAll('.form-input, .form-textarea');
+        
+        formElements.forEach(element => {
+            element.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

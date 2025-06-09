@@ -12,27 +12,20 @@
     display: flex;
     font-family: Barlow, light, sans-serif;
     color: #ffffff; /* Changed from black to white for better contrast */
+    font-size: 32px;
+    font-weight: 400;
 }
 
 .header-right  {
     display: flex;
     font-family: Barlow, light, sans-serif;
     color: #003366; /* Changed from black to white for better contrast */
-}
-
-.header-left {
-    font-size: 32px;
-    font-weight: 400;
-}
-
-.header-right {
     justify-content: flex-end;
     gap: 10px;
     font-size: 18px;
     flex-wrap: wrap;
-   margin: 20px 10px;
+    margin: 20px 10px;
 }
-
 
 .nav-link {
     color: #ffffff;
